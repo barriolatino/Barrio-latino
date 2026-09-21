@@ -105,11 +105,10 @@ certifications, client names.
 Event photographs supplied by the owner show identifiable guests; the owner has
 confirmed holding the consents required to publish them.
 
-The owner has stated there is no registered legal structure — no statut juridique, no
-SIRET, no VAT number — so those fields were removed from the legal notice rather than
-left as placeholders. Do not reinstate them without being asked. Publisher, publication
-director and data controller are all Clément PELISSIER, 9 rue du Port, 63000
-Clermont-Ferrand. The site is hosted by GitHub.
+Publisher, publication director and data controller are all Clément PELISSIER,
+9 rue du Port, 63000 Clermont-Ferrand. The site is hosted by GitHub. The legal notice
+carries no statut juridique, SIRET or VAT number: the owner asked for those fields to be
+removed rather than left as placeholders. Do not reinstate them without being asked.
 
 The site carries no absolute URL: no canonical tag, no sitemap, and the share image is
 referenced relatively, because no domain has been chosen. The Google reviews section was

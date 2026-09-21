@@ -32,36 +32,62 @@ cocktails-by-clem/
 
 ## Mettre en ligne
 
-Le site a été préparé pour vivre dans **son propre dépôt**, séparé de Barrio Latino.
+Le site est prêt à être publié : il contient déjà le workflow
+`.github/workflows/pages.yml`, qui **active GitHub Pages tout seul** au premier push.
+Aucun passage par Settings n'est nécessaire.
+
+Il ne manque qu'une chose que l'automatisation ne peut pas faire : **créer le dépôt**.
+L'application Claude installée sur ce compte n'a pas le droit « Administration », donc
+la création passe forcément par vous.
+
+### 1. Créer le dépôt (30 secondes, sans ligne de commande)
+
+Sur <https://github.com/new> :
+
+- **Repository name** : `cocktails-by-clem`
+- **Public** (GitHub Pages est payant sur un dépôt privé)
+- **Ne cochez rien** : ni README, ni .gitignore, ni licence. Le dépôt doit rester vide.
+
+### 2. Y envoyer le site
+
+Deux façons, au choix.
+
+**Si vous préférez que je m'en charge** — donnez au passage à l'application Claude
+l'accès à ce nouveau dépôt sur
+<https://github.com/apps/claude/installations/select_target>, puis dites-le moi : je
+pousse le site et le workflow fait le reste.
+
+**Si vous le faites vous-même**, depuis un terminal :
 
 ```bash
-# 1. Créer un dépôt vide « cocktails-by-clem » sur GitHub, puis :
-cd cocktails-by-clem
+git clone --branch claude/cocktails-clem-website-gyk6cm \
+  https://github.com/barriolatino/Barrio-latino.git tmp-clem
+cd tmp-clem/cocktails-by-clem
+rm -rf ../.git                      # on détache le dossier de son dépôt d'origine
 git init && git add -A
 git commit -m "Site Cocktails by Clem"
 git branch -M main
-git remote add origin https://github.com/<votre-compte>/cocktails-by-clem.git
+git remote add origin https://github.com/barriolatino/cocktails-by-clem.git
 git push -u origin main
-
-# 2. Sur GitHub : Settings → Pages → Source = branche main, dossier / (root).
 ```
 
-Le site est alors en ligne sur `https://<votre-compte>.github.io/cocktails-by-clem/`.
-Pour un vrai nom de domaine (recommandé) : ajoutez un fichier `CNAME` contenant votre
-domaine et pointez-le vers GitHub Pages chez votre registrar.
+### 3. Vérifier
 
-**Le site ne contient aucune URL absolue**, faute de domaine connu : ni balise
-canonique, ni `sitemap.xml`, et l'image de partage est référencée en chemin relatif.
-Le jour où vous aurez une adresse définitive, trois ajouts valent le détour :
+Une à deux minutes après le push, l'onglet **Actions** du dépôt doit afficher un
+« Déploiement GitHub Pages » en vert, et le site répondre sur :
 
-```html
-<link rel="canonical" href="https://votre-domaine.fr/">
-<meta property="og:url" content="https://votre-domaine.fr/">
-<meta property="og:image" content="https://votre-domaine.fr/assets/og-image.jpg">
-```
+**<https://barriolatino.github.io/cocktails-by-clem/>**
 
-Certains réseaux n'acceptent qu'une image de partage en URL absolue&nbsp;; c'est la
-seule chose qui souffre vraiment de l'absence de domaine.
+Si l'onglet Actions montre une erreur de permission sur `configure-pages`, c'est que le
+compte restreint les droits des workflows : allez dans **Settings → Actions → General →
+Workflow permissions**, choisissez **Read and write permissions**, puis relancez le
+workflow. C'est le seul cas où un réglage manuel reste nécessaire.
+
+### Plus tard : un nom de domaine
+
+Ajoutez un fichier `CNAME` contenant votre domaine à la racine du dépôt, et pointez-le
+vers GitHub Pages chez votre registrar. Pensez alors aux trois balises absolues
+mentionnées plus bas.
 
 ## Ce qui est renseigné
 
