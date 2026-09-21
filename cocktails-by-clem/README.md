@@ -17,7 +17,10 @@ cocktails-by-clem/
     ├── fonts.css + fonts/          Cormorant Garamond + DM Sans, auto-hébergées
     ├── leaves.svg                  ombres de feuillage (motif signature)
     ├── og-image.jpg                image de partage 1200×630
-    ├── cocktail-margarita.jpg      photo — hero et galerie
+    ├── cocktail-margarita.jpg      photo — hero, prestations, galerie
+    ├── clem.jpg                    portrait — section « Qui est Clem ? » et galerie
+    ├── dosage-alcool.jpg           photo — prestation « Barman privé », galerie
+    ├── dosage-citron.jpg           photo — prestation « Sur mesure », galerie
     ├── barman-prepare.jpg          photo — section expérience et galerie
     ├── insta-*.jpg                 3 publications, aperçu du feed
     └── cocktails/*.jpg             7 illustrations extraites de votre carte
@@ -60,10 +63,9 @@ code, repérable avec `grep -rn "À COMPLÉTER" .` :
 
 | Où | Quoi |
 |---|---|
-| `index.html` (4×) | URL définitive du site · adresse email · lien des avis Google |
+| `index.html` (3×) | URL définitive du site · adresse email · lien des avis Google |
 | `mentions-legales.html` (8×) | nom de l'éditeur, statut juridique, adresse, SIRET, TVA, directeur de publication, hébergeur |
 | `confidentialite.html` (3×) | responsable de traitement, email de contact pour les droits RGPD |
-| section « Qui est Clem ? » | une photo de vous → `assets/clem.jpg` |
 | carte des cocktails | la recette du **Mara Sour** (absente de votre carte Instagram) |
 
 Pour activer le bouton « Envoyer un email » une fois l'adresse connue, remplacez dans
@@ -72,16 +74,16 @@ Pour activer le bouton « Envoyer un email » une fois l'adresse connue, remplac
 
 ## Ajouter vos photos
 
-Déposez vos fichiers dans `assets/` et référencez-les dans `index.html`. Trois endroits
-gagneraient le plus à recevoir de vraies photos d'événements :
+Déposez vos fichiers dans `assets/` et référencez-les dans `index.html`. Il reste deux
+endroits qui gagneraient à recevoir de vraies photos d'événements :
 
-1. **Le hero** — `assets/cocktail-margarita.jpg`. Une photo verticale, nette, où le verre
-   occupe le cadre.
-2. **La galerie** — actuellement 2 photos et 3 illustrations. Les cellules 3 à 5 peuvent
-   devenir des photos : retirez `frame--art` de la `<div>` pour que l'image remplisse la
-   case au lieu d'être contenue.
-3. **Les prestations** — quatre des six panneaux montrent une illustration de cocktail
-   faute de photo d'événement. Les chemins sont dans `main.js`, tableau `SERVICES`.
+1. **Les prestations** — trois des six panneaux (Mariages, Anniversaires, Événements
+   professionnels) montrent encore une illustration de cocktail, faute de photo prise en
+   événement. Les chemins sont dans `main.js`, tableau `SERVICES`. Une photo de vin
+   d'honneur ou de bar installé en salle vaudrait beaucoup ici.
+2. **La galerie** — 5 photos et 3 illustrations aujourd'hui. Pour convertir une cellule
+   d'illustration en photo, retirez `frame--art` de sa `<div>` : l'image remplira la case
+   au lieu d'être contenue sur fond citron.
 
 Format conseillé : JPEG, 1200 px de large maximum, qualité 80. Une photo absente
 n'affiche jamais d'icône cassée : `main.js` la remplace par un emplacement nommé.

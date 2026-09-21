@@ -89,9 +89,13 @@ authentic, never auto-generated.
 The owner's Instagram account `@cocktailsbyclem_` is the real evidence of the work and
 is linked from the site.
 
-NOT on hand, and not to be fabricated: photographs of Clem's own cocktails and events
-(the owner will supply them), customer testimonials, awards, diplomas, years of
-experience, competition results, certifications, client names, prices.
+Supplied by the owner: five photographs (a finished margarita, three bar-service shots,
+and a portrait of Clem, confirmed by him as himself), three post graphics, and the seven
+watercolour cocktail illustrations extracted from the carte post.
+
+NOT on hand, and not to be fabricated: photographs taken at a client event, customer
+testimonials, awards, diplomas, years of experience, competition results,
+certifications, client names, an email address.
 
 The sibling project in this repository (Barrio Latino, a Latin American restaurant in
 Clermont-Ferrand run by the same owner) has photographs, but they document a

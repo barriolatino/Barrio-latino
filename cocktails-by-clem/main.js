@@ -28,8 +28,8 @@
       type: 'Événement sur mesure',
       texte: "Un barman professionnel directement sur votre événement.",
       detail: "Le bar s'installe sur place : matériel, verrerie, préparation et service. Vous n'avez rien à gérer pendant la soirée.",
-      img: 'assets/barman-prepare.jpg',
-      alt: "Le barman dose la tequila au-dessus du blender pendant le service." },
+      img: 'assets/dosage-alcool.jpg',
+      alt: "Clem dose l'alcool au jigger au-dessus du blender, pendant le service." },
     { id: 'mariage',    titre: 'Mariages',
       type: 'Mariage',
       texte: "Une animation cocktail élégante et conviviale pour accompagner votre réception.",
@@ -53,13 +53,13 @@
       texte: "Transformez votre soirée en véritable bar à cocktails.",
       detail: "Chez vous, dans un jardin ou une salle louée : le bar devient le point de rendez-vous de la soirée.",
       img: 'assets/cocktail-margarita.jpg',
-      alt: "Margarita au bord givré d'épices, servie dans un verre turquoise." },
+      alt: "Margarita au bord givré d'épices, préparée par Clem." },
     { id: 'surmesure',  titre: 'Événements sur mesure',
       type: 'Événement sur mesure',
       texte: "Une prestation entièrement personnalisée selon vos envies.",
       detail: "Une idée qui n'entre dans aucune case ? Décrivez-la dans le formulaire, on construit la formule ensemble.",
-      img: 'assets/cocktails/caipirinha.jpg',
-      alt: "Illustration de la Caïpirinha de la carte." }
+      img: 'assets/dosage-citron.jpg',
+      alt: "Dosage du jus de citron vert au jigger : chaque cocktail est mesuré." }
   ];
 
   // Recettes et prix relevés sur les publications @cocktailsbyclem_.
