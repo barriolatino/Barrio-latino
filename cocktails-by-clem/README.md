@@ -19,6 +19,10 @@ cocktails-by-clem/
     ├── og-image.jpg                image de partage 1200×630
     ├── cocktail-margarita.jpg      photo — hero, prestations, galerie
     ├── clem.jpg                    portrait — section « Qui est Clem ? » et galerie
+    ├── evenement-vin-honneur.jpg   photo — prestation « Mariages », tête de galerie
+    ├── buffet-evenement.jpg        photo — prestation « Anniversaires », galerie
+    ├── buffet-canapes.jpg          photo — prestation « Événements pro », galerie
+    ├── pisco-sour-service.jpg      photo — prestation « Atelier cocktail », galerie
     ├── dosage-alcool.jpg           photo — prestation « Barman privé », galerie
     ├── dosage-citron.jpg           photo — prestation « Sur mesure », galerie
     ├── barman-prepare.jpg          photo — section expérience et galerie
@@ -63,27 +67,37 @@ code, repérable avec `grep -rn "À COMPLÉTER" .` :
 
 | Où | Quoi |
 |---|---|
-| `index.html` (3×) | URL définitive du site · adresse email · lien des avis Google |
+| `index.html` (2×) | URL définitive du site · lien des avis Google |
 | `mentions-legales.html` (8×) | nom de l'éditeur, statut juridique, adresse, SIRET, TVA, directeur de publication, hébergeur |
-| `confidentialite.html` (3×) | responsable de traitement, email de contact pour les droits RGPD |
+| `confidentialite.html` (1×) | nom du responsable de traitement |
 | carte des cocktails | la recette du **Mara Sour** (absente de votre carte Instagram) |
 
-Pour activer le bouton « Envoyer un email » une fois l'adresse connue, remplacez dans
-`index.html` le `<span class="btn btn-ghost" aria-disabled="true">` par un
-`<a class="btn btn-ghost" href="mailto:votre@email.fr">`.
+L'adresse `pelissier.clement@hotmail.fr` est en place dans la section contact, le bouton
+« Envoyer un email », les données structurées et les deux pages légales. Publiée en clair,
+elle sera moissonnée par des robots à spam&nbsp;; si le volume devient gênant, le plus
+simple est de créer une adresse dédiée au site et de la faire suivre.
 
 ## Ajouter vos photos
 
-Déposez vos fichiers dans `assets/` et référencez-les dans `index.html`. Il reste deux
-endroits qui gagneraient à recevoir de vraies photos d'événements :
+Les **sept prestations montrent désormais une vraie photo** ; plus aucune illustration ne
+tient lieu de visuel d'événement. La galerie compte 9 photos et 2 illustrations.
 
-1. **Les prestations** — trois des six panneaux (Mariages, Anniversaires, Événements
-   professionnels) montrent encore une illustration de cocktail, faute de photo prise en
-   événement. Les chemins sont dans `main.js`, tableau `SERVICES`. Une photo de vin
-   d'honneur ou de bar installé en salle vaudrait beaucoup ici.
-2. **La galerie** — 5 photos et 3 illustrations aujourd'hui. Pour convertir une cellule
-   d'illustration en photo, retirez `frame--art` de sa `<div>` : l'image remplira la case
-   au lieu d'être contenue sur fond citron.
+Pour en ajouter : déposez le fichier dans `assets/`, puis ajoutez une entrée au bloc
+`.gal` de `index.html`, ou changez un chemin dans `main.js`, tableau `SERVICES`. Format
+conseillé : JPEG, 1000 px de large, qualité 80.
+
+**La grille de la galerie se remplit par multiples de trois.** La 1ʳᵉ entrée occupe
+2×2 cases et la 2ᵉ 1×2, soit 6 cases ; chaque entrée suivante en occupe une. Avec
+11 entrées on tombe juste sur 5 rangées pleines. Pour garder une grille sans trou,
+ajoutez ou retirez les photos **trois par trois**.
+
+### ⚠️ Droit à l'image
+
+Deux des photos d'événement (le vin d'honneur et le buffet en extérieur) montrent des
+invités reconnaissables. En France, publier le visage d'une personne identifiable sur un
+site commercial suppose son accord. Assurez-vous de l'avoir — au minimum des mariés et
+des personnes au premier plan — ou demandez-moi de recadrer ces deux photos sur les
+boissons et le dressage.
 
 Format conseillé : JPEG, 1200 px de large maximum, qualité 80. Une photo absente
 n'affiche jamais d'icône cassée : `main.js` la remplace par un emplacement nommé.
