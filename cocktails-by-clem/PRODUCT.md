@@ -35,7 +35,7 @@ or Instagram, or a submitted quote form.
 ## Positioning
 
 A private barman whose repertoire is specifically Latin American — Pisco Sour,
-Chilcano, Mara Sour, Caipirinha — rather than the generic international cocktail list
+Chilcano, Piña Colada — rather than the generic international cocktail list
 a caterer would offer. The service is the person: Clem on site, making drinks in front
 of the guests, as an animation and not only a supply.
 
@@ -51,11 +51,12 @@ First contact is almost always from a phone.
 Confirmed services: private barman for events, weddings, birthdays, professional and
 corporate events, private parties, fully bespoke events, and a **cocktail workshop** — a
 distinct offer in which the guests create their own cocktail, suited to a hen or stag
-party (EVJF / EVJG), a birthday, or anyone wanting to try something new. No price is
-confirmed for the workshop as an event prestation.
+party (EVJF / EVG), a birthday, or anyone wanting to try something new. The workshop
+covers Mojito, Piña Colada and Margarita, at 30 € per person.
 
-Confirmed cocktail repertoire — signatures: Pisco Sour, Mara Sour, Margarita,
-Chilcano. Classics: Piña Colada, Mojito, Cuba Libre, Caipirinha.
+Confirmed cocktail repertoire — signatures: Pisco Sour, Margarita, Chilcano.
+Classics: Piña Colada, Mojito, Cuba Libre. The owner removed Mara Sour and Caipirinha
+from the carte; do not reinstate them without being asked.
 
 Confirmed contact channels: Instagram `@cocktailsbyclem_`, WhatsApp `07 63 92 09 98`
 (+33 7 63 92 09 98), email `pelissier.clement@hotmail.fr`. Quotes are free.
@@ -65,7 +66,7 @@ on the event and the venue. Nationwide availability is NOT confirmed and must no
 claimed.
 
 Explicitly undecided, to be filled by the owner, never invented:
-- prestation prices, and the price of the cocktail workshop
+- prestation prices (the cocktail workshop is the only confirmed one, at 30 € per person)
 - cocktail descriptions beyond what is publicly true of each classic recipe
 - a photo of Clem
 - Google Business Profile listing and its reviews

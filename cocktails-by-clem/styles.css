@@ -432,6 +432,12 @@ p:last-child{margin-bottom:0;}
 .srv__inner{overflow:hidden;}
 .srv__body{padding-bottom:28px;display:grid;gap:20px;}
 .srv__body p{margin:0;color:var(--ink-2);max-width:56ch;}
+/* Tarif d'une prestation : capsule jaune, comme les prix de la carte. */
+.srv__prix span{
+  display:inline-block;background:var(--sun);color:var(--forest);
+  padding:4px 14px;border-radius:999px;
+  font-size:.82rem;font-weight:500;letter-spacing:.08em;
+}
 
 /* 7.4 Carte des cocktails */
 .carte__grid{display:grid;gap:34px 26px;grid-template-columns:repeat(2,1fr);}
@@ -508,7 +514,7 @@ p:last-child{margin-bottom:0;}
 
 /* 7.7 Galerie */
 .gal{
-  display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:12px;
+  display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:18px;
   overflow-x:auto;scroll-snap-type:x mandatory;
   padding-bottom:14px;margin-inline:calc(var(--gutter) * -1);
   padding-inline:var(--gutter);
@@ -516,6 +522,16 @@ p:last-child{margin-bottom:0;}
 }
 .gal > *{scroll-snap-align:center;}
 .gal .frame,.gal .slot{height:100%;}
+/* Chaque vignette porte son nom, comme un cartel. L'image occupe le reste
+   de la case, si bien que la hauteur de rangee ne change pas. */
+.gal .frame{display:flex;flex-direction:column;}
+.gal .frame img{flex:1 1 auto;min-height:0;}
+.gal__cap{
+  flex:none;background:var(--cream);color:var(--ink);
+  padding:9px 14px;text-align:center;
+  font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
 
 /* 7.8 Instagram */
 .ig__feed{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:34px;}
@@ -708,13 +724,14 @@ p:last-child{margin-bottom:0;}
   .exp-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:stretch;}
   .exp__media{margin-top:0;}
   .srv__body{grid-template-columns:1.1fr .9fr;align-items:start;gap:30px;}
-  .carte__grid{grid-template-columns:repeat(4,1fr);gap:40px 30px;}
+  .carte__grid{grid-template-columns:repeat(3,1fr);gap:40px 34px;}
   .clem{grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;}
   .evt{grid-template-columns:repeat(4,1fr);}
   .evt__item{min-height:158px;}
   .evt__item--wide{grid-column:span 2;}
   .gal{
-    grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-rows:225px;
+    grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;
+    gap:24px;
     overflow:visible;margin-inline:0;padding-inline:0;
   }
   .gal > *{grid-column:span 1;grid-row:span 1;}
@@ -729,7 +746,7 @@ p:last-child{margin-bottom:0;}
   .form__grid > .full{grid-column:span 2;}
   .ftr__top{grid-template-columns:1.2fr 2fr;gap:54px;}
   .ftr__cols{grid-template-columns:repeat(3,1fr);}
-  .tarif__pts{grid-template-columns:repeat(3,1fr);gap:22px;}
+  .tarif__pts{grid-template-columns:repeat(2,1fr);gap:20px 28px;}
 }
 @media (min-width:1100px){
   .carte__grid{gap:46px 36px;}

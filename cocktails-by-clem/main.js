@@ -57,7 +57,8 @@
     { id: 'atelier',    titre: 'Atelier cocktail',
       type: 'Atelier cocktail',
       texte: "Une prestation à part : vos invités créent leur propre cocktail.",
-      detail: "Une idée pour un EVJF, un EVJG, un anniversaire, ou simplement pour faire découvrir une nouvelle expérience à vos invités. On shake, on goûte, on recommence.",
+      detail: "Une idée pour un EVJF, un EVG, un anniversaire, ou simplement pour faire découvrir une nouvelle expérience à vos invités. Au programme : Mojito, Piña Colada et Margarita.",
+      prix: "30 € par personne",
       img: 'assets/pisco-sour-service.jpg',
       alt: "Pisco Sours dressés au bar, mousse et cannelle, prêts à être dégustés." },
     { id: 'surmesure',  titre: 'Événements sur mesure',
@@ -69,13 +70,9 @@
   ];
 
   // Recettes et prix relevés sur les publications @cocktailsbyclem_.
-  // Le Mara Sour figure dans la liste des tarifs mais pas sur la carte
-  // illustrée : sa recette n'est pas connue et n'est donc pas inventée.
   const SIGNATURES = [
     { nom: 'Pisco Sour', pays: 'Pérou',  img: 'pisco-sour',
       recette: "Pisco, jus de citron vert, sirop de sucre, blanc d'œuf" },
-    { nom: 'Mara Sour',  pays: '',       img: null, todo: true,
-      recette: "Recette à compléter" },
     { nom: 'Margarita',  pays: 'Mexique', img: 'margarita',
       recette: "Tequila, jus de citron vert, sirop de sucre" },
     { nom: 'Chilcano',   pays: 'Pérou',  img: 'chilcano',
@@ -87,9 +84,7 @@
     { nom: 'Mojito',      pays: 'Cuba',   img: 'mojito',
       recette: "Rhum blanc, menthe, citron vert, sirop de sucre, eau pétillante" },
     { nom: 'Cuba Libre',  pays: 'Cuba',   img: 'cuba-libre',
-      recette: "Rhum blanc, jus de citron, coca cola" },
-    { nom: 'Caïpirinha',  pays: 'Brésil', img: 'caipirinha',
-      recette: "Cachaça, sucre de canne, citron vert" }
+      recette: "Rhum blanc, jus de citron, coca cola" }
   ];
 
   const EVENEMENTS = [
@@ -99,7 +94,7 @@
     { nom: "Événement d'entreprise",  type: "Événement d'entreprise",   ico: 'i-case' },
     { nom: 'Cocktail dînatoire',      type: 'Cocktail dînatoire',       ico: 'i-plate' },
     { nom: 'Fête privée',             type: 'Fête privée',              ico: 'i-confetti' },
-    { nom: 'EVJF / EVJG',              type: 'EVJF / EVJG',              ico: 'i-glasses' },
+    { nom: 'EVJF / EVG',               type: 'EVJF / EVG',               ico: 'i-glasses' },
     { nom: 'Événement sur mesure',    type: 'Événement sur mesure',     ico: 'i-sparkle' }
   ];
 
@@ -118,6 +113,7 @@
             <div>
               <p>${esc(s.texte)}</p>
               <p>${esc(s.detail)}</p>
+              ${s.prix ? `<p class="srv__prix"><span class="num">${esc(s.prix)}</span></p>` : ''}
               <a class="btn btn-primary" href="#devis" data-type="${esc(s.type)}">
                 Demander un devis</a>
             </div>

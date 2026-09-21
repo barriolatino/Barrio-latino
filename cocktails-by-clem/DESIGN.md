@@ -72,6 +72,10 @@ mesure plafonnée à 66 caractères. Plancher de 11 px pour tout texte fonctionn
   flou est cuit dans le SVG (`feGaussianBlur`) pour qu'aucun filtre CSS ne soit recalculé
   au défilement. Taille fixe de 1400 px, jamais `cover` : étiré sur une grande section, le
   motif donnait des taches au lieu de feuilles.
+- **Le cartel de galerie** (`.gal__cap`) — chaque vignette porte son nom sous l'image,
+  en petites capitales interlettrées sur le crème de la section. La vignette est une
+  colonne flex dont l'image absorbe la hauteur restante, si bien que le cartel n'altère
+  pas la hauteur de rangée ni le calcul des cases.
 - **Les pictogrammes** — SVG dessinés, un seul trait à 1,5, réunis en `<symbol>` et
   appelés par `<use>`. Aucun emoji ne tient lieu de pictogramme.
 - **L'élévation** — un décalage et un flou doux, en gris neutre. Une ombre teintée sur

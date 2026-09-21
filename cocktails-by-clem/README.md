@@ -70,7 +70,6 @@ code, repérable avec `grep -rn "À COMPLÉTER" .` :
 | `index.html` (2×) | URL définitive du site · lien des avis Google |
 | `mentions-legales.html` (8×) | nom de l'éditeur, statut juridique, adresse, SIRET, TVA, directeur de publication, hébergeur |
 | `confidentialite.html` (1×) | nom du responsable de traitement |
-| carte des cocktails | la recette du **Mara Sour** (absente de votre carte Instagram) |
 
 L'adresse `pelissier.clement@hotmail.fr` est en place dans la section contact, le bouton
 « Envoyer un email », les données structurées et les deux pages légales. Publiée en clair,
@@ -80,7 +79,8 @@ simple est de créer une adresse dédiée au site et de la faire suivre.
 ## Ajouter vos photos
 
 Les **sept prestations montrent désormais une vraie photo** ; plus aucune illustration ne
-tient lieu de visuel d'événement. La galerie compte 9 photos et 2 illustrations.
+tient lieu de visuel d'événement. La galerie compte 9 photos et 2 illustrations, chacune
+portant son nom en cartel sous l'image — les cocktails ouvrent la série.
 
 Pour en ajouter : déposez le fichier dans `assets/`, puis ajoutez une entrée au bloc
 `.gal` de `index.html`, ou changez un chemin dans `main.js`, tableau `SERVICES`. Format
