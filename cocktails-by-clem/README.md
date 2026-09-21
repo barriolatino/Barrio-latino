@@ -63,19 +63,23 @@ Le jour où vous aurez une adresse définitive, trois ajouts valent le détour :
 Certains réseaux n'acceptent qu'une image de partage en URL absolue&nbsp;; c'est la
 seule chose qui souffre vraiment de l'absence de domaine.
 
-## ⚠️ Ce qu'il reste à renseigner
+## Ce qui est renseigné
 
-Rien n'a été inventé. Chaque information manquante est un emplacement explicite dans le
-code, repérable avec `grep -rn "À COMPLÉTER" .` :
+Toutes les informations du site sont désormais réelles : aucun emplacement
+« À COMPLÉTER » ne subsiste. `grep -rn "À COMPLÉTER" .` ne renvoie rien.
 
-| Où | Quoi |
-|---|---|
-| `mentions-legales.html` (2×) | l'adresse de l'éditeur · les coordonnées de l'hébergeur |
+Rien n'a été inventé en chemin. Les tarifs (5 € et 6 € par cocktail, 30 € par personne
+pour l'atelier) viennent de vos publications et de vos messages ; le Mara Sour et la
+Caïpirinha ont été retirés à votre demande plutôt que complétés au jugé ; et les champs
+sans objet — statut juridique, SIRET, TVA — ont été supprimés des mentions légales
+plutôt que laissés vides.
 
-L'adresse `pelissier.clement@hotmail.fr` est en place dans la section contact, le bouton
-« Envoyer un email », les données structurées et les deux pages légales. Publiée en clair,
-elle sera moissonnée par des robots à spam&nbsp;; si le volume devient gênant, le plus
-simple est de créer une adresse dédiée au site et de la faire suivre.
+Deux points restent optionnels, non bloquants :
+
+- **Un nom de domaine.** Le site fonctionne sans, mais certains réseaux sociaux exigent
+  une URL absolue pour afficher l'image de partage (voir *Mettre en ligne* ci-dessus).
+- **Une fiche Google Business**, si vous voulez afficher des avis un jour
+  (voir *Ajouter des avis plus tard*).
 
 ## Ajouter vos photos
 
