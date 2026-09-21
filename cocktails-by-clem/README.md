@@ -11,7 +11,7 @@ cocktails-by-clem/
 ├── main.js                 comportements (menu, accordéon, formulaire, carte)
 ├── mentions-legales.html   ⚠️ champs légaux à compléter
 ├── confidentialite.html    ⚠️ responsable de traitement à compléter
-├── favicon.svg  robots.txt  sitemap.xml  .nojekyll
+├── favicon.svg  robots.txt  .nojekyll
 ├── PRODUCT.md   DESIGN.md  vérité produit et système visuel
 └── assets/
     ├── fonts.css + fonts/          Cormorant Garamond + DM Sans, auto-hébergées
@@ -50,15 +50,18 @@ Le site est alors en ligne sur `https://<votre-compte>.github.io/cocktails-by-cl
 Pour un vrai nom de domaine (recommandé) : ajoutez un fichier `CNAME` contenant votre
 domaine et pointez-le vers GitHub Pages chez votre registrar.
 
-**Après avoir choisi l'adresse définitive**, remplacez `cocktails-by-clem.example`
-partout :
+**Le site ne contient aucune URL absolue**, faute de domaine connu : ni balise
+canonique, ni `sitemap.xml`, et l'image de partage est référencée en chemin relatif.
+Le jour où vous aurez une adresse définitive, trois ajouts valent le détour :
 
-```bash
-grep -rl "cocktailsbyclem.example" . | xargs sed -i 's|cocktailsbyclem.example|votre-domaine.fr|g'
+```html
+<link rel="canonical" href="https://votre-domaine.fr/">
+<meta property="og:url" content="https://votre-domaine.fr/">
+<meta property="og:image" content="https://votre-domaine.fr/assets/og-image.jpg">
 ```
 
-Cela corrige l'URL canonique, l'Open Graph, les données structurées, `robots.txt` et
-`sitemap.xml` en une fois.
+Certains réseaux n'acceptent qu'une image de partage en URL absolue&nbsp;; c'est la
+seule chose qui souffre vraiment de l'absence de domaine.
 
 ## ⚠️ Ce qu'il reste à renseigner
 
@@ -67,9 +70,7 @@ code, repérable avec `grep -rn "À COMPLÉTER" .` :
 
 | Où | Quoi |
 |---|---|
-| `index.html` (2×) | URL définitive du site · lien des avis Google |
-| `mentions-legales.html` (8×) | nom de l'éditeur, statut juridique, adresse, SIRET, TVA, directeur de publication, hébergeur |
-| `confidentialite.html` (1×) | nom du responsable de traitement |
+| `mentions-legales.html` (2×) | l'adresse de l'éditeur · les coordonnées de l'hébergeur |
 
 L'adresse `pelissier.clement@hotmail.fr` est en place dans la section contact, le bouton
 « Envoyer un email », les données structurées et les deux pages légales. Publiée en clair,
@@ -91,31 +92,30 @@ conseillé : JPEG, 1000 px de large, qualité 80.
 11 entrées on tombe juste sur 5 rangées pleines. Pour garder une grille sans trou,
 ajoutez ou retirez les photos **trois par trois**.
 
-### ⚠️ Droit à l'image
+### Droit à l'image
 
-Deux des photos d'événement (le vin d'honneur et le buffet en extérieur) montrent des
-invités reconnaissables. En France, publier le visage d'une personne identifiable sur un
-site commercial suppose son accord. Assurez-vous de l'avoir — au minimum des mariés et
-des personnes au premier plan — ou demandez-moi de recadrer ces deux photos sur les
-boissons et le dressage.
+Deux photos d'événement montrent des invités reconnaissables. Le propriétaire a confirmé
+disposer des accords nécessaires à leur publication. Pour toute nouvelle photo
+d'événement, la même vérification s'impose avant mise en ligne.
 
 Format conseillé : JPEG, 1200 px de large maximum, qualité 80. Une photo absente
 n'affiche jamais d'icône cassée : `main.js` la remplace par un emplacement nommé.
 
-## Brancher les avis Google
+## Ajouter des avis plus tard
 
-Aucun témoignage n'a été inventé ; la section affiche un emplacement honnête.
+La section « Ils ont vécu l'expérience » a été retirée : sans fiche Google Business, elle
+n'affichait qu'un emplacement vide et un bouton qui ne menait nulle part. Le jour où des
+avis existent, deux chemins :
 
-1. Créez la fiche **Google Business Profile** de Cocktails by Clem (catégorie
-   « Service de bar » ou « Traiteur »).
-2. Récupérez le lien « Rédiger un avis » / la page d'avis de la fiche, et remplacez le
-   `href` du bouton « Voir les avis Google » dans `index.html`.
-3. Pour afficher les avis **dans la page**, il faut la *Places API* : créez un projet
-   Google Cloud, activez « Places API », créez une clé restreinte à votre domaine, puis
-   appelez `place/details` avec le `place_id` de la fiche et le champ `reviews`.
-   Attention : Google n'en renvoie que 5, et ses conditions imposent d'afficher
-   l'attribution et la photo de l'auteur. Tant que la fiche n'existe pas, il n'y a rien
-   à brancher.
+- **Le plus simple** — créer la fiche **Google Business Profile** (catégorie « Service de
+  bar » ou « Traiteur »), puis remettre une section avec un bouton vers sa page d'avis.
+- **Les afficher dans la page** — il faut la *Places API* : un projet Google Cloud, la
+  « Places API » activée, une clé restreinte au domaine, puis un appel `place/details`
+  avec le `place_id` et le champ `reviews`. Google n'en renvoie que cinq et impose
+  d'afficher l'attribution et la photo de l'auteur.
+
+La section supprimée reste dans l'historique git (`git show 0a715f8:cocktails-by-clem/index.html`)
+si vous voulez la reprendre telle quelle.
 
 ## Brancher le formulaire
 

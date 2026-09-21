@@ -8,15 +8,13 @@
 <meta name="theme-color" content="#1B3B24">
 <meta name="author" content="Cocktails by Clem">
 
-<!-- ⚠️ À COMPLÉTER : remplacer par l'URL définitive du site (canonical + Open Graph). -->
-<link rel="canonical" href="https://cocktailsbyclem.example/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Cocktails by Clem">
 <meta property="og:title" content="Cocktails by Clem | Barman privé à Clermont-Ferrand">
 <meta property="og:description" content="Barman privé pour mariages, anniversaires, soirées privées et événements professionnels autour de Clermont-Ferrand. Cocktails d'Amérique latine préparés sur place.">
-<meta property="og:url" content="https://cocktailsbyclem.example/">
-<meta property="og:image" content="https://cocktailsbyclem.example/assets/og-image.jpg">
+<!-- Chemin relatif faute de domaine : à repasser en URL absolue le jour où le site en aura un. -->
+<meta property="og:image" content="assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Une margarita préparée par Cocktails by Clem, barman privé à Clermont-Ferrand.">
@@ -37,8 +35,7 @@
   "@type":"ProfessionalService",
   "name":"Cocktails by Clem",
   "description":"Barman privé et cocktails événementiels à Clermont-Ferrand : mariages, anniversaires, soirées privées et événements professionnels.",
-  "image":"https://cocktailsbyclem.example/assets/og-image.jpg",
-  "url":"https://cocktailsbyclem.example/",
+  "image":"assets/og-image.jpg",
   "telephone":"+33763920998",
   "email":"pelissier.clement@hotmail.fr",
   "priceRange":"5€ – 6€ par cocktail",
@@ -54,7 +51,10 @@
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cocktails pour anniversaire"}},
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cocktails pour événement d'entreprise"}},
     {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bar à cocktails pour soirée privée"}},
-    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Prestation cocktail sur mesure"}}
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Prestation cocktail sur mesure"}},
+    {"@type":"Offer","price":"30","priceCurrency":"EUR",
+     "description":"Tarif par personne. Atelier organisé au Barrio Latino, à Clermont-Ferrand.",
+     "itemOffered":{"@type":"Service","name":"Atelier cocktail"}}
   ]
 }
 </script>
@@ -220,8 +220,8 @@
     <div class="head reveal">
       <hr class="rule">
       <h2 class="d2">Mes services</h2>
-      <p class="prose">Une même exigence, sept façons de l'installer chez vous. Ouvrez une prestation
-        pour voir ce qu'elle comprend.</p>
+      <p class="prose">Une même exigence, sept formules. Six s'installent chez vous&nbsp;; l'atelier, lui,
+        se tient au Barrio Latino. Ouvrez une prestation pour voir ce qu'elle comprend.</p>
     </div>
     <div class="srv" id="srv"></div>
   </div>
@@ -345,11 +345,11 @@
       </div>
       <div class="frame" style="--i:8">
         <img src="assets/barman-prepare.jpg" alt="Clem verse la tequila au-dessus du blender, verres prêts à être servis." width="1000" height="1500" loading="lazy" decoding="async">
-        <p class="gal__cap">En service</p>
+        <p class="gal__cap">Tequila</p>
       </div>
       <div class="frame" style="--i:9">
         <img src="assets/dosage-citron.jpg" alt="Dosage du jus de citron vert au jigger : chaque cocktail est mesuré." width="1000" height="1500" loading="lazy" decoding="async">
-        <p class="gal__cap">Citron vert</p>
+        <p class="gal__cap">Jus de citron vert</p>
       </div>
       <div class="frame" style="--i:10">
         <img src="assets/clem.jpg" alt="Clem, barman privé, prépare son poste derrière le bar." width="1000" height="1500" loading="lazy" decoding="async" style="object-position:50% 22%">
@@ -380,34 +380,6 @@
           <img src="assets/insta-services.jpg" alt="Publication Instagram listant les services et les tarifs par cocktail." width="700" height="840" loading="lazy" decoding="async"></a>
         <a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener" style="--i:2" aria-label="Publication : l'atelier cocktail — ouvrir Instagram">
           <img src="assets/insta-atelier.jpg" alt="Publication Instagram annonçant un atelier cocktail." width="700" height="840" loading="lazy" decoding="async"></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======================= AVIS ======================= -->
-<section class="section s-cream" id="avis">
-  <div class="wrap wrap-narrow">
-    <div class="head reveal">
-      <hr class="rule rule-ink">
-      <h2 class="d2">Ils ont vécu l'expérience</h2>
-    </div>
-    <div class="avis__empty reveal">
-      <div class="avis__stars" aria-hidden="true">
-        <svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg>
-        <svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg>
-        <svg class="ico"><use href="#i-star"/></svg>
-      </div>
-      <p class="prose" style="margin-inline:auto">
-        Aucun avis n'est affiché pour l'instant&nbsp;: cet emplacement est réservé aux vrais avis
-        Google, et rien n'y sera inventé. Dès que la fiche Google Business sera en ligne,
-        les avis s'afficheront ici automatiquement.
-      </p>
-      <!-- ⚠️ À COMPLÉTER : créer la fiche Google Business Profile, puis remplacer le href
-           ci-dessous par le lien « Avis » de la fiche. Voir README.md § Avis Google. -->
-      <div class="btn-row" style="justify-content:center;margin-top:22px">
-        <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Cocktails+by+Clem+Clermont-Ferrand" target="_blank" rel="noopener">
-          Voir les avis Google <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
   </div>

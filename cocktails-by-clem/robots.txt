@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-
-# ⚠️ À COMPLÉTER : remplacer par l'URL définitive du site.
-Sitemap: https://cocktailsbyclem.example/sitemap.xml

@@ -56,8 +56,9 @@
       alt: "Margarita au bord givré d'épices, préparée par Clem." },
     { id: 'atelier',    titre: 'Atelier cocktail',
       type: 'Atelier cocktail',
-      texte: "Une prestation à part : vos invités créent leur propre cocktail.",
-      detail: "Une idée pour un EVJF, un EVG, un anniversaire, ou simplement pour faire découvrir une nouvelle expérience à vos invités. Au programme : Mojito, Piña Colada et Margarita.",
+      texte: "Viens créer ton propre cocktail.",
+      detail: "Une idée pour un EVJF, un EVG, un anniversaire, ou simplement pour faire découvrir une nouvelle expérience et impressionner vos amis ou votre famille. Au programme : Mojito, Piña Colada, Margarita…",
+      lieu: "Au Barrio Latino, à Clermont-Ferrand",
       prix: "30 € par personne",
       img: 'assets/pisco-sour-service.jpg',
       alt: "Pisco Sours dressés au bar, mousse et cannelle, prêts à être dégustés." },
@@ -113,6 +114,7 @@
             <div>
               <p>${esc(s.texte)}</p>
               <p>${esc(s.detail)}</p>
+              ${s.lieu ? `<p class="srv__lieu"><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>${esc(s.lieu)}</p>` : ''}
               ${s.prix ? `<p class="srv__prix"><span class="num">${esc(s.prix)}</span></p>` : ''}
               <a class="btn btn-primary" href="#devis" data-type="${esc(s.type)}">
                 Demander un devis</a>

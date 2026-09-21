@@ -108,8 +108,8 @@ Alternance voulue dense / calme, clair / sombre :
 
 hero sombre → greige calme (expérience) → crème dense (prestations) → **citron, le
 sommet de la page** (carte) → greige calme (Clem) → forest dense (événements) → crème
-dense (galerie) → citron (Instagram) → crème calme (avis) → sauge calme (tarifs) → crème
-fonctionnel (devis) → forest (contact et zone) → forest profond (pied).
+dense (galerie) → citron (Instagram) → sauge calme (tarifs) → crème fonctionnel (devis)
+→ forest (contact et zone) → forest profond (pied).
 
 ## Points de rupture
 

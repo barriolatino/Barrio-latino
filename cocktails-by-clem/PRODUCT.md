@@ -52,7 +52,9 @@ Confirmed services: private barman for events, weddings, birthdays, professional
 corporate events, private parties, fully bespoke events, and a **cocktail workshop** — a
 distinct offer in which the guests create their own cocktail, suited to a hen or stag
 party (EVJF / EVG), a birthday, or anyone wanting to try something new. The workshop
-covers Mojito, Piña Colada and Margarita, at 30 € per person.
+covers Mojito, Piña Colada and Margarita, at 30 € per person. **It is the one prestation
+that does not travel: it is held at the Barrio Latino in Clermont-Ferrand, not at the
+client's venue.**
 
 Confirmed cocktail repertoire — signatures: Pisco Sour, Margarita, Chilcano.
 Classics: Piña Colada, Mojito, Cuba Libre. The owner removed Mara Sour and Caipirinha
@@ -100,8 +102,16 @@ NOT on hand, and not to be fabricated: photographs taken at a client event, cust
 testimonials, awards, diplomas, years of experience, competition results,
 certifications, client names.
 
-Event photographs supplied by the owner show identifiable guests; their consent to
-publication is the owner's responsibility and has not been verified here.
+Event photographs supplied by the owner show identifiable guests; the owner has
+confirmed holding the consents required to publish them.
+
+The owner has stated there is no registered legal structure — no statut juridique, no
+SIRET, no VAT number — so those fields were removed from the legal notice rather than
+left as placeholders. Do not reinstate them without being asked.
+
+The site carries no absolute URL: no canonical tag, no sitemap, and the share image is
+referenced relatively, because no domain has been chosen. The Google reviews section was
+removed for the same reason — there is no Business Profile to point at.
 
 The sibling project in this repository (Barrio Latino, a Latin American restaurant in
 Clermont-Ferrand run by the same owner) has photographs, but they document a
