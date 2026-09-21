@@ -1,5 +1,11 @@
 # Cocktails by Clem — site vitrine
 
+> **Ce dossier n'est plus la copie de référence.** Le site vit désormais dans son
+> propre dépôt : <https://github.com/barriolatino/Cocktail-by-clem>, publié par
+> GitHub Pages sur <https://barriolatino.github.io/Cocktail-by-clem/>.
+> Ce dossier conserve l'historique du développement ; toute modification doit se
+> faire dans le dépôt dédié.
+
 Site statique d'une seule page pour **Cocktails by Clem**, barman privé et cocktails
 événementiels à Clermont-Ferrand. Aucune étape de build : les fichiers sont servis tels
 quels.
