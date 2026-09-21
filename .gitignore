@@ -1,0 +1,8 @@
+# Données locales des outils Claude Code — ne jamais publier
+skill-observations/
+skill-updates/
+.claude-mem/
+.claude/settings.local.json
+.impeccable/
+node_modules/
+.DS_Store
