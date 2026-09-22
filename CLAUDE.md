@@ -44,8 +44,14 @@ dépôt est exactement ce qui est servi.
 
 ## Reste à compléter par le propriétaire
 
-- **Médiateur de la consommation** : dernier `<span class="todo">` de
-  `mentions-legales.html`. Tout le reste des informations légales est renseigné.
+- **Médiateur de la consommation** : le restaurant n'a adhéré à aucun
+  dispositif de médiation à ce jour. L'obligation (articles L.612-1 et
+  R.616-1 du code de la consommation) porte sur l'entreprise, pas sur le
+  site. Tant qu'il n'y a pas d'adhésion, il n'y a **rien à écrire** : la page
+  énonce le droit du consommateur et renvoie d'abord au restaurant, et un
+  commentaire `À COMPLÉTER` dans `mentions-legales.html` tient le bloc prêt.
+  Ne pas remettre de `<span class="todo">` visible sur une page publique.
+  Tout le reste des informations légales est renseigné.
 - **Photos manquantes** : la salle sans personne et la devanture restent en
   basse résolution ; les desserts, les tequeños et la bandeja n'ont pas de
   photo de carte. Dix plats sur trente-six sont illustrés.
