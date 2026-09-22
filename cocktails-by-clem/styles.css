@@ -1,0 +1,777 @@
+/* ============================================================================
+   COCKTAILS BY CLEM — feuille de styles unique
+   Palette et typographie relevees sur les publications @cocktailsbyclem_.
+   Organisation : 1 jetons · 2 socle · 3 typographie · 4 gabarits · 5 composants
+                  6 en-tete · 7 sections · 8 formulaire · 9 pied · 10 mouvement
+   ========================================================================== */
+
+/* --- 1. Jetons ----------------------------------------------------------- */
+:root{
+  /* Couleurs echantillonnees sur les visuels Instagram */
+  --greige:#D9CFC2;      /* fond chaud, celui des posts */
+  --lemon:#E2E2C0;       /* fond de la carte des cocktails */
+  --sage:#B8B99C;        /* panneaux */
+  --sage-pale:#DBDBCF;   /* capsules, surfaces douces */
+  --cream:#F4F1E6;       /* papier */
+  --sun:#FADF70;         /* marque : filets, capsule de titre — jamais du texte sur clair */
+  --forest:#1B3B24;      /* fonds sombres + encre d'affichage */
+  --forest-deep:#132A19;
+  --ink:#202417;         /* texte courant */
+  --ink-2:#4A5240;       /* texte secondaire sur fond clair  7.1:1 sur creme */
+  --ink-sage:#363D2E;    /* texte secondaire sur sauge       5.5:1 */
+  --ember:#B9491C;       /* action principale, unique touche rouge-orange */
+  --ember-deep:#96380F;
+  --on-dark:#EDE8D8;     /* texte sur forest   10.5:1 */
+  --on-dark-2:#B6C3AC;   /* secondaire sur forest 6.8:1 */
+
+  --rule:rgba(32,36,23,.20);
+  --rule-dark:rgba(237,232,216,.24);
+
+  /* Elevation : un offset et un flou doux, jamais un halo centre */
+  /* Elevation neutre : une ombre teintee sur fond sombre lit comme un halo. */
+  --lift:0 6px 18px -8px rgba(12,14,9,.34);
+  --lift-lg:0 18px 44px -20px rgba(12,14,9,.46);
+
+  /* Rythme */
+  --gutter:22px;
+  --measure:66ch;
+  --sect:clamp(76px,11vw,132px);
+  --radius:22px;      /* l'arrondi genereux des panneaux des posts */
+  --radius-sm:12px;
+
+  --ease:cubic-bezier(.16,1,.3,1);   /* sortie exponentielle */
+  --dur:.72s;
+}
+
+/* --- 2. Socle ------------------------------------------------------------ */
+*,*::before,*::after{box-sizing:border-box;}
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:smooth;
+  scroll-padding-top:84px;
+}
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-size:clamp(1rem,.96rem + .2vw,1.075rem);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;height:auto;display:block;}
+svg{display:block;}
+
+/* Surfaces que le navigateur dessine : elles portent aussi l'identite. */
+::selection{background:var(--sun);color:var(--forest);}
+:root{
+  caret-color:var(--ember);
+  accent-color:var(--forest);
+  scrollbar-color:var(--sage) var(--greige);
+  scrollbar-width:thin;
+}
+::-webkit-scrollbar{width:11px;height:11px;}
+::-webkit-scrollbar-track{background:var(--greige);}
+::-webkit-scrollbar-thumb{background:var(--sage);border:3px solid var(--greige);border-radius:99px;}
+::-webkit-scrollbar-thumb:hover{background:var(--ink-sage);}
+
+a{color:inherit;text-decoration-color:var(--sun);text-decoration-thickness:1.5px;text-underline-offset:.22em;}
+a:hover{text-decoration-color:var(--ember);}
+:focus-visible{
+  outline:2.5px solid var(--ember);
+  outline-offset:3px;
+  border-radius:3px;
+}
+.on-dark :focus-visible{outline-color:var(--sun);}
+
+.skip{
+  position:absolute;left:12px;top:-100px;z-index:200;
+  background:var(--forest);color:var(--on-dark);
+  padding:12px 20px;border-radius:999px;font-weight:500;text-decoration:none;
+  transition:top .2s var(--ease);
+}
+.skip:focus{top:12px;}
+
+/* --- 3. Typographie ------------------------------------------------------ */
+h1,h2,h3,h4{margin:0;font-weight:400;}
+p{margin:0 0 1.05em;}
+p:last-child{margin-bottom:0;}
+
+/* Cormorant en capitales largement interlettrees : la voix des posts. */
+.d1,.d2,.d3{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:300;
+  text-transform:uppercase;
+  line-height:1.02;
+  text-wrap:balance;
+}
+.d1{font-size:clamp(2.55rem,10.5vw,5.6rem);letter-spacing:.055em;}
+.d2{font-size:clamp(1.85rem,5.6vw,3.3rem);letter-spacing:.10em;}
+.d3{font-size:clamp(1.15rem,3vw,1.5rem);letter-spacing:.11em;}
+
+/* Le serif italique dont ils composent les recettes. */
+.recipe{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-style:italic;font-weight:400;
+  font-size:1.03rem;line-height:1.42;
+  color:var(--ink-2);
+}
+
+.label{
+  font-size:.7rem;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.on-dark .label{color:var(--on-dark-2);}
+
+.lead{
+  font-size:clamp(1.08rem,.98rem + .55vw,1.3rem);
+  line-height:1.6;max-width:var(--measure);
+}
+.prose{max-width:var(--measure);color:var(--ink-2);}
+.on-dark .prose{color:var(--on-dark-2);}
+
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum";}
+
+/* --- 4. Gabarits --------------------------------------------------------- */
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-inline:var(--gutter);}
+.wrap-narrow{max-width:820px;}
+.section{padding-block:var(--sect);position:relative;}
+
+/* Un fond par section : la page alterne dense / calme, clair / sombre. */
+.s-cream{background:var(--cream);}
+.s-greige{background:var(--greige);}
+.s-lemon{background:var(--lemon);}
+.s-sage{background:var(--sage);color:var(--ink);}
+.s-sage .prose{color:var(--ink-sage);}
+.s-sage .label{color:var(--ink-sage);}
+.s-forest{background:var(--forest);color:var(--on-dark);}
+.s-forest .d1,.s-forest .d2,.s-forest .d3{color:var(--on-dark);}
+
+/* L'en-tete de section : filet + intitule + titre. */
+.head{margin-bottom:clamp(38px,5vw,60px);}
+.head .label{display:block;margin-bottom:14px;}
+.head .d2{margin-bottom:.35em;}
+.head .prose{margin-top:1.1em;}
+
+/* --- 5. Composants ------------------------------------------------------- */
+
+/* Le filet qui se trace : le seul moment anime de la page. */
+.rule{
+  height:1px;background:var(--sun);border:0;margin:0 0 26px;
+  transform:scaleX(0);transform-origin:left center;
+}
+.rule-ink{background:var(--rule);}
+.on-dark .rule-ink{background:var(--rule-dark);}
+.is-in .rule{transform:scaleX(1);transition:transform 1.05s var(--ease);}
+
+/* Ombres de feuillage : la matiere signature du compte. */
+.leaves{
+  position:absolute;inset:0;overflow:hidden;pointer-events:none;
+  z-index:0;
+}
+.leaves::before{
+  content:"";position:absolute;inset:-14% -8%;
+  /* Taille fixe plutot que "cover" : etire sur une grande section, le motif
+     donnait des taches enormes au lieu de feuilles. */
+  background:url("assets/leaves.svg") no-repeat center / 1400px auto;
+  opacity:.3;
+  will-change:transform;
+}
+.s-forest .leaves::before{opacity:.16;}
+.section > .wrap{position:relative;z-index:1;}
+
+/* Boutons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  min-height:52px;padding:14px 28px;
+  font-family:inherit;font-size:.82rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+  border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:background-color .3s var(--ease),color .3s var(--ease),
+             border-color .3s var(--ease),transform .3s var(--ease),box-shadow .3s var(--ease);
+}
+.btn:hover{transform:translateY(-2px);}
+.btn:active{transform:translateY(0);}
+.btn-primary{background:var(--ember);color:#fff;box-shadow:var(--lift);}
+.btn-primary:hover{background:var(--ember-deep);box-shadow:var(--lift-lg);}
+.btn-ghost{border-color:var(--rule);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(32,36,23,.05);}
+.on-dark .btn-ghost{border-color:var(--rule-dark);color:var(--on-dark);}
+.on-dark .btn-ghost:hover{border-color:var(--sun);background:rgba(250,223,112,.12);}
+.btn-sun{background:var(--sun);color:var(--forest);box-shadow:var(--lift);}
+.btn-sun:hover{background:#F6D34E;box-shadow:var(--lift-lg);}
+.btn[aria-disabled="true"],.btn:disabled{
+  opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;
+  pointer-events:none;
+}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;}
+
+/* Icones : trait unique 1.5, jamais un emoji. */
+.ico{width:22px;height:22px;flex:none;stroke:currentColor;fill:none;
+     stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.ico-lg{width:30px;height:30px;}
+
+/* L'entree de carte : nom · points de conduite · valeur. */
+.entry{
+  display:flex;align-items:baseline;gap:.7rem;width:100%;
+}
+.entry__name{font-family:'Cormorant Garamond',Georgia,serif;
+  text-transform:uppercase;letter-spacing:.09em;font-size:1.22rem;font-weight:400;}
+.entry__dots{
+  flex:1 1 auto;min-width:1.5rem;align-self:flex-end;
+  border-bottom:1.5px dotted var(--rule);
+  transform:translateY(-.34em);
+}
+.on-dark .entry__dots{border-bottom-color:var(--rule-dark);}
+.entry__val{font-size:.95rem;font-weight:500;white-space:nowrap;}
+
+/* Cadre photo : filet fin, pas d'ombre sur le contenu. */
+.frame{
+  position:relative;overflow:hidden;border-radius:var(--radius);
+  background:var(--sage-pale);
+}
+.frame img{width:100%;height:100%;object-fit:cover;}
+/* Une illustration se contient, elle ne se recadre pas : le verre serait coupe. */
+.frame--art{background:var(--lemon);}
+.frame--art img{object-fit:contain;padding:6%;}
+.frame--tall{aspect-ratio:3/4;}
+.frame--square{aspect-ratio:1;}
+.frame--wide{aspect-ratio:4/3;}
+
+/* Emplacement en attente d'une photo du client — jamais une image inventee. */
+.slot{
+  display:grid;place-content:center;gap:10px;text-align:center;
+  padding:26px 18px;background:var(--sage-pale);
+  border:1px dashed rgba(32,36,23,.28);border-radius:var(--radius);
+  color:var(--ink-2);
+}
+.slot .ico{width:28px;height:28px;margin-inline:auto;opacity:.6;}
+
+/* Emplacement photo compose : un fond de marque et un dessin au trait,
+   pour que la page reste finie tant que la photo n'est pas fournie. */
+.plate{
+  position:relative;display:grid;align-content:end;gap:8px;
+  padding:26px 22px;background:var(--sage);border-radius:var(--radius);
+  overflow:hidden;text-align:left;color:var(--ink-sage);
+}
+.plate__art{
+  position:absolute;top:50%;left:50%;translate:-50% -58%;
+  width:58%;max-width:230px;color:var(--forest);opacity:.22;
+  stroke:currentColor;fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;
+}
+.plate p{margin:0;position:relative;}
+.plate .label{color:var(--ink-sage);}   /* --ink-2 ne donnait que 4,07:1 sur la sauge */
+.plate code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;
+  color:var(--ink);background:rgba(32,36,23,.09);padding:3px 7px;border-radius:5px;
+}
+.slot code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.72rem;letter-spacing:.02em;
+  background:rgba(32,36,23,.07);padding:3px 7px;border-radius:5px;
+}
+
+/* --- 6. En-tete ---------------------------------------------------------- */
+.hdr{
+  position:fixed;inset:0 0 auto;z-index:100;
+  padding-top:env(safe-area-inset-top,0);
+  background:rgba(244,241,230,0);
+  border-bottom:1px solid transparent;
+  transition:background-color .4s var(--ease),border-color .4s var(--ease),
+             backdrop-filter .4s var(--ease);
+}
+.hdr.is-stuck{
+  background:rgba(244,241,230,.93);
+  -webkit-backdrop-filter:saturate(1.3) blur(12px);
+  backdrop-filter:saturate(1.3) blur(12px);
+  border-bottom-color:var(--rule);
+}
+.hdr__bar{
+  max-width:1160px;margin-inline:auto;padding:13px var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--on-dark);
+  transition:color .4s var(--ease);}
+.hdr.is-stuck .brand{color:var(--ink);}
+.brand__mark{width:38px;height:38px;flex:none;border-radius:50%;background:var(--sun);
+  display:grid;place-content:center;color:var(--forest);box-shadow:var(--lift);}
+.brand__mark .ico{width:22px;height:22px;stroke-width:1.4;}
+.brand__txt{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:.95rem;letter-spacing:.11em;line-height:1.1;font-weight:400;white-space:nowrap;}
+.brand__txt b{display:block;font-weight:400;}
+.brand__txt span{display:block;font-family:'DM Sans',sans-serif;font-size:11px;
+  letter-spacing:.17em;opacity:.85;margin-top:2px;}
+
+.nav{display:none;}
+.nav a{
+  text-decoration:none;font-size:.73rem;font-weight:500;white-space:nowrap;
+  letter-spacing:.15em;text-transform:uppercase;
+  padding:8px 0;position:relative;color:var(--on-dark);
+  transition:color .4s var(--ease);
+}
+.hdr.is-stuck .nav a{color:var(--ink);}
+.nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:2px;height:1.5px;
+  background:var(--ember);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1);}
+
+.hdr__cta{display:none;white-space:nowrap;}
+.burger{
+  width:48px;height:48px;display:grid;place-content:center;gap:5px;
+  background:none;border:1px solid var(--rule-dark);border-radius:999px;
+  cursor:pointer;color:var(--on-dark);
+  transition:color .4s var(--ease),border-color .4s var(--ease);
+}
+.hdr.is-stuck .burger{border-color:var(--rule);color:var(--ink);}
+.burger span{display:block;width:19px;height:1.5px;background:currentColor;
+  transition:transform .4s var(--ease),opacity .25s;}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+/* Panneau mobile */
+.menu{
+  position:fixed;inset:0;z-index:99;background:var(--forest);color:var(--on-dark);
+  padding:96px var(--gutter) 40px;
+  display:flex;flex-direction:column;gap:6px;
+  transform:translateY(-100%);visibility:hidden;
+  transition:transform .55s var(--ease),visibility .55s;
+  overflow-y:auto;
+}
+.menu.is-open{transform:translateY(0);visibility:visible;}
+.menu a{
+  font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:1.6rem;letter-spacing:.11em;text-decoration:none;
+  padding:13px 0;border-bottom:1px solid var(--rule-dark);
+}
+.menu .btn{margin-top:26px;align-self:flex-start;}
+.menu__foot{margin-top:auto;padding-top:28px;display:flex;flex-wrap:wrap;gap:14px;}
+
+/* --- 7. Sections --------------------------------------------------------- */
+
+/* 7.1 Hero */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  padding-block:130px clamp(44px,8vh,80px);
+  background:var(--forest);color:var(--on-dark);overflow:hidden;
+}
+.hero__bg{position:absolute;inset:0;z-index:0;}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:52% 42%;}
+.hero__veil{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(to top,rgba(19,42,25,.94) 0%,rgba(19,42,25,.72) 42%,rgba(27,59,36,.42) 100%),
+    radial-gradient(120% 90% at 78% 22%,rgba(250,223,112,.18),transparent 62%);
+}
+.hero .wrap{position:relative;z-index:2;}
+.hero__mark{
+  position:absolute;z-index:2;top:clamp(92px,13vh,150px);right:var(--gutter);
+  width:clamp(74px,15vw,128px);color:var(--sun);opacity:.92;
+}
+.hero__title{margin-bottom:.22em;}
+.hero__title .d1{display:block;color:var(--on-dark);}
+.hero__role{
+  display:block;font-size:clamp(.72rem,2.4vw,.86rem);font-weight:500;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--sun);
+  margin-bottom:22px;
+}
+.hero .lead{color:var(--on-dark);margin-bottom:30px;max-width:30ch;}
+.hero .rule{margin-bottom:24px;max-width:340px;}
+.hero__meta{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--rule-dark);
+  display:flex;flex-wrap:wrap;gap:10px 26px;
+}
+.hero__meta span{display:inline-flex;align-items:center;gap:8px;
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--on-dark-2);}
+.hero__meta .ico{width:17px;height:17px;color:var(--sun);}
+
+/* 7.2 Experience — quadrants regles, pas des cartes empilees */
+.exp{display:grid;gap:0;margin-top:14px;}
+.exp__item{
+  display:grid;grid-template-columns:auto 1fr;gap:16px 18px;
+  padding:26px 0;border-top:1px solid var(--rule);
+}
+.exp__item:last-child{border-bottom:1px solid var(--rule);}
+.exp__item .ico-lg{color:var(--ember);grid-row:span 2;margin-top:3px;}
+.exp__item h3{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:1.2rem;letter-spacing:.1em;font-weight:400;}
+.exp__item p{margin:0;color:var(--ink-2);font-size:.96rem;}
+.exp__media{margin-top:36px;}
+@media (min-width:860px){
+  .exp__media{display:flex;}
+  .exp__media .frame{flex:1;aspect-ratio:auto;min-height:520px;}
+}
+
+/* 7.3 Services — index de carte, la photo suit l'entree survolee */
+.srv{display:grid;gap:0;}
+.srv__item{border-top:1px solid var(--rule);}
+.srv__item:last-child{border-bottom:1px solid var(--rule);}
+.srv__btn{
+  width:100%;display:grid;grid-template-columns:1fr auto;gap:8px 18px;
+  align-items:center;padding:24px 0;background:none;border:0;cursor:pointer;
+  font:inherit;color:inherit;text-align:left;
+  transition:color .3s var(--ease);
+}
+/* Le decalage passe par `translate` : animer `padding` relance la mise en page. */
+.srv__btn > *{transition:translate .4s var(--ease);}
+.srv__btn:hover,.srv__btn[aria-expanded="true"]{color:var(--ember);}
+.srv__btn:hover h3,.srv__btn[aria-expanded="true"] h3{translate:10px 0;}
+.srv__btn h3{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:clamp(1.28rem,4vw,1.7rem);letter-spacing:.08em;font-weight:400;}
+.srv__sign{width:20px;height:20px;color:var(--ember);transition:transform .45s var(--ease);}
+.srv__btn[aria-expanded="true"] .srv__sign{transform:rotate(135deg);}
+.srv__panel{
+  display:grid;grid-template-rows:0fr;
+  transition:grid-template-rows .5s var(--ease);
+}
+.srv__panel[data-open="true"]{grid-template-rows:1fr;}
+.srv__inner{overflow:hidden;}
+.srv__body{padding-bottom:28px;display:grid;gap:20px;}
+.srv__body p{margin:0;color:var(--ink-2);max-width:56ch;}
+/* Lieu d'une prestation, quand elle ne se déroule pas chez le client. */
+.srv__lieu{
+  display:flex;align-items:center;gap:8px;
+  font-size:.82rem;font-weight:500;letter-spacing:.04em;color:var(--ink);
+}
+.srv__lieu .ico{width:17px;height:17px;flex:none;color:var(--ember);}
+
+/* Tarif d'une prestation : capsule jaune, comme les prix de la carte. */
+.srv__prix span{
+  display:inline-block;background:var(--sun);color:var(--forest);
+  padding:4px 14px;border-radius:999px;
+  font-size:.82rem;font-weight:500;letter-spacing:.08em;
+}
+
+/* 7.4 Carte des cocktails */
+.carte__grid{display:grid;gap:34px 26px;grid-template-columns:repeat(2,1fr);}
+.ckt{text-align:center;}
+.ckt__img{
+  border-radius:var(--radius);overflow:hidden;background:var(--lemon);
+  margin-bottom:14px;
+}
+.ckt__img img{width:100%;aspect-ratio:1;object-fit:contain;
+  transition:transform .6s var(--ease);}
+.ckt:hover .ckt__img img{transform:scale(1.07) rotate(-1.2deg);}
+.ckt h3{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:1.05rem;letter-spacing:.11em;font-weight:400;margin-bottom:.35em;}
+.ckt .recipe{display:block;}
+/* Le pays est une provenance, pas un tarif : ni pastille, ni jaune —
+   le jaune reste reserve aux filets et au prix de la capsule. */
+.ckt__origin{
+  display:block;margin-top:10px;
+  font-size:11px;font-weight:500;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--ink-2);
+}
+.ckt__origin::before{content:"";display:inline-block;width:14px;height:1px;
+  background:var(--rule);vertical-align:.35em;margin-right:.6em;}
+/* Cocktail sans illustration : un filet et un verre dessine, pas une boite vide. */
+.ckt--todo .ckt__img{display:grid;place-content:center;aspect-ratio:1;background:none;}
+.ckt--todo .ckt__img .ico{width:58px;height:58px;color:var(--ink-2);opacity:.4;stroke-width:1;}
+.ckt--todo h3{color:var(--ink-2);}
+
+.carte__group{margin-top:8px;}
+.carte__group + .carte__group{margin-top:clamp(52px,7vw,80px);}
+.carte__cap{
+  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  background:var(--cream);border-radius:999px;padding:11px 24px;margin-bottom:34px;
+}
+.carte__cap h3{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:clamp(.95rem,3vw,1.2rem);letter-spacing:.1em;font-weight:400;}
+.carte__cap span{font-size:.74rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-2);}
+.carte__note{
+  margin-top:clamp(40px,6vw,60px);padding-top:22px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:space-between;
+}
+
+/* 7.5 Clem */
+.clem{display:grid;gap:34px;}
+.clem__panel{
+  background:var(--sage);border-radius:var(--radius);
+  padding:clamp(28px,5vw,46px);
+}
+.clem__panel .prose{color:var(--ink-sage);}
+.clem__quote{
+  font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;
+  font-size:clamp(1.3rem,3.6vw,1.75rem);line-height:1.34;color:var(--ink);
+  margin:0 0 1em;text-wrap:balance;
+}
+
+/* 7.6 Evenements */
+.evt{display:grid;gap:12px;grid-template-columns:repeat(2,1fr);}
+.evt__item{
+  position:relative;display:flex;align-items:flex-end;
+  min-height:150px;padding:18px;border-radius:var(--radius-sm);
+  border:1px solid var(--rule-dark);overflow:hidden;
+  text-decoration:none;color:var(--on-dark);
+  transition:border-color .4s var(--ease),background-color .4s var(--ease);
+}
+.evt__item:hover{border-color:var(--sun);background:rgba(250,223,112,.09);}
+.evt__item span{font-family:'Cormorant Garamond',Georgia,serif;text-transform:uppercase;
+  font-size:1.02rem;letter-spacing:.1em;line-height:1.2;position:relative;z-index:1;}
+.evt__item .ico{position:absolute;top:18px;left:18px;width:40px;height:40px;
+  color:var(--sun);opacity:.9;stroke-width:1.1;
+  transition:transform .5s var(--ease);}
+.evt__item:hover .ico{transform:translateY(-3px);}
+.evt__item--wide{grid-column:span 2;}
+
+/* 7.7 Galerie */
+.gal{
+  display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:18px;
+  overflow-x:auto;scroll-snap-type:x mandatory;
+  padding-bottom:14px;margin-inline:calc(var(--gutter) * -1);
+  padding-inline:var(--gutter);
+  -webkit-overflow-scrolling:touch;
+}
+.gal > *{scroll-snap-align:center;}
+.gal .frame,.gal .slot{height:100%;}
+/* Chaque vignette porte son nom, comme un cartel. L'image occupe le reste
+   de la case, si bien que la hauteur de rangee ne change pas. */
+.gal .frame{display:flex;flex-direction:column;}
+.gal .frame img{flex:1 1 auto;min-height:0;}
+.gal__cap{
+  flex:none;background:var(--cream);color:var(--ink);
+  padding:9px 14px;text-align:center;
+  font-size:11px;font-weight:500;letter-spacing:.17em;text-transform:uppercase;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
+/* 7.8 Instagram */
+.ig__feed{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:34px;}
+.ig__feed a{display:block;border-radius:var(--radius-sm);overflow:hidden;
+  aspect-ratio:4/5;background:var(--sage-pale);
+  transition:transform .45s var(--ease);}
+.ig__feed a:hover{transform:translateY(-4px);}
+.ig__feed img{width:100%;height:100%;object-fit:cover;}
+.ig .d2{font-size:clamp(1.6rem,4.4vw,2.35rem);}
+.ig__handle{
+  display:inline-flex;align-items:center;gap:11px;
+  background:var(--sage);border-radius:999px;padding:10px 22px;margin-bottom:24px;
+  font-size:.9rem;letter-spacing:.2em;color:var(--ink);
+}
+
+/* 7.9 Avis */
+.avis__empty{
+  border:1px dashed var(--rule);border-radius:var(--radius);
+  padding:clamp(28px,5vw,46px);text-align:center;
+}
+.avis__stars{display:flex;gap:5px;justify-content:center;margin-bottom:16px;color:var(--sun);}
+.avis__stars .ico{width:22px;height:22px;fill:var(--sun);stroke:var(--ink-2);stroke-width:1;}
+
+/* 7.10 Tarifs */
+.tarif{text-align:center;max-width:640px;margin-inline:auto;}
+.tarif .d2{margin-bottom:.4em;}
+.tarif .lead{margin-inline:auto;margin-bottom:30px;}
+.tarif .btn-row{justify-content:center;}
+.tarif__pts{
+  margin:36px 0 0;padding:26px 0 0;border-top:1px solid rgba(32,36,23,.22);
+  display:grid;gap:14px;text-align:left;list-style:none;
+}
+.tarif__pts li{display:flex;gap:11px;align-items:flex-start;color:var(--ink-sage);font-size:.96rem;}
+.tarif__pts .ico{width:19px;height:19px;flex:none;margin-top:4px;color:var(--forest);}
+
+/* 7.11 Contact */
+.ct{display:grid;gap:34px;}
+.ct__rows{display:grid;gap:0;margin-bottom:28px;}
+.ct__row{
+  display:flex;align-items:baseline;gap:.7rem;
+  padding:16px 0;border-bottom:1px solid var(--rule-dark);
+}
+.ct__row:first-child{border-top:1px solid var(--rule-dark);}
+.ct__row dt{font-size:.72rem;font-weight:500;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--on-dark-2);margin:0;}
+.ct__row dd{margin:0;font-size:1.02rem;white-space:nowrap;}
+.ct__row .entry__dots{border-bottom-color:var(--rule-dark);}
+.ct__todo{color:var(--sun);font-size:.82rem;letter-spacing:.1em;}
+
+/* 7.12 Zone / carte */
+.map{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:4/3;background:var(--sage);
+}
+@media (min-width:860px){ .map{aspect-ratio:1;} }
+.map iframe{width:100%;height:100%;border:0;display:block;}
+.map__load{
+  position:absolute;inset:0;display:grid;place-content:center;gap:16px;
+  text-align:center;padding:26px;background:var(--sage);
+  border:0;cursor:pointer;font:inherit;color:var(--ink);
+}
+.map__load .ico{width:38px;height:38px;margin-inline:auto;color:var(--forest);}
+.map__load small{display:block;max-width:34ch;color:var(--ink-sage);font-size:.82rem;line-height:1.5;}
+
+/* --- 8. Formulaire ------------------------------------------------------- */
+.form{display:grid;gap:18px;}
+.fld{display:grid;gap:7px;}
+.fld label{font-size:.73rem;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-2);}
+.fld label .req{color:var(--ember);}
+.fld input,.fld select,.fld textarea{
+  font:inherit;font-size:1rem;color:var(--ink);
+  background:#FFFDF6;
+  border:1px solid var(--rule);border-radius:var(--radius-sm);
+  padding:14px 15px;min-height:52px;width:100%;
+  transition:border-color .3s var(--ease),background-color .3s var(--ease);
+  -webkit-appearance:none;appearance:none;
+}
+.fld textarea{min-height:128px;resize:vertical;line-height:1.55;}
+.fld select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234A5240' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:19px;
+  padding-right:44px;
+}
+.fld input::placeholder,.fld textarea::placeholder{color:#6B7263;}
+.fld input:focus,.fld select:focus,.fld textarea:focus{
+  border-color:var(--forest);background:#fff;
+}
+.fld input[aria-invalid="true"],.fld select[aria-invalid="true"],.fld textarea[aria-invalid="true"]{
+  border-color:var(--ember);background:rgba(185,73,28,.05);
+}
+.fld .err{
+  font-size:.82rem;color:var(--ember-deep);font-weight:500;
+  display:flex;align-items:center;gap:6px;min-height:0;
+}
+.fld .err .ico{width:15px;height:15px;stroke-width:1.8;}
+.fld .err:empty{display:none;}
+.form__row{display:grid;gap:18px;}
+.form__foot{
+  display:grid;gap:16px;margin-top:6px;
+  padding-top:22px;border-top:1px solid var(--rule);
+}
+.form__note{font-size:.84rem;color:var(--ink-2);}
+.form__status{
+  border-radius:var(--radius-sm);padding:15px 17px;font-size:.94rem;
+  display:none;gap:10px;align-items:flex-start;
+}
+.form__status .ico{flex:none;margin-top:2px;}
+.form__status[data-state="ok"]{display:flex;background:rgba(27,59,36,.09);color:var(--forest);}
+.form__status a{font-weight:500;text-decoration-color:var(--forest);white-space:nowrap;}
+.form__status[data-state="err"]{display:flex;background:rgba(185,73,28,.09);color:var(--ember-deep);}
+.btn[data-loading="true"]{pointer-events:none;opacity:.7;}
+.btn[data-loading="true"] .btn__spin{display:block;}
+.btn__spin{display:none;width:17px;height:17px;border:2px solid rgba(255,255,255,.4);
+  border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* --- 9. Pied ------------------------------------------------------------- */
+.ftr{background:var(--forest-deep);color:var(--on-dark);padding-block:clamp(52px,7vw,76px) 30px;}
+.ftr__top{display:grid;gap:34px;}
+.ftr__brand .d3{color:var(--on-dark);margin-bottom:.5em;}
+.ftr__cols{display:grid;gap:28px;grid-template-columns:repeat(2,1fr);}
+.ftr .ftr__h{font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--sun);margin-bottom:14px;}
+.ftr ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+.ftr a{text-decoration:none;font-size:.92rem;color:var(--on-dark-2);
+  transition:color .3s var(--ease);}
+.ftr a:hover{color:var(--sun);}
+/* Les boutons gardent leur propre couleur : `.ftr a` est plus specifique
+   que `.btn-sun` et rendait le libelle illisible sur le jaune. */
+.ftr a.btn{font-size:.82rem;}
+.ftr a.btn-sun{color:var(--forest);}
+.ftr a.btn-sun:hover{color:var(--forest);}
+.ftr a.btn-ghost{color:var(--on-dark);}
+/* La barre d'action flottante ne doit jamais recouvrir la fin du pied. */
+@media (max-width:859px){
+  .ftr{padding-bottom:calc(30px + 72px + env(safe-area-inset-bottom,0px));}
+}
+.ftr__btm{
+  margin-top:clamp(40px,6vw,60px);padding-top:22px;border-top:1px solid var(--rule-dark);
+  display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+  font-size:.8rem;color:var(--on-dark-2);
+}
+
+/* Barre d'action mobile : le devis reste toujours a portee de pouce. */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:95;
+  display:flex;gap:9px;padding:10px var(--gutter);
+  padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  background:rgba(244,241,230,.95);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--rule);
+  transform:translateY(120%);transition:transform .5s var(--ease);
+}
+.dock.is-on{transform:translateY(0);}
+.dock .btn{flex:1;min-height:48px;padding-inline:14px;font-size:.73rem;letter-spacing:.1em;}
+.dock .btn .ico{width:18px;height:18px;}
+
+/* --- 10. Mouvement ------------------------------------------------------- */
+/* Etat par defaut : visible. Le JS n'ajoute .reveal qu'une fois pret. */
+.js .reveal{opacity:0;transform:translateY(26px);filter:blur(5px);}
+.js .reveal.is-in{
+  opacity:1;transform:none;filter:blur(0);
+  transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease);
+}
+.js .reveal-stagger > *{opacity:0;transform:translateY(20px);}
+.js .reveal-stagger.is-in > *{
+  opacity:1;transform:none;
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+  transition-delay:calc(var(--i,0) * 65ms);
+}
+
+/* --- 11. Points de rupture ---------------------------------------------- */
+@media (min-width:560px){
+  .form__row{grid-template-columns:1fr 1fr;}
+  .carte__grid{grid-template-columns:repeat(3,1fr);}
+  .evt{grid-template-columns:repeat(3,1fr);}
+  .gal{grid-auto-columns:46%;}
+}
+@media (min-width:860px){
+  :root{--gutter:36px;}
+  .nav{display:flex;gap:clamp(14px,1.6vw,26px);align-items:center;}
+  .hdr__cta{display:inline-flex;}
+  .burger,.menu,.dock{display:none;}
+  .hero__title{margin-bottom:.3em;}
+  .hero .lead{max-width:34ch;}
+  .exp{grid-template-columns:1fr 1fr;column-gap:46px;}
+  .exp__item:nth-child(2){border-top:1px solid var(--rule);}
+  .exp__item:nth-last-child(2){border-bottom:1px solid var(--rule);}
+  .exp-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:stretch;}
+  .exp__media{margin-top:0;}
+  .srv__body{grid-template-columns:1.1fr .9fr;align-items:start;gap:30px;}
+  .carte__grid{grid-template-columns:repeat(3,1fr);gap:40px 34px;}
+  .clem{grid-template-columns:.85fr 1.15fr;gap:48px;align-items:center;}
+  .evt{grid-template-columns:repeat(4,1fr);}
+  .evt__item{min-height:158px;}
+  .evt__item--wide{grid-column:span 2;}
+  .gal{
+    grid-auto-flow:row;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;
+    gap:24px;
+    overflow:visible;margin-inline:0;padding-inline:0;
+  }
+  .gal > *{grid-column:span 1;grid-row:span 1;}
+  .gal > *:nth-child(1){grid-column:span 2;grid-row:span 2;}   /* photo en grand */
+  .gal > *:nth-child(2){grid-row:span 2;}                      /* photo en hauteur */
+  /* Le feed passe pleine largeur : en colonne, les vignettes tombaient a
+     158 px et les publications devenaient illisibles. */
+  .ig__feed{grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
+  .ig__txt{max-width:64ch;}
+  .ct{grid-template-columns:1fr 1fr;gap:54px;align-items:start;}
+  .form__grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .form__grid > .full{grid-column:span 2;}
+  .ftr__top{grid-template-columns:1.2fr 2fr;gap:54px;}
+  .ftr__cols{grid-template-columns:repeat(3,1fr);}
+  .tarif__pts{grid-template-columns:repeat(2,1fr);gap:20px 28px;}
+}
+@media (min-width:1100px){
+  .carte__grid{gap:46px 36px;}
+}
+
+/* --- 12. Preferences et impression -------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;scroll-behavior:auto !important;
+  }
+  .js .reveal,.js .reveal-stagger > *{opacity:1;transform:none;filter:none;}
+  .rule{transform:scaleX(1);}
+  .leaves::before{transform:none !important;}
+}
+@media print{
+  .hdr,.menu,.dock,.leaves,.hero__bg,.hero__veil{display:none !important;}
+  body{background:#fff;color:#000;}
+  .section{padding-block:22px;break-inside:avoid;}
+}

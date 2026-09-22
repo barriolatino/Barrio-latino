@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cocktails by Clem | Barman privé à Clermont-Ferrand</title>
+<meta name="description" content="Barman privé à Clermont-Ferrand pour mariages, anniversaires, soirées privées et événements professionnels. Cocktails sur mesure et expérience latino.">
+<meta name="theme-color" content="#1B3B24">
+<meta name="author" content="Cocktails by Clem">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Cocktails by Clem">
+<meta property="og:title" content="Cocktails by Clem | Barman privé à Clermont-Ferrand">
+<meta property="og:description" content="Barman privé pour mariages, anniversaires, soirées privées et événements professionnels autour de Clermont-Ferrand. Cocktails d'Amérique latine préparés sur place.">
+<!-- Chemin relatif faute de domaine : à repasser en URL absolue le jour où le site en aura un. -->
+<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Une margarita préparée par Cocktails by Clem, barman privé à Clermont-Ferrand.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="favicon.svg">
+
+<link rel="preload" as="image" href="assets/cocktail-margarita.jpg" fetchpriority="high">
+<link rel="preload" href="assets/fonts/cormorant-garamond-300-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="styles.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Cocktails by Clem",
+  "description":"Barman privé et cocktails événementiels à Clermont-Ferrand : mariages, anniversaires, soirées privées et événements professionnels.",
+  "image":"assets/og-image.jpg",
+  "telephone":"+33763920998",
+  "email":"pelissier.clement@hotmail.fr",
+  "priceRange":"5€ – 6€ par cocktail",
+  "currenciesAccepted":"EUR",
+  "address":{"@type":"PostalAddress","streetAddress":"9 rue du Port","addressLocality":"Clermont-Ferrand","postalCode":"63000","addressRegion":"Puy-de-Dôme","addressCountry":"FR"},
+  "geo":{"@type":"GeoCoordinates","latitude":45.7772,"longitude":3.0870},
+  "areaServed":{"@type":"GeoCircle","geoMidpoint":{"@type":"GeoCoordinates","latitude":45.7772,"longitude":3.0870},"description":"Clermont-Ferrand, Puy-de-Dôme et alentours. Déplacements possibles selon l'événement et le lieu de réception."},
+  "sameAs":["https://www.instagram.com/cocktailsbyclem_/"],
+  "knowsLanguage":"fr",
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Barman privé pour événement"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cocktails pour mariage"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cocktails pour anniversaire"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Cocktails pour événement d'entreprise"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Bar à cocktails pour soirée privée"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Prestation cocktail sur mesure"}},
+    {"@type":"Offer","price":"30","priceCurrency":"EUR",
+     "description":"Tarif par personne. Atelier organisé au Barrio Latino, à Clermont-Ferrand.",
+     "itemOffered":{"@type":"Service","name":"Atelier cocktail"}}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<!-- Jeu d'icônes : un seul trait, 1.5, dessiné — aucun emoji en guise de pictogramme. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-glass" viewBox="0 0 24 24"><path d="M4 5h16l-8 9-8-9Z"/><path d="M12 14v6"/><path d="M8.5 20h7"/></symbol>
+  <symbol id="i-shaker" viewBox="0 0 24 24"><path d="M8 8.2h8l-.8 11.6a1.6 1.6 0 0 1-1.6 1.5h-3.2a1.6 1.6 0 0 1-1.6-1.5L8 8.2Z"/><path d="M7.6 4.4h8.8l.4 3.8H7.2l.4-3.8Z"/><path d="M8.4 12.4h7.2"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20.5 3.5C10 3.5 3.5 10 3.5 20.5c10.5 0 17-6.5 17-17Z"/><path d="M4.4 19.6 15.5 8.5"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="m12 3 1.9 5.6L19.5 10.5l-5.6 1.9L12 18l-1.9-5.6-5.6-1.9 5.6-1.9L12 3Z"/></symbol>
+  <symbol id="i-glasses" viewBox="0 0 24 24"><path d="M3 4h7l-3 6.5V19"/><path d="M4.5 19h5"/><path d="M14 4h7l-3 6.5V19"/><path d="M15.5 19h5"/><path d="M8.2 7.2h6.6"/></symbol>
+  <symbol id="i-rings" viewBox="0 0 24 24"><circle cx="9.2" cy="14.3" r="5.1"/><circle cx="15" cy="9.9" r="5.1"/></symbol>
+  <symbol id="i-cake" viewBox="0 0 24 24"><path d="M3.5 20.6h17"/><path d="M4.8 20.6v-4.9a2 2 0 0 1 2-2h10.4a2 2 0 0 1 2 2v4.9"/><path d="M12 13.7v-3.9"/><path d="M12 7.4c1-1.2.2-2.8.2-2.8s-1.3 1.6-.2 2.8Z"/><path d="M4.8 17.2c1.4 1.1 2.9 1.1 4.3 0s2.9-1.1 4.3 0 2.9 1.1 4.3 0"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9.2 17.6V5.9l10.3-1.9v11.7"/><circle cx="6.7" cy="18" r="2.6"/><circle cx="17" cy="16.1" r="2.6"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24"><rect x="3" y="7.4" width="18" height="12.2" rx="2.2"/><path d="M9 7.4V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.4"/><path d="M3 12.6h18"/></symbol>
+  <symbol id="i-plate" viewBox="0 0 24 24"><circle cx="9.6" cy="12" r="7.2"/><circle cx="9.6" cy="12" r="3.4"/><path d="M19.4 3.8v16.4"/><path d="M19.4 3.8c-1.7 0-2.8 1.3-2.8 3.2s1.1 3.2 2.8 3.2"/></symbol>
+  <symbol id="i-confetti" viewBox="0 0 24 24"><path d="m3.6 20.4 5.1-13 6.3 6.3-11.4 6.7Z"/><path d="M14.4 3.6v2.2M20.4 9.6h-2.2M18.9 5.1l-1.6 1.6"/><path d="M12.6 9.2 15 11.6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10.4c0 5.5-8 11.6-8 11.6s-8-6.1-8-11.6a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10.2" r="2.8"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21.4 17.1v2.5a1.8 1.8 0 0 1-2 1.8 17.6 17.6 0 0 1-7.7-2.7 17.3 17.3 0 0 1-5.3-5.3A17.6 17.6 0 0 1 3.7 5.6a1.8 1.8 0 0 1 1.8-2h2.5a1.8 1.8 0 0 1 1.8 1.6c.1.9.3 1.7.6 2.5A1.8 1.8 0 0 1 10 9.6L8.9 10.7a14 14 0 0 0 5.3 5.3l1.1-1.1a1.8 1.8 0 0 1 1.9-.4c.8.3 1.6.5 2.5.6a1.8 1.8 0 0 1 1.7 1.9Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.2" width="18" height="13.6" rx="2.2"/><path d="m3.6 6.6 8.4 5.9 8.4-5.9"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.1" cy="6.9" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.6 11.7a8.5 8.5 0 0 1-12.7 7.4l-4.3 1.4 1.4-4.3A8.5 8.5 0 1 1 20.6 11.7Z"/><path d="M9.3 8.5c.3-.1.6 0 .8.3l.8 1.3c.2.3.1.6-.1.8l-.6.6a7.6 7.6 0 0 0 2.6 2.6l.6-.6c.2-.2.5-.3.8-.1l1.3.8c.3.2.4.5.3.8-.3.9-1.2 1.4-2.1 1.2a8.4 8.4 0 0 1-5.8-5.8c-.2-.9.4-1.8 1.4-2.1Z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5.2v13.6M5.2 12h13.6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.6 12.4 5 5 9.8-10.8"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.8"/><path d="M12 7.3v5.6M12 16.2v.3"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9L12 3.6Z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4.2 12h15.1M13.4 6.1 19.4 12l-6 5.9"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4.4" width="18" height="15.2" rx="2.4"/><circle cx="8.8" cy="9.6" r="1.8"/><path d="m3.4 16.9 5.1-4.4 4 3.4 3.5-2.9 4.6 3.9"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16.2 19.6v-1.5a4 4 0 0 0-4-4H6.4a4 4 0 0 0-4 4v1.5"/><circle cx="9.3" cy="7.2" r="3.2"/><path d="M21.6 19.6v-1.5a4 4 0 0 0-3-3.9"/><path d="M16.6 4.2a4 4 0 0 1 0 5.8"/></symbol>
+</defs></svg>
+
+<!-- ======================= EN-TÊTE ======================= -->
+<header class="hdr" id="hdr">
+  <div class="hdr__bar">
+    <a class="brand" href="#accueil" aria-label="Cocktails by Clem, accueil">
+      <span class="brand__mark"><svg class="ico" aria-hidden="true"><use href="#i-glass"/></svg></span>
+      <span class="brand__txt"><b>Cocktails by Clem</b><span>Barman privé</span></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Navigation principale">
+      <a href="#accueil">Accueil</a>
+      <a href="#prestations">Prestations</a>
+      <a href="#cocktails">Cocktails</a>
+      <a href="#evenements">Événements</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#a-propos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary hdr__cta" href="#devis">Demander un devis</a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <a href="#accueil">Accueil</a>
+  <a href="#prestations">Prestations</a>
+  <a href="#cocktails">Cocktails</a>
+  <a href="#evenements">Événements</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#a-propos">À propos</a>
+  <a href="#contact">Contact</a>
+  <a class="btn btn-primary" href="#devis">Demander un devis</a>
+  <div class="menu__foot">
+    <a class="btn btn-ghost" href="https://wa.me/33763920998" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+    <a class="btn btn-ghost" href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">
+      <svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a>
+  </div>
+</div>
+
+<main id="contenu">
+
+<!-- ======================= HERO ======================= -->
+<section class="hero on-dark" id="accueil">
+  <div class="hero__bg" data-parallax="0.14">
+    <img src="assets/cocktail-margarita.jpg" alt="Margarita givrée, bord givré d'épices et rondelle de citron vert, préparée par Cocktails by Clem." width="900" height="1600" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero__veil"></div>
+  <svg class="hero__mark" viewBox="-60 -60 120 120" fill="none" stroke="currentColor"
+       stroke-width="1.6" stroke-linejoin="round" aria-hidden="true" data-parallax="-0.06">
+    <circle cx="0" cy="0" r="46"/>
+    <circle cx="0" cy="0" r="39"/>
+    <path d="M0 0L34.9 2.4A35 35 0 0 1 26.4 23.0Z"/>
+    <path d="M0 0L23.0 26.4A35 35 0 0 1 2.4 34.9Z"/>
+    <path d="M0 0L-2.4 34.9A35 35 0 0 1 -23.0 26.4Z"/>
+    <path d="M0 0L-26.4 23.0A35 35 0 0 1 -34.9 2.4Z"/>
+    <path d="M0 0L-34.9 -2.4A35 35 0 0 1 -26.4 -23.0Z"/>
+    <path d="M0 0L-23.0 -26.4A35 35 0 0 1 -2.4 -34.9Z"/>
+    <path d="M0 0L2.4 -34.9A35 35 0 0 1 23.0 -26.4Z"/>
+    <path d="M0 0L26.4 -23.0A35 35 0 0 1 34.9 -2.4Z"/>
+  </svg>
+
+  <div class="wrap">
+    <h1 class="hero__title">
+      <span class="d1">Cocktails by Clem</span>
+    </h1>
+    <span class="hero__role">Barman privé pour vos événements</span>
+    <hr class="rule">
+    <p class="lead">Des cocktails, du partage et une expérience qui marque les esprits.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#devis">Demander un devis</a>
+      <a class="btn btn-ghost" href="#cocktails">Voir les cocktails</a>
+    </div>
+    <div class="hero__meta">
+      <span><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Clermont-Ferrand</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-glasses"/></svg>Préparés sur place</span>
+      <span><svg class="ico" aria-hidden="true"><use href="#i-leaf"/></svg>Saveurs d'Amérique latine</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EXPÉRIENCE ======================= -->
+<section class="section s-greige" id="experience">
+  <div class="leaves" data-parallax="0.07"></div>
+  <div class="wrap">
+    <div class="exp-wrap">
+      <div>
+        <div class="head reveal">
+          <hr class="rule">
+          <h2 class="d2">Plus qu'un cocktail,<br>une expérience</h2>
+          <p class="prose">Transformez votre événement en véritable expérience autour des saveurs,
+            des couleurs et des cocktails d'Amérique latine.</p>
+        </div>
+        <div class="exp reveal-stagger">
+          <div class="exp__item" style="--i:0">
+            <svg class="ico ico-lg" aria-hidden="true"><use href="#i-shaker"/></svg>
+            <h3>Préparés sur place</h3>
+            <p>Le bar s'installe chez vous. Chaque cocktail est monté devant vos invités, pas livré en bouteille.</p>
+          </div>
+          <div class="exp__item" style="--i:1">
+            <svg class="ico ico-lg" aria-hidden="true"><use href="#i-leaf"/></svg>
+            <h3>Ambiance latino</h3>
+            <p>Pisco du Pérou, cachaça du Brésil, tequila du Mexique : une carte qui voyage vraiment.</p>
+          </div>
+          <div class="exp__item" style="--i:2">
+            <svg class="ico ico-lg" aria-hidden="true"><use href="#i-sparkle"/></svg>
+            <h3>Animation et savoir-faire</h3>
+            <p>Le bar devient un point de rendez-vous. On explique, on fait goûter, on discute recettes.</p>
+          </div>
+          <div class="exp__item" style="--i:3">
+            <svg class="ico ico-lg" aria-hidden="true"><use href="#i-confetti"/></svg>
+            <h3>Adapté à vos événements</h3>
+            <p>D'un anniversaire entre amis à une réception de mariage : la formule s'ajuste à votre soirée.</p>
+          </div>
+        </div>
+      </div>
+      <div class="exp__media reveal">
+        <div class="frame frame--tall">
+          <img src="assets/barman-prepare.jpg" alt="Clem dose la tequila au-dessus du blender pendant le service." width="1000" height="1500" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRESTATIONS ======================= -->
+<section class="section s-cream" id="prestations">
+  <div class="wrap wrap-narrow">
+    <div class="head reveal">
+      <hr class="rule">
+      <h2 class="d2">Mes services</h2>
+      <p class="prose">Une même exigence, sept formules. Six s'installent chez vous&nbsp;; l'atelier, lui,
+        se tient au Barrio Latino. Ouvrez une prestation pour voir ce qu'elle comprend.</p>
+    </div>
+    <div class="srv" id="srv"></div>
+  </div>
+</section>
+
+<!-- ======================= CARTE DES COCKTAILS ======================= -->
+<section class="section s-lemon" id="cocktails">
+  <div class="wrap">
+    <div class="head reveal">
+      <hr class="rule rule-ink">
+      <h2 class="d2">Carte des cocktails</h2>
+      <p class="prose">La carte servie en événement, telle qu'elle est publiée sur Instagram.
+        Elle s'adapte à vos envies : dites-moi ce que vous aimez.</p>
+    </div>
+
+    <div class="carte__group reveal">
+      <div class="carte__cap"><h3>Cocktails signatures</h3><span class="num">6 € / cocktail</span></div>
+      <div class="carte__grid reveal-stagger" id="carte-signatures"></div>
+    </div>
+
+    <div class="carte__group reveal">
+      <div class="carte__cap"><h3>Incontournables</h3><span class="num">5 € / cocktail</span></div>
+      <div class="carte__grid reveal-stagger" id="carte-classiques"></div>
+    </div>
+
+    <div class="carte__note reveal">
+      <p class="prose" style="margin:0;max-width:52ch">
+        <strong>À partir de 30 unités.</strong> Tarifs et carte repris de la publication Instagram
+        du compte — à confirmer lors du devis, selon le nombre d'invités et le lieu.
+      </p>
+      <a class="btn btn-primary" href="#devis">Demander un devis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= QUI EST CLEM ======================= -->
+<section class="section s-greige" id="a-propos">
+  <div class="leaves" data-parallax="0.05"></div>
+  <div class="wrap">
+    <div class="clem">
+      <div class="reveal">
+        <div class="frame frame--tall">
+          <img src="assets/clem.jpg" alt="Clem, barman privé de Cocktails by Clem, derrière son bar à Clermont-Ferrand." width="1000" height="1500" loading="lazy" decoding="async" style="object-position:50% 22%">
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="head" style="margin-bottom:26px">
+          <hr class="rule">
+          <h2 class="d2">Qui est Clem&nbsp;?</h2>
+        </div>
+        <div class="clem__panel">
+          <p class="clem__quote">« Passionné par l'univers du cocktail et par les saveurs d'Amérique
+            latine, Clem imagine des expériences qui vont bien au-delà du simple verre servi à vos invités. »</p>
+          <p class="prose">Derrière Cocktails by Clem, il n'y a pas une agence : il y a une personne
+            qui vient monter son bar chez vous, qui connaît ses recettes et qui aime les raconter.
+            C'est ce qui change tout entre un cocktail servi et un cocktail partagé.</p>
+          <div class="btn-row" style="margin-top:24px">
+            <a class="btn btn-ghost" href="#devis">Contacter Clem</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= ÉVÉNEMENTS ======================= -->
+<section class="section s-forest on-dark" id="evenements">
+  <div class="leaves" data-parallax="0.06"></div>
+  <div class="wrap">
+    <div class="head reveal">
+      <hr class="rule">
+      <h2 class="d2">Votre événement,<br>votre ambiance</h2>
+      <p class="prose">Chaque occasion appelle sa carte, son rythme et son installation.
+        Choisissez la vôtre : le formulaire s'ouvrira déjà pré-rempli.</p>
+    </div>
+    <div class="evt reveal-stagger" id="evt"></div>
+  </div>
+</section>
+
+<!-- ======================= GALERIE ======================= -->
+<section class="section s-cream" id="galerie">
+  <div class="wrap">
+    <div class="head reveal">
+      <hr class="rule rule-ink">
+      <h2 class="d2">Galerie</h2>
+      <p class="prose">Les cocktails d’abord, puis le bar en service,
+        les buffets dressés et les illustrations de la carte.</p>
+    </div>
+    <div class="gal reveal-stagger">
+      <div class="frame" style="--i:0">
+        <img src="assets/cocktail-margarita.jpg" alt="Margarita au bord givré d'épices, préparée par Clem." width="900" height="1600" loading="lazy" decoding="async">
+        <p class="gal__cap">Margarita</p>
+      </div>
+      <div class="frame" style="--i:1">
+        <img src="assets/pisco-sour-service.jpg" alt="Pisco Sours dressés au bar, mousse et cannelle, à côté des verres au sel pimenté." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Pisco Sour</p>
+      </div>
+      <div class="frame frame--art" style="--i:2">
+        <img src="assets/cocktails/pisco-sour.jpg" alt="Illustration du Pisco Sour de la carte Cocktails by Clem." width="440" height="440" loading="lazy" decoding="async">
+        <p class="gal__cap">Pisco Sour</p>
+      </div>
+      <div class="frame frame--art" style="--i:3">
+        <img src="assets/cocktails/mojito.jpg" alt="Illustration du Mojito de la carte Cocktails by Clem." width="440" height="440" loading="lazy" decoding="async">
+        <p class="gal__cap">Mojito</p>
+      </div>
+      <div class="frame" style="--i:4">
+        <img src="assets/buffet-canapes.jpg" alt="Présentoir de bouchées et verres au sel pimenté, prêts pour le service." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Cocktail dînatoire</p>
+      </div>
+      <div class="frame" style="--i:5">
+        <img src="assets/evenement-vin-honneur.jpg" alt="Vin d'honneur sous la pergola : les invités se servent au bar installé pour la réception." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Vin d’honneur</p>
+      </div>
+      <div class="frame" style="--i:6">
+        <img src="assets/buffet-evenement.jpg" alt="Grande table dressée en extérieur : empanadas, bouchées et jarre de cocktail à partager." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Buffet d’événement</p>
+      </div>
+      <div class="frame" style="--i:7">
+        <img src="assets/dosage-alcool.jpg" alt="Clem dose l'alcool au jigger au-dessus du blender, pendant le service." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Le dosage</p>
+      </div>
+      <div class="frame" style="--i:8">
+        <img src="assets/barman-prepare.jpg" alt="Clem verse la tequila au-dessus du blender, verres prêts à être servis." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Tequila</p>
+      </div>
+      <div class="frame" style="--i:9">
+        <img src="assets/dosage-citron.jpg" alt="Dosage du jus de citron vert au jigger : chaque cocktail est mesuré." width="1000" height="1500" loading="lazy" decoding="async">
+        <p class="gal__cap">Jus de citron vert</p>
+      </div>
+      <div class="frame" style="--i:10">
+        <img src="assets/clem.jpg" alt="Clem, barman privé, prépare son poste derrière le bar." width="1000" height="1500" loading="lazy" decoding="async" style="object-position:50% 22%">
+        <p class="gal__cap">Clem</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= INSTAGRAM ======================= -->
+<section class="section s-lemon" id="instagram">
+  <div class="wrap">
+    <div class="ig">
+      <div class="reveal ig__txt">
+        <hr class="rule rule-ink">
+        <h2 class="d2" style="margin-bottom:.4em">Retrouvez Cocktails by&nbsp;Clem sur Instagram</h2>
+        <p class="ig__handle"><svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg>@cocktailsbyclem_</p>
+        <p class="prose">Les dernières cartes, les préparations et les événements y sont publiés en premier.</p>
+        <div class="btn-row" style="margin-top:22px">
+          <a class="btn btn-primary" href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">
+            Voir Instagram <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="ig__feed reveal-stagger">
+        <a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener" style="--i:0" aria-label="Publication : la carte des cocktails — ouvrir Instagram">
+          <img src="assets/insta-carte.jpg" alt="Publication Instagram présentant la carte des cocktails illustrée." width="700" height="867" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener" style="--i:1" aria-label="Publication : mes services et les tarifs — ouvrir Instagram">
+          <img src="assets/insta-services.jpg" alt="Publication Instagram listant les services et les tarifs par cocktail." width="700" height="840" loading="lazy" decoding="async"></a>
+        <a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener" style="--i:2" aria-label="Publication : l'atelier cocktail — ouvrir Instagram">
+          <img src="assets/insta-atelier.jpg" alt="Publication Instagram annonçant un atelier cocktail." width="700" height="840" loading="lazy" decoding="async"></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TARIFS ======================= -->
+<section class="section s-sage" id="tarifs">
+  <div class="wrap">
+    <div class="tarif reveal">
+      <hr class="rule rule-ink" style="margin-inline:auto;max-width:120px">
+      <h2 class="d2">Des prestations sur mesure</h2>
+      <p class="lead">Chaque événement est unique. Recevez une proposition adaptée à votre nombre
+        d'invités, votre lieu et vos envies.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#devis">Demander un devis gratuit</a>
+      </div>
+      <ul class="tarif__pts">
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span>Cocktails à <span class="num">5&nbsp;€</span> et <span class="num">6&nbsp;€</span>, à partir de <span class="num">30</span> unités</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span>Atelier cocktail à <span class="num">30&nbsp;€</span> par personne</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span>Devis gratuit et sans engagement</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>
+          <span>Réponse par WhatsApp ou Instagram</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DEVIS ======================= -->
+<section class="section s-cream" id="devis">
+  <div class="wrap wrap-narrow">
+    <div class="head reveal">
+      <hr class="rule rule-ink">
+      <h2 class="d2">Demander un devis</h2>
+      <p class="prose">Quelques informations suffisent. Le formulaire prépare votre message et
+        l'ouvre dans WhatsApp&nbsp;: vous gardez la main avant de l'envoyer.</p>
+    </div>
+
+    <form class="form reveal" id="devis-form" novalidate>
+      <div class="form__grid">
+        <div class="fld">
+          <label for="f-prenom">Prénom <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-prenom" name="prenom" type="text" autocomplete="given-name" required
+                 aria-describedby="e-prenom" placeholder="Camille">
+          <p class="err" id="e-prenom" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-nom">Nom <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-nom" name="nom" type="text" autocomplete="family-name" required
+                 aria-describedby="e-nom" placeholder="Durand">
+          <p class="err" id="e-nom" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required
+                 aria-describedby="e-email" placeholder="camille@exemple.fr">
+          <p class="err" id="e-email" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-tel">Téléphone <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" required
+                 aria-describedby="e-tel" placeholder="06 12 34 56 78">
+          <p class="err" id="e-tel" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-type">Type d'événement <span class="req" aria-hidden="true">*</span></label>
+          <select id="f-type" name="type" required aria-describedby="e-type">
+            <option value="">Choisir…</option>
+            <option>Mariage</option>
+            <option>Anniversaire</option>
+            <option>Soirée privée</option>
+            <option>Événement d'entreprise</option>
+            <option>Cocktail dînatoire</option>
+            <option>Fête privée</option>
+            <option>EVJF / EVG</option>
+            <option>Atelier cocktail</option>
+            <option>Événement sur mesure</option>
+          </select>
+          <p class="err" id="e-type" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-date">Date de l'événement</label>
+          <input id="f-date" name="date" type="date" aria-describedby="e-date">
+          <p class="err" id="e-date" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-lieu">Lieu</label>
+          <input id="f-lieu" name="lieu" type="text" aria-describedby="e-lieu" placeholder="Clermont-Ferrand, salle des fêtes…">
+          <p class="err" id="e-lieu" role="alert"></p>
+        </div>
+        <div class="fld">
+          <label for="f-invites">Nombre d'invités</label>
+          <input id="f-invites" name="invites" type="number" min="1" max="2000" inputmode="numeric"
+                 aria-describedby="e-invites" placeholder="60">
+          <p class="err" id="e-invites" role="alert"></p>
+        </div>
+        <div class="fld full">
+          <label for="f-msg">Votre message</label>
+          <textarea id="f-msg" name="message" aria-describedby="e-msg"
+                    placeholder="Parlez-moi de votre événement : ambiance souhaitée, cocktails préférés, horaires…"></textarea>
+          <p class="err" id="e-msg" role="alert"></p>
+        </div>
+      </div>
+
+      <p class="form__status" id="form-status" role="status" aria-live="polite">
+        <svg class="ico" aria-hidden="true"><use href="#i-check"/></svg><span></span>
+      </p>
+
+      <div class="form__foot">
+        <div class="btn-row">
+          <button class="btn btn-primary" type="submit">
+            <span class="btn__spin" aria-hidden="true"></span>Demander mon devis</button>
+          <a class="btn btn-ghost" href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">
+            <svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg>Écrire sur Instagram</a>
+        </div>
+        <p class="form__note">Devis gratuit et sans engagement. Vos informations servent uniquement
+          à préparer votre proposition&nbsp;— voir la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ======================= CONTACT ======================= -->
+<section class="section s-forest on-dark" id="contact">
+  <div class="wrap">
+    <div class="ct">
+      <div class="reveal">
+        <hr class="rule">
+        <h2 class="d2" style="margin-bottom:.4em">Parlons de votre événement</h2>
+        <p class="prose" style="margin-bottom:30px">Le plus simple reste un message&nbsp;: WhatsApp ou Instagram,
+          réponse dans la journée en général.</p>
+        <dl class="ct__rows">
+          <div class="ct__row">
+            <dt>Zone</dt><span class="entry__dots" aria-hidden="true"></span>
+            <dd>Clermont-Ferrand, France</dd>
+          </div>
+          <div class="ct__row">
+            <dt>Téléphone</dt><span class="entry__dots" aria-hidden="true"></span>
+            <dd><a href="tel:+33763920998" class="num">07&nbsp;63&nbsp;92&nbsp;09&nbsp;98</a></dd>
+          </div>
+          <div class="ct__row">
+            <dt>Email</dt><span class="entry__dots" aria-hidden="true"></span>
+            <dd><a href="mailto:pelissier.clement@hotmail.fr">pelissier.clement@hotmail.fr</a></dd>
+          </div>
+          <div class="ct__row">
+            <dt>Instagram</dt><span class="entry__dots" aria-hidden="true"></span>
+            <dd><a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">@cocktailsbyclem_</a></dd>
+          </div>
+        </dl>
+        <div class="btn-row">
+          <a class="btn btn-sun" href="https://wa.me/33763920998" target="_blank" rel="noopener">
+            <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+          <a class="btn btn-ghost" href="tel:+33763920998">
+            <svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Appeler</a>
+          <a class="btn btn-ghost" href="mailto:pelissier.clement@hotmail.fr">
+            <svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>Envoyer un email</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">
+            <svg class="ico" aria-hidden="true"><use href="#i-insta"/></svg>Instagram</a>
+        </div>
+      </div>
+
+      <div class="reveal" id="zone">
+        <hr class="rule">
+        <h2 class="d3" style="margin-bottom:.7em">Zone d'intervention</h2>
+        <p class="prose" style="margin-bottom:22px">Clermont-Ferrand, Puy-de-Dôme, France.
+          Déplacements possibles selon votre événement et votre lieu de réception.</p>
+        <div class="map" id="map">
+          <button class="map__load" type="button" id="map-load">
+            <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>
+            <span class="label" style="color:inherit">Afficher la carte</span>
+            <small>La carte est chargée seulement si vous le demandez, pour ne pas alourdir la page
+              ni déposer de cookies Google à votre insu.</small>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ======================= PIED ======================= -->
+<footer class="ftr on-dark">
+  <div class="wrap">
+    <div class="ftr__top">
+      <div class="ftr__brand">
+        <h2 class="d3">Cocktails by Clem</h2>
+        <p class="prose" style="font-size:.94rem">Barman privé &amp; cocktails événementiels,
+          à Clermont-Ferrand et alentours.</p>
+        <div class="btn-row" style="margin-top:20px">
+          <a class="btn btn-sun" href="#devis">Demander un devis</a>
+        </div>
+      </div>
+      <div class="ftr__cols">
+        <div>
+          <h3 class="ftr__h">Le site</h3>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#prestations">Prestations</a></li>
+            <li><a href="#cocktails">Cocktails</a></li>
+            <li><a href="#evenements">Événements</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#a-propos">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="ftr__h">Réseaux</h3>
+          <ul>
+            <li><a href="https://www.instagram.com/cocktailsbyclem_/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://wa.me/33763920998" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="tel:+33763920998">07 63 92 09 98</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="ftr__h">Informations</h3>
+          <ul>
+            <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="confidentialite.html">Politique de confidentialité</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="ftr__btm">
+      <span>© <span id="year" class="num">2026</span> Cocktails by Clem — Clermont-Ferrand</span>
+      <span>L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Le devis reste à portée de pouce sur mobile. -->
+<div class="dock" id="dock">
+  <a class="btn btn-primary" href="#devis">Demander un devis</a>
+  <a class="btn btn-ghost" href="https://wa.me/33763920998" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">
+    <svg class="ico" aria-hidden="true"><use href="#i-whatsapp"/></svg></a>
+</div>
+
+<script src="main.js" defer></script>
+</body>
+</html>
