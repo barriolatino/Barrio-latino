@@ -17,7 +17,8 @@
         {
           "nom": "Ceviche",
           "prix": "14 €",
-          "description": "Poisson mariné au citron vert, sauce leche de tigre, oignons et camote."
+          "description": "Poisson mariné au citron vert, sauce leche de tigre, oignons et camote.",
+          "photo": "ceviche"
         },
         {
           "nom": "Empanadas",
@@ -33,7 +34,8 @@
         {
           "nom": "Patacones Reina",
           "prix": "10 €",
-          "description": "Bananes plantains, viande effilochée et guacamole."
+          "description": "Bananes plantains, viande effilochée et guacamole.",
+          "photo": "patacones-reina"
         }
       ]
     },

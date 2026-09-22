@@ -47,8 +47,8 @@ dépôt est exactement ce qui est servi.
 - **Médiateur de la consommation** : dernier `<span class="todo">` de
   `mentions-legales.html`. Tout le reste des informations légales est renseigné.
 - **Photos manquantes** : la salle sans personne et la devanture restent en
-  basse résolution ; les desserts, les tequeños, les patacones et la bandeja
-  n'ont pas de photo de carte. Huit plats sur trente-six sont illustrés.
+  basse résolution ; les desserts, les tequeños et la bandeja n'ont pas de
+  photo de carte. Dix plats sur trente-six sont illustrés.
 
 Déjà réglés : lien Uber Eats, stationnement, accessibilité (dérogation),
 identité légale (PELISSIER ARANIBAR, SARL, SIREN 989 353 354, cogérance).
@@ -56,9 +56,16 @@ identité légale (PELISSIER ARANIBAR, SARL, SIREN 989 353 354, cogérance).
 ## Galeries et affichage plein écran
 
 Tout conteneur portant `data-galerie` forme un groupe de photos : les flèches
-de la lightbox tournent à l'intérieur du groupe cliqué. Il y en a deux, la
-galerie photos (`.mosaic`) et la galerie traiteur (`.traiteur-gallery`).
-Ajouter une troisième galerie ne demande aucun code, seulement l'attribut.
+de la lightbox tournent à l'intérieur du groupe cliqué. Il y en a onze — la
+galerie photos (`.mosaic`), la galerie traiteur (`.traiteur-gallery`) et les
+neuf panneaux de la carte. Ajouter une galerie ne demande aucun code, juste
+l'attribut.
+
+Le déclencheur est `[data-galerie] [data-full]`, capté par **délégation sur
+`document`** : le jeu de photos est construit au moment du clic. C'est ce qui
+permet aux vignettes de la carte, rendues après le `fetch` du JSON, de
+fonctionner sans réinitialisation. Un élément peut porter `data-alt` pour
+donner à la photo agrandie une légende différente de l'`alt` de sa vignette.
 
 Les deux grilles sont calibrées pour ne jamais laisser de case vide à leurs
 points de rupture : la mosaïque tient 10 vignettes dont 2 panoramiques

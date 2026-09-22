@@ -214,16 +214,26 @@
         var row = el('article', { class: 'dish' + (p.photo ? ' dish--photo' : '') }, [title]);
 
         if (p.photo) {
-          /* alt vide : le nom du plat est juste a cote, une description de
-             l'image ferait doublon a l'oreille d'un lecteur d'ecran. */
-          var pic = el('picture', { class: 'dish-photo' }, [
-            el('source', { srcset: 'assets/img/plats/vignettes/' + p.photo + '.webp', type: 'image/webp' }),
-            el('img', {
-              src: 'assets/img/plats/vignettes/' + p.photo + '.jpg',
-              width: '232', height: '174', alt: '', loading: 'lazy', decoding: 'async'
-            })
+          /* alt vide sur la vignette : le nom du plat la precede, une
+             description ferait doublon a l'oreille d'un lecteur d'ecran.
+             C'est le bouton qui porte le nom accessible, et data-alt sert
+             de legende une fois la photo agrandie. */
+          var legende = p.nom + (p.description ? ' — ' + p.description : '');
+          var bouton = el('button', {
+            type: 'button', class: 'dish-photo',
+            'data-full': 'assets/img/plats/' + p.photo + '.jpg',
+            'data-alt': legende,
+            'aria-label': 'Agrandir la photo : ' + p.nom
+          }, [
+            el('picture', {}, [
+              el('source', { srcset: 'assets/img/plats/vignettes/' + p.photo + '.webp', type: 'image/webp' }),
+              el('img', {
+                src: 'assets/img/plats/vignettes/' + p.photo + '.jpg',
+                width: '232', height: '174', alt: '', loading: 'lazy', decoding: 'async'
+              })
+            ])
           ]);
-          row.appendChild(pic);
+          row.appendChild(bouton);
         }
 
         row.appendChild(el('span', { class: 'price', text: p.prix }));
@@ -239,7 +249,8 @@
 
       panels.appendChild(el('div', {
         id: 'panel-' + cat.id, role: 'tabpanel', class: 'menu-panel',
-        'aria-labelledby': 'tab-' + cat.id, tabindex: '0', hidden: i === 0 ? null : 'hidden'
+        'aria-labelledby': 'tab-' + cat.id, tabindex: '0',
+        'data-galerie': '', hidden: i === 0 ? null : 'hidden'
       }, [head, list]));
     });
 
@@ -466,8 +477,7 @@
      ====================================================================== */
   (function lightbox() {
     var dlg = $('#lightbox');
-    var groupes = $$('[data-galerie]');
-    if (!dlg || !groupes.length) return;
+    if (!dlg) return;
 
     var img = $('#lbImg');
     var cap = $('#lbCap');
@@ -483,21 +493,26 @@
     }
 
     /* Chaque conteneur [data-galerie] forme son propre jeu de photos : les
-       fleches de la lightbox restent dans la galerie ou l'on a cliqué, au
-       lieu de deriver vers celle de la section voisine. */
-    groupes.forEach(function (g) {
-      var shots = $$('.shot', g);
-      var jeu = shots.map(function (b) {
-        var im = $('img', b);
-        return { src: b.getAttribute('data-full') || im.currentSrc || im.src, alt: im.alt };
+       fleches restent dans la galerie ou l'on a cliqué, au lieu de deriver
+       vers celle de la section voisine. Le jeu est construit au moment du
+       clic, ce qui couvre aussi la carte, rendue apres le chargement du
+       JSON, sans avoir a reinitialiser quoi que ce soit. */
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-galerie] [data-full]');
+      if (!b) return;
+      var g = b.closest('[data-galerie]');
+      var items = $$('[data-full]', g);
+      slides = items.map(function (n) {
+        var im = $('img', n);
+        return {
+          src: n.getAttribute('data-full'),
+          alt: n.getAttribute('data-alt') || (im ? im.alt : '')
+        };
       });
-      shots.forEach(function (b, n) {
-        b.addEventListener('click', function () {
-          opener = b; slides = jeu; show(n);
-          if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
-          $('#lbClose').focus();
-        });
-      });
+      opener = b;
+      show(items.indexOf(b));
+      if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+      $('#lbClose').focus();
     });
 
     $('#lbClose').addEventListener('click', function () { dlg.close(); });

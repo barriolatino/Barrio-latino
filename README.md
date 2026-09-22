@@ -33,11 +33,14 @@ Pour ajouter un plat, recopiez un bloc entier et changez les valeurs :
 ```
 
 - `prix` est du texte libre : `"12 €"`, `"12,50 €"`, `"à partir de 12 €"`…
-- `"photo": "nom-du-fichier"` affiche une vignette à côté du plat. Le fichier
-  doit exister dans `assets/img/plats/vignettes/` **en `.webp` et en `.jpg`**,
-  au format 4:3 (232 × 174 px). Sans cette clé, la ligne s'affiche simplement
-  sans photo : les lignes illustrées et les autres cohabitent sans décaler la
-  mise en page, vous pouvez donc en ajouter au fil de l'eau.
+- `"photo": "nom-du-fichier"` affiche une vignette à côté du plat, sur
+  laquelle on peut cliquer pour voir la photo en grand. Il faut **deux
+  fichiers** : la vignette 4:3 (232 × 174 px) dans
+  `assets/img/plats/vignettes/` et la photo en grand dans
+  `assets/img/plats/`, chacune en `.webp` **et** en `.jpg`. Sans cette clé,
+  la ligne s'affiche simplement sans photo : les lignes illustrées et les
+  autres cohabitent sans décaler la mise en page, vous pouvez donc en
+  ajouter au fil de l'eau.
 - `"vege": true` affiche la pastille verte **Végétarien**. Retirez la ligne si le
   plat n'est pas végétarien.
 - Pour **supprimer** un plat, supprimez son bloc `{ … }` *et* la virgule qui le
@@ -109,10 +112,12 @@ de l'image avant son chargement et évitent que la page saute.
 Écrivez toujours un `alt` qui décrit la photo en français — c'est ce que lisent
 les personnes aveugles et Google.
 
-Les galeries sont pilotées par l'attribut `data-galerie` : toutes les
-vignettes d'un même conteneur forment un groupe, et les flèches de
-l'affichage plein écran restent à l'intérieur de ce groupe. Il y en a deux,
-la galerie photos et la galerie traiteur.
+L'affichage plein écran est piloté par l'attribut `data-galerie` : toutes les
+photos d'un même conteneur forment un groupe, et les flèches restent à
+l'intérieur de ce groupe. Il y en a un pour la galerie photos, un pour la
+galerie traiteur, et un par catégorie de la carte — d'où le fait qu'en
+agrandissant un plat, les flèches parcourent les autres plats illustrés de
+la même catégorie.
 
 `assets/img/clients/amies-dejeuner` n'est plus affichée mais reste
 disponible : il suffit de recopier un bloc `<button class="shot">` de la
