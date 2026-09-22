@@ -1,0 +1,256 @@
+{
+  "_mode_emploi": "Pour modifier la carte : editez ce fichier uniquement. Chaque categorie a un id (utilise par les onglets), un label francais et un label espagnol. Chaque plat a un nom, un prix (texte libre, ex. \"10 €\"), une description et, si besoin, \"vege\": true pour afficher la pastille vegetarien.",
+  "mention": "Prix TTC. Carte susceptible d’évoluer selon les saisons.",
+  "lien_uber_eats": "",
+  "categories": [
+    {
+      "id": "entrees",
+      "label": "Entrées",
+      "label_es": "Entradas",
+      "plats": [
+        {
+          "nom": "Nachotes",
+          "prix": "10 €",
+          "description": "Chips de maïs, guacamole, pico de gallo, poulet ou bœuf effiloché et cheddar fondu."
+        },
+        {
+          "nom": "Ceviche",
+          "prix": "14 €",
+          "description": "Poisson mariné au citron vert, sauce leche de tigre, oignons et camote."
+        },
+        {
+          "nom": "Empanadas",
+          "prix": "7 €",
+          "description": "Chausson à la viande effilochée."
+        },
+        {
+          "nom": "Tequeños",
+          "prix": "7 €",
+          "description": "Bâtonnets de fromage accompagnés de guacamole."
+        },
+        {
+          "nom": "Patacones Reina",
+          "prix": "10 €",
+          "description": "Bananes plantains, viande effilochée et guacamole."
+        }
+      ]
+    },
+    {
+      "id": "plats",
+      "label": "Plats",
+      "label_es": "Platos de fondo",
+      "plats": [
+        {
+          "nom": "Bandeja de la casa",
+          "prix": "20 €",
+          "description": "Porc croustillant, bœuf effiloché, riz, haricots rouges cuisinés et banane plantain."
+        },
+        {
+          "nom": "Salchipollo",
+          "prix": "14 €",
+          "description": "Saucisse fumée, poulet croustillant, frites et salade sauce Gigi."
+        },
+        {
+          "nom": "Chicharrón",
+          "prix": "15 €",
+          "description": "Poitrine de porc croustillante, pommes de terre sautées et banane plantain."
+        },
+        {
+          "nom": "Lomo Saltado",
+          "prix": "18 €",
+          "description": "Bœuf sauté aux oignons, tomates et sauce soja, accompagné de pommes de terre sautées et de riz."
+        },
+        {
+          "nom": "Plato Vegetariano",
+          "prix": "12 €",
+          "description": "Haricots rouges cuisinés, riz, bananes plantains, totopos et guacamole.",
+          "vege": true
+        }
+      ]
+    },
+    {
+      "id": "mexicain",
+      "label": "Mexicain",
+      "label_es": "Platos mexicanos",
+      "plats": [
+        {
+          "nom": "Tacos mexicains x3",
+          "prix": "14 €",
+          "description": "Galette de maïs, guacamole, pico de gallo. Au choix : poulet et/ou bœuf."
+        },
+        {
+          "nom": "Quesadillas",
+          "prix": "9 €",
+          "description": "Galette de blé, effiloché de poulet et cheddar fondu."
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "label": "Desserts",
+      "label_es": "Postres",
+      "plats": [
+        {
+          "nom": "Tres Leches",
+          "prix": "7 €",
+          "description": "Gâteau aux trois laits recouvert de chantilly.",
+          "vege": true
+        },
+        {
+          "nom": "Torta de Chocolate",
+          "prix": "7 €",
+          "description": "Gâteau au chocolat recouvert de la ganache de Gigi.",
+          "vege": true
+        },
+        {
+          "nom": "Cheesecake de Maracuya",
+          "prix": "7 €",
+          "description": "Servi avec un coulis aux fruits de la passion.",
+          "vege": true
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "label": "Cocktails",
+      "label_es": "Cócteles",
+      "note": "Cocktails sans alcool : 7 € · Digestif : 6 €",
+      "plats": [
+        {
+          "nom": "Pisco Sour",
+          "prix": "9 €",
+          "description": "Le classique péruvien : pisco, citron vert et blanc d’œuf."
+        },
+        {
+          "nom": "Margarita",
+          "prix": "9 €",
+          "description": "Tequila, triple sec et citron vert."
+        },
+        {
+          "nom": "Piña Colada",
+          "prix": "9 €",
+          "description": "Rhum, ananas et lait de coco."
+        },
+        {
+          "nom": "Mojito",
+          "prix": "9 €",
+          "description": "Rhum, menthe fraîche, citron vert et eau gazeuse."
+        },
+        {
+          "nom": "Cuba Libre",
+          "prix": "9 €",
+          "description": "Rhum, cola et citron vert."
+        },
+        {
+          "nom": "Chilcano",
+          "prix": "9 €",
+          "description": "Pisco, ginger ale et citron vert."
+        }
+      ]
+    },
+    {
+      "id": "bieres",
+      "label": "Bières",
+      "label_es": "Cervezas",
+      "plats": [
+        {
+          "nom": "Cusqueña",
+          "prix": "7 €",
+          "description": "Pérou."
+        },
+        {
+          "nom": "Quilmes",
+          "prix": "6 €",
+          "description": "Argentine."
+        },
+        {
+          "nom": "Modelo",
+          "prix": "6 €",
+          "description": "Mexique."
+        },
+        {
+          "nom": "Club Colombia",
+          "prix": "6 €",
+          "description": "Colombie."
+        }
+      ]
+    },
+    {
+      "id": "vins",
+      "label": "Vins",
+      "label_es": "Vinos",
+      "note": "22 € la bouteille",
+      "plats": [
+        {
+          "nom": "Gato Negro",
+          "prix": "22 €",
+          "description": "Chili. La bouteille."
+        },
+        {
+          "nom": "Bar Argentino",
+          "prix": "22 €",
+          "description": "Argentine. La bouteille."
+        }
+      ]
+    },
+    {
+      "id": "sans-alcool",
+      "label": "Sans alcool",
+      "label_es": "Bebidas sin alcohol",
+      "plats": [
+        {
+          "nom": "Pony Malta",
+          "prix": "4 €",
+          "description": "Boisson maltée colombienne."
+        },
+        {
+          "nom": "Inca Kola",
+          "prix": "4 €",
+          "description": "Le soda emblématique du Pérou."
+        },
+        {
+          "nom": "Coca-Cola",
+          "prix": "3 €",
+          "description": ""
+        },
+        {
+          "nom": "Limonada Frozen",
+          "prix": "5 €",
+          "description": "Citronnade glacée."
+        },
+        {
+          "nom": "Jus naturels",
+          "prix": "5 €",
+          "description": "Selon les fruits du moment."
+        }
+      ]
+    },
+    {
+      "id": "cafes",
+      "label": "Cafés",
+      "label_es": "Cafés",
+      "plats": [
+        {
+          "nom": "Expresso",
+          "prix": "2 €",
+          "description": ""
+        },
+        {
+          "nom": "Double expresso",
+          "prix": "2,50 €",
+          "description": ""
+        },
+        {
+          "nom": "Café allongé",
+          "prix": "3 €",
+          "description": ""
+        },
+        {
+          "nom": "Thé",
+          "prix": "3 €",
+          "description": ""
+        }
+      ]
+    }
+  ]
+}

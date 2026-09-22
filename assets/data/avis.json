@@ -1,0 +1,38 @@
+{
+  "_mode_emploi": "Pour modifier les avis : editez ce fichier. \"note\" et \"nombre\" alimentent le bloc de note globale et les donnees structurees SEO. Chaque avis : \"auteur\" (prenom + initiale), \"texte\", \"etoiles\" (1 a 5) et \"local_guide\": true pour afficher le badge.",
+  "note": 4.8,
+  "nombre": 287,
+  "lien_tous_les_avis": "https://maps.app.goo.gl/Qasq3LsifsPPeCmY7",
+  "avis": [
+    {
+      "auteur": "Dodie M.",
+      "etoiles": 5,
+      "texte": "Vraiment délicieux du début à la fin. Un vrai voyage gustatif !",
+      "local_guide": false
+    },
+    {
+      "auteur": "Fella S.",
+      "etoiles": 5,
+      "texte": "Les meilleurs tacos et quesadillas de notre vie.",
+      "local_guide": true
+    },
+    {
+      "auteur": "Stef R.",
+      "etoiles": 5,
+      "texte": "Le meilleur Pisco Sour que j’ai goûté, un ceviche absolument délicieux.",
+      "local_guide": true
+    },
+    {
+      "auteur": "Meera P.",
+      "etoiles": 5,
+      "texte": "L’accueil est irréprochable, les plats sont excellents et les cocktails sont à tomber !",
+      "local_guide": true
+    },
+    {
+      "auteur": "Joshua & Stephanie",
+      "etoiles": 5,
+      "texte": "Le meilleur repas latino que nous ayons mangé en France.",
+      "local_guide": false
+    }
+  ]
+}
