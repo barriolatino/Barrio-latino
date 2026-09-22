@@ -1,9 +1,9 @@
 {
-  "_mode_emploi": "Pour modifier les evenements : editez ce fichier. \"prochain\" est l'encart mis en avant en haut de la section — laissez \"titre\" vide pour masquer l'encart. \"recurrents\" est la liste des cartes affichees en dessous.",
+  "_mode_emploi": "Pour modifier les evenements : editez ce fichier. \"prochain\" est l'encart mis en avant en haut de la section — laissez \"titre\" vide pour masquer l'encart. Tant que \"date\" reste vide, l'encart s'intitule « À l'affiche » ; des que vous y mettez une date, il devient « Prochain evenement ». \"recurrents\" est la liste des cartes affichees en dessous.",
   "prochain": {
     "titre": "Fiesta Latina",
     "date": "",
-    "description": "Une soirée entière aux couleurs de l’Amérique latine : musique, cocktails et carte de fête. Date annoncée sur Instagram.",
+    "description": "Salsa, cumbia et reggaeton, cocktails au comptoir et la salle qui se transforme en piste. La date de la prochaine est annoncée sur notre Instagram.",
     "lien": "https://www.instagram.com/barriolatino_fr"
   },
   "recurrents": [

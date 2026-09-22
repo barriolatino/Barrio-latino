@@ -44,11 +44,26 @@ dépôt est exactement ce qui est servi.
 
 ## Reste à compléter par le propriétaire
 
-- Lien Uber Eats (`lien_uber_eats` dans `menu.json` : le bouton apparaît seul).
-- Accessibilité PMR et stationnement : deux emplacements marqués
-  `À COMPLÉTER` en commentaire dans la section « Infos pratiques ».
-- Informations légales : les `<span class="todo">` de `mentions-legales.html`.
-- Photos en haute résolution : voir la liste dans `assets/img/_sources/`.
+- **Accessibilité PMR** : seul point encore ouvert dans « Infos pratiques »,
+  marqué `À COMPLÉTER` en commentaire dans `index.html`.
+- **Médiateur de la consommation** : dernier `<span class="todo">` de
+  `mentions-legales.html`. Le reste des informations légales est renseigné.
+- **Photos** : la salle sans personne, la devanture et les desserts restent
+  en basse résolution ou absents. Les cinq plats (tacos, lomo saltado,
+  nachotes, plato vegetariano, salchipollo) sont en place en haute définition.
+
+Déjà réglés : lien Uber Eats, stationnement, identité légale de la société
+(PELISSIER ARANIBAR, SARL, SIREN 989 353 354).
+
+## Photos de plats et badge Uber Eats
+
+Les photos de plats ont été fournies avec un badge Uber Eats incrusté en bas
+à droite. Il a été retiré en reconstituant le fond par ajustement polynomial
+sur les pixels propres voisins — aucun plat n'était recouvert, la vérification
+est faite avant chaque retrait. Les fichiers d'origine avec badge sont
+conservés dans `assets/img/_sources/*-avec-badge.jpg`. Ces photos ayant été
+produites dans le cadre de l'inscription à Uber Eats, leurs droits
+d'utilisation hors de la plateforme sont à confirmer par le propriétaire.
 
 ## Outillage Claude Code
 

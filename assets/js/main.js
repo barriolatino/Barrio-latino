@@ -418,8 +418,11 @@
       if (data.prochain && data.prochain.titre) {
         next.innerHTML = '';
         next.appendChild(el('span', { class: 'event-flag', 'aria-hidden': 'true', html: ICON.party }));
+        /* Sans date annoncée, « Prochain événement » promettrait une
+           information que l'encart n'a pas : le programme est publié sur
+           Instagram. */
         var body = el('div', {}, [
-          el('p', { class: 'eyebrow', text: 'Prochain événement' }),
+          el('p', { class: 'eyebrow', text: data.prochain.date ? 'Prochain événement' : 'À l\u2019affiche' }),
           el('h3', { text: data.prochain.titre + (data.prochain.date ? ' — ' + data.prochain.date : '') }),
           el('p', { text: data.prochain.description || '' })
         ]);

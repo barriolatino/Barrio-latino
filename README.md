@@ -40,8 +40,9 @@ Pour ajouter un plat, recopiez un bloc entier et changez les valeurs :
 - `note` sur une catégorie affiche une pastille turquoise à côté du titre
   (ex. « 22 € la bouteille »).
 - `mention` est la petite phrase sous la carte.
-- `lien_uber_eats` : dès que vous y collez votre lien Uber Eats, le bouton
-  « Commander sur Uber Eats » apparaît tout seul. Laissé vide, il reste caché.
+- `lien_uber_eats` pilote le bouton « Commander sur Uber Eats » : il est
+  renseigné et le bouton s'affiche. Videz le champ (`""`) et le bouton
+  disparaît — pratique si vous suspendez la livraison.
 
 ### Modifier les avis → `assets/data/avis.json`
 
@@ -100,7 +101,11 @@ de l'image avant son chargement et évitent que la page saute.
 les personnes aveugles et Google.
 
 Les originaux haute résolution sont rangés dans `assets/img/_sources/` et ne
-sont jamais chargés par le site.
+sont jamais chargés par le site. Les photos de plats y figurent sous deux
+formes : le fichier d'origine tel qu'il a été fourni, suffixé
+`-avec-badge`, et la version publiée dont le badge Uber Eats du coin
+inférieur droit a été retiré — le fond a été reconstitué, aucun plat n'était
+recouvert.
 
 ---
 
@@ -121,7 +126,8 @@ assets/data/avis.json         les avis Google
 assets/data/evenements.json   les événements
 assets/img/logo/              logo, icônes, image de partage
 assets/img/salle/             la salle et la devanture
-assets/img/plats/             les plats
+assets/img/plats/             les plats (tacos, lomo saltado, nachotes,
+                              plato vegetariano, salchipollo)
 assets/img/clients/           les clients et les soirées
 assets/img/presse/            la coupure de La Montagne
 assets/img/_sources/          originaux haute résolution (non publiés)

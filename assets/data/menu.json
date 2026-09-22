@@ -1,7 +1,7 @@
 {
   "_mode_emploi": "Pour modifier la carte : editez ce fichier uniquement. Chaque categorie a un id (utilise par les onglets), un label francais et un label espagnol. Chaque plat a un nom, un prix (texte libre, ex. \"10 €\"), une description et, si besoin, \"vege\": true pour afficher la pastille vegetarien.",
   "mention": "Prix TTC. Carte susceptible d’évoluer selon les saisons.",
-  "lien_uber_eats": "",
+  "lien_uber_eats": "https://www.ubereats.com/fr/store/barrio-latino/BShPgLBYUmCl02zkLB5bPg",
   "categories": [
     {
       "id": "entrees",
