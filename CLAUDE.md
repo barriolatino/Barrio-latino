@@ -29,8 +29,11 @@ dépôt est exactement ce qui est servi.
   `outils/optimiser-image.sh` et arrive en WebP + JPG de secours dans
   `assets/img/`.
 - **Le trafic vient du lien en bio Instagram**, donc du mobile : le poids de la
-  page est le premier critère de qualité. Référence à tenir : 384 ko et 14
-  requêtes au premier affichage mobile, CLS 0.
+  page est le premier critère de qualité. Référence à tenir : **403 ko et 16
+  requêtes au premier affichage mobile, CLS 0** (mesuré à 390 px).
+  Seize photos ont été ajoutées depuis la refonte pour seulement deux
+  requêtes de plus au chargement : toute nouvelle image doit rester sous la
+  ligne de flottaison et porter `loading="lazy"`, sans quoi ce budget saute.
 - **Toute couleur portant du texte blanc** doit utiliser une variante « deep »
   (`--coral-deep`, `--turquoise-deep`, `--sun-deep`). Les teintes de marque
   brutes n'atteignent pas le ratio WCAG AA 4.5:1 sur fond clair. Elles passent
