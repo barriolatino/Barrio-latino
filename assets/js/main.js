@@ -466,18 +466,13 @@
      ====================================================================== */
   (function lightbox() {
     var dlg = $('#lightbox');
-    var shots = $$('.shot');
-    if (!dlg || !shots.length) return;
+    var groupes = $$('[data-galerie]');
+    if (!dlg || !groupes.length) return;
 
     var img = $('#lbImg');
     var cap = $('#lbCap');
     var live = $('#lbLive');
-    var i = 0, opener = null;
-
-    var slides = shots.map(function (b) {
-      var im = $('img', b);
-      return { src: b.getAttribute('data-full') || im.currentSrc || im.src, alt: im.alt };
-    });
+    var slides = [], i = 0, opener = null;
 
     function show(n) {
       i = (n + slides.length) % slides.length;
@@ -487,11 +482,21 @@
       if (live) live.textContent = 'Photo ' + (i + 1) + ' sur ' + slides.length;
     }
 
-    shots.forEach(function (b, n) {
-      b.addEventListener('click', function () {
-        opener = b; show(n);
-        if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
-        $('#lbClose').focus();
+    /* Chaque conteneur [data-galerie] forme son propre jeu de photos : les
+       fleches de la lightbox restent dans la galerie ou l'on a cliqué, au
+       lieu de deriver vers celle de la section voisine. */
+    groupes.forEach(function (g) {
+      var shots = $$('.shot', g);
+      var jeu = shots.map(function (b) {
+        var im = $('img', b);
+        return { src: b.getAttribute('data-full') || im.currentSrc || im.src, alt: im.alt };
+      });
+      shots.forEach(function (b, n) {
+        b.addEventListener('click', function () {
+          opener = b; slides = jeu; show(n);
+          if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+          $('#lbClose').focus();
+        });
       });
     });
 

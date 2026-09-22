@@ -47,11 +47,24 @@ dépôt est exactement ce qui est servi.
 - **Médiateur de la consommation** : dernier `<span class="todo">` de
   `mentions-legales.html`. Tout le reste des informations légales est renseigné.
 - **Photos manquantes** : la salle sans personne et la devanture restent en
-  basse résolution ; les desserts, le ceviche, les tequeños, les patacones et
-  la bandeja n'ont pas de photo. Huit plats sur trente-six sont illustrés.
+  basse résolution ; les desserts, les tequeños, les patacones et la bandeja
+  n'ont pas de photo de carte. Huit plats sur trente-six sont illustrés.
 
 Déjà réglés : lien Uber Eats, stationnement, accessibilité (dérogation),
 identité légale (PELISSIER ARANIBAR, SARL, SIREN 989 353 354, cogérance).
+
+## Galeries et affichage plein écran
+
+Tout conteneur portant `data-galerie` forme un groupe de photos : les flèches
+de la lightbox tournent à l'intérieur du groupe cliqué. Il y en a deux, la
+galerie photos (`.mosaic`) et la galerie traiteur (`.traiteur-gallery`).
+Ajouter une troisième galerie ne demande aucun code, seulement l'attribut.
+
+Les deux grilles sont calibrées pour ne jamais laisser de case vide à leurs
+points de rupture : la mosaïque tient 10 vignettes dont 2 panoramiques
+(12 cases, donc 4, 3 ou 2 colonnes tombent juste), la galerie traiteur une
+photo pleine largeur plus quatre carrées (4 colonnes ou 2 x 2). Changer le
+nombre de vignettes casse cet équilibre.
 
 ## Vignettes de la carte
 

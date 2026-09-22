@@ -109,6 +109,15 @@ de l'image avant son chargement et évitent que la page saute.
 Écrivez toujours un `alt` qui décrit la photo en français — c'est ce que lisent
 les personnes aveugles et Google.
 
+Les galeries sont pilotées par l'attribut `data-galerie` : toutes les
+vignettes d'un même conteneur forment un groupe, et les flèches de
+l'affichage plein écran restent à l'intérieur de ce groupe. Il y en a deux,
+la galerie photos et la galerie traiteur.
+
+`assets/img/clients/amies-dejeuner` n'est plus affichée mais reste
+disponible : il suffit de recopier un bloc `<button class="shot">` de la
+galerie pour la remettre.
+
 Les originaux haute résolution sont rangés dans `assets/img/_sources/` et ne
 sont jamais chargés par le site. Les photos de plats y figurent sous deux
 formes : le fichier d'origine tel qu'il a été fourni, suffixé
@@ -138,6 +147,7 @@ assets/img/salle/             la salle et la devanture
 assets/img/plats/             les plats en grand format
 assets/img/plats/vignettes/   les mêmes en 4:3 pour la carte
 assets/img/clients/           les clients et les soirées
+assets/img/traiteur/          les photos d'événements traiteur
 assets/img/presse/            la coupure de La Montagne
 assets/img/_sources/          originaux haute résolution (non publiés)
 
