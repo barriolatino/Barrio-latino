@@ -1,0 +1,26 @@
+{
+  "_mode_emploi": "Pour modifier les evenements : editez ce fichier. \"prochain\" est l'encart mis en avant en haut de la section — laissez \"titre\" vide pour masquer l'encart. Tant que \"date\" reste vide, l'encart s'intitule « À l'affiche » ; des que vous y mettez une date, il devient « Prochain evenement ». \"recurrents\" est la liste des cartes affichees en dessous.",
+  "prochain": {
+    "titre": "Fiesta Latina",
+    "date": "",
+    "description": "Salsa, cumbia et reggaeton, cocktails au comptoir et la salle qui se transforme en piste. La date de la prochaine est annoncée sur notre Instagram.",
+    "lien": "https://www.instagram.com/barriolatino_fr"
+  },
+  "recurrents": [
+    {
+      "titre": "Fiesta Latina",
+      "accroche": "Soirée dansante",
+      "description": "Salsa, cumbia et reggaeton, cocktails au comptoir et la salle qui se transforme en piste. Le rendez-vous des soirs de fête."
+    },
+    {
+      "titre": "Karaoké & happy hour",
+      "accroche": "Soirée détendue",
+      "description": "Le micro passe de table en table et les cocktails sont à prix doux. Venir en bande est vivement conseillé."
+    },
+    {
+      "titre": "Día del Amor y la Amistad",
+      "accroche": "Soirée spéciale",
+      "description": "La fête colombienne de l’amour et de l’amitié, célébrée comme il se doit : carte spéciale, décor et surprises pour les tables."
+    }
+  ]
+}

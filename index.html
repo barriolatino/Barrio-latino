@@ -1,727 +1,532 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Barrio Latino — Restaurant latino-américain à Clermont-Ferrand</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --sun:#F2811D;
-    --navy:#12173A;
-    --turquoise:#2FA39A;
-    --yellow:#F5B921;
-    --coral:#E5533C;
-    --cream:#FBF3E5;
-    --paper:#FFFDF8;
-    --ink:#1B1B1B;
-    /* Variantes assombries reservees aux surfaces portant du texte blanc :
-       les teintes de marque ci-dessus n'atteignent pas le ratio WCAG AA 4.5:1. */
-    --coral-deep:#DD371D;
-    --turquoise-deep:#26837C;
-    --sun-deep:#BA5D0B;
-    --gold-deep:#7F6019;
-    --coral-text:#C32E16;
-    box-sizing:border-box;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  html{scroll-behavior:smooth;scroll-padding-top:78px;}
-  *,*::before,*::after{box-sizing:inherit;}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:'Work Sans',sans-serif;font-size:16px;line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  img{max-width:100%;display:block;}
-  h1,h2,h3{font-family:'Baloo 2',sans-serif;margin:0 0 .4em 0;line-height:1.08;color:var(--navy);font-weight:700;}
-  p{margin:0 0 1em 0;}
-  a{color:inherit;}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
 
-  header{
-    position:sticky;top:0;z-index:50;background:rgba(255,253,248,.92);backdrop-filter:blur(8px);
-    border-bottom:1px solid rgba(18,23,58,.08);padding-top:env(safe-area-inset-top,0px);
-  }
-  .nav{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .brand img{width:40px;height:40px;object-fit:contain;}
-  .brand span{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.25rem;color:var(--navy);}
-  nav.links{display:flex;gap:18px;list-style:none;margin:0;padding:0;flex-wrap:wrap;}
-  nav.links a{text-decoration:none;color:var(--navy);font-weight:600;font-size:.92rem;padding:6px 2px;border-bottom:2px solid transparent;}
-  nav.links a:hover{border-color:var(--sun);}
-  .nav-cta{background:var(--coral-deep);color:#fff;padding:10px 18px;border-radius:100px;text-decoration:none;font-weight:700;font-size:.9rem;white-space:nowrap;box-shadow:0 4px 0 rgba(0,0,0,.15);}
-  @media (max-width:940px){ nav.links{display:none;} }
+<title>Barrio Latino — Restaurant péruvien et latino-américain à Clermont-Ferrand</title>
+<meta name="description" content="Cuisines du Pérou, de Colombie, du Venezuela et du Mexique au 9 rue du Port, à Clermont-Ferrand. Ceviche, lomo saltado, tacos, pisco sour. Noté 4,8/5 sur Google. Sur place, à emporter, livraison et traiteur.">
+<link rel="canonical" href="https://barriolatino.github.io/Barrio-latino/">
+<meta name="theme-color" content="#12173A">
+<meta name="robots" content="index, follow">
 
-  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#FFF6E6 0%, var(--paper) 78%);padding:52px 0 0;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
-  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
-  .hero-kicker{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:7px 14px;border-radius:100px;font-size:.8rem;font-weight:600;margin-bottom:18px;}
-  .hero-kicker b{color:var(--yellow);}
-  .hero h1{font-size:clamp(2.2rem,5vw,3.4rem);}
-  .hero h1 em{font-style:normal;color:var(--coral);}
-  .hero p.lede{font-size:1.08rem;color:#3a3f55;max-width:48ch;margin-bottom:24px;}
-  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:22px;}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:100px;text-decoration:none;font-weight:700;font-size:.95rem;border:2px solid transparent;transition:transform .15s ease;cursor:pointer;}
-  .btn:active{transform:scale(.97);}
-  .btn-primary{background:var(--coral-deep);color:#fff;box-shadow:0 5px 0 #A82D16;}
-  .btn-outline{border-color:var(--navy);color:var(--navy);background:none;}
-  .btn-outline:hover{background:var(--navy);color:#fff;}
-  .btn-light{background:#fff;color:var(--navy);box-shadow:0 5px 0 rgba(0,0,0,.12);}
-  .btn-sm{padding:10px 16px;font-size:.85rem;}
-  .hero-rating{display:flex;align-items:center;gap:10px;font-size:.9rem;color:#4a4f66;flex-wrap:wrap;}
-  .stars{color:var(--yellow);letter-spacing:1px;}
-  .hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
-  .mini-tag{background:var(--cream);color:var(--navy);font-size:.78rem;font-weight:600;padding:5px 11px;border-radius:100px;}
-  .hero-photo{position:relative;border-radius:26px;overflow:hidden;box-shadow:0 24px 50px -18px rgba(18,23,58,.45);}
-  .hero-photo img{width:100%;height:400px;object-fit:cover;}
-  .hero-photo::after{content:"";position:absolute;inset:0;border-radius:26px;box-shadow:inset 0 0 0 6px rgba(255,255,255,.55);pointer-events:none;}
-  .hero-badge{position:absolute;bottom:-18px;left:-18px;background:var(--yellow);color:var(--navy);padding:13px 17px;border-radius:16px;font-family:'Baloo 2',sans-serif;font-weight:700;font-size:.9rem;box-shadow:0 10px 24px -10px rgba(0,0,0,.4);transform:rotate(-4deg);}
-  .skyline{width:100%;height:64px;display:block;margin-top:36px;}
-  .bunting{width:100%;height:46px;display:block;}
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Barrio Latino">
+<meta property="og:title" content="Barrio Latino — Cuisines d’Amérique latine à Clermont-Ferrand">
+<meta property="og:description" content="Pérou · Colombie · Venezuela · Mexique. 9 rue du Port, Clermont-Ferrand. 4,8/5 sur Google avec 287 avis.">
+<meta property="og:url" content="https://barriolatino.github.io/Barrio-latino/">
+<meta property="og:image" content="https://barriolatino.github.io/Barrio-latino/assets/img/logo/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gianella et Clément Pélissier dans la salle du Barrio Latino, devant le néon rose et le mur végétal.">
+<meta name="twitter:card" content="summary_large_image">
 
-  section{padding:64px 0;}
-  .section-head{max-width:640px;margin:0 0 36px;}
-  .section-head .tag{display:inline-block;font-family:'Baloo 2',sans-serif;font-weight:700;color:var(--coral-text);font-size:.92rem;margin-bottom:8px;}
-  .section-head h2{font-size:clamp(1.7rem,3.4vw,2.3rem);}
-  .section-head p{color:#4a4f66;font-size:1rem;}
+<link rel="icon" href="assets/img/logo/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/logo/logo-icon.png" sizes="384x260">
+<link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png">
 
-  .about{background:var(--navy);color:#F4F1EA;}
-  .about .tag{color:var(--yellow);}
-  .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:center;}
-  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
-  .about-photo{border-radius:22px;overflow:hidden;box-shadow:0 20px 40px -16px rgba(0,0,0,.6);}
-  .about-photo img{width:100%;height:340px;object-fit:cover;}
-  .about-caption{font-size:.78rem;color:#9694b2;margin-top:8px;}
-  .about-text p{color:#D8D6E8;font-size:1.02rem;}
-  .flag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
-  .flag-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:100px;font-size:.83rem;font-weight:600;color:#fff;}
-  .service-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;}
-  .service-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);padding:9px 14px;border-radius:12px;font-size:.85rem;font-weight:600;color:#fff;}
-
-  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
-  .tab-btn{background:var(--cream);border:none;padding:10px 18px;border-radius:100px;font-weight:700;font-size:.88rem;color:var(--navy);cursor:pointer;font-family:'Work Sans',sans-serif;}
-  .tab-btn.active{background:var(--navy);color:#fff;}
-  .tab-panel{display:none;}
-  .tab-panel.active{display:block;}
-  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-  @media (max-width:640px){.menu-grid{grid-template-columns:1fr;}}
-  .dish{display:flex;justify-content:space-between;gap:14px;background:var(--cream);border-radius:16px;padding:16px 18px;border:1px solid rgba(38,131,124,.22);}
-  .dish h3{margin:0 0 4px;font-family:'Baloo 2',sans-serif;font-size:1.02rem;color:var(--navy);}
-  .dish p{margin:0;font-size:.85rem;color:#4a4f66;}
-  .dish .price{font-family:'Baloo 2',sans-serif;font-weight:700;color:var(--coral-text);white-space:nowrap;}
-  .menu-note{margin-top:28px;background:#fff;border:2px dashed rgba(18,23,58,.2);border-radius:16px;padding:18px 22px;font-size:.9rem;color:#4a4f66;display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:space-between;}
-
-  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  @media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr);}}
-  .gallery a{border-radius:16px;overflow:hidden;display:block;aspect-ratio:1/1;}
-  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease;}
-  .gallery a:hover img{transform:scale(1.06);}
-
-  .traiteur{background:var(--cream);}
-  .traiteur-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
-  @media (max-width:860px){.traiteur-grid{grid-template-columns:1fr;}}
-  .traiteur-points{display:flex;flex-direction:column;gap:14px;margin:20px 0 26px;}
-  .traiteur-point{display:flex;gap:12px;align-items:flex-start;}
-  .traiteur-point .ic{font-size:1.3rem;}
-  .traiteur-point h3{margin:0 0 2px;font-family:'Baloo 2',sans-serif;color:var(--navy);font-size:1rem;}
-  .traiteur-point p{margin:0;color:#4a4f66;font-size:.92rem;}
-  .traiteur-card{background:var(--navy);border-radius:22px;padding:32px;color:#fff;}
-  .traiteur-card h3{color:#fff;}
-  .traiteur-card p{color:#CFCDE0;font-size:.95rem;}
-
-  .press-card{display:flex;gap:24px;background:var(--cream);border-radius:22px;padding:28px;align-items:center;flex-wrap:wrap;}
-  .press-logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.3rem;color:var(--navy);background:#fff;padding:8px 16px;border-radius:10px;white-space:nowrap;}
-  .press-body{flex:1;min-width:240px;}
-  .press-body p{color:#3a3f55;font-size:.98rem;margin-bottom:6px;}
-  .press-meta{font-size:.82rem;color:var(--gold-deep);background:#FCEFC9;display:inline-block;padding:5px 12px;border-radius:100px;margin-top:6px;}
-
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
-  @media (max-width:900px){.split{grid-template-columns:1fr;}}
-  .hours-card{background:var(--cream);border-radius:22px;padding:28px;}
-  .hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(18,23,58,.1);font-weight:600;font-size:.95rem;}
-  .hours-row:last-child{border-bottom:none;}
-  .hours-row span.time{color:#3a3f55;font-weight:500;}
-  .other-ways{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
-  .way-btn{display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:10px 14px;font-size:.84rem;font-weight:700;text-decoration:none;color:var(--navy);box-shadow:0 3px 0 rgba(0,0,0,.08);}
-
-  .res-card{background:var(--navy);color:#fff;border-radius:22px;padding:28px;}
-  .res-card h3{color:#fff;font-size:1.25rem;}
-  .res-card p.hint{color:#CFCDE0;font-size:.9rem;}
-  .res-field{margin-bottom:14px;}
-  .res-field label{display:block;font-size:.82rem;color:#CFCDE0;margin-bottom:6px;font-weight:600;}
-  .res-field input,.res-field select{
-    width:100%;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.08);color:#fff;font-family:'Work Sans',sans-serif;font-size:.92rem;
-  }
-  .res-field input::placeholder{color:#8f8db0;}
-  .res-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .res-submit{width:100%;margin-top:6px;background:var(--coral-deep);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:700;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
-  .res-alt{width:100%;margin-top:10px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);padding:13px;border-radius:14px;font-weight:700;font-size:.9rem;cursor:pointer;text-align:center;text-decoration:none;display:block;}
-  .res-fineprint{font-size:.75rem;color:#8f8db0;margin-top:12px;}
-
-  .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
-  @media (max-width:860px){.events-grid{grid-template-columns:1fr;}}
-  .event-card{border-radius:20px;padding:26px 24px;color:#fff;display:flex;flex-direction:column;gap:10px;min-height:180px;justify-content:flex-end;}
-  .event-card.e1{background:linear-gradient(150deg,var(--coral-deep),#8f2f43);}
-  .event-card.e2{background:linear-gradient(150deg,var(--turquoise-deep),#1c5f6f);}
-  .event-card.e3{background:linear-gradient(150deg,var(--sun-deep),#a8420f);}
-  .event-card h3{color:#fff;font-size:1.15rem;}
-  .event-card p{color:#fff;font-size:.88rem;margin:0;}
-
-  .reviews{background:var(--cream);}
-  .reviews-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px;}
-  .review-score{display:flex;align-items:center;gap:16px;}
-  .review-score .num{font-family:'Baloo 2',sans-serif;font-size:3.1rem;font-weight:800;color:var(--navy);}
-  .review-score .stars{font-size:1.2rem;}
-  .review-score .count{color:#4a4f66;font-size:.88rem;}
-  .carousel{position:relative;background:#fff;border-radius:20px;padding:30px;min-height:110px;overflow:hidden;}
-  .carousel-slide{display:none;font-size:1.05rem;color:var(--navy);font-family:'Baloo 2',sans-serif;font-weight:600;line-height:1.4;}
-  .carousel-slide.active{display:block;}
-  .carousel-slide span{display:block;font-family:'Work Sans',sans-serif;font-weight:500;font-size:.82rem;color:var(--gold-deep);margin-top:10px;}
-  .carousel-dots{display:flex;gap:7px;margin-top:16px;}
-  .cdot{width:7px;height:7px;border-radius:50%;background:rgba(18,23,58,.2);}
-  .cdot.active{background:var(--coral);}
-
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
-  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
-  .map-card{border-radius:22px;overflow:hidden;position:relative;min-height:320px;}
-  .map-fallback{position:relative;z-index:1;background:linear-gradient(160deg,var(--turquoise-deep),var(--navy));min-height:320px;display:flex;align-items:flex-end;padding:26px;}
-  .map-pin{position:relative;z-index:2;color:#fff;}
-  .map-pin .pin-icon{font-size:2.1rem;}
-  .map-pin h3{color:#fff;margin-bottom:4px;}
-  .map-pin p{color:rgba(255,255,255,.96);margin-bottom:16px;}
-  .info-list{display:flex;flex-direction:column;gap:18px;}
-  .info-item{display:flex;gap:16px;align-items:flex-start;}
-  .info-item .ic{width:46px;height:46px;border-radius:14px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
-  .info-item h4{margin:0 0 4px;font-family:'Baloo 2',sans-serif;color:var(--navy);font-size:1rem;}
-  .info-item p{margin:0;color:#4a4f66;font-size:.93rem;}
-  .social-row{display:flex;gap:12px;margin-top:8px;}
-  .social-btn{width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;}
-  .social-btn:hover{background:var(--coral);}
-
-  footer{background:var(--navy);color:#CFCDE0;padding:46px 0 28px;}
-  .footer-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;}
-  .footer-brand{display:flex;align-items:center;gap:12px;}
-  .footer-brand img{width:44px;height:44px;object-fit:contain;}
-  .footer-brand span{font-family:'Baloo 2',sans-serif;color:#fff;font-weight:800;font-size:1.2rem;}
-  footer nav{display:flex;gap:18px;flex-wrap:wrap;}
-  footer nav a{color:#CFCDE0;text-decoration:none;font-size:.88rem;}
-  footer nav a:hover{color:#fff;}
-  .footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.8rem;color:#9694b2;}
-
-  .fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;background:var(--coral-deep);color:#fff;text-decoration:none;display:flex;align-items:center;gap:9px;padding:13px 18px;border-radius:100px;font-weight:700;font-size:.86rem;box-shadow:0 10px 24px -8px rgba(0,0,0,.5);}
-  .fab svg{width:18px;height:18px;}
-  @media (max-width:560px){ .fab span{display:none;} .fab{padding:14px;} }
-
-  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
-  .reveal.in{opacity:1;transform:none;}
-  ::selection{background:var(--yellow);color:var(--navy);}
-</style>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/fraunces-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/plus-jakarta-sans-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/salle/salle-neon-couple.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<header>
+<a class="skip" href="#carte">Aller directement à la carte</a>
+
+<!-- ============================  EN-TÊTE  ============================ -->
+<header class="header" id="entete">
   <div class="nav">
-    <a class="brand" href="#top">
-      <img src="assets/01-barrio-latino.png" alt="Barrio Latino">
-      <span>Barrio Latino</span>
+    <a class="brand" href="#top" aria-label="Barrio Latino, retour en haut de page">
+      <img src="assets/img/logo/logo-icon.png" width="384" height="238" alt="">
+      <span>
+        <b>Barrio Latino</b>
+        <i>Cuisines d’Amérique latine</i>
+      </span>
     </a>
-    <nav class="links">
-      <a href="#carte">La carte</a>
-      <a href="#traiteur">Traiteur</a>
-      <a href="#horaires">Horaires</a>
-      <a href="#reserver">Réserver</a>
-      <a href="#evenements">Événements</a>
-      <a href="#avis">Avis</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="nav-cta" href="#reserver">Réserver une table</a>
+
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu de navigation">
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#carte">Carte</a></li>
+      <li><a href="#histoire">Notre histoire</a></li>
+      <li><a href="#traiteur">Traiteur</a></li>
+      <li><a href="#evenements">Événements</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#infos">Infos pratiques</a></li>
+      <li><a class="btn btn--sm nav-cta" href="#reserver">Réserver</a></li>
+    </ul>
   </div>
 </header>
 
-<div id="top"></div>
+<main id="top">
 
-<section class="hero" style="padding-bottom:0;">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-kicker">☀️ Pérou · Colombie · <b>Venezuela</b> · Mexique</div>
-        <h1>La cuisine latino-américaine<br><em>a son quartier</em> à Clermont-Ferrand.</h1>
-        <p class="lede">Repris en 2025 par Gianella et Clément, jeune couple franco-péruvien, le Barrio Latino garde
-          son âme : des plats faits maison, une façade et une salle 100% couleurs, et une ambiance qui donne envie
-          de rester pour un dernier cocktail.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#reserver">Réserver une table</a>
-          <a class="btn btn-outline" href="#carte">Découvrir la carte</a>
-        </div>
-        <div class="hero-rating">
-          <span class="stars">★★★★★</span>
-          <span><strong>4,8/5</strong> sur Google — 287 avis</span>
-        </div>
-        <div class="hero-tags">
-          <span class="mini-tag">🍽️ Sur place</span>
-          <span class="mini-tag">🥡 À emporter</span>
-          <span class="mini-tag">🛵 Uber Eats</span>
-          <span class="mini-tag">🎉 Traiteur événements</span>
-        </div>
+<!-- ==============================  HERO  ============================= -->
+<section class="hero">
+  <svg class="picado" role="presentation" focusable="false" aria-hidden="true"><defs><pattern id="pk-flags" width="400" height="54" patternUnits="userSpaceOnUse"><path d="M0 4Q40 11 80 4T160 4T240 4T320 4T400 4" fill="none" stroke="#12173A" stroke-opacity=".28" stroke-width="2"/><path fill="#E5533C" fill-rule="evenodd" d="M4 7h72l-5 33l-31 9l-31 -9zM33 19a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M21.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0M51.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0"/><path fill="#2FA39A" fill-rule="evenodd" d="M84 7h72l-5 33l-31 9l-31 -9zM113 19a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M101.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0M131.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0"/><path fill="#F5B921" fill-rule="evenodd" d="M164 7h72l-5 33l-31 9l-31 -9zM193 19a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M181.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0M211.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0"/><path fill="#F2811D" fill-rule="evenodd" d="M244 7h72l-5 33l-31 9l-31 -9zM273 19a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M261.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0M291.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0"/><path fill="#E84FA5" fill-rule="evenodd" d="M324 7h72l-5 33l-31 9l-31 -9zM353 19a7 7 0 1 0 14 0a7 7 0 1 0 -14 0M341.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0M371.4 31a3.6 3.6 0 1 0 7.2 0a3.6 3.6 0 1 0 -7.2 0"/></pattern></defs><rect width="100%" height="54" fill="url(#pk-flags)"/></svg>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-kicker">Pérou <i aria-hidden="true"></i> Colombie <i aria-hidden="true"></i> Venezuela <i aria-hidden="true"></i> Mexique</p>
+      <h1>La cuisine latino-américaine a son <span class="brush" style="--brush:#F5B921"><span>quartier</span></span> à Clermont-Ferrand</h1>
+      <p class="lead">Ceviche au citron vert, lomo saltado, chicharrón, tacos et pisco sour : Gianella et Clément vous reçoivent au 9 rue du Port, dans une salle où l’on a envie de rester.</p>
+
+      <div class="btn-row">
+        <a class="btn" href="#reserver">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4M16 2v4M3 9h18"/><rect x="3" y="4.5" width="18" height="17" rx="3"/><path d="M8.5 14h3"/></svg>
+          Réserver une table
+        </a>
+        <a class="btn btn--ghost" href="#carte">Voir la carte</a>
       </div>
-      <div class="hero-photo">
-        <img src="assets/02-interieur-colore-du-restaurant-barrio-la.jpg" alt="Intérieur coloré du restaurant Barrio Latino">
-        <div class="hero-badge">9 Rue du Port<br>Clermont-Ferrand</div>
+
+      <ul class="services">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 3v9a3 3 0 0 0 6 0V3M8 12v9M19 3c-1.7 1.2-2.5 3-2.5 5.5 0 2 .8 3 2.5 3.5v9"/></svg> Sur place</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1.2 12.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V5.5A3 3 0 0 1 15 5.5V8"/></svg> À emporter</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16h11V7H4.5L2 11.5z"/><path d="M13 12h4.5l3.5 4v0h-8z"/><circle cx="6.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/></svg> Livraison Uber Eats</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20v-3a7 7 0 0 1 14 0v3"/><path d="M12 6.5V4"/><circle cx="12" cy="3" r="1"/></svg> Traiteur</li>
+      </ul>
+    </div>
+
+    <div class="hero-media">
+      <div class="hero-frame">
+        <picture>
+          <source srcset="assets/img/salle/salle-neon-couple.webp" type="image/webp">
+          <img src="assets/img/salle/salle-neon-couple.jpg" width="760" height="950" alt="Gianella et Clément Pélissier, dos à dos dans la salle du Barrio Latino, devant le néon rose « Disfruta, come y bebe que la vida es breve » et le mur végétal, sous une guirlande d’éventails en papier multicolores." fetchpriority="high" decoding="async">
+        </picture>
       </div>
+      <a class="rating-sticker" href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7" target="_blank" rel="noopener" data-lien-avis>
+        <span>
+          <b><span data-note>4,8</span><span aria-hidden="true">/5</span></b>
+          <span class="stars" data-stars role="img" aria-label="Noté 5 étoiles sur 5"></span>
+        </span>
+        <small><span data-nb-avis>287</span> avis<br>sur Google</small>
+      </a>
     </div>
   </div>
-  <svg class="skyline" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0" y="0" width="1200" height="90" fill="var(--paper)"/>
-    <g fill="var(--navy)">
-      <rect x="0" y="40" width="70" height="50"/><rect x="70" y="20" width="60" height="70"/>
-      <rect x="130" y="50" width="55" height="40"/><polygon points="130,50 157,28 185,50"/>
-      <rect x="200" y="10" width="80" height="80"/><rect x="290" y="35" width="65" height="55"/>
-      <polygon points="290,35 322,12 355,35"/><rect x="365" y="45" width="50" height="45"/>
-      <rect x="430" y="15" width="75" height="75"/><polygon points="430,15 467,-5 505,15"/>
-      <rect x="520" y="40" width="60" height="50"/><rect x="595" y="55" width="45" height="35"/>
-      <rect x="650" y="18" width="80" height="72"/><rect x="745" y="42" width="55" height="48"/>
-      <polygon points="745,42 772,20 800,42"/><rect x="815" y="10" width="75" height="80"/>
-      <rect x="900" y="48" width="55" height="42"/><rect x="965" y="25" width="65" height="65"/>
-      <polygon points="965,25 997,3 1030,25"/><rect x="1045" y="52" width="50" height="38"/>
-      <rect x="1105" y="20" width="95" height="70"/>
-    </g>
-  </svg>
+  <svg class="village" role="presentation" focusable="false" aria-hidden="true"><defs><pattern id="vg-town" width="300" height="88" patternUnits="userSpaceOnUse"><path fill="currentColor" fill-rule="evenodd" d="M0 88V56H6V44H32V56H38V38L58 24L78 38V56H84V32H102V26H118V56H124V18H128V11H132V18H148V56H154V40L180 24L206 40V56H212V46H242V56H248V42L264 32L280 42V56H300V88ZM12 48h7v8h-7zM44 44h7v8h-7zM64 44h7v8h-7zM52 32h8v7h-8zM90 38h8v8h-8zM106 38h8v8h-8zM131 25h9v9h-9zM164 44h8v9h-8zM188 44h8v9h-8zM176 32h9v8h-9zM220 50h7v6h-7zM258 46h8v7h-8z"/><path d="M92 14q4.5-4.5 9 0M210 10q4-4 8 0M242 16q3.5-3.5 7 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".5"/></pattern></defs><rect width="100%" height="100%" fill="url(#vg-town)"/></svg>
 </section>
 
-<section class="about" id="ambiance">
-  <div class="wrap">
-    <div class="about-grid">
-      <div>
-        <div class="about-photo">
-          <img src="assets/03-gianella-et-clement-pelissier-proprietai.jpg" alt="Gianella et Clément Pélissier, propriétaires du Barrio Latino">
-        </div>
-        <p class="about-caption">Gianella et Clément, propriétaires du Barrio Latino depuis 2025</p>
-      </div>
-      <div class="about-text">
-        <div class="section-head" style="margin-bottom:18px;">
-          <span class="tag">Notre histoire</span>
-          <h2>Un bout d'Amérique latine en plein cœur historique de Clermont</h2>
-        </div>
-        <p>Avec sa façade colorée rue du Port, le Barrio Latino est un repère connu des amoureux de cuisine
-          d'Amérique du Sud. Il vient d'être repris par Clément et Gianella Pélissier, jeune couple franco-péruvien :
-          elle, originaire de Lima, a toujours travaillé dans la restauration ; lui a récemment décidé de rejoindre
-          cette voie. Quand les précédents propriétaires ont souhaité vendre, ce lieu leur correspondait — et ils
-          n'ont pas changé le nom.</p>
-        <p>Le décor a été rafraîchi sans être bouleversé : néon rose, mur végétal, chaises dépareillées et fleurs
-          faites main par Gianella habillent une salle très instagrammable, sur fond de musique latine. La carte
-          garde son identité sud-américaine avec une touche péruvienne.</p>
-        <div class="flag-row">
-          <span class="flag-pill">🇵🇪 Pérou</span>
-          <span class="flag-pill">🇨🇴 Colombie</span>
-          <span class="flag-pill">🇻🇪 Venezuela</span>
-          <span class="flag-pill">🇲🇽 Mexique</span>
-        </div>
-        <div class="service-row">
-          <span class="service-pill">🍽️ Sur place</span>
-          <span class="service-pill">🥡 À emporter</span>
-          <span class="service-pill">🛵 Livraison Uber Eats</span>
-        </div>
-      </div>
+<!-- ============================  HISTOIRE  =========================== -->
+<section class="section on-navy" id="histoire">
+  <div class="wrap histoire-grid">
+    <div class="reveal">
+      <p class="eyebrow">Notre histoire</p>
+      <h2>Un <span class="brush" style="--brush:#2FA39A"><span>quartier latin</span></span> au bout de la rue du Port</h2>
+      <p>Avec sa façade colorée de la rue du Port, le Barrio Latino est depuis longtemps l’adresse que se transmettent les amoureux de cuisine d’Amérique du Sud à Clermont-Ferrand. En 2025, la maison a changé de mains : Gianella et Clément Pélissier, jeune couple franco-péruvien, l’ont reprise. Gianella, originaire de Lima, y avait travaillé en salle comme en cuisine ; quand les anciens propriétaires ont souhaité vendre, le couple n’a pas hésité. Ils ont gardé le nom, et pour une bonne raison : « Barrio Latino, cela veut dire quartier latin. Pour toutes les cuisines d’Amérique du Sud que nous proposons. »</p>
+      <p>Le décor, lui, a été repensé à leur image : un grand néon rose sur un mur végétal, des guirlandes d’éventails en papier, des chapeaux et des cadres aux murs, une balançoire, d’immenses fleurs d’hibiscus fabriquées à la main par Gianella, et de la musique latine en fond. La carte, elle, garde son identité sud-américaine — avec une touche péruvienne.</p>
+
+      <figure class="neon-quote">
+        <p>Disfruta, come y bebe que la vida es breve</p>
+        <footer>« Profitez-en, mangez et buvez, car la vie est courte » — le néon de la salle</footer>
+      </figure>
+    </div>
+
+    <div class="polaroids reveal">
+      <figure class="polaroid">
+        <picture>
+          <source srcset="assets/img/salle/devanture-rue-du-port.webp" type="image/webp">
+          <img src="assets/img/salle/devanture-rue-du-port.jpg" width="324" height="375" alt="La devanture bleu ciel du Barrio Latino dans la rue pavée du Port, à Clermont-Ferrand, avec ses lampes en rotin et ses fanions." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>9 rue du Port, centre historique</figcaption>
+      </figure>
+      <figure class="polaroid">
+        <picture>
+          <source srcset="assets/img/salle/salle-coin-neon.webp" type="image/webp">
+          <img src="assets/img/salle/salle-coin-neon.jpg" width="324" height="465" alt="Un coin de la salle du Barrio Latino : banquette, tables dressées, chaises dépareillées jaune et violette devant le mur végétal et le néon rose." loading="lazy" decoding="async">
+        </picture>
+        <figcaption>Le mur végétal et son néon</figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<div class="wrap" style="padding:0 24px;">
-  <svg class="bunting" viewBox="0 0 1200 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="4" x2="1200" y2="4" stroke="rgba(18,23,58,.25)" stroke-width="2"/>
-    <g>
-      <polygon points="0,4 40,4 20.0,40" fill="#E5533C"/>
-      <polygon points="40,4 80,4 60.0,40" fill="#F2811D"/>
-      <polygon points="80,4 120,4 100.0,40" fill="#F5B921"/>
-      <polygon points="120,4 160,4 140.0,40" fill="#2FA39A"/>
-      <polygon points="160,4 200,4 180.0,40" fill="#12173A"/>
-      <polygon points="200,4 240,4 220.0,40" fill="#E5533C"/>
-      <polygon points="240,4 280,4 260.0,40" fill="#F2811D"/>
-      <polygon points="280,4 320,4 300.0,40" fill="#F5B921"/>
-      <polygon points="320,4 360,4 340.0,40" fill="#2FA39A"/>
-      <polygon points="360,4 400,4 380.0,40" fill="#12173A"/>
-      <polygon points="400,4 440,4 420.0,40" fill="#E5533C"/>
-      <polygon points="440,4 480,4 460.0,40" fill="#F2811D"/>
-      <polygon points="480,4 520,4 500.0,40" fill="#F5B921"/>
-      <polygon points="520,4 560,4 540.0,40" fill="#2FA39A"/>
-      <polygon points="560,4 600,4 580.0,40" fill="#12173A"/>
-      <polygon points="600,4 640,4 620.0,40" fill="#E5533C"/>
-      <polygon points="640,4 680,4 660.0,40" fill="#F2811D"/>
-      <polygon points="680,4 720,4 700.0,40" fill="#F5B921"/>
-      <polygon points="720,4 760,4 740.0,40" fill="#2FA39A"/>
-      <polygon points="760,4 800,4 780.0,40" fill="#12173A"/>
-      <polygon points="800,4 840,4 820.0,40" fill="#E5533C"/>
-      <polygon points="840,4 880,4 860.0,40" fill="#F2811D"/>
-      <polygon points="880,4 920,4 900.0,40" fill="#F5B921"/>
-      <polygon points="920,4 960,4 940.0,40" fill="#2FA39A"/>
-      <polygon points="960,4 1000,4 980.0,40" fill="#12173A"/>
-      <polygon points="1000,4 1040,4 1020.0,40" fill="#E5533C"/>
-      <polygon points="1040,4 1080,4 1060.0,40" fill="#F2811D"/>
-      <polygon points="1080,4 1120,4 1100.0,40" fill="#F5B921"/>
-      <polygon points="1120,4 1160,4 1140.0,40" fill="#2FA39A"/>
-      <polygon points="1160,4 1200,4 1180.0,40" fill="#12173A"/>
-    </g>
-  </svg>
-</div>
-
-<section id="presse" style="padding-top:20px;">
+<!-- =============================  CARTE  ============================= -->
+<section class="section" id="carte">
   <div class="wrap">
-    <div class="press-card">
-      <div class="press-logo">LA MONTAGNE</div>
-      <div class="press-body">
-        <p><strong>« L'Amérique du sud version Barrio Latino »</strong> — dans sa rubrique Tour de tables du 15
-          novembre 2025, la journaliste Marion Chavot a testé la nouvelle carte : chicharrón, tacos mexicains,
-          quesadillas et tequeños, servis avec guacamole et pico de gallo maison. Côté dessert, le tres leches a
-          été plébiscité, et le détour par un cocktail margarita jugé indispensable.</p>
-        <span class="press-meta">La Montagne · samedi 15 novembre 2025, p.13</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="carte">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">La carte</span>
-      <h2>Bienvenido al viaje — bienvenue au voyage</h2>
-      <p>Un tour d'Amérique latine, assiette après assiette. Carte sujette à évolution selon les saisons.</p>
+    <div class="head reveal">
+      <p class="eyebrow">La carte</p>
+      <h2>Du ceviche au pisco sour, <span class="brush" style="--brush:#F2811D"><span>tout est fait maison</span></span></h2>
+      <p class="lead">Quatre cuisines sur une seule carte. Les plats se partagent volontiers : c’est même la meilleure façon d’en faire le tour.</p>
     </div>
 
-    <div class="tabs" id="menuTabs">
-      <button class="tab-btn active" data-tab="entradas">Entrées</button>
-      <button class="tab-btn" data-tab="fondo">Plats</button>
-      <button class="tab-btn" data-tab="mexico">Mexicain</button>
-      <button class="tab-btn" data-tab="postres">Desserts</button>
-      <button class="tab-btn" data-tab="bar">Bar & boissons</button>
-    </div>
+    <div class="reveal">
+      <div class="tabs" id="menuTabs" role="tablist" aria-label="Catégories de la carte"></div>
+      <div id="menuPanels"></div>
 
-    <div class="tab-panel active" data-panel="entradas">
-      <div class="menu-grid">
-        <div class="dish"><div><h3>Nachotes</h3><p>Chips de maïs, guacamole, pico de gallo, poulet ou bœuf effiloché et cheddar fondu</p></div><span class="price">10€</span></div>
-        <div class="dish"><div><h3>Ceviche</h3><p>Poisson mariné au citron vert, sauce leche de tigre, oignons et camote</p></div><span class="price">14€</span></div>
-        <div class="dish"><div><h3>Empanadas</h3><p>Chausson à la viande effilochée</p></div><span class="price">7€</span></div>
-        <div class="dish"><div><h3>Tequeños</h3><p>Bâtonnets de fromage accompagnés de guacamole</p></div><span class="price">7€</span></div>
-        <div class="dish"><div><h3>Patacones Reina</h3><p>Bananes plantains, viande effilochée et guacamole</p></div><span class="price">10€</span></div>
-      </div>
-    </div>
+      <noscript>
+        <p class="lead">La carte complète est affichée par une petite animation JavaScript. Pour la consulter sans JavaScript, appelez-nous au <a href="tel:+33981924025">09 81 92 40 25</a> ou écrivez-nous à <a href="mailto:barriolatino.contact@gmail.com">barriolatino.contact@gmail.com</a>.</p>
+      </noscript>
+      <p class="lead" id="menuFallback" hidden>La carte n’a pas pu être chargée. Appelez-nous au <a href="tel:+33981924025">09 81 92 40 25</a>, nous vous la détaillons avec plaisir.</p>
 
-    <div class="tab-panel" data-panel="fondo">
-      <div class="menu-grid">
-        <div class="dish"><div><h3>Bandeja de la casa</h3><p>Porc croustillant, bœuf effiloché, riz, haricots rouges cuisinés et banane plantain</p></div><span class="price">20€</span></div>
-        <div class="dish"><div><h3>Salchipollo</h3><p>Saucisse fumée, poulet croustillant, frites et salade sauce Gigi</p></div><span class="price">14€</span></div>
-        <div class="dish"><div><h3>Chicharrón</h3><p>Poitrine de porc croustillante, pommes de terre sautées et banane plantain</p></div><span class="price">15€</span></div>
-        <div class="dish"><div><h3>Lomo Saltado</h3><p>Bœuf sauté aux oignons, tomates, sauce soja, pommes de terre sautées et riz</p></div><span class="price">18€</span></div>
-        <div class="dish"><div><h3>Plato Vegetariano</h3><p>Haricots rouges, riz, bananes plantains, totopos et guacamole</p></div><span class="price">12€</span></div>
-      </div>
-    </div>
-
-    <div class="tab-panel" data-panel="mexico">
-      <div class="menu-grid">
-        <div class="dish"><div><h3>Tacos mexicains x3</h3><p>Galette de maïs, guacamole, pico de gallo — au choix poulet et/ou bœuf</p></div><span class="price">14€</span></div>
-        <div class="dish"><div><h3>Quesadillas</h3><p>Galette de blé, effiloché de poulet et cheddar fondu</p></div><span class="price">9€</span></div>
-      </div>
-    </div>
-
-    <div class="tab-panel" data-panel="postres">
-      <div class="menu-grid">
-        <div class="dish"><div><h3>Tres Leches</h3><p>Gâteau aux 3 laits recouvert de chantilly</p></div><span class="price">7€</span></div>
-        <div class="dish"><div><h3>Torta de Chocolate</h3><p>Gâteau au chocolat recouvert de ganache</p></div><span class="price">7€</span></div>
-        <div class="dish"><div><h3>Cheesecake de Maracuya</h3><p>Servi avec un coulis aux fruits de la passion</p></div><span class="price">7€</span></div>
-      </div>
-    </div>
-
-    <div class="tab-panel" data-panel="bar">
-      <div class="menu-grid">
-        <div class="dish"><div><h3>Cocktails signature</h3><p>Pisco Sour, Margarita, Mojito, Cuba Libre, Piña Colada, Chilcano</p></div><span class="price">9€</span></div>
-        <div class="dish"><div><h3>Cocktails sans alcool / digestif</h3><p>Versions sans alcool ou digestif au choix</p></div><span class="price">7€ / 6€</span></div>
-        <div class="dish"><div><h3>Bières latinos</h3><p>Cusqueña 7€ · Quilmes, Modelo, Club Colombia</p></div><span class="price">6-7€</span></div>
-        <div class="dish"><div><h3>Vins</h3><p>Gato Negro (Chili) · Bar Argentino (Argentine)</p></div><span class="price">22€</span></div>
-        <div class="dish"><div><h3>Sans alcool</h3><p>Pony Malta, Inka Kola, Coca-Cola, Limonada Frozen, jus naturels</p></div><span class="price">3-5€</span></div>
-        <div class="dish"><div><h3>Cafés</h3><p>Expresso, double expresso, café allongé, thé</p></div><span class="price">2-3€</span></div>
-      </div>
-    </div>
-
-    <div class="menu-note">
-      <span>📋 Prix indicatifs, carte complète et suggestions du moment sur place.</span>
-      <a class="btn btn-outline btn-sm" href="https://www.facebook.com/share/17c8ex3yae/?mibextid=wwXIfr" target="_blank" rel="noopener">Voir sur Facebook</a>
-    </div>
-  </div>
-</section>
-
-<div class="wrap" style="padding:0 24px;">
-  <svg class="bunting" viewBox="0 0 1200 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="4" x2="1200" y2="4" stroke="rgba(18,23,58,.25)" stroke-width="2"/>
-    <g>
-      <polygon points="0,4 40,4 20.0,40" fill="#E5533C"/>
-      <polygon points="40,4 80,4 60.0,40" fill="#F2811D"/>
-      <polygon points="80,4 120,4 100.0,40" fill="#F5B921"/>
-      <polygon points="120,4 160,4 140.0,40" fill="#2FA39A"/>
-      <polygon points="160,4 200,4 180.0,40" fill="#12173A"/>
-      <polygon points="200,4 240,4 220.0,40" fill="#E5533C"/>
-      <polygon points="240,4 280,4 260.0,40" fill="#F2811D"/>
-      <polygon points="280,4 320,4 300.0,40" fill="#F5B921"/>
-      <polygon points="320,4 360,4 340.0,40" fill="#2FA39A"/>
-      <polygon points="360,4 400,4 380.0,40" fill="#12173A"/>
-      <polygon points="400,4 440,4 420.0,40" fill="#E5533C"/>
-      <polygon points="440,4 480,4 460.0,40" fill="#F2811D"/>
-      <polygon points="480,4 520,4 500.0,40" fill="#F5B921"/>
-      <polygon points="520,4 560,4 540.0,40" fill="#2FA39A"/>
-      <polygon points="560,4 600,4 580.0,40" fill="#12173A"/>
-      <polygon points="600,4 640,4 620.0,40" fill="#E5533C"/>
-      <polygon points="640,4 680,4 660.0,40" fill="#F2811D"/>
-      <polygon points="680,4 720,4 700.0,40" fill="#F5B921"/>
-      <polygon points="720,4 760,4 740.0,40" fill="#2FA39A"/>
-      <polygon points="760,4 800,4 780.0,40" fill="#12173A"/>
-      <polygon points="800,4 840,4 820.0,40" fill="#E5533C"/>
-      <polygon points="840,4 880,4 860.0,40" fill="#F2811D"/>
-      <polygon points="880,4 920,4 900.0,40" fill="#F5B921"/>
-      <polygon points="920,4 960,4 940.0,40" fill="#2FA39A"/>
-      <polygon points="960,4 1000,4 980.0,40" fill="#12173A"/>
-      <polygon points="1000,4 1040,4 1020.0,40" fill="#E5533C"/>
-      <polygon points="1040,4 1080,4 1060.0,40" fill="#F2811D"/>
-      <polygon points="1080,4 1120,4 1100.0,40" fill="#F5B921"/>
-      <polygon points="1120,4 1160,4 1140.0,40" fill="#2FA39A"/>
-      <polygon points="1160,4 1200,4 1180.0,40" fill="#12173A"/>
-    </g>
-  </svg>
-</div>
-
-<section id="galerie">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">En images</span>
-      <h2>Un aperçu du barrio</h2>
-    </div>
-    <div class="gallery">
-      <a href="#"><img src="assets/04-tacos-mexicains-maison.jpg" alt="Tacos mexicains maison"></a>
-      <a href="#"><img src="assets/05-clients-attables-au-barrio-latino.jpg" alt="Clients attablés au Barrio Latino"></a>
-      <a href="#"><img src="assets/06-groupe-de-clients-avec-sombreros.jpg" alt="Groupe de clients avec sombreros"></a>
-      <a href="#"><img src="assets/07-devanture-du-restaurant.jpg" alt="Devanture du restaurant"></a>
-      <a href="#"><img src="assets/08-clientes-trinquant-au-restaurant.jpg" alt="Clientes trinquant au restaurant"></a>
-      <a href="#"><img src="assets/09-coin-de-la-salle-avec-guirlandes.jpg" alt="Coin de la salle avec guirlandes"></a>
-      <a href="#"><img src="assets/10-amies-dejeunant-avec-sombreros.jpg" alt="Amies déjeunant avec sombreros"></a>
-      <a href="#"><img src="assets/11-grand-groupe-pour-une-soiree-fiesta.jpg" alt="Grand groupe pour une soirée fiesta"></a>
-    </div>
-  </div>
-</section>
-
-<section class="traiteur" id="traiteur">
-  <div class="wrap">
-    <div class="traiteur-grid">
-      <div>
-        <div class="section-head" style="margin-bottom:14px;">
-          <span class="tag">Traiteur</span>
-          <h2>Le Barrio Latino s'invite à votre événement</h2>
-        </div>
-        <p>Anniversaire, mariage, soirée d'entreprise ou fête de famille : notre équipe se déplace pour recréer
-          l'ambiance et les saveurs du Barrio Latino, où que vous soyez.</p>
-        <div class="traiteur-points">
-          <div class="traiteur-point"><span class="ic">🏠</span><div><h3>Au restaurant</h3><p>Privatisez tout ou partie de la salle pour votre événement.</p></div></div>
-          <div class="traiteur-point"><span class="ic">🚐</span><div><h3>À l'extérieur</h3><p>Formule traiteur mobile pour vos événements en dehors du restaurant.</p></div></div>
-          <div class="traiteur-point"><span class="ic">📝</span><div><h3>Devis gratuit</h3><p>Décrivez-nous votre événement, on vous propose une formule sur-mesure.</p></div></div>
-        </div>
-      </div>
-      <div class="traiteur-card">
-        <h3>Une idée d'événement ?</h3>
-        <p>Contactez-nous pour un devis gratuit et sans engagement — on adapte le menu à votre budget et au nombre
-          d'invités.</p>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px;">
-          <a class="btn btn-primary" style="justify-content:center;" href="https://wa.me/33763920998?text=Bonjour%2C%20je%20souhaite%20un%20devis%20traiteur%20pour%20un%20%C3%A9v%C3%A9nement." target="_blank" rel="noopener">💬 Devis par WhatsApp</a>
-          <a class="btn btn-outline" style="justify-content:center;border-color:#fff;color:#fff;" href="mailto:barriolatino.contact@gmail.com?subject=Demande%20de%20devis%20traiteur&body=Bonjour%2C%0D%0A%0D%0AJe%20souhaite%20un%20devis%20traiteur%20pour%20%3A%0D%0A-%20Type%20d'%C3%A9v%C3%A9nement%20%3A%0D%0A-%20Date%20%3A%0D%0A-%20Lieu%20%3A%0D%0A-%20Nombre%20d'invit%C3%A9s%20%3A%0D%0A%0D%0AMerci%20!">✉️ Demander un devis</a>
+      <div class="menu-foot">
+        <p id="menuMention">Prix TTC. Carte susceptible d’évoluer selon les saisons.</p>
+        <div class="btn-row">
+          <a class="btn btn--turquoise" id="uberLink" href="#" target="_blank" rel="noopener" hidden>Commander sur Uber Eats</a>
+          <a class="btn btn--ghost" href="tel:+33981924025">Commander par téléphone</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="horaires">
+<!-- ============================  GALERIE  ============================ -->
+<section class="section section--cream" id="galerie">
   <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Pratique</span>
-      <h2>Horaires & réservation</h2>
+    <div class="head head--center reveal">
+      <p class="eyebrow">En images</p>
+      <h2>La salle, les plats, les soirées</h2>
     </div>
-    <div class="split">
-      <div>
-        <div class="hours-card">
-          <h3 style="margin-bottom:16px;">🕑 Horaires d'ouverture</h3>
-          <div class="hours-row"><span class="day">Lundi</span><span class="time">Fermé</span></div>
-          <div class="hours-row"><span class="day">Mardi</span><span class="time">Fermé</span></div>
-          <div class="hours-row"><span class="day">Mercredi</span><span class="time">12h30 – 15h00 · 19h00 – 22h00</span></div>
-          <div class="hours-row"><span class="day">Jeudi</span><span class="time">12h30 – 15h00 · 19h00 – 22h00</span></div>
-          <div class="hours-row"><span class="day">Vendredi</span><span class="time">12h30 – 15h00 · 19h00 – 22h00</span></div>
-          <div class="hours-row"><span class="day">Samedi</span><span class="time">12h30 – 15h00 · 19h00 – 22h00</span></div>
-          <div class="hours-row"><span class="day">Dimanche</span><span class="time">Fermé</span></div>
-        </div>
-        <div class="other-ways">
-          <a class="way-btn" href="tel:+33981924025">📞 Téléphone</a>
-          <a class="way-btn" href="https://wa.me/33763920998" target="_blank" rel="noopener">💬 WhatsApp</a>
-          <a class="way-btn" href="https://www.instagram.com/barriolatino_fr?stkn=d2l0cDQ3ZGtld25k&utm_source=qr" target="_blank" rel="noopener">📷 Instagram</a>
-          <a class="way-btn" href="mailto:barriolatino.contact@gmail.com">✉️ E-mail</a>
-        </div>
-      </div>
 
-      <div class="res-card" id="reserver">
-        <h3>📅 Réserver une table</h3>
-        <p class="hint">Choisissez une date et une heure, on ouvre WhatsApp avec votre demande déjà rédigée.</p>
-        <form id="resForm" onsubmit="return false;">
-          <div class="res-row">
-            <div class="res-field">
-              <label for="rName">Nom</label>
-              <input type="text" id="rName" placeholder="Votre nom" required>
-            </div>
-            <div class="res-field">
-              <label for="rPeople">Personnes</label>
-              <input type="number" id="rPeople" min="1" max="30" value="2" required>
-            </div>
+    <div class="mosaic reveal" data-galerie>
+      <button class="shot shot--wide" type="button" data-full="assets/img/salle/salle-neon-large.jpg" aria-label="Agrandir : la salle avec son néon rose et son mur végétal">
+        <picture>
+          <source srcset="assets/img/salle/salle-neon-large.webp" type="image/webp">
+          <img src="assets/img/salle/salle-neon-large.jpg" width="1200" height="750" alt="La salle du Barrio Latino, guirlandes d’éventails en papier au plafond, néon rose sur mur végétal et chaises colorées." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/plats/chicharron.jpg" aria-label="Agrandir : le chicharrón et ses bananes plantains">
+        <picture>
+          <source srcset="assets/img/plats/chicharron.webp" type="image/webp">
+          <img src="assets/img/plats/chicharron.jpg" width="1100" height="880" alt="Le chicharrón : morceaux de poitrine de porc croustillante, pommes de terre sautées, bananes plantains écrasées et quartiers de citron vert." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/clients/soiree-fiesta.jpg" aria-label="Agrandir : grand groupe lors d’une soirée Fiesta Latina">
+        <picture>
+          <source srcset="assets/img/clients/soiree-fiesta.webp" type="image/webp">
+          <img src="assets/img/clients/soiree-fiesta.jpg" width="700" height="700" alt="Un grand groupe de clients réunis autour des tables du Barrio Latino lors d’une soirée Fiesta Latina." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/plats/tacos-mexicains.jpg" aria-label="Agrandir : les tacos mexicains servis sur planche">
+        <picture>
+          <source srcset="assets/img/plats/tacos-mexicains.webp" type="image/webp">
+          <img src="assets/img/plats/tacos-mexicains.jpg" width="1100" height="881" alt="Trois tacos mexicains sur une planche en bois, garnis de viande effilochée, oignon rouge et coriandre, avec guacamole, pico de gallo et sauce piquante." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/clients/clients-attables.jpg" aria-label="Agrandir : clients attablés au Barrio Latino">
+        <picture>
+          <source srcset="assets/img/clients/clients-attables.webp" type="image/webp">
+          <img src="assets/img/clients/clients-attables.jpg" width="700" height="700" alt="Des clients attablés au Barrio Latino, plats et cocktails partagés au centre de la table." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot shot--wide" type="button" data-full="assets/img/plats/table-garnie.jpg" aria-label="Agrandir : une grande tablée de plats à partager">
+        <picture>
+          <source srcset="assets/img/plats/table-garnie.webp" type="image/webp">
+          <img src="assets/img/plats/table-garnie.jpg" width="1400" height="884" alt="Une grande tablée dressée au Barrio Latino : quesadillas, lomo saltado, nachotes, empanadas, tacos et chicharrón disposés sur une table en bois clair." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/plats/quesadillas.jpg" aria-label="Agrandir : les quesadillas et leurs sauces">
+        <picture>
+          <source srcset="assets/img/plats/quesadillas.webp" type="image/webp">
+          <img src="assets/img/plats/quesadillas.jpg" width="1100" height="880" alt="Deux quesadillas dorées coupées en deux sur une assiette turquoise, avec guacamole, pico de gallo et oignon rouge." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/clients/groupe-sombreros.jpg" aria-label="Agrandir : groupe de clients avec sombreros">
+        <picture>
+          <source srcset="assets/img/clients/groupe-sombreros.webp" type="image/webp">
+          <img src="assets/img/clients/groupe-sombreros.jpg" width="700" height="700" alt="Groupe de clients coiffés de sombreros, tout sourire dans la salle du Barrio Latino." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/plats/empanadas.jpg" aria-label="Agrandir : les empanadas et leur pico de gallo">
+        <picture>
+          <source srcset="assets/img/plats/empanadas.webp" type="image/webp">
+          <img src="assets/img/plats/empanadas.jpg" width="1100" height="880" alt="Deux empanadas à la pâte de maïs dorée, servies en panier avec une cassolette de pico de gallo." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/clients/clientes-trinquant.jpg" aria-label="Agrandir : clientes trinquant au restaurant">
+        <picture>
+          <source srcset="assets/img/clients/clientes-trinquant.webp" type="image/webp">
+          <img src="assets/img/clients/clientes-trinquant.jpg" width="700" height="700" alt="Deux clientes trinquant avec des cocktails au Barrio Latino." loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </div>
+
+    <p class="btn-row reveal" style="margin-top:26px;justify-content:center">
+      <a class="btn btn--ghost" href="https://www.instagram.com/barriolatino_fr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+        Plus de photos sur Instagram
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ===========================  TRAITEUR  ============================ -->
+<section class="section on-navy" id="traiteur">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Traiteur & privatisation</p>
+      <h2>Le Barrio Latino s’invite à votre événement</h2>
+      <p class="lead">Anniversaire, mariage, soirée d’entreprise ou grande fête de famille : nous composons une carte à votre mesure, chez nous ou chez vous.</p>
+    </div>
+
+    <div class="traiteur-gallery reveal" data-galerie>
+      <button class="shot shot--lead" type="button" data-full="assets/img/traiteur/buffet-evenement.jpg" aria-label="Agrandir : le buffet dressé lors d’un événement">
+        <picture>
+          <source srcset="assets/img/traiteur/buffet-evenement.webp" type="image/webp">
+          <img src="assets/img/traiteur/buffet-evenement.jpg" width="1600" height="1067" alt="Un long buffet dressé sous une terrasse en bois lors d’un événement : plateaux d’empanadas, verrines de ceviche et grande bonbonne de jus d’orange, les invités se servent." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/traiteur/buffet-tablee.jpg" aria-label="Agrandir : la tablée du buffet dans sa longueur">
+        <picture>
+          <source srcset="assets/img/traiteur/buffet-tablee.webp" type="image/webp">
+          <img src="assets/img/traiteur/buffet-tablee.jpg" width="900" height="1351" alt="La tablée du buffet vue dans sa longueur, guirlande d’ampoules au plafond et verdure en arrière-plan." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/traiteur/ceviche-verrines.jpg" aria-label="Agrandir : les verrines de ceviche sur planche">
+        <picture>
+          <source srcset="assets/img/traiteur/ceviche-verrines.webp" type="image/webp">
+          <img src="assets/img/traiteur/ceviche-verrines.jpg" width="1100" height="734" alt="Une planche en bois couverte de verrines de ceviche, garnies de coriandre, de salade et de dés de camote." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/traiteur/plateaux-empanadas.jpg" aria-label="Agrandir : les plateaux d’empanadas">
+        <picture>
+          <source srcset="assets/img/traiteur/plateaux-empanadas.webp" type="image/webp">
+          <img src="assets/img/traiteur/plateaux-empanadas.jpg" width="900" height="1350" alt="Plateaux d’empanadas alignées : pâte de maïs dorée d’un côté, chaussons sucrés saupoudrés de sucre glace de l’autre." loading="lazy" decoding="async">
+        </picture>
+      </button>
+      <button class="shot" type="button" data-full="assets/img/traiteur/cartons-traiteur.jpg" aria-label="Agrandir : les cartons traiteur prêts au départ">
+        <picture>
+          <source srcset="assets/img/traiteur/cartons-traiteur.webp" type="image/webp">
+          <img src="assets/img/traiteur/cartons-traiteur.jpg" width="1100" height="825" alt="Cinq cartons traiteur remplis d’empanadas, de causas et de chaussons, prêts au départ sur le comptoir du bar du restaurant." loading="lazy" decoding="async">
+        </picture>
+      </button>
+    </div>
+
+    <div class="cards reveal">
+      <article class="card">
+        <span class="card-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></span>
+        <h3>Au restaurant</h3>
+        <p>Nous privatisons tout ou partie de la salle pour votre groupe : menu convenu à l’avance, décor de fête, musique et service dédié. Le cadre est déjà là, il n’y a rien à installer.</p>
+      </article>
+      <article class="card">
+        <span class="card-ico card-ico--turquoise" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20V9h12v11"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/><path d="M12 13v3"/></svg></span>
+        <h3>Chez vous, sur votre lieu</h3>
+        <p>Nous apportons la cuisine latino-américaine là où vous la voulez : buffet d’entrées à partager, plats chauds, desserts et cocktails. Nous nous adaptons au nombre d’invités et à votre budget.</p>
+      </article>
+      <article class="card">
+        <span class="card-ico card-ico--pink" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7.5"/><path d="M2 8h20v4.5H2z"/><path d="M12 8v13"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5M12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5"/></svg></span>
+        <h3>Devis gratuit et rapide</h3>
+        <p>Dites-nous le type d’événement, la date, le lieu, le nombre d’invités et votre budget : nous revenons vers vous avec une proposition chiffrée, sans engagement.</p>
+      </article>
+    </div>
+
+    <ul class="chips reveal">
+      <li>Anniversaires</li>
+      <li>Mariages</li>
+      <li>Soirées d’entreprise</li>
+      <li>Fêtes de famille</li>
+      <li>Baptêmes & communions</li>
+    </ul>
+
+    <div class="btn-row reveal" style="margin-top:28px">
+      <a class="btn btn--whatsapp" target="_blank" rel="noopener" href="https://wa.me/33763920998?text=Bonjour%20Barrio%20Latino%20!%20Je%20souhaite%20un%20devis%20traiteur.%0A%0AType%20d%E2%80%99%C3%A9v%C3%A9nement%20%3A%20%0ADate%20%3A%20%0ALieu%20%3A%20%0ANombre%20d%E2%80%99invit%C3%A9s%20%3A%20%0ABudget%20indicatif%20%3A%20%0A%0AMerci%20!">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-3.3 4c-.3 0-.7.1-1 .5-.3.4-.8 1-.8 1.9 0 1 .7 2 .8 2.1.1.2 1.4 2.2 3.4 3 1.7.7 2.3.6 2.7.6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1a6 6 0 0 1-1.7-1 6.8 6.8 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4z"/></svg>
+        Devis par WhatsApp
+      </a>
+      <a class="btn btn--ghost" href="mailto:barriolatino.contact@gmail.com?subject=Demande%20de%20devis%20traiteur%20%E2%80%94%20Barrio%20Latino&amp;body=Bonjour%2C%0A%0AJe%20souhaiterais%20un%20devis%20pour%20une%20prestation%20traiteur.%0A%0AType%20d%E2%80%99%C3%A9v%C3%A9nement%20%3A%20%0ADate%20%3A%20%0ALieu%20%3A%20%0ANombre%20d%E2%80%99invit%C3%A9s%20%3A%20%0ABudget%20indicatif%20%3A%20%0A%0AMerci%20d%E2%80%99avance%2C%0A">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+        Devis par e-mail
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================  ÉVÉNEMENTS  =========================== -->
+<section class="section section--cream" id="evenements">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Événements</p>
+      <h2>Des soirées qui ne ressemblent à aucune autre</h2>
+    </div>
+
+    <div class="next-event reveal" id="nextEvent" hidden></div>
+    <div class="cards reveal" id="eventCards"></div>
+    <p class="lead" id="eventsFallback" hidden>Le programme des soirées est annoncé sur notre Instagram.</p>
+
+    <p class="btn-row reveal" style="margin-top:28px">
+      <a class="btn btn--ghost" href="https://www.instagram.com/barriolatino_fr" target="_blank" rel="noopener">Voir l’agenda sur Instagram</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============================  PRESSE  ============================= -->
+<section class="section" id="presse">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Dans la presse</p>
+      <h2>On a parlé de nous</h2>
+    </div>
+
+    <div class="presse-grid">
+      <article class="clipping reveal">
+        <p class="kicker">La Montagne · Tour de tables</p>
+        <h3>L’Amérique du sud version Barrio Latino</h3>
+        <p>Dans sa rubrique hebdomadaire consacrée aux tables clermontoises, <em>La Montagne</em> est venue tester l’adresse peu après sa reprise par Gianella et Clément. La journaliste retient un décor entièrement repensé et très instagrammable — néon rose, mur végétal, fleurs en papier faites main — et une carte qui garde son identité sud-américaine.</p>
+        <p>Au menu de la visite : chicharrón de poitrine de porc croustillante, tacos, quesadillas (dont la version végétarienne aux haricots rouges) et tequeños au fromage, relevés par le guacamole et le pico de gallo. En dessert, le tres leches ; au bar, la margarita.</p>
+        <blockquote>« Et on a adoré. »</blockquote>
+        <p class="byline">Article de Marion Chavot, <em>La Montagne</em>, samedi 15 novembre 2025.</p>
+      </article>
+
+      <figure class="clip-photo reveal">
+        <picture>
+          <source srcset="assets/img/presse/la-montagne-15-novembre-2025.webp" type="image/webp">
+          <img src="assets/img/presse/la-montagne-15-novembre-2025.jpg" width="1100" height="917" alt="Coupure de presse de La Montagne du 15 novembre 2025 : l’article « L’Amérique du sud version Barrio Latino » dans la rubrique Tour de tables, illustré de photos de la salle et des plats." loading="lazy" decoding="async">
+        </picture>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- =============================  AVIS  ============================== -->
+<section class="section section--deep" id="avis">
+  <div class="wrap">
+    <div class="head head--center reveal">
+      <p class="eyebrow">Avis Google</p>
+      <h2>Ce qu’en disent nos clients</h2>
+    </div>
+
+    <div class="rating-block reveal">
+      <p class="rating-big"><span data-note>4,8</span><sup>/5</sup></p>
+      <div class="rating-meta">
+        <span class="stars" data-stars role="img" aria-label="Noté 5 étoiles sur 5"></span>
+        <p>Moyenne sur <span data-nb-avis>287</span> avis Google</p>
+      </div>
+    </div>
+
+    <div class="carousel reveal" id="carousel" aria-roledescription="carrousel" aria-label="Avis de nos clients">
+      <div class="carousel-viewport">
+        <ul class="carousel-track" id="avisTrack"></ul>
+      </div>
+      <p class="vh" id="carouselLive" role="status" aria-live="polite"></p>
+      <div class="carousel-nav">
+        <button class="car-btn" id="avisPrev" type="button" aria-label="Avis précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="dots" id="carouselDots" role="group" aria-label="Choisir un avis"></div>
+        <button class="car-btn" id="avisNext" type="button" aria-label="Avis suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <p class="lead" id="avisFallback" hidden>Retrouvez tous nos avis directement sur notre fiche Google.</p>
+
+    <p class="btn-row reveal" style="margin-top:28px;justify-content:center">
+      <a class="btn btn--ghost" data-lien-avis href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7" target="_blank" rel="noopener">Lire tous les avis</a>
+      <a class="btn btn--navy" data-lien-avis href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7" target="_blank" rel="noopener">Laisser un avis</a>
+    </p>
+  </div>
+</section>
+
+<!-- ==========================  RÉSERVATION  ========================== -->
+<section class="section" id="reserver">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Réserver</p>
+      <h2>Une table pour <span class="brush" style="--brush:#E84FA5"><span>ce soir</span></span> ?</h2>
+      <p class="lead">Remplissez ce formulaire : il prépare votre demande et l’ouvre dans WhatsApp, prête à envoyer. Vous préférez l’e-mail, le téléphone ou Instagram ? C’est juste à côté.</p>
+    </div>
+
+    <div class="res-grid">
+      <form class="form reveal" id="resForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="resName">Votre nom <span class="req" aria-hidden="true">*</span></label>
+            <input type="text" id="resName" name="nom" autocomplete="name" required>
+            <p class="err" id="err-resName" role="alert"></p>
           </div>
-          <div class="res-row">
-            <div class="res-field">
-              <label for="rDate">Date</label>
-              <input type="date" id="rDate" required>
-            </div>
-            <div class="res-field">
-              <label for="rTime">Heure</label>
-              <select id="rTime" required>
-                <option value="">--</option>
-                <optgroup label="Déjeuner">
-                  <option>12h30</option><option>13h00</option><option>13h30</option><option>14h00</option>
-                </optgroup>
-                <optgroup label="Dîner">
-                  <option>19h00</option><option>19h30</option><option>20h00</option><option>20h30</option><option>21h00</option><option>21h30</option>
-                </optgroup>
-              </select>
-            </div>
-          </div>
-          <div class="res-field">
-            <label for="rNote">Message (optionnel)</label>
-            <input type="text" id="rNote" placeholder="Allergies, occasion, etc.">
-          </div>
-          <button class="res-submit" id="resSubmit" type="submit">💬 Envoyer via WhatsApp</button>
-          <a class="res-alt" id="resMail" href="#">✉️ Envoyer par e-mail à la place</a>
-        </form>
-        <p class="res-fineprint">Réservation transmise directement à l'équipe — vous recevrez une confirmation par
-          retour de WhatsApp, Instagram ou e-mail. Mercredi–samedi uniquement, midi et soir.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="wrap" style="padding:0 24px;">
-  <svg class="bunting" viewBox="0 0 1200 46" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="0" y1="4" x2="1200" y2="4" stroke="rgba(18,23,58,.25)" stroke-width="2"/>
-    <g>
-      <polygon points="0,4 40,4 20.0,40" fill="#E5533C"/>
-      <polygon points="40,4 80,4 60.0,40" fill="#F2811D"/>
-      <polygon points="80,4 120,4 100.0,40" fill="#F5B921"/>
-      <polygon points="120,4 160,4 140.0,40" fill="#2FA39A"/>
-      <polygon points="160,4 200,4 180.0,40" fill="#12173A"/>
-      <polygon points="200,4 240,4 220.0,40" fill="#E5533C"/>
-      <polygon points="240,4 280,4 260.0,40" fill="#F2811D"/>
-      <polygon points="280,4 320,4 300.0,40" fill="#F5B921"/>
-      <polygon points="320,4 360,4 340.0,40" fill="#2FA39A"/>
-      <polygon points="360,4 400,4 380.0,40" fill="#12173A"/>
-      <polygon points="400,4 440,4 420.0,40" fill="#E5533C"/>
-      <polygon points="440,4 480,4 460.0,40" fill="#F2811D"/>
-      <polygon points="480,4 520,4 500.0,40" fill="#F5B921"/>
-      <polygon points="520,4 560,4 540.0,40" fill="#2FA39A"/>
-      <polygon points="560,4 600,4 580.0,40" fill="#12173A"/>
-      <polygon points="600,4 640,4 620.0,40" fill="#E5533C"/>
-      <polygon points="640,4 680,4 660.0,40" fill="#F2811D"/>
-      <polygon points="680,4 720,4 700.0,40" fill="#F5B921"/>
-      <polygon points="720,4 760,4 740.0,40" fill="#2FA39A"/>
-      <polygon points="760,4 800,4 780.0,40" fill="#12173A"/>
-      <polygon points="800,4 840,4 820.0,40" fill="#E5533C"/>
-      <polygon points="840,4 880,4 860.0,40" fill="#F2811D"/>
-      <polygon points="880,4 920,4 900.0,40" fill="#F5B921"/>
-      <polygon points="920,4 960,4 940.0,40" fill="#2FA39A"/>
-      <polygon points="960,4 1000,4 980.0,40" fill="#12173A"/>
-      <polygon points="1000,4 1040,4 1020.0,40" fill="#E5533C"/>
-      <polygon points="1040,4 1080,4 1060.0,40" fill="#F2811D"/>
-      <polygon points="1080,4 1120,4 1100.0,40" fill="#F5B921"/>
-      <polygon points="1120,4 1160,4 1140.0,40" fill="#2FA39A"/>
-      <polygon points="1160,4 1200,4 1180.0,40" fill="#12173A"/>
-    </g>
-  </svg>
-</div>
-
-<section id="evenements">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Ambiance</span>
-      <h2>Soirées, fiestas & événements</h2>
-      <p>Karaoké, happy hours, fiesta latina... le barrio s'anime régulièrement. L'agenda complet est toujours à
-        jour sur Instagram.</p>
-    </div>
-    <div class="events-grid">
-      <div class="event-card e1"><h3>🎤 Soirées Karaoké</h3><p>Happy hour et micro ouvert pour chanter en toute décontraction.</p></div>
-      <div class="event-card e2"><h3>💃 Fiesta Latina</h3><p>Soirées à thème aux couleurs du Pérou, de la Colombie, du Venezuela et du Mexique.</p></div>
-      <div class="event-card e3"><h3>🎉 Privatisation & traiteur</h3><p>Anniversaires, groupes et événements privés — au restaurant ou à l'extérieur.</p></div>
-    </div>
-    <div style="text-align:center;margin-top:30px;">
-      <a class="btn btn-primary" href="https://www.instagram.com/barriolatino_fr?stkn=d2l0cDQ3ZGtld25k&utm_source=qr" target="_blank" rel="noopener">Voir l'agenda sur Instagram</a>
-    </div>
-  </div>
-</section>
-
-<section class="reviews" id="avis">
-  <div class="wrap">
-    <div class="reviews-top">
-      <div class="review-score">
-        <div class="num">4,8</div>
-        <div><div class="stars">★★★★★</div><div class="count">287 avis sur Google</div></div>
-      </div>
-      <a class="btn btn-light" href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7?g_st=ic" target="_blank" rel="noopener">Voir les avis Google →</a>
-    </div>
-    <div class="carousel" id="carousel">
-      <div class="carousel-slide active">“Vraiment délicieux du début à la fin. Un vrai voyage gustatif !”<span>Dodie M. — avis Google</span></div>
-      <div class="carousel-slide">“Les meilleurs tacos et quesadillas de notre vie.”<span>Fella Seddiki — avis Google</span></div>
-      <div class="carousel-slide">“Le meilleur Pisco Sour que j'ai goûté, un ceviche absolument délicieux.”<span>Stef R. — avis Google</span></div>
-      <div class="carousel-slide">“Je n'ai pas connu de meilleur restaurant que Barrio Latino.”<span>Meera Passemard — avis Google</span></div>
-      <div class="carousel-slide">“Le meilleur repas latino que nous ayons mangé en France.”<span>Joshua &amp; Stephanie — avis Google</span></div>
-      <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Nous trouver</span>
-      <h2>Localisation & contact</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="map-card">
-        <div class="map-fallback">
-          <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;opacity:.35;">
-            <circle cx="80" cy="60" r="120" fill="#fff"/><circle cx="360" cy="260" r="90" fill="#fff"/>
-          </svg>
-          <div class="map-pin">
-            <div class="pin-icon">📍</div>
-            <h3>9 Rue du Port</h3>
-            <p>63000 Clermont-Ferrand</p>
-            <a class="btn btn-light btn-sm" href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7?g_st=ic" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+          <div class="field">
+            <label for="resPeople">Nombre de personnes <span class="req" aria-hidden="true">*</span></label>
+            <select id="resPeople" name="personnes" required>
+              <option value="">Choisir…</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+              <option value="9 ou plus">9 ou plus</option>
+            </select>
+            <p class="err" id="err-resPeople" role="alert"></p>
           </div>
         </div>
-      </div>
-      <div>
-        <div class="info-list">
-          <div class="info-item"><div class="ic">📍</div><div><h3>Adresse</h3><p>9 Rue du Port, 63000 Clermont-Ferrand</p></div></div>
-          <div class="info-item"><div class="ic">📞</div><div><h3>Téléphone / WhatsApp</h3><p><a href="tel:+33981924025">09 81 92 40 25</a></p></div></div>
-          <div class="info-item"><div class="ic">✉️</div><div><h3>E-mail</h3><p><a href="mailto:barriolatino.contact@gmail.com">barriolatino.contact@gmail.com</a></p></div></div>
-          <div class="info-item"><div class="ic">🕑</div><div><h3>Service</h3><p>Mercredi–samedi, midi et soir — fermé lundi, mardi et dimanche</p></div></div>
+
+        <div class="field">
+          <span class="field-label" id="calLabel">Date souhaitée <span class="req" aria-hidden="true">*</span></span>
+          <div class="cal" role="group" aria-labelledby="calLabel">
+            <div class="cal-head">
+              <button class="cal-nav" id="calPrev" type="button" aria-label="Mois précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+              <strong id="calTitle"></strong>
+              <button class="cal-nav" id="calNext" type="button" aria-label="Mois suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            </div>
+            <div class="cal-grid" id="calGrid"></div>
+            <p class="cal-legend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg> Nous sommes ouverts du mercredi au samedi.</p>
+          </div>
+          <input type="hidden" id="resDate" name="date">
+          <p class="vh" id="calLive" role="status" aria-live="polite"></p>
+          <p class="err" id="err-resDate" role="alert"></p>
         </div>
-        <div class="social-row">
-          <a class="social-btn" href="https://www.instagram.com/barriolatino_fr?stkn=d2l0cDQ3ZGtld25k&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+
+        <div class="field">
+          <span class="field-label" id="slotLabel">Service <span class="req" aria-hidden="true">*</span></span>
+          <div class="slots" role="group" aria-labelledby="slotLabel">
+            <label class="slot">
+              <input type="radio" name="creneau" value="dejeuner" data-label="Déjeuner (12h30 – 14h00)">
+              <span>Déjeuner <small>12h30 – 14h00</small></span>
+            </label>
+            <label class="slot">
+              <input type="radio" name="creneau" value="diner" data-label="Dîner (19h00 – 21h30)">
+              <span>Dîner <small>19h00 – 21h30</small></span>
+            </label>
+          </div>
+          <p class="err" id="err-creneau" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="resPhone">Téléphone <span class="req" aria-hidden="true">*</span>
+            <span class="hint">Pour que l’équipe puisse vous confirmer la table.</span>
+          </label>
+          <input type="tel" id="resPhone" name="tel" autocomplete="tel" inputmode="tel" required>
+          <p class="err" id="err-resPhone" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <label for="resNote">Message
+            <span class="hint">Allergies, occasion particulière, poussette, grande table…</span>
+          </label>
+          <textarea id="resNote" name="message" rows="3"></textarea>
+        </div>
+
+        <div class="form-foot">
+          <p class="confirm-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8.2v.01M12 11v5"/></svg>
+            <span>Votre réservation est confirmée après réponse de l’équipe.</span>
+          </p>
+          <div class="btn-row">
+            <button class="btn btn--whatsapp" type="submit">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-3.3 4c-.3 0-.7.1-1 .5-.3.4-.8 1-.8 1.9 0 1 .7 2 .8 2.1.1.2 1.4 2.2 3.4 3 1.7.7 2.3.6 2.7.6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1a6 6 0 0 1-1.7-1 6.8 6.8 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4z"/></svg>
+              Envoyer par WhatsApp
+            </button>
+            <a class="btn btn--ghost" id="resMail" href="mailto:barriolatino.contact@gmail.com">Envoyer par e-mail</a>
+          </div>
+          <p class="confirm-note" id="resDone" tabindex="-1" hidden style="background:rgba(31,110,104,.13);color:#175A55">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>WhatsApp s’est ouvert dans un nouvel onglet : il ne reste plus qu’à envoyer le message. Si rien ne s’est ouvert, appelez-nous au 09 81 92 40 25.</span>
+          </p>
+        </div>
+      </form>
+
+      <div class="reveal">
+        <h3>Ou joignez-nous directement</h3>
+        <div class="contact-tiles">
+          <a class="tile" href="tel:+33981924025">
+            <span class="tile-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.8 4.5-2.3 1.7a12 12 0 0 0 6.8 6.8l1.7-2.3L21 15.5V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2 2 2 0 0 1 5 3z"/></svg></span>
+            <span><b>09 81 92 40 25</b><small>Le restaurant, aux heures d’ouverture</small></span>
           </a>
-          <a class="social-btn" href="https://www.facebook.com/share/17c8ex3yae/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-9h3l.5-4H13V6.5c0-1.16.32-1.95 2-1.95H17V1.09C16.65 1.04 15.5 1 14.14 1 11.3 1 9.5 2.66 9.5 5.7V9H6.5v4H9.5v9h3.5Z"/></svg>
+          <a class="tile" href="https://wa.me/33763920998?text=Bonjour%20Barrio%20Latino%20!%20Je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">
+            <span class="tile-ico" aria-hidden="true" style="background:#1D7A45;color:#fff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-3.3 4c-.3 0-.7.1-1 .5-.3.4-.8 1-.8 1.9 0 1 .7 2 .8 2.1.1.2 1.4 2.2 3.4 3 1.7.7 2.3.6 2.7.6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1a6 6 0 0 1-1.7-1 6.8 6.8 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4z"/></svg></span>
+            <span><b>07 63 92 09 98</b><small>WhatsApp — réservations et devis traiteur</small></span>
           </a>
-          <a class="social-btn" href="https://wa.me/33763920998" target="_blank" rel="noopener" aria-label="WhatsApp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.2-.1-1-.4-1.9-1.2-.7-.6-1.2-1.4-1.3-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5s-.6-1.5-.9-2c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3Z"/></svg>
+          <a class="tile" href="https://www.instagram.com/barriolatino_fr" target="_blank" rel="noopener">
+            <span class="tile-ico" aria-hidden="true" style="background:#E84FA5;color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+            <span><b>@barriolatino_fr</b><small>Message privé sur Instagram</small></span>
+          </a>
+          <a class="tile" href="mailto:barriolatino.contact@gmail.com">
+            <span class="tile-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span><b>barriolatino.contact@gmail.com</b><small>E-mail</small></span>
           </a>
         </div>
       </div>
@@ -729,102 +534,226 @@
   </div>
 </section>
 
-<footer>
+<!-- ========================  INFOS PRATIQUES  ======================== -->
+<section class="section section--cream" id="infos">
+  <div class="wrap">
+    <div class="head reveal">
+      <p class="eyebrow">Infos pratiques</p>
+      <h2>Horaires, adresse et accès</h2>
+    </div>
+
+    <div class="infos-grid">
+      <div class="reveal">
+        <p class="status status--closed" id="statut" role="status"><i aria-hidden="true"></i>Horaires ci-dessous</p>
+        <dl class="hours">
+          <div data-dow="1" class="is-closed"><dt>lundi</dt><dd>Fermé</dd></div>
+          <div data-dow="2" class="is-closed"><dt>mardi</dt><dd>Fermé</dd></div>
+          <div data-dow="3"><dt>mercredi</dt><dd>12h30 – 15h00 · 19h00 – 22h00</dd></div>
+          <div data-dow="4"><dt>jeudi</dt><dd>12h30 – 15h00 · 19h00 – 22h00</dd></div>
+          <div data-dow="5"><dt>vendredi</dt><dd>12h30 – 15h00 · 19h00 – 22h00</dd></div>
+          <div data-dow="6"><dt>samedi</dt><dd>12h30 – 15h00 · 19h00 – 22h00</dd></div>
+          <div data-dow="0" class="is-closed"><dt>dimanche</dt><dd>Fermé</dd></div>
+        </dl>
+      </div>
+
+      <dl class="facts reveal">
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <dt>Adresse</dt>
+          <dd>9 rue du Port, 63000 Clermont-Ferrand<br>Centre historique, à quelques minutes à pied de la cathédrale.</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3.5l1.8 4.5-2.3 1.7a12 12 0 0 0 6.8 6.8l1.7-2.3L21 15.5V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2 2 2 0 0 1 5 3z"/></svg>
+          <dt>Téléphone</dt>
+          <dd><a href="tel:+33981924025">09 81 92 40 25</a> · WhatsApp <a href="https://wa.me/33763920998" target="_blank" rel="noopener">07 63 92 09 98</a></dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
+          <dt>E-mail</dt>
+          <dd><a href="mailto:barriolatino.contact@gmail.com">barriolatino.contact@gmail.com</a></dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.5-.8-1.5-1.2-2.5-1.2-1.4 0-2.5.8-2.5 1.9 0 1 .9 1.6 2.5 1.9 1.6.3 2.5.9 2.5 1.9 0 1.1-1.1 1.9-2.5 1.9-1 0-2-.4-2.5-1.2M12 6.2v11.6"/></svg>
+          <dt>Prix moyen</dt>
+          <dd>20 à 30 € par personne. Cartes restaurant acceptées.</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <dt>Services</dt>
+          <dd>Sur place · À emporter · Livraison Uber Eats · Traiteur et privatisation</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9.5 17V7.5h3a3 3 0 0 1 0 6h-3"/></svg>
+          <dt>Stationnement</dt>
+          <dd>Deux emplacements de stationnement à disposition.</dd>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.5" r="1.8"/><path d="M11 8.5v5h5l3 6"/><path d="M15.5 14.5a5.5 5.5 0 1 1-5-4"/></svg>
+          <dt>Accessibilité</dt>
+          <dd>La salle n’est pas accessible aux personnes à mobilité réduite : l’établissement bénéficie d’une dérogation. Appelez-nous au <a href="tel:+33981924025">09 81 92 40 25</a> avant de venir, nous chercherons la meilleure solution avec vous.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="reveal" style="margin-top:clamp(28px,4vw,48px)">
+      <div class="map">
+        <iframe
+          title="Plan d’accès au Barrio Latino, 9 rue du Port, 63000 Clermont-Ferrand"
+          src="https://www.google.com/maps?q=Barrio+Latino,+9+Rue+du+Port,+63000+Clermont-Ferrand&amp;output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <p class="btn-row" style="margin-top:18px">
+        <a class="btn btn--ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=Barrio+Latino%2C+9+Rue+du+Port%2C+63000+Clermont-Ferrand" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l9 19-9-4-9 4z"/></svg>
+          Itinéraire
+        </a>
+        <a class="btn btn--ghost" href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===========================  PIED DE PAGE  ======================== -->
+<footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div class="footer-brand">
-        <img src="assets/01-barrio-latino.png" alt="Barrio Latino">
-        <span>Barrio Latino</span>
+      <div>
+        <span class="footer-logo"><img src="assets/img/logo/logo.png" width="560" height="727" alt="Logo du Barrio Latino : un village de maisons colorées devant un soleil orange." loading="lazy"></span>
+        <p>9 rue du Port<br>63000 Clermont-Ferrand</p>
+        <p><a href="tel:+33981924025">09 81 92 40 25</a><br><a href="mailto:barriolatino.contact@gmail.com">barriolatino.contact@gmail.com</a></p>
+        <div class="socials">
+          <a href="https://www.instagram.com/barriolatino_fr" target="_blank" rel="noopener" aria-label="Barrio Latino sur Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.facebook.com/share/17c8ex3yae/" target="_blank" rel="noopener" aria-label="Barrio Latino sur Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.6l.4-3h-3V9.2c0-.9.3-1.5 1.6-1.5H17V5.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8.3v3H10.8v7z"/></svg></a>
+          <a href="https://www.tiktok.com/@barriolatino_fr" target="_blank" rel="noopener" aria-label="Barrio Latino sur TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.2 3h-2.8v11.4a2.6 2.6 0 1 1-2.1-2.6V9a5.4 5.4 0 1 0 4.9 5.4V8.8a5.6 5.6 0 0 0 3.3 1.1V7.2a3.3 3.3 0 0 1-3.3-3.3z"/></svg></a>
+          <a href="https://wa.me/33763920998" target="_blank" rel="noopener" aria-label="Barrio Latino sur WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-3.3 4c-.3 0-.7.1-1 .5-.3.4-.8 1-.8 1.9 0 1 .7 2 .8 2.1.1.2 1.4 2.2 3.4 3 1.7.7 2.3.6 2.7.6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1a6 6 0 0 1-1.7-1 6.8 6.8 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4z"/></svg></a>
+        </div>
       </div>
-      <nav>
-        <a href="#carte">La carte</a>
-        <a href="#traiteur">Traiteur</a>
-        <a href="#horaires">Horaires</a>
-        <a href="#reserver">Réserver</a>
-        <a href="#evenements">Événements</a>
-        <a href="#avis">Avis</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+      <div>
+        <h3>Horaires</h3>
+        <ul>
+          <li>Mercredi — samedi</li>
+          <li>12h30 – 15h00</li>
+          <li>19h00 – 22h00</li>
+          <li>&nbsp;</li>
+          <li>Fermé lundi, mardi et dimanche</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Le restaurant</h3>
+        <ul class="footer-links">
+          <li><a href="#carte">La carte</a></li>
+          <li><a href="#histoire">Notre histoire</a></li>
+          <li><a href="#galerie">Galerie photos</a></li>
+          <li><a href="#presse">Dans la presse</a></li>
+          <li><a href="#avis">Avis Google</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Nous joindre</h3>
+        <ul class="footer-links">
+          <li><a href="#reserver">Réserver une table</a></li>
+          <li><a href="#traiteur">Devis traiteur</a></li>
+          <li><a href="#infos">Infos pratiques</a></li>
+          <li><a href="https://maps.app.goo.gl/Qasq3LsifsPPeCmY7" target="_blank" rel="noopener">Nous trouver</a></li>
+        </ul>
+      </div>
     </div>
+
     <div class="footer-bottom">
-      <span>© Barrio Latino — Cuisines d'Amérique latine · Pérou · Colombie · Venezuela · Mexique</span>
-      <span>9 Rue du Port, 63000 Clermont-Ferrand</span>
+      <p>© <span id="year">2026</span> Barrio Latino — Cuisines d’Amérique latine</p>
+      <p><a href="mentions-legales.html">Mentions légales</a></p>
     </div>
   </div>
 </footer>
 
-<a class="fab" href="https://www.instagram.com/barriolatino_fr?stkn=d2l0cDQ3ZGtld25k&utm_source=qr" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
-  <span>Suivez-nous</span>
-</a>
+<!-- =========================  BOUTON FLOTTANT  ======================= -->
+<div class="fab" id="fab" data-open="false">
+  <div class="fab-menu">
+    <a href="https://www.instagram.com/barriolatino_fr" target="_blank" rel="noopener">
+      <span style="background:#E84FA5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/share/17c8ex3yae/" target="_blank" rel="noopener">
+      <span style="background:#1B62C4"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7h2.6l.4-3h-3V9.2c0-.9.3-1.5 1.6-1.5H17V5.1c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2H8.3v3H10.8v7z"/></svg></span>
+      Facebook
+    </a>
+    <a href="https://wa.me/33763920998" target="_blank" rel="noopener">
+      <span style="background:#1D7A45"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.2 14.8l-.4-.2-2.6.7.7-2.5-.2-.4A8 8 0 0 1 12 4zm-3.3 4c-.3 0-.7.1-1 .5-.3.4-.8 1-.8 1.9 0 1 .7 2 .8 2.1.1.2 1.4 2.2 3.4 3 1.7.7 2.3.6 2.7.6.5 0 1.6-.6 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3l-1.5-.7c-.2-.1-.4-.1-.5.1l-.6.8c-.1.2-.3.2-.5.1a6 6 0 0 1-1.7-1 6.8 6.8 0 0 1-1.2-1.5c-.1-.2 0-.3.1-.4l.4-.5c.1-.2.1-.3 0-.5l-.6-1.5c-.2-.4-.3-.4-.5-.4z"/></svg></span>
+      WhatsApp
+    </a>
+  </div>
+  <button class="fab-toggle" id="fabToggle" type="button" aria-expanded="false" aria-label="Nous suivre et nous contacter">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
+</div>
 
-<script>
-  var els = document.querySelectorAll('.about, .traiteur-grid, .menu-grid, .events-grid, .hours-card, .res-card, .press-card');
-  els.forEach(function(el){ el.classList.add('reveal'); });
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target);} });
-  }, {threshold:.12});
-  els.forEach(function(el){ obs.observe(el); });
+<!-- =========================  LIGHTBOX GALERIE  ====================== -->
+<dialog class="lightbox" id="lightbox" aria-label="Photo en plein écran">
+  <div class="lb-stage">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <p class="lb-cap" id="lbCap"></p>
+  <p class="vh" id="lbLive" role="status" aria-live="polite"></p>
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>
 
-  var tabBtns = document.querySelectorAll('.tab-btn');
-  tabBtns.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      tabBtns.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-      document.querySelector('.tab-panel[data-panel="'+btn.dataset.tab+'"]').classList.add('active');
-    });
-  });
-
-  (function(){
-    var slides = document.querySelectorAll('.carousel-slide');
-    var dotsWrap = document.getElementById('carouselDots');
-    slides.forEach(function(_, i){
-      var d = document.createElement('div');
-      d.className = 'cdot' + (i===0 ? ' active' : '');
-      dotsWrap.appendChild(d);
-    });
-    var dots = document.querySelectorAll('.cdot');
-    var idx = 0;
-    setInterval(function(){
-      slides[idx].classList.remove('active'); dots[idx].classList.remove('active');
-      idx = (idx+1) % slides.length;
-      slides[idx].classList.add('active'); dots[idx].classList.add('active');
-    }, 4500);
-  })();
-
-  (function(){
-    var dateInput = document.getElementById('rDate');
-    var today = new Date().toISOString().split('T')[0];
-    dateInput.setAttribute('min', today);
-
-    function buildMessage(){
-      var name = document.getElementById('rName').value || '—';
-      var people = document.getElementById('rPeople').value || '—';
-      var date = document.getElementById('rDate').value || '—';
-      var time = document.getElementById('rTime').value || '—';
-      var note = document.getElementById('rNote').value;
-      var msg = "Bonjour Barrio Latino, je souhaite réserver une table.\n" +
-                "Nom : " + name + "\n" +
-                "Date : " + date + "\n" +
-                "Heure : " + time + "\n" +
-                "Nombre de personnes : " + people;
-      if(note){ msg += "\nMessage : " + note; }
-      return msg;
-    }
-
-    document.getElementById('resSubmit').addEventListener('click', function(){
-      var msg = buildMessage();
-      window.open('https://wa.me/33763920998?text=' + encodeURIComponent(msg), '_blank');
-    });
-
-    document.getElementById('resMail').addEventListener('click', function(e){
-      e.preventDefault();
-      var msg = buildMessage();
-      window.location.href = 'mailto:barriolatino.contact@gmail.com?subject=' +
-        encodeURIComponent('Demande de réservation - Barrio Latino') + '&body=' + encodeURIComponent(msg);
-    });
-  })();
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": "https://barriolatino.github.io/Barrio-latino/#restaurant",
+  "name": "Barrio Latino",
+  "description": "Restaurant de cuisines d’Amérique latine à Clermont-Ferrand : Pérou, Colombie, Venezuela et Mexique.",
+  "url": "https://barriolatino.github.io/Barrio-latino/",
+  "image": [
+    "https://barriolatino.github.io/Barrio-latino/assets/img/logo/og-image.jpg",
+    "https://barriolatino.github.io/Barrio-latino/assets/img/salle/salle-neon-large.jpg"
+  ],
+  "logo": "https://barriolatino.github.io/Barrio-latino/assets/img/logo/logo.png",
+  "telephone": "+33981924025",
+  "email": "barriolatino.contact@gmail.com",
+  "priceRange": "20–30 €",
+  "currenciesAccepted": "EUR",
+  "servesCuisine": ["Péruvienne", "Colombienne", "Vénézuélienne", "Mexicaine", "Latino-américaine"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "9 rue du Port",
+    "postalCode": "63000",
+    "addressLocality": "Clermont-Ferrand",
+    "addressRegion": "Auvergne-Rhône-Alpes",
+    "addressCountry": "FR"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"], "opens": "12:30", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"], "opens": "19:00", "closes": "22:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday", "Monday", "Tuesday"], "opens": "00:00", "closes": "00:00" }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "287",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "hasMenu": "https://barriolatino.github.io/Barrio-latino/#carte",
+  "acceptsReservations": "True",
+  "hasMap": "https://maps.app.goo.gl/Qasq3LsifsPPeCmY7",
+  "sameAs": [
+    "https://www.instagram.com/barriolatino_fr",
+    "https://www.facebook.com/share/17c8ex3yae/",
+    "https://www.tiktok.com/@barriolatino_fr"
+  ]
+}
 </script>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

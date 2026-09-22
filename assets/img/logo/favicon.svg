@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Barrio Latino">
+  <rect width="64" height="64" rx="12" fill="#FBF3E5"/>
+  <circle cx="32" cy="30" r="19" fill="#F2811D"/>
+  <path fill="#12173A" fill-rule="evenodd" d="M4 56V42h7v-7h10v7h4V33l7-6 7 6v9h4v-5h10v5h7v14Zm10-11h4v5h-4Zm15-6h6v7h-6Zm15 6h5v5h-5Z"/>
+  <path d="M22 16q3-3 6 0M38 12q2.5-2.5 5 0" fill="none" stroke="#12173A" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
