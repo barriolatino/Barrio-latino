@@ -33,6 +33,11 @@ Pour ajouter un plat, recopiez un bloc entier et changez les valeurs :
 ```
 
 - `prix` est du texte libre : `"12 €"`, `"12,50 €"`, `"à partir de 12 €"`…
+- `"photo": "nom-du-fichier"` affiche une vignette à côté du plat. Le fichier
+  doit exister dans `assets/img/plats/vignettes/` **en `.webp` et en `.jpg`**,
+  au format 4:3 (232 × 174 px). Sans cette clé, la ligne s'affiche simplement
+  sans photo : les lignes illustrées et les autres cohabitent sans décaler la
+  mise en page, vous pouvez donc en ajouter au fil de l'eau.
 - `"vege": true` affiche la pastille verte **Végétarien**. Retirez la ligne si le
   plat n'est pas végétarien.
 - Pour **supprimer** un plat, supprimez son bloc `{ … }` *et* la virgule qui le
@@ -90,6 +95,10 @@ Un script fait la conversion pour vous :
 ```
 
 Il crée `assets/img/plats/ceviche.webp` et `assets/img/plats/ceviche.jpg`.
+
+Pour qu'un nouveau plat apparaisse aussi **en vignette dans la carte**, il faut
+en plus une version 4:3 de 232 × 174 px dans `assets/img/plats/vignettes/`,
+puis ajouter `"photo": "ceviche"` au plat dans `menu.json`.
 Dépendances : `webp` et `libjpeg-turbo-progs` (sur macOS :
 `brew install webp jpeg-turbo`).
 
@@ -126,8 +135,8 @@ assets/data/avis.json         les avis Google
 assets/data/evenements.json   les événements
 assets/img/logo/              logo, icônes, image de partage
 assets/img/salle/             la salle et la devanture
-assets/img/plats/             les plats (tacos, lomo saltado, nachotes,
-                              plato vegetariano, salchipollo)
+assets/img/plats/             les plats en grand format
+assets/img/plats/vignettes/   les mêmes en 4:3 pour la carte
 assets/img/clients/           les clients et les soirées
 assets/img/presse/            la coupure de La Montagne
 assets/img/_sources/          originaux haute résolution (non publiés)

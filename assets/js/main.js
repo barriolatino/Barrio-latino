@@ -211,10 +211,22 @@
       cat.plats.forEach(function (p) {
         var title = el('h4', {}, [document.createTextNode(p.nom)]);
         if (p.vege) title.appendChild(el('span', { class: 'tag-vege', text: 'Végétarien' }));
-        var row = el('article', { class: 'dish' }, [
-          title,
-          el('span', { class: 'price', text: p.prix })
-        ]);
+        var row = el('article', { class: 'dish' + (p.photo ? ' dish--photo' : '') }, [title]);
+
+        if (p.photo) {
+          /* alt vide : le nom du plat est juste a cote, une description de
+             l'image ferait doublon a l'oreille d'un lecteur d'ecran. */
+          var pic = el('picture', { class: 'dish-photo' }, [
+            el('source', { srcset: 'assets/img/plats/vignettes/' + p.photo + '.webp', type: 'image/webp' }),
+            el('img', {
+              src: 'assets/img/plats/vignettes/' + p.photo + '.jpg',
+              width: '232', height: '174', alt: '', loading: 'lazy', decoding: 'async'
+            })
+          ]);
+          row.appendChild(pic);
+        }
+
+        row.appendChild(el('span', { class: 'price', text: p.prix }));
         if (p.description) row.appendChild(el('p', { text: p.description }));
         list.appendChild(row);
       });

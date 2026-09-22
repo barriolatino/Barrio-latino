@@ -455,6 +455,24 @@ strong{font-weight:700}
   font-family:Fraunces,serif;font-weight:700;font-size:1.1rem;color:var(--navy);
   grid-column:2/3;grid-row:1/2;white-space:nowrap;
 }
+
+/* Ligne illustree : la vignette s'intercale entre le texte et le prix, qui
+   reste cale a droite. Les lignes sans photo gardent deux colonnes, donc
+   aucune case vide ne vient trouer la liste. */
+.dish--photo{grid-template-columns:1fr auto auto;align-items:start}
+.dish--photo h4{grid-column:1/2;grid-row:1/2}
+.dish--photo p{grid-column:1/2;grid-row:2/3}
+.dish--photo .price{grid-column:3/4;grid-row:1/2}
+.dish-photo{
+  grid-column:2/3;grid-row:1/3;align-self:center;
+  width:116px;aspect-ratio:4/3;border-radius:14px;overflow:hidden;
+  background:var(--cream-deep);box-shadow:var(--shadow-sm);
+}
+.dish-photo img{width:100%;height:100%;object-fit:cover}
+@media (max-width:520px){
+  .dish-photo{width:88px;border-radius:11px}
+  .dish--photo{gap:.3em .8em}
+}
 .tag-vege{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
@@ -547,6 +565,14 @@ strong{font-weight:700}
 .card-ico--turquoise{background:var(--turquoise)}
 .card-ico--pink{background:var(--pink);color:#fff}
 .card h3{margin-bottom:.3em}
+
+.traiteur-photo{
+  margin:0 0 clamp(20px,3vw,30px);
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.055);
+}
+.traiteur-photo img{width:100%;aspect-ratio:2.5/1;object-fit:cover;object-position:center}
+@media (max-width:760px){ .traiteur-photo img{aspect-ratio:4/3} }
 
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(22px,3vw,30px)}
 .chips li{

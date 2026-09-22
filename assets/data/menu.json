@@ -1,5 +1,5 @@
 {
-  "_mode_emploi": "Pour modifier la carte : editez ce fichier uniquement. Chaque categorie a un id (utilise par les onglets), un label francais et un label espagnol. Chaque plat a un nom, un prix (texte libre, ex. \"10 €\"), une description et, si besoin, \"vege\": true pour afficher la pastille vegetarien.",
+  "_mode_emploi": "Pour modifier la carte : editez ce fichier uniquement. Chaque categorie a un id (utilise par les onglets), un label francais et un label espagnol. Chaque plat a un nom, un prix (texte libre, ex. \"10 €\"), une description et, si besoin, \"vege\": true pour afficher la pastille vegetarien. Ajoutez \"photo\": \"nom-du-fichier\" pour afficher une vignette : le fichier doit exister dans assets/img/plats/vignettes/ en .webp ET en .jpg. Sans cette cle, la ligne s'affiche sans photo.",
   "mention": "Prix TTC. Carte susceptible d’évoluer selon les saisons.",
   "lien_uber_eats": "https://www.ubereats.com/fr/store/barrio-latino/BShPgLBYUmCl02zkLB5bPg",
   "categories": [
@@ -11,7 +11,8 @@
         {
           "nom": "Nachotes",
           "prix": "10 €",
-          "description": "Chips de maïs, guacamole, pico de gallo, poulet ou bœuf effiloché et cheddar fondu."
+          "description": "Chips de maïs, guacamole, pico de gallo, poulet ou bœuf effiloché et cheddar fondu.",
+          "photo": "nachotes"
         },
         {
           "nom": "Ceviche",
@@ -21,7 +22,8 @@
         {
           "nom": "Empanadas",
           "prix": "7 €",
-          "description": "Chausson à la viande effilochée."
+          "description": "Chausson à la viande effilochée.",
+          "photo": "empanadas"
         },
         {
           "nom": "Tequeños",
@@ -48,23 +50,27 @@
         {
           "nom": "Salchipollo",
           "prix": "14 €",
-          "description": "Saucisse fumée, poulet croustillant, frites et salade sauce Gigi."
+          "description": "Saucisse fumée, poulet croustillant, frites et salade sauce Gigi.",
+          "photo": "salchipollo"
         },
         {
           "nom": "Chicharrón",
           "prix": "15 €",
-          "description": "Poitrine de porc croustillante, pommes de terre sautées et banane plantain."
+          "description": "Poitrine de porc croustillante, pommes de terre sautées et banane plantain.",
+          "photo": "chicharron"
         },
         {
           "nom": "Lomo Saltado",
           "prix": "18 €",
-          "description": "Bœuf sauté aux oignons, tomates et sauce soja, accompagné de pommes de terre sautées et de riz."
+          "description": "Bœuf sauté aux oignons, tomates et sauce soja, accompagné de pommes de terre sautées et de riz.",
+          "photo": "lomo-saltado"
         },
         {
           "nom": "Plato Vegetariano",
           "prix": "12 €",
           "description": "Haricots rouges cuisinés, riz, bananes plantains, totopos et guacamole.",
-          "vege": true
+          "vege": true,
+          "photo": "plato-vegetariano"
         }
       ]
     },
@@ -76,12 +82,14 @@
         {
           "nom": "Tacos mexicains x3",
           "prix": "14 €",
-          "description": "Galette de maïs, guacamole, pico de gallo. Au choix : poulet et/ou bœuf."
+          "description": "Galette de maïs, guacamole, pico de gallo. Au choix : poulet et/ou bœuf.",
+          "photo": "tacos-mexicains"
         },
         {
           "nom": "Quesadillas",
           "prix": "9 €",
-          "description": "Galette de blé, effiloché de poulet et cheddar fondu."
+          "description": "Galette de blé, effiloché de poulet et cheddar fondu.",
+          "photo": "quesadillas"
         }
       ]
     },

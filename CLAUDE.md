@@ -44,16 +44,24 @@ dépôt est exactement ce qui est servi.
 
 ## Reste à compléter par le propriétaire
 
-- **Accessibilité PMR** : seul point encore ouvert dans « Infos pratiques »,
-  marqué `À COMPLÉTER` en commentaire dans `index.html`.
 - **Médiateur de la consommation** : dernier `<span class="todo">` de
-  `mentions-legales.html`. Le reste des informations légales est renseigné.
-- **Photos** : la salle sans personne, la devanture et les desserts restent
-  en basse résolution ou absents. Les cinq plats (tacos, lomo saltado,
-  nachotes, plato vegetariano, salchipollo) sont en place en haute définition.
+  `mentions-legales.html`. Tout le reste des informations légales est renseigné.
+- **Photos manquantes** : la salle sans personne et la devanture restent en
+  basse résolution ; les desserts, le ceviche, les tequeños, les patacones et
+  la bandeja n'ont pas de photo. Huit plats sur trente-six sont illustrés.
 
-Déjà réglés : lien Uber Eats, stationnement, identité légale de la société
-(PELISSIER ARANIBAR, SARL, SIREN 989 353 354).
+Déjà réglés : lien Uber Eats, stationnement, accessibilité (dérogation),
+identité légale (PELISSIER ARANIBAR, SARL, SIREN 989 353 354, cogérance).
+
+## Vignettes de la carte
+
+Un plat de `menu.json` portant une clé `photo` affiche une vignette 4:3
+(232 × 174 px) lue dans `assets/img/plats/vignettes/`. Les lignes sans photo
+gardent une grille à deux colonnes, celles avec photo passent à trois : le
+prix reste calé à droite dans les deux cas, donc **aucune case vide ne troue
+la liste** et la couverture peut rester partielle sans que cela se voie. Les
+vignettes portent `alt=""` : le nom du plat est juste à côté, une description
+d'image ferait doublon pour un lecteur d'écran.
 
 ## Photos de plats et badge Uber Eats
 
