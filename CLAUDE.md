@@ -34,6 +34,8 @@ TikTok du compte Tio Clem (@tioclem15) sur le Pérou. Il ne touche pas à `index
 
 - Règles éditoriales : `tioclem/PLAYBOOK.md`, à lire avant toute production.
 - Commandes : `/create`, `/create-day`, `/batch`, `/calendar`, `/idea`, `/research`,
-  `/review`, `/export`, `/month`, `/daily` (dans `.claude/commands/`).
+  `/review`, `/export`, `/month`, `/daily`, `/pick`, `/bank`, `/stats` (dans `.claude/commands/`).
+- Banque d'idées : `tioclem/content/topics.json` et `angles.json` ; jamais 3 posts de suite
+  dans la même catégorie, jamais deux fois le même thème avec le même angle.
 - Dépendances : `bash tioclem/setup.sh`.
 - Ne jamais publier sur TikTok ; ne jamais écrire un fait sans source dans `tioclem/research/`.

@@ -62,8 +62,11 @@
     "absence_de_repetition": {
       "level": "ok",
       "detail": "aucune répétition détectée"
+    },
+    "rotation_et_banque": {
+      "level": "ok",
+      "detail": "idée 001 · cuisine · angle top"
     }
   },
-  "checked_at": "2026-09-24T14:15:07",
-  "autofix": []
+  "checked_at": "2026-09-24T14:23:10"
 }

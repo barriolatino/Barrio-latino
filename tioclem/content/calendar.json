@@ -9,7 +9,9 @@
       "format": "video",
       "category": "cuisine",
       "subject": "5 choses à savoir sur le ceviche péruvien",
-      "slug": "ceviche"
+      "slug": "ceviche",
+      "topic_id": "001",
+      "bank_category": "cuisine"
     },
     {
       "day": 2,
@@ -17,7 +19,9 @@
       "format": "carrousel",
       "category": "géographie",
       "subject": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
-      "slug": "regions-costa-sierra-selva"
+      "slug": "regions-costa-sierra-selva",
+      "topic_id": "086",
+      "bank_category": "geographie"
     },
     {
       "day": 3,
@@ -25,7 +29,9 @@
       "format": "video",
       "category": "langue",
       "subject": "5 expressions que tu peux entendre au Pérou",
-      "slug": "expressions-peruviennes"
+      "slug": "expressions-peruviennes",
+      "topic_id": "136",
+      "bank_category": "langue"
     },
     {
       "day": 4,
@@ -33,7 +39,9 @@
       "format": "video",
       "category": "histoire",
       "subject": "Avant les Incas : les civilisations qui existaient déjà au Pérou",
-      "slug": "avant-les-incas"
+      "slug": "avant-les-incas",
+      "topic_id": "056",
+      "bank_category": "histoire"
     },
     {
       "day": 5,
@@ -41,7 +49,9 @@
       "format": "carrousel",
       "category": "cuisine",
       "subject": "Les petits-déjeuners péruviens",
-      "slug": "petits-dejeuners"
+      "slug": "petits-dejeuners",
+      "topic_id": "029",
+      "bank_category": "cuisine"
     },
     {
       "day": 6,
@@ -49,7 +59,9 @@
       "format": "video",
       "category": "insolite",
       "subject": "5 choses étonnantes sur le Pérou",
-      "slug": "choses-etonnantes"
+      "slug": "choses-etonnantes",
+      "topic_id": "161",
+      "bank_category": "insolite"
     },
     {
       "day": 7,
@@ -57,7 +69,9 @@
       "format": "carrousel",
       "category": "interaction",
       "subject": "Tu préfères : tallarines verdes ou tallarines rojos ?",
-      "slug": "tallarines-verdes-rojos"
+      "slug": "tallarines-verdes-rojos",
+      "topic_id": "017",
+      "bank_category": "interaction"
     },
     {
       "day": 8,
@@ -65,7 +79,9 @@
       "format": "video",
       "category": "cuisine",
       "subject": "Lomo saltado : pourquoi ce plat est si particulier ?",
-      "slug": "lomo-saltado"
+      "slug": "lomo-saltado",
+      "topic_id": "006",
+      "bank_category": "cuisine"
     },
     {
       "day": 9,
@@ -73,7 +89,9 @@
       "format": "video",
       "category": "géographie",
       "subject": "Pourquoi le Pérou possède-t-il des paysages aussi différents ?",
-      "slug": "paysages-differents"
+      "slug": "paysages-differents",
+      "topic_id": "088",
+      "bank_category": "geographie"
     },
     {
       "day": 10,
@@ -81,7 +99,9 @@
       "format": "carrousel",
       "category": "histoire",
       "subject": "Comment les Incas ont-ils construit leur empire ?",
-      "slug": "empire-inca"
+      "slug": "empire-inca",
+      "topic_id": "058",
+      "bank_category": "histoire"
     },
     {
       "day": 11,
@@ -89,7 +109,9 @@
       "format": "video",
       "category": "dégustation",
       "subject": "Je goûte un produit péruvien que tu ne connais probablement pas",
-      "slug": "produit-mystere"
+      "slug": "produit-mystere",
+      "topic_id": "202",
+      "bank_category": "degustation"
     },
     {
       "day": 12,
@@ -97,7 +119,9 @@
       "format": "video",
       "category": "langue",
       "subject": "Français VS espagnol : 5 différences amusantes",
-      "slug": "francais-vs-espagnol"
+      "slug": "francais-vs-espagnol",
+      "topic_id": "141",
+      "bank_category": "langue"
     },
     {
       "day": 13,
@@ -105,7 +129,9 @@
       "format": "carrousel",
       "category": "voyage",
       "subject": "5 endroits du Pérou à découvrir",
-      "slug": "5-endroits"
+      "slug": "5-endroits",
+      "topic_id": "110",
+      "bank_category": "geographie"
     },
     {
       "day": 14,
@@ -113,7 +139,9 @@
       "format": "video",
       "category": "dessert",
       "subject": "3 desserts péruviens que tu dois connaître",
-      "slug": "desserts-peruviens"
+      "slug": "desserts-peruviens",
+      "topic_id": "028",
+      "bank_category": "cuisine"
     },
     {
       "day": 15,
@@ -121,7 +149,9 @@
       "format": "carrousel",
       "category": "culture",
       "subject": "Pourquoi la Pachamama est-elle importante dans les Andes ?",
-      "slug": "pachamama"
+      "slug": "pachamama",
+      "topic_id": "116",
+      "bank_category": "culture"
     },
     {
       "day": 16,
@@ -129,7 +159,9 @@
       "format": "video",
       "category": "géographie",
       "subject": "Le Pérou et l’océan Pacifique",
-      "slug": "ocean-pacifique"
+      "slug": "ocean-pacifique",
+      "topic_id": "093",
+      "bank_category": "geographie"
     },
     {
       "day": 17,
@@ -137,7 +169,9 @@
       "format": "video",
       "category": "insolite",
       "subject": "Tu savais que le Pérou possède une partie de l’Amazonie ?",
-      "slug": "amazonie"
+      "slug": "amazonie",
+      "topic_id": "163",
+      "bank_category": "insolite"
     },
     {
       "day": 18,
@@ -145,7 +179,9 @@
       "format": "carrousel",
       "category": "histoire",
       "subject": "Les Nazca : qui étaient-ils ?",
-      "slug": "nazca"
+      "slug": "nazca",
+      "topic_id": "068",
+      "bank_category": "histoire"
     },
     {
       "day": 19,
@@ -153,7 +189,9 @@
       "format": "video",
       "category": "dégustation",
       "subject": "Je fais découvrir une spécialité péruvienne à quelqu’un",
-      "slug": "faire-decouvrir"
+      "slug": "faire-decouvrir",
+      "topic_id": "185",
+      "bank_category": "degustation"
     },
     {
       "day": 20,
@@ -161,7 +199,9 @@
       "format": "carrousel",
       "category": "interaction",
       "subject": "Tu préfères : ceviche ou lomo saltado ?",
-      "slug": "ceviche-vs-lomo-saltado"
+      "slug": "ceviche-vs-lomo-saltado",
+      "topic_id": "192",
+      "bank_category": "interaction"
     },
     {
       "day": 21,
@@ -169,7 +209,9 @@
       "format": "video",
       "category": "culture",
       "subject": "Pourquoi le 28 juillet est-il si important au Pérou ?",
-      "slug": "28-juillet"
+      "slug": "28-juillet",
+      "topic_id": "111",
+      "bank_category": "culture"
     },
     {
       "day": 22,
@@ -177,7 +219,9 @@
       "format": "video",
       "category": "gastronomie",
       "subject": "Les marcianos : le snack glacé que les Péruviens connaissent",
-      "slug": "marcianos"
+      "slug": "marcianos",
+      "topic_id": "036",
+      "bank_category": "cuisine"
     },
     {
       "day": 23,
@@ -185,7 +229,9 @@
       "format": "carrousel",
       "category": "géographie",
       "subject": "Costa, Sierra ou Selva : où voudrais-tu vivre ?",
-      "slug": "ou-vivre"
+      "slug": "ou-vivre",
+      "topic_id": "195",
+      "bank_category": "geographie"
     },
     {
       "day": 24,
@@ -193,7 +239,9 @@
       "format": "video",
       "category": "histoire",
       "subject": "Machu Picchu : ce qu’on sait réellement sur le site",
-      "slug": "machu-picchu"
+      "slug": "machu-picchu",
+      "topic_id": "066",
+      "bank_category": "histoire"
     },
     {
       "day": 25,
@@ -201,7 +249,9 @@
       "format": "video",
       "category": "culture",
       "subject": "Les carnavals au Pérou",
-      "slug": "carnavals"
+      "slug": "carnavals",
+      "topic_id": "118",
+      "bank_category": "culture"
     },
     {
       "day": 26,
@@ -209,7 +259,9 @@
       "format": "carrousel",
       "category": "gastronomie",
       "subject": "10 plats péruviens à connaître",
-      "slug": "10-plats"
+      "slug": "10-plats",
+      "topic_id": "038",
+      "bank_category": "cuisine"
     },
     {
       "day": 27,
@@ -217,7 +269,9 @@
       "format": "video",
       "category": "langue",
       "subject": "Des mots espagnols qui prennent une autre dimension au Pérou",
-      "slug": "mots-espagnols-perou"
+      "slug": "mots-espagnols-perou",
+      "topic_id": "156",
+      "bank_category": "langue"
     },
     {
       "day": 28,
@@ -225,7 +279,9 @@
       "format": "video",
       "category": "société",
       "subject": "Gamarra : pourquoi ce quartier est incontournable à Lima ?",
-      "slug": "gamarra"
+      "slug": "gamarra",
+      "topic_id": "201",
+      "bank_category": "culture"
     },
     {
       "day": 29,
@@ -233,7 +289,9 @@
       "format": "carrousel",
       "category": "culture",
       "subject": "Inti Raymi : la fête du Soleil",
-      "slug": "inti-raymi"
+      "slug": "inti-raymi",
+      "topic_id": "114",
+      "bank_category": "culture"
     },
     {
       "day": 30,
@@ -241,7 +299,9 @@
       "format": "video",
       "category": "quiz",
       "subject": "Tu connais vraiment le Pérou ? 5 questions",
-      "slug": "quiz-perou"
+      "slug": "quiz-perou",
+      "topic_id": "198",
+      "bank_category": "interaction"
     }
   ]
 }

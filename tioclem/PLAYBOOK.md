@@ -212,6 +212,70 @@ output/<date>-<slug>/
   sources.json  scenes.json  qa.json  README.txt
 ```
 
+## 27. Banque d'idées
+
+- `content/topics.json` : les 200 idées de départ, plus celles générées ensuite.
+  Chaque idée a : catégorie, sous-catégorie, **thème** (clé d'anti-répétition,
+  ex. `ceviche`), sujet, angle, **type d'angle**, format, difficulté,
+  `tournage_requis`, 7 scores /10 (recherche, curiosité, visuel, commentaire,
+  partage, originalité, pertinence Tio Clem) et l'historique des utilisations.
+- `content/angles.json` : les types d'angle (histoire, comparaison, découverte,
+  quiz, dégustation, anecdote, explication, top, question, réaction, storytelling,
+  voyage, culture, insolite, tu-préfères), avec leurs formats, leur émotion et
+  leur **intention** (informer, faire découvrir, surprendre, divertir, donner envie,
+  faire participer), plus les publics et les émotions à combiner.
+- Les scores servent **uniquement à choisir**. Ils ne sont jamais montrés au public.
+- Le calendrier des 30 jours passe d'abord (chaque jour est relié à une idée par
+  `topic_id`). Ensuite, `factory.py next` et `factory.py pick` choisissent dans la banque.
+
+Chaque `day-NN.json` porte `topic_id`, `theme`, `type_angle` et `bank_category`
+(une des 9 catégories de la banque). Le contrôle qualité refuse un post sans ces champs.
+
+### Sélection (`factory.py pick`)
+
+Score = moyenne des 7 scores, + bonus aux catégories sous-représentées par rapport
+à leur part cible (cuisine 20 %, histoire 13 %, géographie, culture et langue 12 %,
+insolite 10 %, boissons 8 %, interaction 7 %, dégustation 6 %), − malus si le type
+d'angle a servi dans les 3 derniers posts, si le format est celui du post précédent,
+si le thème a déjà été vu (autre angle) ou si un tournage est nécessaire, ± selon
+l'engagement réel des catégories et des angles (dès 3 posts avec statistiques).
+
+Exclus d'office : idée déjà utilisée, même thème + même type d'angle, thème vu dans
+les 5 derniers posts, et toute idée qui ferait une 3e publication de suite dans la
+même catégorie.
+
+### Rotation et réutilisation
+
+- **Jamais plus de deux publications consécutives de la même catégorie.**
+- Un thème revient seulement avec un autre angle, un autre format et d'autres
+  informations. Exemple, CEVICHE : 5 choses à savoir › comment il est préparé ›
+  son histoire › ceviche ou lomo ? › je fais goûter › quiz. Jamais deux fois
+  « 5 choses sur le ceviche ».
+
+### Nouvelles idées (`factory.py combine`, commande `/idea`)
+
+Combinaison SUJET + ANGLE + FORMAT + PUBLIC + ÉMOTION jamais utilisée (ex. ceviche +
+France VS Pérou + vidéo + public français + surprise = « Pourquoi le ceviche peut
+surprendre un Français lors de sa première dégustation ? »). Le titre produit par
+`combine` est un brouillon : Claude le réécrit, note l'idée et l'ajoute à
+`topics.json` (`origine: "generee"`). `factory.py bank` signale quand il reste
+moins de 40 idées neuves.
+
+### Apprentissage
+
+Après publication : `factory.py stats NN --vues … --likes … --commentaires …
+--partages … --enregistrements … --retention …`. Le jour passe à `PUBLISHED` et
+l'engagement (likes + 3×commentaires + 4×partages + 3×enregistrements, rapporté aux
+vues) oriente les sélections suivantes. `factory.py bank` montre les catégories
+sous-représentées, les angles et formats utilisés, et le mélange des intentions.
+
+## 28. Règle finale : l'identité
+
+Tio Clem n'est pas un simple compte « faits sur le Pérou ». Sur 10 publications,
+le fil doit mélanger : 🇵🇪 informer, 🍽️ faire découvrir, 🤯 surprendre, 😂 divertir,
+❤️ donner envie de connaître le Pérou, 💬 faire participer. Vérifier ce mélange
+(`factory.py bank`) avant de choisir un sujet.
+
 ## 30. Règle absolue
 
 Ne jamais prétendre qu'un fichier existe s'il n'a pas été produit. Toujours

@@ -15,7 +15,10 @@ Le créateur n'a plus qu'à **vérifier puis publier**. Rien n'est publié autom
 | `/create-day 14` | crée uniquement le jour 14 |
 | `/batch 7` | crée un lot de 7 publications |
 | `/calendar` | affiche le calendrier et l'état de chaque jour |
-| `/idea 20` | génère 20 nouvelles idées (dans `content/ideas.md`) |
+| `/idea 20` | génère 20 nouvelles idées et les ajoute à la banque |
+| `/pick 5` | propose les 5 meilleures idées à produire maintenant |
+| `/bank` | état de la banque : idées restantes, catégories sous-représentées |
+| `/stats 1 …` | enregistre les stats TikTok d'un post (la sélection en tient compte) |
 | `/research sujet` | fait uniquement la recherche |
 | `/review` | revérifie les publications produites |
 | `/export` | rassemble les fichiers prêts à publier (zip) |
@@ -40,7 +43,21 @@ python3 tioclem/factory.py next          # prochain jour à produire
 python3 tioclem/factory.py build 1       # rendu + contrôle qualité du jour 1
 python3 tioclem/factory.py review all    # revérifie tout
 python3 tioclem/factory.py export        # zip des publications prêtes
+python3 tioclem/factory.py pick 5        # meilleures idées de la banque
+python3 tioclem/factory.py bank          # équilibre du fil et idées restantes
+python3 tioclem/factory.py combine 20    # nouvelles combinaisons sujet + angle
+python3 tioclem/factory.py stats 1 --vues 2500 --likes 180 --commentaires 22
 ```
+
+## Banque d'idées
+
+`content/topics.json` contient les 200 idées de départ (plus 2 venues du
+calendrier), notées sur 7 critères. `content/angles.json` liste les angles, publics
+et émotions à combiner. Après les 30 jours du calendrier, la production pioche dans
+la banque. Règles : jamais trois publications de suite dans la même catégorie, jamais
+deux fois le même thème avec le même angle, un thème ne revient pas avant 5 posts.
+Les statistiques saisies avec `/stats` orientent les choix suivants. Détails :
+`PLAYBOOK.md` §27.
 
 ## Rendre la vidéo plus personnelle
 
@@ -60,7 +77,10 @@ tioclem/
   render.py              rendu Pillow + ffmpeg (H.264/AAC, libass)
   assets/fonts/          Anton, Montserrat (licence OFL)
   assets/lexique.txt     mots acceptés par le correcteur
-  content/calendar.json  les 30 jours
+  bank.py                sélection, rotation, anti-répétition, apprentissage
+  content/calendar.json  les 30 jours (reliés à la banque)
+  content/topics.json    banque d'idées notées
+  content/angles.json    angles, publics, émotions, intentions
   content/published.json historique (anti-répétition)
   content/posts/         un JSON par publication (script, scènes, SEO…)
   content/media/         tes photos (optionnel)

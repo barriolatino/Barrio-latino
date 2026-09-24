@@ -1,0 +1,189 @@
+{
+  "angles": [
+    {
+      "id": "histoire",
+      "nom": "Histoire",
+      "description": "Raconter d'où vient la chose, avec dates et sources.",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "émerveillement",
+      "intention": "informer"
+    },
+    {
+      "id": "comparaison",
+      "nom": "Comparaison",
+      "description": "France VS Pérou, ou deux choses péruviennes côte à côte.",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "surprise",
+      "intention": "surprendre"
+    },
+    {
+      "id": "decouverte",
+      "nom": "Découverte",
+      "description": "Présenter simplement quelque chose que le public ne connaît pas.",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "envie de découvrir",
+      "intention": "faire découvrir"
+    },
+    {
+      "id": "quiz",
+      "nom": "Quiz",
+      "description": "Questions, vrai ou faux, devinettes ; réponses à la fin ou en commentaire.",
+      "formats": [
+        "quiz",
+        "video",
+        "carrousel"
+      ],
+      "emotion": "curiosité",
+      "intention": "faire participer"
+    },
+    {
+      "id": "degustation",
+      "nom": "Dégustation",
+      "description": "Tio Clem goûte face caméra (tournage requis).",
+      "formats": [
+        "video"
+      ],
+      "emotion": "amusement",
+      "intention": "divertir"
+    },
+    {
+      "id": "anecdote",
+      "nom": "Anecdote",
+      "description": "Une petite histoire vraie et sourcée autour du sujet.",
+      "formats": [
+        "video"
+      ],
+      "emotion": "amusement",
+      "intention": "divertir"
+    },
+    {
+      "id": "explication",
+      "nom": "Explication",
+      "description": "Répondre clairement à « c'est quoi ? » ou « comment ça marche ? ».",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "curiosité",
+      "intention": "informer"
+    },
+    {
+      "id": "top",
+      "nom": "Top",
+      "description": "Liste de 3 à 10 éléments (« 5 choses à savoir »).",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "curiosité",
+      "intention": "informer"
+    },
+    {
+      "id": "question",
+      "nom": "Question",
+      "description": "Titre en question recherchable (« Pourquoi… ? »).",
+      "formats": [
+        "video"
+      ],
+      "emotion": "curiosité",
+      "intention": "informer"
+    },
+    {
+      "id": "reaction",
+      "nom": "Réaction",
+      "description": "Faire goûter ou découvrir à quelqu'un et filmer sa réaction (tournage requis).",
+      "formats": [
+        "video"
+      ],
+      "emotion": "amusement",
+      "intention": "divertir"
+    },
+    {
+      "id": "storytelling",
+      "nom": "Storytelling",
+      "description": "Récit à la première personne ou d'un personnage.",
+      "formats": [
+        "video"
+      ],
+      "emotion": "émerveillement",
+      "intention": "donner envie"
+    },
+    {
+      "id": "voyage",
+      "nom": "Voyage",
+      "description": "Le lieu vu par un voyageur : quoi voir, quand, ce qui surprend.",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "envie de découvrir",
+      "intention": "donner envie"
+    },
+    {
+      "id": "culture",
+      "nom": "Culture",
+      "description": "Pratiques, rites, sens des traditions, sans généraliser.",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "émerveillement",
+      "intention": "faire découvrir"
+    },
+    {
+      "id": "insolite",
+      "nom": "Insolite",
+      "description": "Le fait étonnant, vérifié, qui fait dire « je savais pas ».",
+      "formats": [
+        "video",
+        "carrousel"
+      ],
+      "emotion": "surprise",
+      "intention": "surprendre"
+    },
+    {
+      "id": "tu-preferes",
+      "nom": "Tu préfères",
+      "description": "Deux options, le public vote en commentaire. Jamais de gagnant désigné.",
+      "formats": [
+        "carrousel",
+        "video"
+      ],
+      "emotion": "amusement",
+      "intention": "faire participer"
+    }
+  ],
+  "publics": [
+    "public français curieux",
+    "futurs voyageurs au Pérou",
+    "amateurs de cuisine",
+    "familles franco-péruviennes",
+    "Péruviens vivant en France",
+    "étudiants en espagnol"
+  ],
+  "emotions": [
+    "surprise",
+    "curiosité",
+    "amusement",
+    "émerveillement",
+    "envie de découvrir",
+    "nostalgie"
+  ],
+  "intentions": [
+    "informer",
+    "faire découvrir",
+    "surprendre",
+    "divertir",
+    "donner envie",
+    "faire participer"
+  ]
+}

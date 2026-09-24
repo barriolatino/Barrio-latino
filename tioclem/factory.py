@@ -553,6 +553,18 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
             rep.append(f"angle identique au jour {p['day']}")
     c["absence_de_repetition"] = check(not rep, "; ".join(rep) or "aucune répétition détectée")
 
+    # banque d'idées : rattachement, rotation des catégories, thème + angle déjà utilisés
+    import bank
+    missing = [k for k in ("topic_id", "theme", "type_angle", "bank_category") if not post.get(k)]
+    bank_pb = [f"champs manquants : {', '.join(missing)}"] if missing else []
+    if post.get("topic_id") and not bank.topic_by_id(post["topic_id"]):
+        bank_pb.append(f"idée {post['topic_id']} absente de content/topics.json")
+    if post.get("bank_category") and post["bank_category"] not in bank.TARGET_SHARE:
+        bank_pb.append(f"catégorie inconnue : {post['bank_category']}")
+    bank_pb += bank.repetition_problems(post, history()["publications"])
+    c["rotation_et_banque"] = check(not bank_pb, "; ".join(bank_pb) or
+                                    f"idée {post.get('topic_id')} · {post.get('bank_category')} · angle {post.get('type_angle')}")
+
     fails = [k for k, v in c.items() if v["level"] == "fail"]
     return {"status": READY if not fails else REVIEW, "fails": fails,
             "warnings": [k for k, v in c.items() if v["level"] == "warn"], "checks": c,
@@ -675,13 +687,23 @@ def build(day: int, voice_arg: str | None = None) -> dict:
 
 
 def record(post: dict, status: str, outdir: Path) -> None:
+    import bank
     h = history()
+    prev = next((p for p in h["publications"] if p["day"] == post["day"]), {})
+    if prev.get("status") == "PUBLISHED" and status == READY:
+        status = "PUBLISHED"
     entry = {
         "day": post["day"], "date": post["date"], "subject": post["title"], "category": post["category"],
+        "bank_category": post.get("bank_category"), "topic_id": post.get("topic_id"),
+        "theme": post.get("theme"), "type_angle": post.get("type_angle"),
         "format": post["format"], "angle": post.get("angle", ""), "hook": post["hooks"][post["hook_selected"]],
         "keywords": [post["seo"]["main"], *post["seo"].get("secondary", [])], "status": status,
         "output": str(outdir.relative_to(ROOT)), "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
     }
+    for key in ("performance", "published_at"):
+        if key in prev:
+            entry[key] = prev[key]
+    bank.mark_used(post.get("topic_id"), post["day"], post["date"], post)
     h["publications"] = [p for p in h["publications"] if p["day"] != post["day"]] + [entry]
     h["publications"].sort(key=lambda p: p["day"])
     save(PUBLISHED, h)
@@ -693,7 +715,7 @@ def cmd_calendar(_):
     done = {p["day"]: p["status"] for p in history()["publications"]}
     for d in calendar()["days"]:
         st = done.get(d["day"]) or ("SCRIPT_PRÊT" if post_path(d["day"]).exists() else "À FAIRE")
-        print(f"J{d['day']:02d}  {d['date']}  {d['format']:<9} {d['category']:<12} {st:<17} {d['subject']}")
+        print(f"J{d['day']:02d}  {d['date']}  {d['format']:<9} {d['category']:<12} {st:<17} {d.get('bank_category', ''):<12} {d['subject']}")
 
 
 def next_day() -> int | None:
@@ -706,10 +728,84 @@ def next_day() -> int | None:
 
 def cmd_next(_):
     n = next_day()
-    if n is None:
-        print("Les 30 jours sont produits.")
-    else:
-        print(json.dumps(day_entry(n), ensure_ascii=False))
+    if n is not None:
+        entry = day_entry(n)
+        topic = __import__("bank").topic_by_id(entry.get("topic_id") or "")
+        print(json.dumps({**entry, "source": "calendrier", "idee": topic}, ensure_ascii=False, indent=1))
+        return
+    # calendrier terminé : la banque d'idées prend le relais
+    import bank
+    pubs = history()["publications"]
+    day = max(p["day"] for p in pubs) + 1
+    date = (dt.date.fromisoformat(max(p["date"] for p in pubs)) + dt.timedelta(days=1)).isoformat()
+    best = bank.pick(1)
+    if not best:
+        sys.exit("Aucune idée disponible : lance /idea pour régénérer la banque.")
+    print(json.dumps({"day": day, "date": date, "source": "banque", "idee": best[0]}, ensure_ascii=False, indent=1))
+
+
+def show_topic(t: dict) -> str:
+    flag = " 🎥 tournage" if t.get("tournage_requis") else ""
+    why = f"  ({', '.join(t['raisons'])})" if t.get("raisons") else ""
+    return (f"{t['id']}  {t['selection']:>5}  {t['categorie']:<11} {t['format']:<9} {t['type_angle']:<12} "
+            f"{t['sujet']} — {t['angle']}{flag}{why}")
+
+
+def cmd_pick(a):
+    import bank
+    for t in bank.pick(a.n, a.format, a.category, a.filming):
+        print(show_topic(t))
+
+
+def cmd_bank(_):
+    import bank
+    r = bank.report()
+    print(f"{r['idees']} idées, {r['restantes']} jamais utilisées")
+    print(f"{'catégorie':<12} {'banque':>6} {'restantes':>9} {'publiées':>8} {'part':>6} {'cible':>6}")
+    for c, v in r["categories"].items():
+        print(f"{c:<12} {v['banque']:>6} {v['restantes']:>9} {v['publiees']:>8} {v['part']:>6.0%} {v['cible']:>6.0%}")
+    print("sous-représentées :", ", ".join(r["sous_representees"]) or "aucune")
+    print("angles utilisés   :", r["angles_utilises"] or "aucun")
+    print("formats utilisés  :", r["formats_utilises"] or "aucun")
+    print("intentions (10 derniers) :", r["intentions_10_dernieres"] or "aucune")
+    if r["a_regenerer"]:
+        print("→ moins de 40 idées neuves : lance /idea pour en générer.")
+    for pb in r["problemes"]:
+        print("PROBLÈME :", pb)
+    if r["problemes"]:
+        sys.exit(1)
+
+
+def cmd_combine(a):
+    import bank
+    ideas = bank.combine(a.n)
+    if a.json:
+        print(json.dumps(ideas, ensure_ascii=False, indent=1))
+        return
+    for o in ideas:
+        flag = " 🎥" if o["tournage_requis"] else ""
+        print(f"{o['selection']:>5}  {o['categorie']:<11} {o['type_angle']:<12} {o['format']:<9} "
+              f"{o['public']:<28} {o['emotion']:<18} {o['titre_brouillon']}{flag}")
+
+
+def cmd_stats(a):
+    h = history()
+    p = next((p for p in h["publications"] if p["day"] == a.day), None)
+    if not p:
+        sys.exit(f"Jour {a.day} absent de published.json.")
+    perf = p.setdefault("performance", {})
+    for k in ("vues", "likes", "commentaires", "partages", "enregistrements"):
+        v = getattr(a, k)
+        if v is not None:
+            perf[k] = v
+    if a.retention is not None:
+        perf["retention_moyenne_pct"] = a.retention
+    perf["releve_le"] = dt.date.today().isoformat()
+    p["status"] = "PUBLISHED"
+    p.setdefault("published_at", a.published or p["date"])
+    save(PUBLISHED, h)
+    e = __import__("bank").engagement(perf)
+    print(f"Jour {a.day} : statistiques enregistrées" + (f", engagement pondéré {e:.1%}" if e is not None else ""))
 
 
 def print_qa(day, qa):
@@ -778,6 +874,24 @@ def main():
     r.add_argument("day", nargs="?")
     r.set_defaults(fn=cmd_review)
     sub.add_parser("export").set_defaults(fn=cmd_export)
+    pk = sub.add_parser("pick", help="meilleures idées à produire maintenant")
+    pk.add_argument("n", type=int, nargs="?", default=5)
+    pk.add_argument("--format", choices=["video", "carrousel", "quiz"])
+    pk.add_argument("--category")
+    pk.add_argument("--filming", action="store_true", help="inclure sans pénalité les idées à tourner")
+    pk.set_defaults(fn=cmd_pick)
+    sub.add_parser("bank", help="état de la banque d'idées").set_defaults(fn=cmd_bank)
+    cb = sub.add_parser("combine", help="nouvelles combinaisons sujet + angle")
+    cb.add_argument("n", type=int, nargs="?", default=20)
+    cb.add_argument("--json", action="store_true")
+    cb.set_defaults(fn=cmd_combine)
+    st = sub.add_parser("stats", help="enregistrer les statistiques TikTok d'une publication")
+    st.add_argument("day", type=int)
+    for k in ("vues", "likes", "commentaires", "partages", "enregistrements"):
+        st.add_argument(f"--{k}", type=int)
+    st.add_argument("--retention", type=float, help="rétention moyenne en %%")
+    st.add_argument("--published", help="date de publication AAAA-MM-JJ")
+    st.set_defaults(fn=cmd_stats)
     a = ap.parse_args()
     a.fn(a)
 

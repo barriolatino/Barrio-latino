@@ -5,6 +5,10 @@
       "date": "2026-09-24",
       "subject": "5 choses à savoir sur le ceviche péruvien",
       "category": "cuisine",
+      "bank_category": "cuisine",
+      "topic_id": "001",
+      "theme": "ceviche",
+      "type_angle": "top",
       "format": "video",
       "angle": "essentiels : nom, leche de tigre, variantes régionales, journée nationale, UNESCO",
       "hook": "Le ceviche, c'est pas juste du poisson cru au citron.",
@@ -18,7 +22,7 @@
       ],
       "status": "READY_TO_PUBLISH",
       "output": "output/2026-09-24-ceviche",
-      "updated_at": "2026-09-24T14:15:07"
+      "updated_at": "2026-09-24T14:23:10"
     }
   ]
 }
