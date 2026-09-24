@@ -26,3 +26,14 @@ Arbitrage entre outils qui réclament la priorité en début de session :
 3. **impeccable** prend la main sur tout travail de design frontend.
 
 `claude-mem` fonctionne uniquement par hooks et ne s'invoque pas manuellement.
+
+## Tio Clem : Content Factory (`tioclem/`)
+
+Le dossier `tioclem/` est un projet séparé du site : la production des publications
+TikTok du compte Tio Clem (@tioclem15) sur le Pérou. Il ne touche pas à `index.html`.
+
+- Règles éditoriales : `tioclem/PLAYBOOK.md`, à lire avant toute production.
+- Commandes : `/create`, `/create-day`, `/batch`, `/calendar`, `/idea`, `/research`,
+  `/review`, `/export`, `/month`, `/daily` (dans `.claude/commands/`).
+- Dépendances : `bash tioclem/setup.sh`.
+- Ne jamais publier sur TikTok ; ne jamais écrire un fait sans source dans `tioclem/research/`.

@@ -1,0 +1,37 @@
+TIO CLEM — 5 choses à savoir sur le ceviche péruvien
+Jour 1 · cuisine · video
+
+VOIX OFF (phrases courtes, pauses sur la ponctuation)
+
+[00.0s → 03.6s] SCENE01 · hook
+Le ceviche, c'est pas juste du poisson cru au citron.
+
+[03.6s → 07.1s] SCENE02 · contexte
+Voici cinq choses à savoir sur le ceviche péruvien.
+
+[07.1s → 10.5s] SCENE03 · info
+Un : là-bas, on l'écrit souvent avec un B. Cebiche.
+
+[10.5s → 17.7s] SCENE04 · info
+Deux : le jus de sa marinade a un nom, la leche de tigre. On la sert même en petit verre.
+
+[17.7s → 24.1s] SCENE05 · info
+Trois : chaque région a sa version. Conchas negras à Tumbes, crevettes de rivière à Arequipa, paiche en Amazonie.
+
+[24.1s → 27.6s] SCENE06 · info
+Quatre : il a sa journée nationale, le 28 juin.
+
+[27.6s → 35.4s] SCENE07 · surprise
+Et cinq : l'UNESCO l'a inscrit au patrimoine immatériel en 2023. Pas la recette : tout ce qui l'entoure, de la pêche au partage.
+
+[35.4s → 40.2s] SCENE08 · cta
+Et toi, tu l'as déjà goûté ? Team poisson ou team fruits de mer ?
+
+HOOKS ÉTUDIÉS
+→ Le ceviche, c'est pas juste du poisson cru au citron.
+  Tu crois connaître le ceviche ? Attends le numéro cinq.
+  Si tu vas au Pérou, tu dois savoir ça sur le ceviche.
+  Il y a un truc dans le ceviche que presque personne ne remarque en France.
+  Le plat préféré des Péruviens cache cinq secrets.
+
+Pourquoi ce hook : Corrige une idée reçue française (« du poisson cru au citron ») : curiosité immédiate sans exagération. Le hook 5 est écarté car « préféré des Péruviens » n'est pas sourcé.

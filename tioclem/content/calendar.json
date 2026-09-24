@@ -1,0 +1,247 @@
+{
+  "account": "Tio Clem (@tioclem15)",
+  "series": "Série 1 — 30 jours",
+  "start_date": "2026-09-24",
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-09-24",
+      "format": "video",
+      "category": "cuisine",
+      "subject": "5 choses à savoir sur le ceviche péruvien",
+      "slug": "ceviche"
+    },
+    {
+      "day": 2,
+      "date": "2026-09-25",
+      "format": "carrousel",
+      "category": "géographie",
+      "subject": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
+      "slug": "regions-costa-sierra-selva"
+    },
+    {
+      "day": 3,
+      "date": "2026-09-26",
+      "format": "video",
+      "category": "langue",
+      "subject": "5 expressions que tu peux entendre au Pérou",
+      "slug": "expressions-peruviennes"
+    },
+    {
+      "day": 4,
+      "date": "2026-09-27",
+      "format": "video",
+      "category": "histoire",
+      "subject": "Avant les Incas : les civilisations qui existaient déjà au Pérou",
+      "slug": "avant-les-incas"
+    },
+    {
+      "day": 5,
+      "date": "2026-09-28",
+      "format": "carrousel",
+      "category": "cuisine",
+      "subject": "Les petits-déjeuners péruviens",
+      "slug": "petits-dejeuners"
+    },
+    {
+      "day": 6,
+      "date": "2026-09-29",
+      "format": "video",
+      "category": "insolite",
+      "subject": "5 choses étonnantes sur le Pérou",
+      "slug": "choses-etonnantes"
+    },
+    {
+      "day": 7,
+      "date": "2026-09-30",
+      "format": "carrousel",
+      "category": "interaction",
+      "subject": "Tu préfères : tallarines verdes ou tallarines rojos ?",
+      "slug": "tallarines-verdes-rojos"
+    },
+    {
+      "day": 8,
+      "date": "2026-10-01",
+      "format": "video",
+      "category": "cuisine",
+      "subject": "Lomo saltado : pourquoi ce plat est si particulier ?",
+      "slug": "lomo-saltado"
+    },
+    {
+      "day": 9,
+      "date": "2026-10-02",
+      "format": "video",
+      "category": "géographie",
+      "subject": "Pourquoi le Pérou possède-t-il des paysages aussi différents ?",
+      "slug": "paysages-differents"
+    },
+    {
+      "day": 10,
+      "date": "2026-10-03",
+      "format": "carrousel",
+      "category": "histoire",
+      "subject": "Comment les Incas ont-ils construit leur empire ?",
+      "slug": "empire-inca"
+    },
+    {
+      "day": 11,
+      "date": "2026-10-04",
+      "format": "video",
+      "category": "dégustation",
+      "subject": "Je goûte un produit péruvien que tu ne connais probablement pas",
+      "slug": "produit-mystere"
+    },
+    {
+      "day": 12,
+      "date": "2026-10-05",
+      "format": "video",
+      "category": "langue",
+      "subject": "Français VS espagnol : 5 différences amusantes",
+      "slug": "francais-vs-espagnol"
+    },
+    {
+      "day": 13,
+      "date": "2026-10-06",
+      "format": "carrousel",
+      "category": "voyage",
+      "subject": "5 endroits du Pérou à découvrir",
+      "slug": "5-endroits"
+    },
+    {
+      "day": 14,
+      "date": "2026-10-07",
+      "format": "video",
+      "category": "dessert",
+      "subject": "3 desserts péruviens que tu dois connaître",
+      "slug": "desserts-peruviens"
+    },
+    {
+      "day": 15,
+      "date": "2026-10-08",
+      "format": "carrousel",
+      "category": "culture",
+      "subject": "Pourquoi la Pachamama est-elle importante dans les Andes ?",
+      "slug": "pachamama"
+    },
+    {
+      "day": 16,
+      "date": "2026-10-09",
+      "format": "video",
+      "category": "géographie",
+      "subject": "Le Pérou et l’océan Pacifique",
+      "slug": "ocean-pacifique"
+    },
+    {
+      "day": 17,
+      "date": "2026-10-10",
+      "format": "video",
+      "category": "insolite",
+      "subject": "Tu savais que le Pérou possède une partie de l’Amazonie ?",
+      "slug": "amazonie"
+    },
+    {
+      "day": 18,
+      "date": "2026-10-11",
+      "format": "carrousel",
+      "category": "histoire",
+      "subject": "Les Nazca : qui étaient-ils ?",
+      "slug": "nazca"
+    },
+    {
+      "day": 19,
+      "date": "2026-10-12",
+      "format": "video",
+      "category": "dégustation",
+      "subject": "Je fais découvrir une spécialité péruvienne à quelqu’un",
+      "slug": "faire-decouvrir"
+    },
+    {
+      "day": 20,
+      "date": "2026-10-13",
+      "format": "carrousel",
+      "category": "interaction",
+      "subject": "Tu préfères : ceviche ou lomo saltado ?",
+      "slug": "ceviche-vs-lomo-saltado"
+    },
+    {
+      "day": 21,
+      "date": "2026-10-14",
+      "format": "video",
+      "category": "culture",
+      "subject": "Pourquoi le 28 juillet est-il si important au Pérou ?",
+      "slug": "28-juillet"
+    },
+    {
+      "day": 22,
+      "date": "2026-10-15",
+      "format": "video",
+      "category": "gastronomie",
+      "subject": "Les marcianos : le snack glacé que les Péruviens connaissent",
+      "slug": "marcianos"
+    },
+    {
+      "day": 23,
+      "date": "2026-10-16",
+      "format": "carrousel",
+      "category": "géographie",
+      "subject": "Costa, Sierra ou Selva : où voudrais-tu vivre ?",
+      "slug": "ou-vivre"
+    },
+    {
+      "day": 24,
+      "date": "2026-10-17",
+      "format": "video",
+      "category": "histoire",
+      "subject": "Machu Picchu : ce qu’on sait réellement sur le site",
+      "slug": "machu-picchu"
+    },
+    {
+      "day": 25,
+      "date": "2026-10-18",
+      "format": "video",
+      "category": "culture",
+      "subject": "Les carnavals au Pérou",
+      "slug": "carnavals"
+    },
+    {
+      "day": 26,
+      "date": "2026-10-19",
+      "format": "carrousel",
+      "category": "gastronomie",
+      "subject": "10 plats péruviens à connaître",
+      "slug": "10-plats"
+    },
+    {
+      "day": 27,
+      "date": "2026-10-20",
+      "format": "video",
+      "category": "langue",
+      "subject": "Des mots espagnols qui prennent une autre dimension au Pérou",
+      "slug": "mots-espagnols-perou"
+    },
+    {
+      "day": 28,
+      "date": "2026-10-21",
+      "format": "video",
+      "category": "société",
+      "subject": "Gamarra : pourquoi ce quartier est incontournable à Lima ?",
+      "slug": "gamarra"
+    },
+    {
+      "day": 29,
+      "date": "2026-10-22",
+      "format": "carrousel",
+      "category": "culture",
+      "subject": "Inti Raymi : la fête du Soleil",
+      "slug": "inti-raymi"
+    },
+    {
+      "day": 30,
+      "date": "2026-10-23",
+      "format": "video",
+      "category": "quiz",
+      "subject": "Tu connais vraiment le Pérou ? 5 questions",
+      "slug": "quiz-perou"
+    }
+  ]
+}

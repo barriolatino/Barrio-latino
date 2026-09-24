@@ -1,0 +1,132 @@
+{
+  "format": "1080x1920 · 9:16 · 30 fps · H.264 + AAC",
+  "duree_totale": 40.2,
+  "scenes": [
+    {
+      "scene": "SCENE 01",
+      "role": "hook",
+      "debut": 0.0,
+      "duree": 3.6,
+      "visuel": "gros plan d'un ceviche péruvien",
+      "description": "Assiette de ceviche vue de dessus : poisson blanc en cubes, oignon rouge, coriandre, patate douce, maïs. Lumière naturelle.",
+      "texte_ecran": "TU CONNAIS VRAIMENT LE CEVICHE ? 🇵🇪",
+      "sous_texte_ecran": "",
+      "voix_off": "Le ceviche, c'est pas juste du poisson cru au citron.",
+      "animation": "zoom léger + titre qui pop",
+      "faits": [
+        "F10"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 02",
+      "role": "contexte",
+      "debut": 3.6,
+      "duree": 3.47,
+      "visuel": "citrons verts et piments",
+      "description": "Citrons verts coupés, ají limo, oignon rouge sur une planche.",
+      "texte_ecran": "5 CHOSES À SAVOIR",
+      "sous_texte_ecran": "sur le plat star du Pérou",
+      "voix_off": "Voici cinq choses à savoir sur le ceviche péruvien.",
+      "animation": "zoom léger",
+      "faits": [],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 03",
+      "role": "info",
+      "debut": 7.07,
+      "duree": 3.47,
+      "visuel": "enseigne de cevichería",
+      "description": "Enseigne ou menu écrit « cebiche » (photo perso idéale).",
+      "texte_ecran": "CEBICHE, AVEC UN B",
+      "sous_texte_ecran": "cebiche · ceviche · seviche",
+      "voix_off": "Un : là-bas, on l'écrit souvent avec un B. Cebiche.",
+      "animation": "titre qui pop",
+      "faits": [
+        "F9"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 04",
+      "role": "info",
+      "debut": 10.53,
+      "duree": 7.13,
+      "visuel": "verre de leche de tigre",
+      "description": "Petit verre de jus blanc laiteux avec quelques morceaux de poisson et de la cancha.",
+      "texte_ecran": "LA LECHE DE TIGRE",
+      "sous_texte_ecran": "le jus de la marinade, servi en verre",
+      "voix_off": "Deux : le jus de sa marinade a un nom, la leche de tigre. On la sert même en petit verre.",
+      "animation": "zoom léger + titre qui pop",
+      "faits": [
+        "F6"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 05",
+      "role": "info",
+      "debut": 17.67,
+      "duree": 6.47,
+      "visuel": "carte du Pérou",
+      "description": "Carte simple du Pérou avec trois points : Tumbes, Arequipa, Amazonie.",
+      "texte_ecran": "UNE VERSION PAR RÉGION",
+      "sous_texte_ecran": "Tumbes · Arequipa · Amazonie",
+      "voix_off": "Trois : chaque région a sa version. Conchas negras à Tumbes, crevettes de rivière à Arequipa, paiche en Amazonie.",
+      "animation": "zoom léger",
+      "faits": [
+        "F4",
+        "F5"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 06",
+      "role": "info",
+      "debut": 24.13,
+      "duree": 3.47,
+      "visuel": "calendrier",
+      "description": "Page de calendrier sur le 28 juin.",
+      "texte_ecran": "SA JOURNÉE : LE 28 JUIN",
+      "sous_texte_ecran": "Día Nacional del Cebiche",
+      "voix_off": "Quatre : il a sa journée nationale, le 28 juin.",
+      "animation": "titre qui pop",
+      "faits": [
+        "F7"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 07",
+      "role": "surprise",
+      "debut": 27.6,
+      "duree": 7.8,
+      "visuel": "repas partagé",
+      "description": "Tablée qui partage des plats de ceviche, mains qui se servent.",
+      "texte_ecran": "PATRIMOINE DE L'UNESCO",
+      "sous_texte_ecran": "pas la recette : les savoir-faire autour",
+      "voix_off": "Et cinq : l'UNESCO l'a inscrit au patrimoine immatériel en 2023. Pas la recette : tout ce qui l'entoure, de la pêche au partage.",
+      "animation": "zoom léger + titre qui pop",
+      "faits": [
+        "F1",
+        "F2"
+      ],
+      "media_personnel": ""
+    },
+    {
+      "scene": "SCENE 08",
+      "role": "cta",
+      "debut": 35.4,
+      "duree": 4.8,
+      "visuel": "Tio Clem face caméra",
+      "description": "Tio Clem qui pose la question face caméra, fourchette à la main.",
+      "texte_ecran": "ET TOI ?",
+      "sous_texte_ecran": "team poisson 🐟 ou team fruits de mer 🦐 ?",
+      "voix_off": "Et toi, tu l'as déjà goûté ? Team poisson ou team fruits de mer ?",
+      "animation": "titre qui pop",
+      "faits": [],
+      "media_personnel": ""
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "sujet": "5 choses à savoir sur le ceviche péruvien",
+  "slug": "ceviche",
+  "day": 1,
+  "date": "2026-09-24",
+  "angle": "essentiels : nom, leche de tigre, variantes régionales, journée nationale, UNESCO",
+  "angles_reserves": [
+    "origines et hypothèses (Moche, tumbo, arrivée du citron et de l'oignon)",
+    "ingrédients : limón sutil, ají limo, cebolla morada, camote, choclo, cancha",
+    "dégustation en cevichería",
+    "comparaison ceviche péruvien / autres ceviches d'Amérique latine",
+    "quiz ceviche",
+    "tiradito et leche de pantera"
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "titre": "New inscription on the Intangible Heritage List: Practices and meanings associated with the preparation and consumption of ceviche, an expression of Peruvian traditional cuisine",
+      "editeur": "UNESCO",
+      "type": "organisme international",
+      "priorite": 6,
+      "url": "https://www.unesco.org/en/articles/new-inscription-intangible-heritage-list-practices-and-meanings-associated-preparation-and",
+      "date_publication": "2023-12-13",
+      "consulte_le": "2026-09-24"
+    },
+    {
+      "id": "S2",
+      "titre": "Día Nacional del Cebiche: ¿Por qué se celebra el 28 de junio?",
+      "editeur": "Agencia Andina (agence de presse de l'État péruvien, Editora Perú)",
+      "type": "organisme officiel péruvien",
+      "priorite": 2,
+      "url": "https://andina.pe/agencia/noticia-dia-nacional-del-cebiche-por-se-celebra-28-junio-video-944889.aspx",
+      "date_publication": "2023-06-28",
+      "consulte_le": "2026-09-24"
+    },
+    {
+      "id": "S3",
+      "titre": "Día Nacional del Cebiche: conoce la receta clásica y variedades del célebre plato peruano",
+      "editeur": "Agencia Andina (agence de presse de l'État péruvien, Editora Perú)",
+      "type": "organisme officiel péruvien",
+      "priorite": 2,
+      "url": "https://andina.pe/agencia/noticia-dia-nacional-del-cebiche-conoce-receta-clasica-y-variedades-del-celebre-plato-peruano-899171.aspx",
+      "date_publication": "2022-06-28",
+      "consulte_le": "2026-09-24"
+    },
+    {
+      "id": "S4",
+      "titre": "cebiche — Diccionario de la lengua española",
+      "editeur": "Real Academia Española / ASALE",
+      "type": "institution",
+      "priorite": 1,
+      "url": "https://dle.rae.es/cebiche",
+      "date_publication": "édition du Tricentenaire, version 23.8.1",
+      "consulte_le": "2026-09-24"
+    },
+    {
+      "id": "S5",
+      "titre": "Día Nacional del Cebiche: ¿Desde cuándo y por qué se celebra el 28 de junio?",
+      "editeur": "El Comercio (Pérou)",
+      "type": "média reconnu",
+      "priorite": 7,
+      "url": "https://elcomercio.pe/respuestas/dia-nacional-del-cebiche-desde-cuando-y-por-que-se-celebra-el-28-de-junio-gastronomia-peruana-pesca-revtli-noticia/",
+      "date_publication": "non relevée",
+      "consulte_le": "2026-09-24",
+      "note": "Consulté via résultat de recherche uniquement ; sert à recouper S2 (2004 / 2008)."
+    }
+  ],
+  "faits": [
+    {
+      "id": "F1",
+      "fait": "En décembre 2023, le Comité intergouvernemental de l'UNESCO réuni à Kasane (Botswana) a inscrit « les pratiques et significations associées à la préparation et à la consommation du ceviche, expression de la cuisine traditionnelle péruvienne » sur la Liste représentative du patrimoine culturel immatériel de l'humanité.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "utilise_dans": [
+        "scene07"
+      ]
+    },
+    {
+      "id": "F2",
+      "fait": "Ce n'est pas une recette qui est inscrite, mais des pratiques, savoirs et significations transmis de la pêche et la culture des ingrédients jusqu'à la préparation et au partage.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1"
+      ],
+      "utilise_dans": [
+        "scene07"
+      ]
+    },
+    {
+      "id": "F3",
+      "fait": "C'est le 12e élément péruvien de la Liste, le premier consacré à la culture culinaire et le premier couvrant tout le territoire national.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1"
+      ],
+      "utilise_dans": []
+    },
+    {
+      "id": "F4",
+      "fait": "Le ceviche est préparé dans tous les départements du Pérou avec des ingrédients locaux, d'où de nombreuses variantes régionales, même s'il est souvent associé à la côte.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "utilise_dans": [
+        "scene05"
+      ]
+    },
+    {
+      "id": "F5",
+      "fait": "Exemples de variantes régionales : ceviche de conchas negras à Tumbes, ceviche de camarones (crevettes de rivière) à Arequipa, ceviche amazonien au poisson de rivière (paiche, dorado, doncella…) parfois acidulé au camu camu.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S3"
+      ],
+      "utilise_dans": [
+        "scene05"
+      ]
+    },
+    {
+      "id": "F6",
+      "fait": "La leche de tigre est le jus obtenu lors de la préparation du ceviche de poisson blanc ; elle se sert pure en verre ou en coupe, ou avec des morceaux de poisson, de fruits de mer et de la cancha.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S3"
+      ],
+      "utilise_dans": [
+        "scene04"
+      ]
+    },
+    {
+      "id": "F7",
+      "fait": "Le 28 juin est le « Día Nacional del Cebiche », fixé par la Resolución Ministerial N° 708-2008-PRODUCE (ministère de la Production, 2008). La date tombe la veille du Día del Pescador et de la Saint-Pierre-et-Saint-Paul (29 juin).",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S2"
+      ],
+      "utilise_dans": [
+        "scene06"
+      ]
+    },
+    {
+      "id": "F8",
+      "fait": "En mars 2004, l'Instituto Nacional de Cultura a déclaré le ceviche Patrimoine culturel de la Nation.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S2",
+        "S5"
+      ],
+      "utilise_dans": []
+    },
+    {
+      "id": "F9",
+      "fait": "La RAE enregistre « cebiche » comme entrée principale, avec les variantes « ceviche » et « seviche ». Les sources officielles péruviennes (ministère de la Culture, Andina) écrivent le plus souvent « cebiche ».",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S4",
+        "S2",
+        "S3"
+      ],
+      "utilise_dans": [
+        "scene03"
+      ]
+    },
+    {
+      "id": "F10",
+      "fait": "Recette de base : poisson (ou fruits de mer) cru en morceaux, jus de citron vert (limón), oignon, sel et piment (ají). Accompagnements selon la région : camote, choclo, cancha, laitue, yuyo…",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S3",
+        "S4",
+        "S2"
+      ],
+      "utilise_dans": [
+        "scene01"
+      ]
+    },
+    {
+      "id": "F11",
+      "fait": "L'étymologie du mot est incertaine ; la RAE avance « peut-être » l'arabe hispanique assukkabáǧ, lui-même de l'arabe sikbāǧ.",
+      "statut": "HYPOTHÈSE",
+      "confiance": "moyenne",
+      "sources": [
+        "S4"
+      ],
+      "utilise_dans": []
+    },
+    {
+      "id": "F12",
+      "fait": "Des peuples de la côte préparaient déjà du poisson cru avec ají et sel dans l'ancien Pérou ; la culture mochica l'aurait mariné avec du jus de tumbo. La version actuelle au limón et à marinade courte se serait imposée à Lima au milieu du XXe siècle.",
+      "statut": "HYPOTHÈSE",
+      "confiance": "moyenne",
+      "sources": [
+        "S2",
+        "S3"
+      ],
+      "utilise_dans": [],
+      "note": "Réservé à un futur post « origines » ; à recouper avec une source archéologique avant usage."
+    }
+  ],
+  "desaccords": [
+    {
+      "sujet": "Ancienneté du plat",
+      "detail": "Plusieurs médias parlent de « plus de 2 000 ans » ; UNESCO relaie cette idée comme avis d'anthropologues locaux. Aucune source primaire archéologique consultée : non utilisé comme fait."
+    },
+    {
+      "sujet": "Orthographe",
+      "detail": "cebiche / ceviche / seviche sont toutes admises (RAE). Aucune n'est « fausse » : le script dit seulement qu'au Pérou on l'écrit souvent avec un B."
+    }
+  ],
+  "informations_ecartees": [
+    {
+      "information": "Des femmes morisques arrivées avec Pizarro auraient créé un plat appelé « sibech » (« nourriture acide » en arabe).",
+      "raison": "Tradition relayée sans source primaire ; relève de la légende. Ne pas présenter comme un fait."
+    },
+    {
+      "information": "Origine précise dans la culture Tallán (Piura).",
+      "raison": "Une seule source, sans référence archéologique."
+    },
+    {
+      "information": "La leche de tigre serait née chez les pêcheurs du Callao.",
+      "raison": "Uniquement des publications Instagram, pas de source fiable."
+    },
+    {
+      "information": "Propriétés aphrodisiaques du ceviche de conchas negras.",
+      "raison": "Croyance populaire, non vérifiable ; hors angle."
+    },
+    {
+      "information": "Le ceviche se mange uniquement le midi.",
+      "raison": "Généralisation non sourcée ; habitude fréquente mais pas universelle."
+    }
+  ]
+}

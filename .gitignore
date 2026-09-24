@@ -6,3 +6,7 @@ skill-updates/
 .impeccable/
 node_modules/
 .DS_Store
+
+# Tio Clem : archives d'export régénérables
+tioclem/export/
+__pycache__/

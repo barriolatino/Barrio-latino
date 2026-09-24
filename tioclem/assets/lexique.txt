@@ -1,0 +1,19 @@
+# Mots acceptés par le contrôle orthographique (anglicismes, espagnol, quechua).
+# Un mot par ligne. Les mots propres à un sujet vont plutôt dans research/<sujet>.json.
+team
+story
+food
+cevichería
+cevicherías
+cebiche
+leche
+tigre
+limón
+ají
+camote
+choclo
+cancha
+chicha
+pachamama
+quechua
+aymara
