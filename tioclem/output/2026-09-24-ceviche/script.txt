@@ -6,22 +6,22 @@ VOIX OFF (phrases courtes, pauses sur la ponctuation)
 [00.0s → 02.8s] SCENE01 · hook
 Le ceviche, c'est pas juste du poisson cru au citron.
 
-[02.8s → 05.6s] SCENE02 · contexte
+[02.8s → 05.2s] SCENE02 · contexte
 Voici cinq choses à savoir sur le ceviche péruvien.
 
-[05.6s → 09.0s] SCENE03 · info
+[05.2s → 08.2s] SCENE03 · info
 Un : là-bas, on l'écrit souvent avec un B. Cebiche.
 
-[09.0s → 14.1s] SCENE04 · info
+[08.2s → 12.7s] SCENE04 · info
 Deux : le jus de sa marinade a un nom, la leche de tigre. On la sert même en petit verre.
 
-[14.1s → 19.5s] SCENE05 · info
+[12.7s → 18.8s] SCENE05 · info
 Trois : chaque région a sa version. Conchas negras à Tumbes, crevettes de rivière à Arequipa, paiche en Amazonie.
 
-[19.5s → 22.9s] SCENE06 · info
+[18.8s → 21.8s] SCENE06 · info
 Quatre : il a sa journée nationale, le 28 juin.
 
-[22.9s → 29.4s] SCENE07 · surprise
+[21.8s → 29.4s] SCENE07 · surprise
 Et cinq : l'UNESCO l'a inscrit au patrimoine immatériel en 2023. Pas la recette : tout ce qui l'entoure, de la pêche au partage.
 
 [29.4s → 33.4s] SCENE08 · cta

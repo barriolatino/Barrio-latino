@@ -1,6 +1,6 @@
 {
   "format": "1080x1920 · 9:16 · 30 fps · H.264 + AAC",
-  "duree_totale": 33.4,
+  "duree_totale": 33.43,
   "scenes": [
     {
       "scene": "SCENE 01",
@@ -22,7 +22,7 @@
       "scene": "SCENE 02",
       "role": "contexte",
       "debut": 2.8,
-      "duree": 2.77,
+      "duree": 2.37,
       "visuel": "citrons verts et piments",
       "description": "Citrons verts coupés, ají limo, oignon rouge sur une planche.",
       "texte_ecran": "5 CHOSES À SAVOIR",
@@ -35,8 +35,8 @@
     {
       "scene": "SCENE 03",
       "role": "info",
-      "debut": 5.57,
-      "duree": 3.4,
+      "debut": 5.17,
+      "duree": 3.03,
       "visuel": "enseigne de cevichería",
       "description": "Enseigne ou menu écrit « cebiche » (photo perso idéale).",
       "texte_ecran": "CEBICHE, AVEC UN B",
@@ -51,8 +51,8 @@
     {
       "scene": "SCENE 04",
       "role": "info",
-      "debut": 8.97,
-      "duree": 5.17,
+      "debut": 8.2,
+      "duree": 4.47,
       "visuel": "verre de leche de tigre",
       "description": "Petit verre de jus blanc laiteux avec quelques morceaux de poisson et de la cancha.",
       "texte_ecran": "LA LECHE DE TIGRE",
@@ -67,8 +67,8 @@
     {
       "scene": "SCENE 05",
       "role": "info",
-      "debut": 14.13,
-      "duree": 5.37,
+      "debut": 12.67,
+      "duree": 6.17,
       "visuel": "carte du Pérou",
       "description": "Carte simple du Pérou avec trois points : Tumbes, Arequipa, Amazonie.",
       "texte_ecran": "UNE VERSION PAR RÉGION",
@@ -84,8 +84,8 @@
     {
       "scene": "SCENE 06",
       "role": "info",
-      "debut": 19.5,
-      "duree": 3.4,
+      "debut": 18.83,
+      "duree": 2.97,
       "visuel": "calendrier",
       "description": "Page de calendrier sur le 28 juin.",
       "texte_ecran": "SA JOURNÉE : LE 28 JUIN",
@@ -100,8 +100,8 @@
     {
       "scene": "SCENE 07",
       "role": "surprise",
-      "debut": 22.9,
-      "duree": 6.53,
+      "debut": 21.8,
+      "duree": 7.63,
       "visuel": "repas partagé",
       "description": "Tablée qui partage des plats de ceviche, mains qui se servent.",
       "texte_ecran": "PATRIMOINE DE L'UNESCO",
@@ -118,7 +118,7 @@
       "scene": "SCENE 08",
       "role": "cta",
       "debut": 29.43,
-      "duree": 3.97,
+      "duree": 4.0,
       "visuel": "Tio Clem face caméra",
       "description": "Tio Clem qui pose la question face caméra, fourchette à la main.",
       "texte_ecran": "ET TOI ?",

@@ -1,7 +1,9 @@
 {
   "status": "READY_TO_PUBLISH",
   "fails": [],
-  "warnings": [],
+  "warnings": [
+    "rythme"
+  ],
   "checks": {
     "exactitude": {
       "level": "ok",
@@ -24,8 +26,8 @@
       "detail": "Le ceviche, c'est pas juste du poisson cru au citron."
     },
     "rythme": {
-      "level": "ok",
-      "detail": "8 scènes, aucune au-delà de 8 s"
+      "level": "warn",
+      "detail": "scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)"
     },
     "duree": {
       "level": "ok",
@@ -45,7 +47,7 @@
     },
     "sous_titres": {
       "level": "ok",
-      "detail": "29 sous-titres, incrustés en zone sûre"
+      "detail": "22 sous-titres, incrustés en zone sûre"
     },
     "cta": {
       "level": "ok",
@@ -68,5 +70,5 @@
       "detail": "idée 001 · cuisine · angle top"
     }
   },
-  "checked_at": "2026-09-24T15:31:44"
+  "checked_at": "2026-09-24T15:37:07"
 }

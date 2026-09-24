@@ -37,6 +37,6 @@ SOURCES :
   - Scène 5 : vérifier la prononciation de « conchas negras » (kon-tchass né-grass) et de « paiche » (paï-tché) si tu enregistres la voix.
 
 POINTS SIGNALÉS PAR LE CONTRÔLE QUALITÉ :
-  - rythme : scènes hors rythme : scene01 (3.6 mots/s, 2.8 s), scene04 (3.9 mots/s, 5.2 s)
+  - rythme : scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)
 
 STATUT : READY_TO_PUBLISH
