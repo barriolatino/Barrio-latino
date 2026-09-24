@@ -57,7 +57,7 @@
       "facts": [
         "F10"
       ],
-      "duration": 3.6
+      "duration": 2.8
     },
     {
       "id": "scene02",
@@ -76,7 +76,7 @@
       },
       "animation": "zoom léger",
       "facts": [],
-      "duration": 3.466666666666667
+      "duration": 2.7666666666666666
     },
     {
       "id": "scene03",
@@ -98,7 +98,7 @@
       "facts": [
         "F9"
       ],
-      "duration": 3.466666666666667
+      "duration": 3.4
     },
     {
       "id": "scene04",
@@ -120,7 +120,7 @@
       "facts": [
         "F6"
       ],
-      "duration": 7.133333333333334
+      "duration": 5.166666666666667
     },
     {
       "id": "scene05",
@@ -143,7 +143,7 @@
         "F4",
         "F5"
       ],
-      "duration": 6.466666666666667
+      "duration": 5.366666666666666
     },
     {
       "id": "scene06",
@@ -165,7 +165,7 @@
       "facts": [
         "F7"
       ],
-      "duration": 3.466666666666667
+      "duration": 3.4
     },
     {
       "id": "scene07",
@@ -188,7 +188,7 @@
         "F1",
         "F2"
       ],
-      "duration": 7.8
+      "duration": 6.533333333333333
     },
     {
       "id": "scene08",
@@ -207,7 +207,7 @@
       },
       "animation": "titre qui pop",
       "facts": [],
-      "duration": 4.8
+      "duration": 3.966666666666667
     }
   ],
   "cta": "Dis-moi en commentaire : team poisson ou team fruits de mer ?",
@@ -237,5 +237,15 @@
   "topic_id": "001",
   "theme": "ceviche",
   "type_angle": "top",
-  "bank_category": "cuisine"
+  "bank_category": "cuisine",
+  "voice_cuts": [
+    2.79,
+    5.57,
+    8.97,
+    14.15,
+    19.51,
+    22.92,
+    29.45
+  ],
+  "voice_cuts_note": "Fin de chaque scène (sauf la dernière) en secondes dans content/voice/day-01.m4a, placée sur les pauses. Supprimer ce champ pour revenir au calage automatique."
 }

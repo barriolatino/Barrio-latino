@@ -1,12 +1,12 @@
 {
   "format": "1080x1920 · 9:16 · 30 fps · H.264 + AAC",
-  "duree_totale": 40.2,
+  "duree_totale": 33.4,
   "scenes": [
     {
       "scene": "SCENE 01",
       "role": "hook",
       "debut": 0.0,
-      "duree": 3.6,
+      "duree": 2.8,
       "visuel": "gros plan d'un ceviche péruvien",
       "description": "Assiette de ceviche vue de dessus : poisson blanc en cubes, oignon rouge, coriandre, patate douce, maïs. Lumière naturelle.",
       "texte_ecran": "TU CONNAIS VRAIMENT LE CEVICHE ? 🇵🇪",
@@ -21,8 +21,8 @@
     {
       "scene": "SCENE 02",
       "role": "contexte",
-      "debut": 3.6,
-      "duree": 3.47,
+      "debut": 2.8,
+      "duree": 2.77,
       "visuel": "citrons verts et piments",
       "description": "Citrons verts coupés, ají limo, oignon rouge sur une planche.",
       "texte_ecran": "5 CHOSES À SAVOIR",
@@ -35,8 +35,8 @@
     {
       "scene": "SCENE 03",
       "role": "info",
-      "debut": 7.07,
-      "duree": 3.47,
+      "debut": 5.57,
+      "duree": 3.4,
       "visuel": "enseigne de cevichería",
       "description": "Enseigne ou menu écrit « cebiche » (photo perso idéale).",
       "texte_ecran": "CEBICHE, AVEC UN B",
@@ -51,8 +51,8 @@
     {
       "scene": "SCENE 04",
       "role": "info",
-      "debut": 10.53,
-      "duree": 7.13,
+      "debut": 8.97,
+      "duree": 5.17,
       "visuel": "verre de leche de tigre",
       "description": "Petit verre de jus blanc laiteux avec quelques morceaux de poisson et de la cancha.",
       "texte_ecran": "LA LECHE DE TIGRE",
@@ -67,8 +67,8 @@
     {
       "scene": "SCENE 05",
       "role": "info",
-      "debut": 17.67,
-      "duree": 6.47,
+      "debut": 14.13,
+      "duree": 5.37,
       "visuel": "carte du Pérou",
       "description": "Carte simple du Pérou avec trois points : Tumbes, Arequipa, Amazonie.",
       "texte_ecran": "UNE VERSION PAR RÉGION",
@@ -84,8 +84,8 @@
     {
       "scene": "SCENE 06",
       "role": "info",
-      "debut": 24.13,
-      "duree": 3.47,
+      "debut": 19.5,
+      "duree": 3.4,
       "visuel": "calendrier",
       "description": "Page de calendrier sur le 28 juin.",
       "texte_ecran": "SA JOURNÉE : LE 28 JUIN",
@@ -100,8 +100,8 @@
     {
       "scene": "SCENE 07",
       "role": "surprise",
-      "debut": 27.6,
-      "duree": 7.8,
+      "debut": 22.9,
+      "duree": 6.53,
       "visuel": "repas partagé",
       "description": "Tablée qui partage des plats de ceviche, mains qui se servent.",
       "texte_ecran": "PATRIMOINE DE L'UNESCO",
@@ -117,8 +117,8 @@
     {
       "scene": "SCENE 08",
       "role": "cta",
-      "debut": 35.4,
-      "duree": 4.8,
+      "debut": 29.43,
+      "duree": 3.97,
       "visuel": "Tio Clem face caméra",
       "description": "Tio Clem qui pose la question face caméra, fourchette à la main.",
       "texte_ecran": "ET TOI ?",

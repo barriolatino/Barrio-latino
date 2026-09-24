@@ -4,7 +4,7 @@ CATÉGORIE : cuisine
 
 FORMAT : video (1080x1920, 30 fps, H.264 + AAC)
 
-DURÉE : 40.2 s
+DURÉE : 33.4 s
 
 HOOK : Le ceviche, c'est pas juste du poisson cru au citron.
 
@@ -37,6 +37,6 @@ SOURCES :
   - Scène 5 : vérifier la prononciation de « conchas negras » (kon-tchass né-grass) et de « paiche » (paï-tché) si tu enregistres la voix.
 
 POINTS SIGNALÉS PAR LE CONTRÔLE QUALITÉ :
-  (aucun)
+  - rythme : scènes hors rythme : scene01 (3.6 mots/s, 2.8 s), scene04 (3.9 mots/s, 5.2 s)
 
 STATUT : READY_TO_PUBLISH

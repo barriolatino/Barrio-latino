@@ -38,6 +38,7 @@ HOOK_MAX = 3.6
 SLIDES_MIN, SLIDES_MAX = 7, 9
 HASHTAGS_MIN, HASHTAGS_MAX = 5, 8
 CUE_MAX_CHARS = 38
+BOUNDARY_PAUSE_WEIGHT = 8.0  # préférence pour couper les scènes sur les pauses longues
 HEDGES = ("hypothèse", "selon", "on pense", "aurait", "auraient", "légende", "tradition",
           "on raconte", "peut-être", "probablement", "on suppose", "il semble")
 WINNER_WORDS = ("le gagnant", "la gagnante", "a gagné", "est meilleur que", "est meilleure que")
@@ -199,18 +200,92 @@ def two_lines(text: str, width: int = 24) -> str:
     return " ".join(ws[:best]) + "\n" + " ".join(ws[best:])
 
 
-def build_cues(scenes: list[dict]) -> list[tuple[float, float, str]]:
+def syllables(text: str) -> int:
+    """Nombre approximatif de syllabes prononcées (français), pour caler la voix."""
+    n = 0
+    for tok in re.findall(r"[\wÀ-ÿ']+", text.lower()):
+        if tok.isdigit():
+            n += {1: 1, 2: 3, 3: 4}.get(len(tok), 6)
+            continue
+        tok = re.sub(r"(es|e|ent)$", "", tok) if len(tok) > 3 else tok
+        n += max(1, len(re.findall(r"[aeiouyàâäéèêëîïôöûùüœ]+", tok)))
+    return n
+
+
+def align_to_voice(scenes: list[dict], length: float, pauses: list[tuple[float, float]]) -> None:
+    """Place chaque changement de scène sur une pause de la voix.
+
+    Parmi toutes les pauses, on choisit celles qui rendent le débit (syllabes
+    par seconde) le plus régulier d'une scène à l'autre. Sans pause exploitable,
+    on revient à un étirement proportionnel.
+    """
+    import math
+    n = len(scenes)
+    counts = [max(1, syllables(sc.get("voiceover", ""))) for sc in scenes]
+    gaps = {round((a + b) / 2, 3): b - a for a, b in pauses if 0.6 < (a + b) / 2 < length - 0.6}
+    cands = sorted(gaps)
+    if len(cands) >= n - 1:
+        rate = sum(counts) / max(0.1, length - sum(e - s for s, e in pauses))
+        pts = [0.0] + cands + [length]
+        last = len(pts) - 1
+        inf = float("inf")
+        # best[i][j] : coût minimal quand la scène i se termine au point j
+        best = [[inf] * len(pts) for _ in range(n)]
+        prev = [[-1] * len(pts) for _ in range(n)]
+
+        def speech(a, b):
+            """Temps réellement parlé entre deux instants (pauses retirées)."""
+            return (b - a) - sum(max(0.0, min(b, e) - max(a, s)) for s, e in pauses)
+
+        def cost(i, a, b):
+            d = speech(pts[a], pts[b])
+            if d < 0.6:
+                return inf
+            # une fin de phrase se marque en général par une pause plus longue
+            pause_bonus = BOUNDARY_PAUSE_WEIGHT * gaps.get(pts[b], 0.0)
+            return counts[i] * math.log(counts[i] / d / rate) ** 2 - pause_bonus
+
+        for j in range(1, len(pts)):
+            best[0][j] = cost(0, 0, j)
+        for i in range(1, n):
+            for j in range(i + 1, len(pts)):
+                for k in range(i, j):
+                    c = best[i - 1][k] + cost(i, k, j)
+                    if c < best[i][j]:
+                        best[i][j], prev[i][j] = c, k
+        if best[n - 1][last] < inf:
+            ends, j = [], last
+            for i in range(n - 1, -1, -1):
+                ends.append(pts[j])
+                j = prev[i][j]
+            ends.reverse()
+            t = 0.0
+            for sc, e in zip(scenes, ends):
+                sc["duration"] = round((e - t) * 30) / 30
+                t = e
+            return
+    k = length / sum(sc["duration"] for sc in scenes)
+    for sc in scenes:
+        sc["duration"] = round(sc["duration"] * k * 30) / 30
+
+
+def build_cues(scenes: list[dict], pauses: list[tuple[float, float]] | None = None) -> list[tuple[float, float, str]]:
+    mids = [(a + b) / 2 for a, b in (pauses or [])]
     cues, t = [], 0.0
     for sc in scenes:
         chunks = split_cues(sc.get("voiceover", ""))
         start, end = t + 0.05, t + sc["duration"] - 0.12
         total = sum(len(c) for c in chunks) or 1
-        cur = start
-        for c in chunks:
-            span = (end - start) * len(c) / total
+        bounds, acc = [start], start
+        for c in chunks[:-1]:
+            acc += (end - start) * len(c) / total
+            # avec une voix off, la coupure du sous-titre suit la pause la plus proche
+            near = [m for m in mids if abs(m - acc) < 0.6 and bounds[-1] + 0.5 < m < end - 0.5]
+            bounds.append(min(near, key=lambda m: abs(m - acc)) if near else acc)
+        bounds.append(end)
+        for c, a, b in zip(chunks, bounds, bounds[1:]):
             text = two_lines(c).replace(" ?", " ?").replace(" !", " !").replace(" :", " :")
-            cues.append((round(cur, 2), round(cur + span, 2), text))
-            cur += span
+            cues.append((round(a, 2), round(b, 2), text))
         t += sc["duration"]
     return cues
 
@@ -412,9 +487,11 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
     # rythme
     if fmt == "video":
         rates = []
+        # avec une vraie voix, le débit mesuré est celui du créateur : plus de marge
+        max_rate = 4.3 if find_voice(post["day"], None) else 3.4
         for sc in post["scenes"]:
             r = len(words(sc["voiceover"])) / sc["duration"]
-            if not 1.6 <= r <= 3.4 or sc["duration"] > 8:
+            if not 1.6 <= r <= max_rate or sc["duration"] > 8:
                 rates.append(f"{sc['id']} ({r:.1f} mots/s, {sc['duration']:.1f} s)")
         c["rythme"] = check(not rates, "scènes hors rythme : " + ", ".join(rates) if rates
                             else f"{len(post['scenes'])} scènes, aucune au-delà de 8 s", "warn")
@@ -616,12 +693,20 @@ def build(day: int, voice_arg: str | None = None) -> dict:
         for i, sc in enumerate(post["scenes"]):
             sc["duration"] = scene_duration(sc, i == 0)
         voice = find_voice(day, voice_arg)
+        pauses = []
         if voice and voice.exists():
             vlen = render.probe_duration(voice)
-            k = vlen / sum(s["duration"] for s in post["scenes"])
-            for sc in post["scenes"]:
-                sc["duration"] = round(sc["duration"] * k * 30) / 30
-            log.append(f"voix off {voice.name} ({vlen:.1f} s) : scènes recalées")
+            pauses = render.detect_silences(voice)
+            cuts = post.get("voice_cuts")
+            if cuts and len(cuts) == len(post["scenes"]) - 1:
+                # coupes fixées à la main (secondes où chaque scène se termine)
+                t = 0.0
+                for sc, e in zip(post["scenes"], [*cuts, vlen]):
+                    sc["duration"] = round((e - t) * 30) / 30
+                    t = e
+            else:
+                align_to_voice(post["scenes"], vlen, pauses)
+            log.append(f"voix off {voice.name} ({vlen:.1f} s, {len(pauses)} pauses) : scènes calées sur les pauses")
         frames = []
         for sc in post["scenes"]:
             os_ = sc["on_screen"]
@@ -633,7 +718,7 @@ def build(day: int, voice_arg: str | None = None) -> dict:
             bg, fg, b = render.render_card(card, media_for(day, sc["id"]))
             boxes[sc["id"]] = b
             frames.append({"bg": bg, "fg": fg, "duration": sc["duration"], "animation": sc.get("animation", "")})
-        cues = build_cues(post["scenes"])
+        cues = build_cues(post["scenes"], pauses)
         write_srt(cues, outdir / "subtitles.srt")
         render.render_video(frames, cues, outdir / "video.mp4", voice if voice and voice.exists() else None)
         duration = sum(s["duration"] for s in post["scenes"])

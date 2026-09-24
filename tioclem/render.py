@@ -399,6 +399,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 # ---------------------------------------------------------------- vidéo
 
+def detect_silences(path: Path, noise_db: int = -35, min_len: float = 0.2) -> list[tuple[float, float]]:
+    """Pauses de la voix off, en secondes (début, fin)."""
+    out = subprocess.run([ffmpeg_exe(), "-hide_banner", "-i", str(path), "-af",
+                          f"silencedetect=n={noise_db}dB:d={min_len}", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", out)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", out)]
+    return list(zip(starts, ends))
+
+
 def probe_duration(path: Path) -> float:
     out = subprocess.run([ffmpeg_exe(), "-hide_banner", "-i", str(path)], capture_output=True, text=True).stderr
     m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", out)
@@ -418,7 +428,8 @@ def render_video(scenes: list[dict], cues, out: Path, voice: Path | None = None)
     cmd = [ffmpeg_exe(), "-y", "-hide_banner", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-"]
     if voice and voice.exists():
-        cmd += ["-i", str(voice)]
+        # voix off : coupe les graves parasites, niveau TikTok (-14 LUFS), stéréo
+        cmd += ["-i", str(voice), "-af", "highpass=f=80,loudnorm=I=-14:TP=-1.5:LRA=11,apad", "-ac", "2"]
     else:
         cmd += ["-f", "lavfi", "-t", f"{total:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
     cmd += ["-vf", f"subtitles=filename='{ass_arg}':fontsdir='{fonts_arg}'",

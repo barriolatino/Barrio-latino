@@ -29,7 +29,7 @@
     },
     "duree": {
       "level": "ok",
-      "detail": "40.2 s (cible 20–45 s)"
+      "detail": "33.4 s (cible 20–45 s)"
     },
     "format_1080x1920": {
       "level": "ok",
@@ -68,5 +68,5 @@
       "detail": "idée 001 · cuisine · angle top"
     }
   },
-  "checked_at": "2026-09-24T14:23:10"
+  "checked_at": "2026-09-24T15:31:44"
 }
