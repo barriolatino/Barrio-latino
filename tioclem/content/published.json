@@ -22,7 +22,31 @@
       ],
       "status": "READY_TO_PUBLISH",
       "output": "output/2026-09-24-ceviche",
-      "updated_at": "2026-09-24T15:37:07"
+      "updated_at": "2026-09-24T15:44:21"
+    },
+    {
+      "day": 2,
+      "date": "2026-09-25",
+      "subject": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
+      "category": "géographie",
+      "bank_category": "geographie",
+      "topic_id": "086",
+      "theme": "regions",
+      "type_angle": "explication",
+      "format": "carrousel",
+      "angle": "explication : les 3 régions, leur part du territoire et le paradoxe de la population",
+      "hook": "60 % du Pérou, c'est l'Amazonie.",
+      "keywords": [
+        "régions du Pérou",
+        "Costa Sierra Selva",
+        "Amazonie péruvienne",
+        "Andes",
+        "géographie du Pérou",
+        "Pulgar Vidal"
+      ],
+      "status": "READY_TO_PUBLISH",
+      "output": "output/2026-09-25-regions-costa-sierra-selva",
+      "updated_at": "2026-09-24T15:44:09"
     }
   ]
 }

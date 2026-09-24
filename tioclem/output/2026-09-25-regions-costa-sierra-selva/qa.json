@@ -1,9 +1,7 @@
 {
   "status": "READY_TO_PUBLISH",
   "fails": [],
-  "warnings": [
-    "rythme"
-  ],
+  "warnings": [],
   "checks": {
     "exactitude": {
       "level": "ok",
@@ -11,7 +9,7 @@
     },
     "sources": {
       "level": "ok",
-      "detail": "5 sources, 12 faits"
+      "detail": "5 sources, 8 faits"
     },
     "orthographe": {
       "level": "ok",
@@ -23,19 +21,19 @@
     },
     "hook": {
       "level": "ok",
-      "detail": "Le ceviche, c'est pas juste du poisson cru au citron."
+      "detail": "60 % du Pérou, c'est l'Amazonie."
     },
     "rythme": {
-      "level": "warn",
-      "detail": "scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)"
+      "level": "ok",
+      "detail": "une idée courte par slide"
     },
     "duree": {
       "level": "ok",
-      "detail": "33.4 s (cible 20–45 s)"
+      "detail": "9 slides (cible 7–9)"
     },
     "format_1080x1920": {
       "level": "ok",
-      "detail": "1080x1920, 30.0 fps, h264 / aac"
+      "detail": "tailles des slides : {(1080, 1920)}"
     },
     "coherence_visuelle": {
       "level": "ok",
@@ -43,23 +41,23 @@
     },
     "cover": {
       "level": "ok",
-      "detail": "1080x1920, 5 mots"
+      "detail": "1080x1920, 4 mots"
     },
     "sous_titres": {
       "level": "ok",
-      "detail": "22 sous-titres, incrustés en zone sûre"
+      "detail": "sans objet (carrousel)"
     },
     "cta": {
       "level": "ok",
-      "detail": "Dis-moi en commentaire : team poisson ou team fruits de mer ?"
+      "detail": "Dis-moi en commentaire : tu imaginais le Pérou plutôt désert, montagnes ou forêt ?"
     },
     "description": {
       "level": "ok",
-      "detail": "287 caractères, mot-clé « ceviche péruvien »"
+      "detail": "289 caractères, mot-clé « régions du Pérou »"
     },
     "hashtags": {
       "level": "ok",
-      "detail": "#Perou #TioClem #Ceviche #CevichePeruvien #CuisinePeruvienne #CulturePeruvienne #LecheDeTigre"
+      "detail": "#Perou #TioClem #GeographiePerou #Amazonie #Andes #VoyagePerou #CulturePeruvienne"
     },
     "absence_de_repetition": {
       "level": "ok",
@@ -67,8 +65,9 @@
     },
     "rotation_et_banque": {
       "level": "ok",
-      "detail": "idée 001 · cuisine · angle top"
+      "detail": "idée 086 · geographie · angle explication"
     }
   },
-  "checked_at": "2026-09-24T15:44:21"
+  "checked_at": "2026-09-24T15:44:09",
+  "autofix": []
 }

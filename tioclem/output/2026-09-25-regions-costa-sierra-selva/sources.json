@@ -1,0 +1,169 @@
+{
+  "sujet": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
+  "sources_utilisees": [
+    {
+      "id": "S1",
+      "titre": "Informe Nacional sobre el Estado del Medio Ambiente (INEA) — Capítulo II : Contexto nacional",
+      "editeur": "Ministerio del Ambiente (MINAM), Sistema Nacional de Información Ambiental",
+      "type": "organisme officiel péruvien",
+      "priorite": 2,
+      "url": "https://sinia.minam.gob.pe/inea/informe/contexto-nacional/",
+      "date_publication": "non relevée (cite INEI 2019)",
+      "consulte_le": "2026-09-25"
+    },
+    {
+      "id": "S2",
+      "titre": "Territorio y Suelos (chapitre 1) — mesure satellitaire des terres par région naturelle",
+      "editeur": "INEI (Instituto Nacional de Estadística e Informática), d'après le ministère de l'Agriculture et INRENA",
+      "type": "institution",
+      "priorite": 1,
+      "url": "https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib1197/cap01.pdf",
+      "date_publication": "non relevée",
+      "consulte_le": "2026-09-25"
+    },
+    {
+      "id": "S3",
+      "titre": "Consultar resultados del Censo Nacional 2017",
+      "editeur": "Plateforme de l'État péruvien (gob.pe), INEI",
+      "type": "organisme officiel péruvien",
+      "priorite": 2,
+      "url": "https://www.gob.pe/535-consultar-resultados-del-censo-nacional-2017",
+      "date_publication": "2018",
+      "consulte_le": "2026-09-25",
+      "note": "Lu via l'extrait de recherche ; chiffres identiques à S1."
+    },
+    {
+      "id": "S4",
+      "titre": "Las ocho regiones naturales del Perú",
+      "editeur": "Javier Pulgar Vidal, réédité par Terra Brasilis n° 3 (2014), OpenEdition Journals",
+      "type": "publication scientifique",
+      "priorite": 5,
+      "url": "https://journals.openedition.org/terrabrasilis/1027",
+      "date_publication": "texte original 1941, réédition 2014",
+      "consulte_le": "2026-09-25"
+    },
+    {
+      "id": "S5",
+      "titre": "Climas del Perú — Mapa de Clasificación Climática Nacional",
+      "editeur": "SENAMHI (service national de météorologie et d'hydrologie)",
+      "type": "organisme officiel péruvien",
+      "priorite": 2,
+      "url": "https://www.senamhi.gob.pe/load/file/01404SENA-4.pdf",
+      "date_publication": "non relevée",
+      "consulte_le": "2026-09-25",
+      "note": "Lu via l'extrait de recherche ; sert à recouper « franja desértica » et 11,6 % de territoire."
+    }
+  ],
+  "faits_utilises": [
+    {
+      "id": "F1",
+      "fait": "Le Pérou se découpe couramment en trois régions naturelles : Costa, Sierra et Selva. C'est le découpage utilisé par l'INEI et le MINAM.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "utilise_dans": [
+        "slide02"
+      ]
+    },
+    {
+      "id": "F2",
+      "fait": "La Costa est une étroite bande désertique le long du Pacifique, jusqu'au pied des Andes (environ 1 000 m d'altitude). Elle occupe environ 11,7 % du territoire.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S2",
+        "S5"
+      ],
+      "utilise_dans": [
+        "slide03",
+        "slide08"
+      ]
+    },
+    {
+      "id": "F3",
+      "fait": "Le désert côtier est interrompu par 53 vallées fertiles, où se concentrent la majorité de la population et la production agricole du pays.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1"
+      ],
+      "utilise_dans": [
+        "slide03"
+      ]
+    },
+    {
+      "id": "F4",
+      "fait": "La Sierra correspond aux Andes péruviennes, d'environ 1 000 m jusqu'à 6 768 m d'altitude. Elle occupe 28 % du territoire et abrite 28 % de la population.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "utilise_dans": [
+        "slide04",
+        "slide08"
+      ]
+    },
+    {
+      "id": "F5",
+      "fait": "La Selva commence sur le versant oriental des Andes et s'étend vers la plaine amazonienne ; climat chaud et humide ; 60,3 % du territoire.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S2"
+      ],
+      "utilise_dans": [
+        "slide05",
+        "slide06",
+        "slide08"
+      ]
+    },
+    {
+      "id": "F6",
+      "fait": "Recensement 2017 (population recensée) : Costa 58,0 %, Sierra 28,1 %, Selva 13,9 %. Malgré son étendue, la Selva n'abrite qu'environ 14 % de la population.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S1",
+        "S3"
+      ],
+      "utilise_dans": [
+        "slide06",
+        "slide08"
+      ]
+    },
+    {
+      "id": "F7",
+      "fait": "Le géographe Javier Pulgar Vidal a présenté en avril 1941, à Lima (IIIe Assemblée générale de l'Institut panaméricain de géographie et d'histoire), sa thèse des 8 régions naturelles : Chala, Yunga, Quechua, Suni, Puna, Janca, Rupa-Rupa et Omagua.",
+      "statut": "FAIT ÉTABLI",
+      "confiance": "haute",
+      "sources": [
+        "S4"
+      ],
+      "utilise_dans": [
+        "slide07"
+      ]
+    }
+  ],
+  "informations_ecartees": [
+    {
+      "information": "La côte abrite 44 % de la population (page « Regiones del Perú » de CORPAC sur gob.pe).",
+      "raison": "Chiffre ancien, contredit par le recensement 2017 (58 %)."
+    },
+    {
+      "information": "Il pleut moins sur la côte péruvienne qu'au Sahara.",
+      "raison": "Une seule source (CORPAC), sans données ; comparaison non vérifiée."
+    },
+    {
+      "information": "Le désert côtier s'explique par le courant de Humboldt.",
+      "raison": "Pas de source officielle lue en entier ; réservé au jour 9 (paysages) après recherche dédiée."
+    }
+  ],
+  "recherche_complete": "research/regions-costa-sierra-selva.json"
+}

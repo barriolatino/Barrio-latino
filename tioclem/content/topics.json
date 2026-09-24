@@ -2166,8 +2166,15 @@
     "pertinence": 8
    },
    "score_total": 51,
-   "utilisations": [],
-   "derniere_utilisation": null,
+   "utilisations": [
+    {
+     "day": 2,
+     "date": "2026-09-25",
+     "type_angle": "explication",
+     "format": "carrousel"
+    }
+   ],
+   "derniere_utilisation": "2026-09-25",
    "origine": "banque-200"
   },
   {

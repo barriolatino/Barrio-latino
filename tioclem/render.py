@@ -154,6 +154,8 @@ def draw_rich(img: Image.Image, xy, text: str, fnt, fill) -> None:
 
 
 def wrap(text: str, fnt, max_w: int) -> list[str]:
+    if "\n" in text:  # retours à la ligne voulus : chaque paragraphe est coupé séparément
+        return [l for part in text.split("\n") for l in wrap(part, fnt, max_w)]
     words, lines, cur = text.split(), [], ""
     for w in words:
         trial = f"{cur} {w}".strip()
@@ -320,8 +322,14 @@ def render_card(card: dict, media: Path | None = None) -> tuple[Image.Image, Ima
         boxes.append(("subtitle", sb))
 
     if card.get("body"):
-        _, bb2 = draw_block(fg, card["body"], "semibold", bottom + 30, SAFE[2] - SAFE[0] - 40,
-                            6, 46, 34, text_col, line_gap=1.3)
+        # le corps rétrécit jusqu'à tenir au-dessus du bas de la zone sûre
+        for size in range(52, 29, -2):
+            trial = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            _, bb2 = draw_block(trial, card["body"], "semibold", bottom + 30, SAFE[2] - SAFE[0] - 40,
+                                8, size, size, text_col, line_gap=1.3)
+            if bb2[3] <= SAFE[3]:
+                break
+        fg.alpha_composite(trial)
         boxes.append(("body", bb2))
 
     return bg, fg, boxes
