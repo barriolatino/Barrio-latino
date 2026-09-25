@@ -27,9 +27,7 @@ Arbitrage entre outils qui réclament la priorité en début de session :
 
 `claude-mem` fonctionne uniquement par hooks et ne s'invoque pas manuellement.
 
-## Tio Clem : Content Factory (`tio-clem/`)
+## Tio Clem
 
-Le dossier `tio-clem/` est un projet séparé du site : la production des publications
-TikTok du compte Tio Clem (@tioclem15) sur le Pérou. Il ne touche pas à `index.html`.
-Ses propres règles sont dans `tio-clem/CLAUDE.md` : à lire avant d'y travailler.
-Les commandes `/create`, `/daily`, etc. sont dans `.claude/commands/`.
+La Content Factory TikTok de Tio Clem (@tioclem15) vit désormais dans son propre dépôt :
+`barriolatino/Tio-clem`. Ce dépôt ne contient plus que le site du restaurant.

@@ -1,3 +1,0 @@
-pillow>=10.0
-imageio-ffmpeg>=0.5
-pyspellchecker>=0.8
