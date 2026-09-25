@@ -35,7 +35,7 @@ L'utilisateur **valide puis publie**. Le pipeline s'arrête à `READY_TO_PUBLISH
 | `content/published.json` | historique et statistiques |
 | `content/posts/day-NN.json` | script, scènes ou slides, SEO, description d'un post |
 | `research/<slug>.json` | recherche sourcée d'un sujet |
-| `tools/` | moteur Python (`factory.py`, `bank.py`, `render.py`) et tests (`check.py`) |
+| `tools/` | moteur Python (`factory.py`, `content/`, `research/`, `render.py`), tests (`check.py`, `tests/`) |
 | `templates/` | gabarits vidéo, carrousel, cover |
 | `assets/` | polices, tes voix (`audio/voice/`), tes photos (`images/posts/`), musiques libres |
 | `output/` | rendus de travail ; `posts/` : dossiers finaux (Phase 5) |
@@ -51,17 +51,26 @@ L'utilisateur **valide puis publie**. Le pipeline s'arrête à `READY_TO_PUBLISH
 
 ```bash
 bash setup.sh                     # dépendances Python (Pillow, imageio-ffmpeg, pyspellchecker)
-npm test                          # tests de structure (python3 tools/check.py)
+npm test                          # tests de structure + tests unitaires
 python3 tools/factory.py calendar # état du calendrier
+python3 tools/factory.py draft 3  # squelette + pré-contrôle anti-répétition
+python3 tools/factory.py research-check <slug>   # politique de sources
+python3 tools/factory.py lint 3   # structure et style oral du script
 python3 tools/factory.py build 3  # rendu + contrôle qualité du jour 3
 ```
+
+## Dépôt
+
+Le projet est autonome : il fonctionne à la racine de n'importe quel dépôt (commandes dans
+`.claude/commands/`, chemins relatifs au projet). `bash tools/move-to-own-repo.sh <dossier> [url]`
+l'extrait du dépôt Barrio-latino avec son historique.
 
 ## Avancement V2
 
 | Phase | Contenu | État |
 |---|---|---|
 | 1 | architecture, config, base de contenu, commandes, docs, `.env.example` | fait |
-| 2 | recherche, sélection d'idées, anti-répétition, script | à faire (existant V1 à réorganiser) |
+| 2 | recherche (`tools/research/`), sélection, anti-répétition, script (`tools/content/`) | fait |
 | 3 | visuels (Mode A / Mode B), TTS, sous-titres | à faire |
 | 4 | FFmpeg, templates vidéo, cover | à faire (existant V1 à brancher sur `templates/`) |
 | 5 | contrôle qualité (`quality-report.json`), export vers `posts/` | à faire |

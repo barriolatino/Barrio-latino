@@ -1,7 +1,24 @@
 # Recherche documentaire
 
-**Rôle :** Fiche `research/<slug>.json` (faits, statut, confiance, sources, infos écartées) et `sources.json` de chaque post.
+**Rôle :** vérifier que chaque fiche `research/<slug>.json` respecte `config/source-policy.json`
+et produire le `sources.json` de chaque publication.
 
-**État actuel :** Faite aujourd'hui par Claude Code (WebSearch + Firecrawl) selon `config/source-policy.json`. Vérification automatique des sources dans `tools/factory.py` (`run_qa`).
+La recherche elle-même est faite par Claude Code (WebSearch pour trouver, Firecrawl pour lire).
+Aucune API n'est simulée ici.
 
-**Module dédié :** prévu en Phase 2 (le code sera extrait ici, sans changer le comportement testé).
+`validate.py` :
+
+| Règle | Niveau |
+|---|---|
+| titre, URL, éditeur présents ; URL en http(s) | erreur |
+| domaine interdit (réseaux sociaux, blogs, forums…) | erreur |
+| Wikipédia citée comme source | erreur |
+| fait avec statut ou confiance hors liste, ou source inconnue | erreur |
+| fait utilisé qui ne repose que sur des extraits de moteur de recherche (`lu: extrait`) | erreur |
+| fait de confiance basse à l'écran | erreur |
+| moins de 2 sources pour la publication | erreur |
+| information écartée sans raison | erreur |
+| histoire ou culture : fait utilisé avec une seule source | avertissement |
+| date de publication absente, YouTube | avertissement |
+
+CLI : `python3 tools/factory.py research-check <slug|jour>`.

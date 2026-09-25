@@ -113,5 +113,33 @@
       "date": "...",
       "used_for": "..."
     }
-  ]
+  ],
+  "forbidden_domains": [
+    "instagram.com",
+    "facebook.com",
+    "tiktok.com",
+    "twitter.com",
+    "x.com",
+    "pinterest.",
+    "reddit.com",
+    "quora.com",
+    "scribd.com",
+    "slideshare.net",
+    "blogspot.",
+    "wordpress.com",
+    "medium.com"
+  ],
+  "not_citable_domains": {
+    "wikipedia.org": "point de départ uniquement : citer la source que Wikipédia référence"
+  },
+  "warn_domains": {
+    "youtube.com": "accepté seulement pour une chaîne institutionnelle (ex. Agencia Andina) ; préciser l'éditeur"
+  },
+  "read_status": {
+    "field": "lu",
+    "values": {
+      "complet": "page ouverte et lue",
+      "extrait": "lue via un extrait de moteur de recherche : ne peut pas être la seule source d'un fait"
+    }
+  }
 }

@@ -37,6 +37,7 @@ SOURCES :
   - Scène 5 : vérifier la prononciation de « conchas negras » (kon-tchass né-grass) et de « paiche » (paï-tché) si tu enregistres la voix.
 
 POINTS SIGNALÉS PAR LE CONTRÔLE QUALITÉ :
+  - script : pas de conclusion distincte (acceptable si le CTA conclut)
   - rythme : scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)
 
 STATUT : READY_TO_PUBLISH

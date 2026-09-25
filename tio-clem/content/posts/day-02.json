@@ -10,6 +10,7 @@
   "theme": "regions",
   "type_angle": "explication",
   "bank_category": "geographie",
+  "pillar": "explorer",
   "angle": "explication : les 3 régions, leur part du territoire et le paradoxe de la population",
   "promise": "En 9 images, tu comprends pourquoi le Pérou, c'est un peu trois pays en un.",
   "information": "Costa, Sierra, Selva : ce qu'elles sont, leur part du territoire, où vivent vraiment les Péruviens, et les 8 régions de Pulgar Vidal.",
@@ -22,19 +23,26 @@
     "Un pays, trois mondes.",
     "Pourquoi les Péruviens parlent de Costa, Sierra et Selva ?"
   ],
+  "hook_types": [
+    "surprise",
+    "erreur",
+    "curiosité",
+    "contraste",
+    "question"
+  ],
   "hook_selected": 0,
   "hook_reason": "Un chiffre officiel qui contredit l'image « Pérou = Andes » : surprise immédiate, et différent du hook du jour 1 (idée reçue corrigée). Le hook 3 est écarté, trop vague ; le 2 reprend la structure du jour 1.",
   "seo": {
-    "main": "régions du Pérou",
-    "onscreen": "régions du Pérou",
-    "secondary": [
+    "primary_keyword": "régions du Pérou",
+    "secondary_keywords": [
       "Costa Sierra Selva",
       "Amazonie péruvienne",
       "Andes",
       "géographie du Pérou",
       "Pulgar Vidal"
     ],
-    "question": "Quelles sont les 3 régions du Pérou ?",
+    "search_phrase": "Quelles sont les 3 régions du Pérou ?",
+    "onscreen": "régions du Pérou",
     "expressions": [
       "Costa",
       "Sierra",

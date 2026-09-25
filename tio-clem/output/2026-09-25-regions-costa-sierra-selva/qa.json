@@ -3,6 +3,14 @@
   "fails": [],
   "warnings": [],
   "checks": {
+    "recherche": {
+      "level": "ok",
+      "detail": "politique de sources respectée (5 sources utilisées)"
+    },
+    "script": {
+      "level": "ok",
+      "detail": "structure et style oral conformes"
+    },
     "exactitude": {
       "level": "ok",
       "detail": "chaque info renvoie à un fait sourcé"
@@ -61,13 +69,23 @@
     },
     "absence_de_repetition": {
       "level": "ok",
-      "detail": "aucune répétition détectée"
+      "detail": "aucune répétition sur les 8 dimensions",
+      "dimensions": {
+        "sujet": "ok",
+        "angle": "ok",
+        "informations": "ok",
+        "format": "ok",
+        "hook": "ok",
+        "visuels": "ok",
+        "cta": "ok",
+        "formulation": "ok"
+      }
     },
     "rotation_et_banque": {
       "level": "ok",
       "detail": "idée 086 · geographie · angle explication"
     }
   },
-  "checked_at": "2026-09-25T02:38:23",
+  "checked_at": "2026-09-25T06:03:55",
   "autofix": []
 }

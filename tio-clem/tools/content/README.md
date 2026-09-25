@@ -1,7 +1,16 @@
-# Idées, angle, script
+# Idées, anti-répétition, script
 
-**Rôle :** Sélection d'idée, anti-répétition, hooks, script parlé, storyboard.
+| Module | Rôle |
+|---|---|
+| `selection.py` | banque d'idées (`content/ideas.json`) : sélection, rotation par pilier, parts cibles, apprentissage par les statistiques, nouvelles combinaisons |
+| `repetition.py` | compare une publication aux publications produites sur 8 dimensions : sujet, angle, informations, format, hook, visuels, CTA, formulation |
+| `script.py` | brouillon structuré (HOOK → PROMESSE → INFORMATION → SURPRISE → CONCLUSION → CTA) et vérification du style oral, des hooks et du SEO |
 
-**État actuel :** Sélection et anti-répétition : `tools/bank.py`. Écriture : Claude Code, dans `content/posts/day-NN.json`.
+L'écriture du texte est faite par Claude Code : `script.py` prépare le squelette et vérifie
+le résultat, il n'appelle aucune API de génération.
 
-**Module dédié :** prévu en Phase 2 (le code sera extrait ici, sans changer le comportement testé).
+CLI : `pick`, `bank`, `combine`, `draft NN`, `lint NN`, `repeat-check NN` ou
+`repeat-check --title … --theme … --angle … --format …`.
+
+Réglages : `config/content-pillars.json` (rotation, délais), `config/production.json`
+(types de hook), `config/video-style.json` et `config/carousel-style.json` (durées, limites).

@@ -421,7 +421,9 @@ def spell_warnings(post: dict, research: dict) -> list[str]:
         return []
     sp = SpellChecker(language="fr")
     allowed = set()
-    for s in post.get("seo", {}).get("expressions", []) + post.get("seo", {}).get("secondary", []):
+    from content.script import seo_fields
+    seo = seo_fields(post)
+    for s in seo["expressions"] + seo["secondary_keywords"]:
         allowed |= {fold(w) for w in re.findall(r"\w+", s)}
     allowed |= {fold(w) for w in re.findall(r"\w+", json.dumps(research, ensure_ascii=False))}
     lexique = ROOT / "config" / "lexique.txt"
@@ -464,6 +466,15 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
             text = fold(u.get("voiceover", "") + " " + u.get("body", ""))
             if f.get("statut") in ("HYPOTHÈSE", "LÉGENDE", "INTERPRÉTATION") and not any(h in text for h in map(fold, HEDGES)):
                 problems.append(f"{u['id']} : {fid} est une {f['statut'].lower()} présentée sans précaution")
+    from research.validate import validate as validate_research
+    from content.script import lint
+    rv = validate_research(research, post, post.get("bank_category"))
+    c["recherche"] = {"level": "fail" if rv["errors"] else ("warn" if rv["warnings"] else "ok"),
+                      "detail": "; ".join(rv["errors"] + rv["warnings"]) or
+                                f"politique de sources respectée ({len(rv['sources_used'])} sources utilisées)"}
+    sl = lint(post)
+    c["script"] = {"level": "fail" if sl["errors"] else ("warn" if sl["warnings"] else "ok"),
+                   "detail": "; ".join(sl["errors"] + sl["warnings"]) or "structure et style oral conformes"}
     c["exactitude"] = check(not problems, "; ".join(problems) or "chaque info renvoie à un fait sourcé")
 
     # sources
@@ -598,8 +609,9 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
     c["cta"] = check(cta_ok and "?" in post["question"], post["cta"] + (f" — gagnant désigné : {winner}" if winner else ""))
 
     # description + SEO
-    seo = post.get("seo", {})
-    main = fold(seo.get("main", ""))
+    from content.script import seo_fields
+    seo = seo_fields(post)
+    main = fold(seo["primary_keyword"])
     script_all = fold(" ".join(u.get("voiceover", "") + " " + u.get("title", "") + " " + u.get("body", "") for u in units))
     screen = fold(" ".join(u.get("on_screen", {}).get("title", "") + " " + u.get("on_screen", {}).get("subtitle", "")
                            + u.get("title", "") for u in units))
@@ -612,7 +624,7 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
             desc.append("mot-clé principal absent de la description")
         if main not in script_all:
             desc.append("mot-clé principal absent du script")
-        if fold(seo.get("onscreen", seo.get("main", ""))) not in screen:
+        if fold(seo["onscreen"]) not in screen:
             desc.append("mot-clé absent du texte à l'écran")
         if cap.count(main) > 2:
             desc.append("mot-clé répété plus de 2 fois (bourrage)")
@@ -622,7 +634,7 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
         desc.append("description trop longue")
     if "?" not in post["caption"]:
         desc.append("pas de question dans la description")
-    c["description"] = check(not desc, "; ".join(desc) or f"{len(post['caption'])} caractères, mot-clé « {seo.get('main')} »")
+    c["description"] = check(not desc, "; ".join(desc) or f"{len(post['caption'])} caractères, mot-clé « {seo['primary_keyword']} »")
 
     # hashtags
     tags = post.get("hashtags", [])
@@ -635,36 +647,33 @@ def run_qa(post: dict, research: dict, outdir: Path, render_boxes: dict | None =
         tag_err.append("aucun hashtag Pérou")
     c["hashtags"] = check(not tag_err, "; ".join(tag_err) or " ".join(tags))
 
-    # répétitions (dans le post et avec l'historique)
-    rep = []
-    grams = {}
+    # répétitions : dans le post (tournures reprises) et avec les publications produites (8 dimensions)
+    internal, grams = [], {}
     for u in units:
         ws = [fold(w) for w in words(u.get("voiceover", "") + " " + u.get("body", ""))]
         for i in range(len(ws) - 3):
             g = " ".join(ws[i:i + 4])
             if g in grams and grams[g] != u["id"]:
-                rep.append(f"« {g} » ({grams[g]} et {u['id']})")
+                internal.append(f"« {g} » répété ({grams[g]} et {u['id']})")
             grams.setdefault(g, u["id"])
-    for p in history()["publications"]:
-        if p["day"] == post["day"]:
-            continue
-        if fold(p["subject"]) == fold(post["title"]):
-            rep.append(f"sujet identique au jour {p['day']}")
-        if fold(p.get("hook", "")) == fold(post["hooks"][post["hook_selected"]]):
-            rep.append(f"hook identique au jour {p['day']}")
-        if p.get("angle") and fold(p["angle"]) == fold(post.get("angle", "")):
-            rep.append(f"angle identique au jour {p['day']}")
-    c["absence_de_repetition"] = check(not rep, "; ".join(rep) or "aucune répétition détectée")
+    from content import repetition
+    report = repetition.check_post(post)
+    rep = [f"{dim} : " + " ; ".join(r["details"]) for dim, r in report["dimensions"].items() if r["level"] != "ok"]
+    level = report["level"]
+    if internal and level == "ok":
+        level = "warn"
+    c["absence_de_repetition"] = {"level": level, "detail": "; ".join(internal + rep) or "aucune répétition sur les 8 dimensions",
+                                  "dimensions": {k: v["level"] for k, v in report["dimensions"].items()}}
 
     # banque d'idées : rattachement, rotation des catégories, thème + angle déjà utilisés
-    import bank
+    from content import selection as bank
     missing = [k for k in ("idea_id", "theme", "type_angle", "bank_category") if not post.get(k)]
     bank_pb = [f"champs manquants : {', '.join(missing)}"] if missing else []
     if post.get("idea_id") and not bank.idea_by_id(post["idea_id"]):
         bank_pb.append(f"idée {post['idea_id']} absente de content/ideas.json")
-    if post.get("bank_category") and post["bank_category"] not in bank.TARGET_SHARE:
+    if post.get("bank_category") and post["bank_category"] not in bank.PILLAR_OF_CATEGORY:
         bank_pb.append(f"catégorie inconnue : {post['bank_category']}")
-    bank_pb += bank.repetition_problems(post, history()["publications"])
+    bank_pb += bank.rotation_problems(post, history()["publications"])
     c["rotation_et_banque"] = check(not bank_pb, "; ".join(bank_pb) or
                                     f"idée {post.get('idea_id')} · {post.get('bank_category')} · angle {post.get('type_angle')}")
 
@@ -741,15 +750,17 @@ def build(day: int, voice_arg: str | None = None) -> dict:
         duration = sum(s["duration"] for s in post["scenes"])
         scenes_out = []
         t = 0.0
-        for sc in post["scenes"]:
+        for n, sc in enumerate(post["scenes"], 1):
+            overlay = sc["on_screen"]["title"] + (f" {sc['on_screen']['emoji']}" if sc["role"] == "hook" else "")
             scenes_out.append({
-                "scene": sc["id"].upper().replace("SCENE", "SCENE "), "role": sc["role"],
-                "debut": round(t, 2), "duree": round(sc["duration"], 2),
-                "visuel": sc["visual"]["need"], "description": sc["visual"]["description"],
-                "texte_ecran": sc["on_screen"]["title"] + (f" {sc['on_screen']['emoji']}" if sc["role"] == "hook" else ""),
-                "sous_texte_ecran": sc["on_screen"].get("subtitle", ""),
-                "voix_off": sc["voiceover"], "animation": sc.get("animation", ""), "faits": sc.get("facts", []),
-                "media_personnel": str(media_for(day, sc["id"]) or ""),
+                # format V2 (storyboard)
+                "scene": n, "duration": round(sc["duration"], 2), "voiceover": sc["voiceover"],
+                "visual": sc["visual"]["need"], "text_overlay": overlay,
+                "transition": sc.get("transition", "coupe"), "asset_type": sc.get("asset_type", "image"),
+                # détails de production
+                "role": sc["role"], "start": round(t, 2), "visual_description": sc["visual"]["description"],
+                "text_overlay_sub": sc["on_screen"].get("subtitle", ""), "animation": sc.get("animation", ""),
+                "facts": sc.get("facts", []), "own_media": str(media_for(day, sc["id"]) or ""),
             })
             t += sc["duration"]
         save(outdir / "scenes.json", {"format": "1080x1920 · 9:16 · 30 fps · H.264 + AAC", "duree_totale": round(duration, 2),
@@ -771,10 +782,8 @@ def build(day: int, voice_arg: str | None = None) -> dict:
     used = {fid for u in post.get("scenes", post.get("slides", [])) for fid in u.get("facts", [])}
     used_src = {s for f in research["faits"] if f["id"] in used for s in f["sources"]}
     sources = [s for s in research["sources"] if s["id"] in used_src]
-    save(outdir / "sources.json", {"sujet": research["sujet"], "sources_utilisees": sources,
-                                   "faits_utilises": [f for f in research["faits"] if f["id"] in used],
-                                   "informations_ecartees": research.get("informations_ecartees", []),
-                                   "recherche_complete": post["research"]})
+    from research.validate import sources_json
+    save(outdir / "sources.json", sources_json(research, used))  # format V2 ; détails dans post["research"]
     (outdir / "script.txt").write_text(script_text(post), encoding="utf-8")
     (outdir / "caption.txt").write_text(caption_text(post), encoding="utf-8")
     (outdir / "hashtags.txt").write_text(" ".join(post["hashtags"]) + "\n", encoding="utf-8")
@@ -789,17 +798,18 @@ def build(day: int, voice_arg: str | None = None) -> dict:
 
 
 def record(post: dict, status: str, outdir: Path) -> None:
-    import bank
+    from content.script import seo_fields
+    from content import selection as bank
     h = history()
     prev = next((p for p in h["publications"] if p["day"] == post["day"]), {})
     if prev.get("status") == "PUBLISHED" and status == READY:
         status = "PUBLISHED"
     entry = {
         "day": post["day"], "date": post["date"], "subject": post["title"], "category": post["category"],
-        "bank_category": post.get("bank_category"), "idea_id": post.get("idea_id"),
+        "bank_category": post.get("bank_category"), "pillar": bank.pillar_of(post), "idea_id": post.get("idea_id"),
         "theme": post.get("theme"), "type_angle": post.get("type_angle"),
         "format": post["format"], "angle": post.get("angle", ""), "hook": post["hooks"][post["hook_selected"]],
-        "keywords": [post["seo"]["main"], *post["seo"].get("secondary", [])], "status": status,
+        "keywords": [seo_fields(post)["primary_keyword"], *seo_fields(post)["secondary_keywords"]], "status": status,
         "output": str(outdir.relative_to(ROOT)), "updated_at": dt.datetime.now().isoformat(timespec="seconds"),
     }
     for key in ("performance", "published_at"):
@@ -816,7 +826,9 @@ def record(post: dict, status: str, outdir: Path) -> None:
 def cmd_calendar(_):
     done = {p["day"]: p["status"] for p in history()["publications"]}
     for d in calendar()["days"]:
-        st = done.get(d["day"]) or ("SCRIPT_PRÊT" if post_path(d["day"]).exists() else "À FAIRE")
+        pp = post_path(d["day"])
+        st = done.get(d["day"]) or (("BROUILLON" if "À ÉCRIRE" in pp.read_text(encoding="utf-8") else "SCRIPT_PRÊT")
+                                    if pp.exists() else "À FAIRE")
         print(f"J{d['day']:02d}  {d['date']}  {d['format']:<9} {d['category']:<12} {st:<17} {d.get('bank_category', ''):<12} {d['subject']}")
 
 
@@ -832,11 +844,11 @@ def cmd_next(_):
     n = next_day()
     if n is not None:
         entry = day_entry(n)
-        topic = __import__("bank").idea_by_id(entry.get("idea_id") or "")
+        topic = __import__("content.selection", fromlist=["x"]).idea_by_id(entry.get("idea_id") or "")
         print(json.dumps({**entry, "source": "calendrier", "idee": topic}, ensure_ascii=False, indent=1))
         return
     # calendrier terminé : la banque d'idées prend le relais
-    import bank
+    from content import selection as bank
     pubs = history()["publications"]
     day = max(p["day"] for p in pubs) + 1
     date = (dt.date.fromisoformat(max(p["date"] for p in pubs)) + dt.timedelta(days=1)).isoformat()
@@ -854,18 +866,18 @@ def show_topic(t: dict) -> str:
 
 
 def cmd_pick(a):
-    import bank
+    from content import selection as bank
     for t in bank.pick(a.n, a.format, a.category, a.filming):
         print(show_topic(t))
 
 
 def cmd_bank(_):
-    import bank
+    from content import selection as bank
     r = bank.report()
     print(f"{r['idees']} idées, {r['restantes']} jamais utilisées")
-    print(f"{'catégorie':<12} {'banque':>6} {'restantes':>9} {'publiées':>8} {'part':>6} {'cible':>6}")
-    for c, v in r["categories"].items():
-        print(f"{c:<12} {v['banque']:>6} {v['restantes']:>9} {v['publiees']:>8} {v['part']:>6.0%} {v['cible']:>6.0%}")
+    print(f"{'pilier':<30} {'banque':>6} {'restantes':>9} {'publiées':>8} {'part':>6} {'cible':>6}")
+    for c, v in r["piliers"].items():
+        print(f"{v['nom']:<30} {v['banque']:>6} {v['restantes']:>9} {v['publiees']:>8} {v['part']:>6.0%} {v['cible']:>6.0%}")
     print("sous-représentées :", ", ".join(r["sous_representees"]) or "aucune")
     print("angles utilisés   :", r["angles_utilises"] or "aucun")
     print("formats utilisés  :", r["formats_utilises"] or "aucun")
@@ -879,7 +891,7 @@ def cmd_bank(_):
 
 
 def cmd_combine(a):
-    import bank
+    from content import selection as bank
     ideas = bank.combine(a.n)
     if a.json:
         print(json.dumps(ideas, ensure_ascii=False, indent=1))
@@ -906,7 +918,7 @@ def cmd_stats(a):
     p["status"] = "PUBLISHED"
     p.setdefault("published_at", a.published or p["date"])
     save(PUBLISHED, h)
-    e = __import__("bank").engagement(perf)
+    e = __import__("content.selection", fromlist=["x"]).engagement(perf)
     print(f"Jour {a.day} : statistiques enregistrées" + (f", engagement pondéré {e:.1%}" if e is not None else ""))
 
 
@@ -963,6 +975,75 @@ def cmd_export(_):
     print(f"\n{zpath.relative_to(ROOT.parent)}")
 
 
+def _print_report(title: str, errors: list, warnings: list) -> None:
+    print(title)
+    for e in errors:
+        print(f"  [ ] {e}")
+    for w in warnings:
+        print(f"  [~] {w}")
+    if not errors and not warnings:
+        print("  [x] rien à signaler")
+
+
+def cmd_draft(a):
+    """Crée le squelette de content/posts/day-NN.json (sans jamais écraser un post existant)."""
+    from content.script import draft
+    from content import selection as bank
+    path = post_path(a.day)
+    if path.exists():
+        sys.exit(f"{path.relative_to(ROOT)} existe déjà : rien n'est écrasé.")
+    entry = day_entry(a.day)
+    raw = next((i for i in bank.ideas()["ideas"] if i["id"] == entry.get("idea_id")), None)
+    research = f"research/{entry['slug']}.json"
+    post = draft(entry, raw, research)
+    save(path, post)
+    print(f"Brouillon créé : {path.relative_to(ROOT)} (recherche attendue : {research})")
+    blocking = [f for f in post["repetition_precheck"] if f["level"] == "fail"]
+    for f in post["repetition_precheck"]:
+        print(f"  [{'!' if f['level'] == 'fail' else '~' if f['level'] == 'warn' else 'i'}] {f['dimension']} : {f['detail']}")
+    if blocking:
+        print("  → changer d'angle ou d'informations avant d'écrire : ce sujet répète une publication passée.")
+
+
+def cmd_lint(a):
+    from content.script import lint
+    r = lint(load(post_path(a.day)))
+    _print_report(f"Script du jour {a.day}", r["errors"], r["warnings"])
+    sys.exit(1 if r["errors"] else 0)
+
+
+def cmd_research_check(a):
+    from research.validate import validate
+    if a.target.isdigit():
+        post = load(post_path(int(a.target)))
+        research, category = load(ROOT / post["research"]), post.get("bank_category")
+    else:
+        post, category = None, None
+        research = load(ROOT / "research" / f"{a.target}.json")
+    r = validate(research, post, category)
+    _print_report(f"Recherche « {research.get('sujet', a.target)} »", r["errors"], r["warnings"])
+    for src in r["sources_used"]:
+        print(f"      {src['publisher'][:40]:<40} {src['read']:<8} {src['url']}")
+    sys.exit(1 if r["errors"] else 0)
+
+
+def cmd_repeat_check(a):
+    from content import repetition
+    if a.day is not None:
+        report = repetition.check_post(load(post_path(a.day)))
+        for dim, r in report["dimensions"].items():
+            mark = {"ok": "[x]", "warn": "[~]", "fail": "[ ]"}[r["level"]]
+            print(f"  {mark} {dim:<13} {' ; '.join(r['details'])}")
+        sys.exit(1 if report["level"] == "fail" else 0)
+    findings = repetition.check_candidate(a.title, a.theme, a.angle, a.format)
+    for f in findings:
+        print(f"  [{'!' if f['level'] == 'fail' else '~' if f['level'] == 'warn' else 'i'}] {f['dimension']} : {f['detail']}"
+              + (f" (jour {f['day']})" if f.get("day") else ""))
+    if not findings:
+        print("  [x] aucune publication comparable")
+    sys.exit(1 if any(f["level"] == "fail" for f in findings) else 0)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Tio Clem — Content Factory")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -987,6 +1068,22 @@ def main():
     cb.add_argument("n", type=int, nargs="?", default=20)
     cb.add_argument("--json", action="store_true")
     cb.set_defaults(fn=cmd_combine)
+    dr = sub.add_parser("draft", help="squelette du post d'un jour du calendrier")
+    dr.add_argument("day", type=int)
+    dr.set_defaults(fn=cmd_draft)
+    li = sub.add_parser("lint", help="structure et style oral du script d'un jour")
+    li.add_argument("day", type=int)
+    li.set_defaults(fn=cmd_lint)
+    rc = sub.add_parser("research-check", help="valide une recherche (numéro de jour ou slug)")
+    rc.add_argument("target")
+    rc.set_defaults(fn=cmd_research_check)
+    rp = sub.add_parser("repeat-check", help="répétition : un jour, ou un sujet candidat (--title)")
+    rp.add_argument("day", type=int, nargs="?")
+    rp.add_argument("--title")
+    rp.add_argument("--theme")
+    rp.add_argument("--angle")
+    rp.add_argument("--format")
+    rp.set_defaults(fn=cmd_repeat_check)
     st = sub.add_parser("stats", help="enregistrer les statistiques TikTok d'une publication")
     st.add_argument("day", type=int)
     for k in ("vues", "likes", "commentaires", "partages", "enregistrements"):

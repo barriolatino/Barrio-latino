@@ -21,7 +21,8 @@
       "priorite": 6,
       "url": "https://www.unesco.org/en/articles/new-inscription-intangible-heritage-list-practices-and-meanings-associated-preparation-and",
       "date_publication": "2023-12-13",
-      "consulte_le": "2026-09-24"
+      "consulte_le": "2026-09-24",
+      "lu": "complet"
     },
     {
       "id": "S2",
@@ -31,7 +32,8 @@
       "priorite": 2,
       "url": "https://andina.pe/agencia/noticia-dia-nacional-del-cebiche-por-se-celebra-28-junio-video-944889.aspx",
       "date_publication": "2023-06-28",
-      "consulte_le": "2026-09-24"
+      "consulte_le": "2026-09-24",
+      "lu": "complet"
     },
     {
       "id": "S3",
@@ -41,7 +43,8 @@
       "priorite": 2,
       "url": "https://andina.pe/agencia/noticia-dia-nacional-del-cebiche-conoce-receta-clasica-y-variedades-del-celebre-plato-peruano-899171.aspx",
       "date_publication": "2022-06-28",
-      "consulte_le": "2026-09-24"
+      "consulte_le": "2026-09-24",
+      "lu": "complet"
     },
     {
       "id": "S4",
@@ -51,7 +54,8 @@
       "priorite": 1,
       "url": "https://dle.rae.es/cebiche",
       "date_publication": "édition du Tricentenaire, version 23.8.1",
-      "consulte_le": "2026-09-24"
+      "consulte_le": "2026-09-24",
+      "lu": "complet"
     },
     {
       "id": "S5",
@@ -62,7 +66,8 @@
       "url": "https://elcomercio.pe/respuestas/dia-nacional-del-cebiche-desde-cuando-y-por-que-se-celebra-el-28-de-junio-gastronomia-peruana-pesca-revtli-noticia/",
       "date_publication": "non relevée",
       "consulte_le": "2026-09-24",
-      "note": "Consulté via résultat de recherche uniquement ; sert à recouper S2 (2004 / 2008)."
+      "note": "Consulté via résultat de recherche uniquement ; sert à recouper S2 (2004 / 2008).",
+      "lu": "extrait"
     }
   ],
   "faits": [

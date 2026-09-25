@@ -10,7 +10,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent  # racine du projet tio-clem/
+ROOT = Path(__file__).resolve().parents[2]  # racine du projet (tools/content/ → ../..)
 IDEAS = ROOT / "content" / "ideas.json"
 TOPICS = ROOT / "content" / "topics.json"  # registre des thèmes
 PILLARS = ROOT / "config" / "content-pillars.json"
@@ -21,12 +21,13 @@ CATEGORIES = {"cuisine": "Cuisine péruvienne", "boissons": "Boissons", "histoir
 ANGLES = ROOT / "content" / "angles.json"
 PUBLISHED = ROOT / "content" / "published.json"
 
-# Part visée de chaque catégorie dans le fil (cuisine en tête : c'est l'ADN du compte).
-TARGET_SHARE = {"cuisine": 0.20, "boissons": 0.08, "histoire": 0.13, "geographie": 0.12, "culture": 0.12,
-                "langue": 0.12, "insolite": 0.10, "degustation": 0.06, "interaction": 0.07}
-MAX_SAME_CATEGORY_IN_A_ROW = 2
-THEME_COOLDOWN = 5        # un thème ne revient pas dans les 5 publications suivantes
-ANGLE_COOLDOWN = 3        # un type d'angle évite de revenir dans les 3 suivantes
+# Réglages éditoriaux : config/content-pillars.json (piliers, parts visées, délais).
+_PCFG = json.loads(PILLARS.read_text(encoding="utf-8"))
+PILLAR_OF_CATEGORY = {c: p["id"] for p in _PCFG["pillars"] for c in p["categories"]}
+TARGET_SHARE = {p["id"]: p["target_share"] for p in _PCFG["pillars"]}  # par pilier
+MAX_SAME_PILLAR_IN_A_ROW = _PCFG["rules"]["max_same_pillar_in_a_row"]
+THEME_COOLDOWN = _PCFG["rules"]["theme_cooldown_posts"]
+ANGLE_COOLDOWN = _PCFG["rules"]["angle_type_cooldown_posts"]
 REQUIRED_KEYS = {"id", "categorie", "sous_categorie", "theme", "sujet", "angle", "type_angle", "format",
                  "difficulte", "tournage_requis", "scores", "utilisations", "derniere_utilisation"}
 SCORE_KEYS = ("recherche", "curiosite", "visuel", "commentaire", "partage", "originalite", "pertinence")
@@ -69,6 +70,12 @@ def timeline() -> list[dict]:
     return sorted(pubs, key=lambda p: (p["date"], p["day"]))
 
 
+def pillar_of(entry: dict) -> str | None:
+    """Pilier d'une publication ou d'une idée (déduit de la catégorie s'il manque)."""
+    return entry.get("pillar") or entry.get("pilier") or PILLAR_OF_CATEGORY.get(
+        entry.get("bank_category") or entry.get("categorie") or entry.get("category"))
+
+
 def idea_by_id(tid: str) -> dict | None:
     return next((t for t in topics()["topics"] if t["id"] == tid), None)
 
@@ -98,39 +105,30 @@ def performance_bias(pubs: list[dict], key: str) -> dict[str, float]:
 
 # ---------------------------------------------------------------- règles
 
-def rotation_ok(category: str, previous: list[str]) -> bool:
-    tail = previous[-MAX_SAME_CATEGORY_IN_A_ROW:]
-    return not (len(tail) == MAX_SAME_CATEGORY_IN_A_ROW and all(c == category for c in tail))
+def rotation_ok(pillar: str, previous: list[str]) -> bool:
+    """Jamais plus de MAX_SAME_PILLAR_IN_A_ROW publications de suite dans le même pilier."""
+    tail = previous[-MAX_SAME_PILLAR_IN_A_ROW:]
+    return not (len(tail) == MAX_SAME_PILLAR_IN_A_ROW and all(c == pillar for c in tail))
 
 
 def used_combos(pubs: list[dict]) -> set[tuple[str, str]]:
     return {(p.get("theme"), p.get("type_angle")) for p in pubs if p.get("theme")}
 
 
-def repetition_problems(post: dict, pubs: list[dict]) -> list[str]:
-    """Règles de la banque appliquées à un post (utilisé par le contrôle qualité)."""
-    problems = []
+def rotation_problems(post: dict, pubs: list[dict]) -> list[str]:
+    """Rotation des piliers (les autres répétitions : content/repetition.py)."""
     before = [p for p in pubs if (p["date"], p["day"]) < (post["date"], post["day"])]
-    cat = post.get("bank_category")
-    if cat and not rotation_ok(cat, [p.get("bank_category") for p in before]):
-        problems.append(f"3e publication de suite en catégorie « {cat} »")
-    theme, atype = post.get("theme"), post.get("type_angle")
-    for p in pubs:
-        if p["day"] == post["day"]:
-            continue
-        if theme and p.get("theme") == theme and p.get("type_angle") == atype:
-            problems.append(f"thème « {theme} » déjà traité avec l'angle « {atype} » (jour {p['day']})")
-    recent = [p.get("theme") for p in before[-THEME_COOLDOWN:]]
-    if theme and theme in recent:
-        problems.append(f"thème « {theme} » déjà traité dans les {THEME_COOLDOWN} dernières publications")
-    return problems
+    pillar = pillar_of(post)
+    if pillar and not rotation_ok(pillar, [pillar_of(p) for p in before]):
+        return [f"{MAX_SAME_PILLAR_IN_A_ROW + 1}e publication de suite dans le pilier « {pillar} »"]
+    return []
 
 
 # ---------------------------------------------------------------- sélection
 
 def pick(n: int = 5, fmt: str | None = None, category: str | None = None, filming: bool = False) -> list[dict]:
     pubs = timeline()
-    cats = [p.get("bank_category") for p in pubs]
+    cats = [pillar_of(p) for p in pubs]
     counts = Counter(c for c in cats if c)
     total = max(1, len(pubs))
     combos = used_combos(pubs)
@@ -139,25 +137,28 @@ def pick(n: int = 5, fmt: str | None = None, category: str | None = None, filmin
     recent_angles = [p.get("type_angle") for p in pubs[-ANGLE_COOLDOWN:]]
     last_fmt = pubs[-1]["format"] if pubs else None
     themes_ever = {p.get("theme") for p in pubs}
-    cat_bias = performance_bias(pubs, "bank_category")
+    for p in pubs:
+        p.setdefault("pillar", pillar_of(p))
+    cat_bias = performance_bias(pubs, "pillar")
     angle_bias = performance_bias(pubs, "type_angle")
 
     ranked = []
     for t in topics()["topics"]:
+        pil = t["pilier"]
         if fmt and t["format"] != fmt and not (fmt == "video" and t["format"] == "quiz"):
             continue
-        if category and t["categorie"] != category:
+        if category and category not in (t["categorie"], pil):
             continue
         if t["id"] in used_ids or (t["theme"], t["type_angle"]) in combos:
             continue
-        if not rotation_ok(t["categorie"], cats) or t["theme"] in recent_themes:
+        if not rotation_ok(pil, cats) or t["theme"] in recent_themes:
             continue
         why = []
         score = t["score_total"] / 70 * 100
-        deficit = TARGET_SHARE.get(t["categorie"], 0.1) - counts[t["categorie"]] / total
+        deficit = TARGET_SHARE.get(pil, 0.1) - counts[pil] / total
         score += deficit * 60
         if deficit > 0.03:
-            why.append("catégorie sous-représentée")
+            why.append("pilier sous-représenté")
         if t["type_angle"] in recent_angles:
             score -= 6
         if last_fmt and t["format"] == last_fmt:
@@ -168,21 +169,21 @@ def pick(n: int = 5, fmt: str | None = None, category: str | None = None, filmin
         if t["tournage_requis"] and not filming:
             score -= 8
             why.append("tournage requis")
-        if t["categorie"] in cat_bias:
-            score += 8 * cat_bias[t["categorie"]]
-            why.append(f"engagement catégorie {cat_bias[t['categorie']]:+.0%}")
+        if pil in cat_bias:
+            score += 8 * cat_bias[pil]
+            why.append(f"engagement pilier {cat_bias[pil]:+.0%}")
         if t["type_angle"] in angle_bias:
             score += 5 * angle_bias[t["type_angle"]]
         ranked.append({**t, "selection": round(score, 1), "raisons": why})
     ranked.sort(key=lambda t: -t["selection"])
     if category:
         return ranked[:n]
-    # liste variée : au plus 2 idées par catégorie, et jamais deux fois le même thème
-    out, per_cat, seen = [], Counter(), set()
+    # liste variée : au plus 2 idées par pilier, et jamais deux fois le même thème
+    out, per_pil, seen = [], Counter(), set()
     for t in ranked:
-        if per_cat[t["categorie"]] < 2 and t["theme"] not in seen:
+        if per_pil[t["pilier"]] < 2 and t["theme"] not in seen:
             out.append(t)
-            per_cat[t["categorie"]] += 1
+            per_pil[t["pilier"]] += 1
             seen.add(t["theme"])
         if len(out) == n:
             break
@@ -235,7 +236,7 @@ def combine(n: int = 20) -> list[dict]:
     ang = angles()
     pubs = timeline()
     used = used_combos(pubs) | {(t["theme"], t["type_angle"]) for t in tp}
-    counts = Counter(p.get("bank_category") for p in pubs)
+    counts = Counter(pillar_of(p) for p in pubs)
     total = max(1, len(pubs))
     by_theme = {}
     for t in tp:
@@ -253,7 +254,7 @@ def combine(n: int = 20) -> list[dict]:
             allowed = ANGLE_CATEGORIES.get(a["id"])
             if allowed and ref["categorie"] not in allowed:
                 continue
-            deficit = TARGET_SHARE.get(ref["categorie"], 0.1) - counts[ref["categorie"]] / total
+            deficit = TARGET_SHARE.get(ref["pilier"], 0.1) - counts[ref["pilier"]] / total
             score = ref["score_total"] / 70 * 100 + deficit * 60 + (4 if len(items) == 1 else 0)
             out.append({
                 "theme": theme, "categorie": ref["categorie"], "sujet": subject, "type_angle": a["id"],
@@ -300,12 +301,14 @@ def report() -> dict:
     data = topics()
     pubs = timeline()
     tp = data["topics"]
-    counts = Counter(p.get("bank_category") for p in pubs)
+    counts = Counter(pillar_of(p) for p in pubs)
     total = max(1, len(pubs))
     unused = [t for t in tp if not t["utilisations"]]
     cats = {}
-    for c in data["categories"]:
-        cats[c] = {"banque": sum(t["categorie"] == c for t in tp), "restantes": sum(t["categorie"] == c for t in unused),
+    for pil in _PCFG["pillars"]:
+        c = pil["id"]
+        cats[c] = {"nom": f"{pil['emoji']} {pil['name']}", "banque": sum(t["pilier"] == c for t in tp),
+                   "restantes": sum(t["pilier"] == c for t in unused),
                    "publiees": counts[c], "part": round(counts[c] / total, 2), "cible": TARGET_SHARE.get(c)}
     problems = []
     for t in tp:
@@ -321,7 +324,7 @@ def report() -> dict:
                    key=lambda c: cats[c]["part"] - cats[c]["cible"])
     ang = {a["id"]: a.get("intention") for a in angles()["angles"]}
     mix = Counter(ang.get(p.get("type_angle")) for p in pubs[-10:] if ang.get(p.get("type_angle")))
-    return {"idees": len(tp), "intentions_10_dernieres": dict(mix), "restantes": len(unused), "categories": cats, "sous_representees": under,
+    return {"idees": len(tp), "intentions_10_dernieres": dict(mix), "restantes": len(unused), "piliers": cats, "sous_representees": under,
             "angles_utilises": dict(Counter(p.get("type_angle") for p in pubs)),
             "formats_utilises": dict(Counter(p["format"] for p in pubs)),
             "a_regenerer": len(unused) < 40, "problemes": problems,

@@ -2,9 +2,18 @@
   "status": "READY_TO_PUBLISH",
   "fails": [],
   "warnings": [
+    "script",
     "rythme"
   ],
   "checks": {
+    "recherche": {
+      "level": "ok",
+      "detail": "politique de sources respectée (4 sources utilisées)"
+    },
+    "script": {
+      "level": "warn",
+      "detail": "pas de conclusion distincte (acceptable si le CTA conclut)"
+    },
     "exactitude": {
       "level": "ok",
       "detail": "chaque info renvoie à un fait sourcé"
@@ -63,14 +72,24 @@
     },
     "absence_de_repetition": {
       "level": "ok",
-      "detail": "aucune répétition détectée"
+      "detail": "aucune répétition sur les 8 dimensions",
+      "dimensions": {
+        "sujet": "ok",
+        "angle": "ok",
+        "informations": "ok",
+        "format": "ok",
+        "hook": "ok",
+        "visuels": "ok",
+        "cta": "ok",
+        "formulation": "ok"
+      }
     },
     "rotation_et_banque": {
       "level": "ok",
       "detail": "idée 001 · cuisine · angle top"
     }
   },
-  "checked_at": "2026-09-25T02:38:21",
+  "checked_at": "2026-09-25T06:03:53",
   "autofix": [
     "voix off day-01.m4a (33.4 s, 22 sous-titres) : scènes et sous-titres calés sur la voix"
   ]

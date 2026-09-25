@@ -18,19 +18,26 @@
     "Il y a un truc dans le ceviche que presque personne ne remarque en France.",
     "Le plat préféré des Péruviens cache cinq secrets."
   ],
+  "hook_types": [
+    "erreur",
+    "défi",
+    "curiosité",
+    "surprise",
+    "opinion attribuée"
+  ],
   "hook_selected": 0,
   "hook_reason": "Corrige une idée reçue française (« du poisson cru au citron ») : curiosité immédiate sans exagération. Le hook 5 est écarté car « préféré des Péruviens » n'est pas sourcé.",
   "seo": {
-    "main": "ceviche péruvien",
-    "onscreen": "ceviche",
-    "secondary": [
+    "primary_keyword": "ceviche péruvien",
+    "secondary_keywords": [
       "leche de tigre",
       "cebiche",
       "cuisine péruvienne",
       "UNESCO",
       "Día del Cebiche"
     ],
-    "question": "C'est quoi le ceviche péruvien ?",
+    "search_phrase": "C'est quoi le ceviche péruvien ?",
+    "onscreen": "ceviche",
     "expressions": [
       "leche de tigre",
       "conchas negras",
@@ -237,5 +244,6 @@
   "idea_id": "001",
   "theme": "ceviche",
   "type_angle": "top",
-  "bank_category": "cuisine"
+  "bank_category": "cuisine",
+  "pillar": "manger"
 }

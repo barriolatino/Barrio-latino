@@ -70,6 +70,16 @@ se choisissent dans `.env` et s'ajoutent en Phase 3 derrière une interface comm
 pouvoir en changer sans toucher au reste. Le mode `MOCK` sert uniquement aux tests et
 bloque le statut `READY_TO_PUBLISH`.
 
+## Dépôt dédié
+
+Le projet est autonome. Pour l'extraire du dépôt Barrio-latino avec son historique :
+
+```bash
+bash tools/move-to-own-repo.sh ../tio-clem-repo https://github.com/<compte>/tio-clem.git
+```
+
+Sans URL, le script prépare seulement le dépôt local et lance les tests.
+
 ## Avancement
 
 Voir le tableau « Avancement V2 » dans [`CLAUDE.md`](CLAUDE.md).

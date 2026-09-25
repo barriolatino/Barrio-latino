@@ -183,9 +183,11 @@ Verticale, 3 à 7 mots, emoji possible : « TU CONNAIS CE PLAT ? 🇵🇪 »,
 
 ## 22. Contrôle qualité
 
-`tools/factory.py build` vérifie : exactitude, sources, orthographe, grammaire, hook,
+`tools/factory.py build` vérifie : recherche (politique de sources), script (structure,
+style oral, hooks, SEO), exactitude, sources, orthographe, grammaire, hook,
 rythme, durée, format 1080x1920, cohérence visuelle (charte + zones sûres), cover,
-sous-titres, CTA, description, hashtags, absence de répétition. Il corrige seul la
+sous-titres, CTA, description, hashtags, absence de répétition (8 dimensions : sujet,
+angle, informations, format, hook, visuels, CTA, formulation), rotation des piliers. Il corrige seul la
 typographie (espaces avant ? ! : ;, mots doublés), les hashtags (accents, doublons,
 nombre) et la longueur de la cover.
 

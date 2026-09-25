@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPO = ROOT.parent
-COMMANDS = REPO / ".claude" / "commands"
+COMMANDS = ROOT / ".claude" / "commands"  # autonome : suit le projet s'il change de dépôt
 
 results: list[tuple[str, bool, str]] = []
 
@@ -127,10 +127,11 @@ def _():
     assert all((b - a).days == 1 for a, b in zip(dates, dates[1:])), "dates non consécutives"
     bad = [d["day"] for d in cal if d.get("idea_id") not in ids]
     assert not bad, f"jours sans idée valide : {bad}"
-    cats = [d["bank_category"] for d in cal]
-    triple = [i + 1 for i in range(2, len(cats)) if cats[i] == cats[i - 1] == cats[i - 2]]
-    assert not triple, f"3 jours de suite dans la même catégorie : {triple}"
-    return "30 jours, tous reliés à une idée, rotation respectée"
+    pillar_of = {c: p["id"] for p in load("config/content-pillars.json")["pillars"] for c in p["categories"]}
+    pils = [pillar_of[d["bank_category"]] for d in cal]
+    triple = [i + 1 for i in range(2, len(pils)) if pils[i] == pils[i - 1] == pils[i - 2]]
+    assert not triple, f"3 jours de suite dans le même pilier : {triple}"
+    return "30 jours, tous reliés à une idée, rotation des piliers respectée"
 
 
 @test("historique")
@@ -155,13 +156,13 @@ def _():
     for f in sorted(COMMANDS.glob("*.md")):
         text = f.read_text(encoding="utf-8")
         assert text.startswith("---\n") and "description:" in text.split("---")[1], f"{f.name} : en-tête invalide"
-        if "tioclem/" in text:
-            broken.append(f"{f.name} : ancien chemin tioclem/")
-        for path in re.findall(r"`(tio-clem/[^`\s]+)`", text):
+        if "tioclem/" in text or "tio-clem/" in text:
+            broken.append(f"{f.name} : chemin préfixé par le dossier du projet")
+        for path in re.findall(r"`((?:tools|content|config|research|templates|assets|analytics|posts|export)/[^`\s]+|PLAYBOOK\.md|CLAUDE\.md|\.claude/commands/[^`\s]+)`", text):
             # chemins génériques, ou fichiers créés par la commande elle-même (export)
-            if any(ch in path for ch in "<*") or "NN" in path or path.startswith("tio-clem/export/"):
+            if any(ch in path for ch in "<*") or "NN" in path or path.startswith("export/"):
                 continue
-            if not (REPO / path).exists():
+            if not (ROOT / path).exists():
                 broken.append(f"{f.name} → {path}")
     assert not broken, "; ".join(broken)
     return f"{len(list(COMMANDS.glob('*.md')))} commandes, chemins valides"
@@ -186,7 +187,7 @@ def _():
 @test("package_json")
 def _():
     pkg = load("package.json")
-    assert pkg["private"] is True and pkg["scripts"]["test"] == "python3 tools/check.py"
+    assert pkg["private"] is True and pkg["scripts"]["test"].startswith("python3 tools/check.py")
     for name, cmd in pkg["scripts"].items():
         for f in re.findall(r"(tools/\S+\.py|\S+\.sh)", cmd):
             assert (ROOT / f).exists(), f"script {name} : {f} introuvable"
@@ -196,7 +197,7 @@ def _():
 @test("moteur")
 def _():
     sys.path.insert(0, str(ROOT / "tools"))
-    import bank
+    from content import selection as bank
     import factory
     import render  # noqa: F401
     assert bank.pick(3), "aucune idée proposée"

@@ -6,6 +6,7 @@
       "subject": "5 choses à savoir sur le ceviche péruvien",
       "category": "cuisine",
       "bank_category": "cuisine",
+      "pillar": "manger",
       "idea_id": "001",
       "theme": "ceviche",
       "type_angle": "top",
@@ -22,7 +23,7 @@
       ],
       "status": "READY_TO_PUBLISH",
       "output": "output/2026-09-24-ceviche",
-      "updated_at": "2026-09-25T02:38:21"
+      "updated_at": "2026-09-25T06:03:53"
     },
     {
       "day": 2,
@@ -30,6 +31,7 @@
       "subject": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
       "category": "géographie",
       "bank_category": "geographie",
+      "pillar": "explorer",
       "idea_id": "086",
       "theme": "regions",
       "type_angle": "explication",
@@ -46,7 +48,7 @@
       ],
       "status": "READY_TO_PUBLISH",
       "output": "output/2026-09-25-regions-costa-sierra-selva",
-      "updated_at": "2026-09-25T02:38:23"
+      "updated_at": "2026-09-25T06:03:55"
     }
   ]
 }
