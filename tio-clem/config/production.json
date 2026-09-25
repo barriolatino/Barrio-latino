@@ -70,8 +70,32 @@
     "search_phrase"
   ],
   "providers": {
-    "tts": "env:TTS_PROVIDER",
-    "images": "env:IMAGE_PROVIDER",
+    "tts": {
+      "env": "TTS_PROVIDER",
+      "choices": [
+        "none",
+        "piper",
+        "openai",
+        "elevenlabs",
+        "mock"
+      ],
+      "tested_live": [
+        "none",
+        "mock"
+      ]
+    },
+    "images": {
+      "env": "IMAGE_PROVIDER",
+      "choices": [
+        "none",
+        "openai",
+        "mock"
+      ],
+      "tested_live": [
+        "none",
+        "mock"
+      ]
+    },
     "research": "Claude Code (WebSearch + Firecrawl MCP)",
     "video": "ffmpeg local (imageio-ffmpeg)"
   },

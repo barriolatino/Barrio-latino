@@ -32,6 +32,9 @@ SOURCES :
   - SENAMHI (service national de météorologie et d'hydrologie) — Climas del Perú — Mapa de Clasificación Climática Nacional
     https://www.senamhi.gob.pe/load/file/01404SENA-4.pdf
 
+CRÉDITS IMAGES (à citer dans la description si la licence l'exige) :
+  (aucune image sous licence à créditer)
+
 À VÉRIFIER PAR UN HUMAIN AVANT PUBLICATION :
   - Publier en mode « photos » (carrousel) sur TikTok, dans l'ordre 01 → 09, et choisir un son dans l'app.
   - Slide 1 : « 60 % du Pérou, c'est l'Amazonie » arrondit 60,3 % du territoire (INEI, MINAM).

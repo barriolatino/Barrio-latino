@@ -3,7 +3,8 @@
   "fails": [],
   "warnings": [
     "script",
-    "rythme"
+    "rythme",
+    "sous_titres"
   ],
   "checks": {
     "recherche": {
@@ -55,8 +56,20 @@
       "detail": "1080x1920, 5 mots"
     },
     "sous_titres": {
+      "level": "warn",
+      "detail": "5 sous-titre(s) au-delà de 20 caractères/s (jusqu'à 30) : débit de voix rapide, texte difficile à lire en entier"
+    },
+    "voix": {
       "level": "ok",
-      "detail": "22 sous-titres, incrustés en zone sûre"
+      "detail": "voix de Tio Clem (assets/audio/voice/day-01.m4a)"
+    },
+    "visuels": {
+      "level": "ok",
+      "detail": "9 card"
+    },
+    "mock_absent": {
+      "level": "ok",
+      "detail": "aucun asset MOCK"
     },
     "cta": {
       "level": "ok",
@@ -89,7 +102,7 @@
       "detail": "idée 001 · cuisine · angle top"
     }
   },
-  "checked_at": "2026-09-25T06:03:53",
+  "checked_at": "2026-09-25T07:05:40",
   "autofix": [
     "voix off day-01.m4a (33.4 s, 22 sous-titres) : scènes et sous-titres calés sur la voix"
   ]

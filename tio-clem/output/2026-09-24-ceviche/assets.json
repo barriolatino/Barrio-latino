@@ -1,0 +1,45 @@
+{
+  "voice": {
+    "source": "human",
+    "file": "assets/audio/voice/day-01.m4a",
+    "mock": false
+  },
+  "visuals": {
+    "cover": {
+      "type": "card",
+      "mock": false
+    },
+    "scene01": {
+      "type": "card",
+      "mock": false
+    },
+    "scene02": {
+      "type": "card",
+      "mock": false
+    },
+    "scene03": {
+      "type": "card",
+      "mock": false
+    },
+    "scene04": {
+      "type": "card",
+      "mock": false
+    },
+    "scene05": {
+      "type": "card",
+      "mock": false
+    },
+    "scene06": {
+      "type": "card",
+      "mock": false
+    },
+    "scene07": {
+      "type": "card",
+      "mock": false
+    },
+    "scene08": {
+      "type": "card",
+      "mock": false
+    }
+  }
+}

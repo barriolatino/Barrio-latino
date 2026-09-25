@@ -37,7 +37,7 @@ L'utilisateur **valide puis publie**. Le pipeline s'arrête à `READY_TO_PUBLISH
 | `research/<slug>.json` | recherche sourcée d'un sujet |
 | `tools/` | moteur Python (`factory.py`, `content/`, `research/`, `render.py`), tests (`check.py`, `tests/`) |
 | `templates/` | gabarits vidéo, carrousel, cover |
-| `assets/` | polices, tes voix (`audio/voice/`), tes photos (`images/posts/`), musiques libres |
+| `assets/` | polices, tes voix (`audio/voice/`), voix de synthèse (`audio/tts/`), tes photos (`images/posts/`), images sourcées et générées, musiques libres |
 | `output/` | rendus de travail ; `posts/` : dossiers finaux (Phase 5) |
 | `analytics/metrics.csv` | statistiques TikTok (analyse en V2) |
 
@@ -71,7 +71,7 @@ l'extrait du dépôt Barrio-latino avec son historique.
 |---|---|---|
 | 1 | architecture, config, base de contenu, commandes, docs, `.env.example` | fait |
 | 2 | recherche (`tools/research/`), sélection, anti-répétition, script (`tools/content/`) | fait |
-| 3 | visuels (Mode A / Mode B), TTS, sous-titres | à faire |
+| 3 | visuels (`tools/images/`), voix (`tools/voice/`), sous-titres (`tools/subtitles/`) | fait (fournisseurs payants non testés en réel) |
 | 4 | FFmpeg, templates vidéo, cover | à faire (existant V1 à brancher sur `templates/`) |
 | 5 | contrôle qualité (`quality-report.json`), export vers `posts/` | à faire |
-| 6 | test « 5 choses que tu ne savais probablement pas sur le ceviche péruvien » | à faire |
+| 6 | test complet de la chaîne sur un nouveau sujet (le ceviche « 5 choses » répète le jour 1) | à faire |

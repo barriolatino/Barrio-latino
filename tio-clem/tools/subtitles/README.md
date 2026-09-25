@@ -1,7 +1,14 @@
 # Sous-titres
 
-**Rôle :** `subtitles.srt` + incrustation lisible en zone sûre.
+`srt.py` : découpage en morceaux lisibles, calage sur la voix (débit réel en syllabes,
+accroche aux reprises de parole), fichier `subtitles.srt`, contrôle de lisibilité :
 
-**État actuel :** Aujourd'hui : `tools/factory.py` (`sync_to_voice`, `build_cues`, `write_srt`) + libass dans `tools/render.py`.
+| Règle | Niveau |
+|---|---|
+| 2 lignes maximum, 30 caractères par ligne | erreur |
+| chevauchement, durée nulle, texte après la fin | erreur |
+| affichage de moins de 0,6 s | avertissement |
+| plus de 20 caractères par seconde | avertissement |
 
-**Module dédié :** prévu en Phase 3 (le code sera extrait ici, sans changer le comportement testé).
+Incrustation : libass via ffmpeg (`tools/render.py`), texte blanc cerné de noir, dans la zone
+sûre TikTok (`config/video-style.json`).

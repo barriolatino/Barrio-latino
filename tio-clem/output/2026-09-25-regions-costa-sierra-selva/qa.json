@@ -55,6 +55,14 @@
       "level": "ok",
       "detail": "sans objet (carrousel)"
     },
+    "visuels": {
+      "level": "ok",
+      "detail": "10 card"
+    },
+    "mock_absent": {
+      "level": "ok",
+      "detail": "aucun asset MOCK"
+    },
     "cta": {
       "level": "ok",
       "detail": "Dis-moi en commentaire : tu imaginais le Pérou plutôt désert, montagnes ou forêt ?"
@@ -86,6 +94,6 @@
       "detail": "idée 086 · geographie · angle explication"
     }
   },
-  "checked_at": "2026-09-25T06:03:55",
+  "checked_at": "2026-09-25T07:05:42",
   "autofix": []
 }

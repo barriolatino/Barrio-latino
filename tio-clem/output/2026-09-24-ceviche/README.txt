@@ -30,6 +30,9 @@ SOURCES :
   - Real Academia Española / ASALE — cebiche — Diccionario de la lengua española
     https://dle.rae.es/cebiche
 
+CRÉDITS IMAGES (à citer dans la description si la licence l'exige) :
+  (aucune image sous licence à créditer)
+
 À VÉRIFIER PAR UN HUMAIN AVANT PUBLICATION :
   - Remplacer les illustrations par tes propres images si tu en as (dépose-les dans content/media/day-01/scene01.jpg, etc., puis relance le rendu).
   - Enregistrer la voix off (script.txt) ou ajouter un son TikTok dans l'app : la vidéo est livrée avec une piste audio silencieuse.
@@ -39,5 +42,6 @@ SOURCES :
 POINTS SIGNALÉS PAR LE CONTRÔLE QUALITÉ :
   - script : pas de conclusion distincte (acceptable si le CTA conclut)
   - rythme : scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)
+  - sous_titres : 5 sous-titre(s) au-delà de 20 caractères/s (jusqu'à 30) : débit de voix rapide, texte difficile à lire en entier
 
 STATUT : READY_TO_PUBLISH

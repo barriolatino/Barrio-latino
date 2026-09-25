@@ -18,7 +18,7 @@
       "facts": [
         "F10"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 2,
@@ -34,7 +34,7 @@
       "text_overlay_sub": "sur le plat star du Pérou",
       "animation": "zoom léger",
       "facts": [],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 3,
@@ -52,7 +52,7 @@
       "facts": [
         "F9"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 4,
@@ -70,7 +70,7 @@
       "facts": [
         "F6"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 5,
@@ -89,7 +89,7 @@
         "F4",
         "F5"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 6,
@@ -107,7 +107,7 @@
       "facts": [
         "F7"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 7,
@@ -126,7 +126,7 @@
         "F1",
         "F2"
       ],
-      "own_media": ""
+      "asset": "card"
     },
     {
       "scene": 8,
@@ -142,7 +142,7 @@
       "text_overlay_sub": "team poisson 🐟 ou team fruits de mer 🦐 ?",
       "animation": "titre qui pop",
       "facts": [],
-      "own_media": ""
+      "asset": "card"
     }
   ]
 }

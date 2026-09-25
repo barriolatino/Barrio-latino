@@ -136,11 +136,18 @@ contexte culturel. Ne jamais inventer une origine. Si elle est discutée, le dir
 
 ## 14. Visuels
 
-Pour chaque scène : visuel nécessaire, description, durée, texte à l'écran,
-animation (`scenes.json` en sortie). Par défaut, `factory.py` produit des cartes
-graphiques à la charte Tio Clem. Pour plus d'authenticité, le créateur dépose ses
-propres photos dans `assets/images/posts/day-NN/scene01.jpg` (ou `slide01.jpg`,
-`cover.jpg`) : elles remplacent l'illustration au rendu suivant.
+Pour chaque scène : visuel nécessaire, description, durée, texte à l'écran, animation,
+transition, type d'asset (`scenes.json` en sortie). Pour chaque scène, slide ou cover, le
+moteur prend dans cet ordre (`tools/images/`) :
+
+1. ta photo : `assets/images/posts/day-NN/scene01.jpg` (ou `slide01.jpg`, `cover.jpg`) ;
+2. une image sourcée (Mode A), enregistrée avec `tools/factory.py asset-add` : source, URL,
+   auteur, licence (photo perso, CC0, domaine public, CC BY, CC BY-SA, Unsplash, Pexels ;
+   jamais NC ni ND). Les crédits obligatoires sont listés dans le README du post ;
+3. une image générée (Mode B), seulement si la scène a `"asset_type": "generated"` et que
+   `IMAGE_PROVIDER` est configuré. Le prompt impose un Pérou réaliste et exact, sans texte,
+   sans drapeau ajouté, sans cliché ; il est enregistré avec l'image ;
+4. la carte graphique Tio Clem (par défaut).
 
 Palettes : `rojo`, `crema`, `ají`, `selva`, `mar`. Éviter deux scènes consécutives
 de la même couleur.
@@ -151,13 +158,15 @@ de la même couleur.
 
 ## 16. Voix off
 
-Aucune voix de synthèse n'est utilisée : elle casserait l'authenticité. Deux options :
+Ordre (`tools/voice/`) : **ta voix enregistrée** (`assets/audio/voice/day-NN.m4a`), sinon la
+synthèse choisie par `TTS_PROVIDER` (`piper` local et gratuit, `openai`, `elevenlabs`), sinon
+aucune voix (piste silencieuse : ajouter un son dans TikTok). La voix doit être française,
+naturelle, chaleureuse, dynamique, pas trop rapide. Une voix de synthèse jamais testée en réel
+doit être écoutée avant publication (le contrôle qualité le signale). `MOCK=1` ne sert qu'aux
+tests et bloque `READY_TO_PUBLISH`.
 
-- le créateur enregistre `script.txt`, dépose le fichier dans
-  `assets/audio/voice/day-NN.m4a`, puis relance `tools/factory.py build NN` (les scènes et
-  sous-titres se recalent sur la durée de l'enregistrement) ;
-- ou il publie la vidéo telle quelle (piste audio silencieuse) et ajoute un son
-  dans l'application TikTok. Le texte à l'écran et les sous-titres portent le message.
+Dans tous les cas, scènes et sous-titres se calent sur la voix, et `voiceover.wav` est écrit
+dans le dossier de sortie.
 
 ## 17. Sous-titres
 

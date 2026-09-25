@@ -10,5 +10,9 @@ __pycache__/
 node_modules/
 .DS_Store
 
-# Assets générés en test (MOCK) : jamais publiés
-assets/**/mock/
+# Assets MOCK (tests uniquement) : jamais commités
+assets/audio/tts/*.mock.*
+assets/images/generated/**/*.mock.*
+
+# Régénérable depuis assets/audio
+output/*/voiceover.wav
