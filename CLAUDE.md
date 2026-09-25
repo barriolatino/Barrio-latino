@@ -26,3 +26,8 @@ Arbitrage entre outils qui réclament la priorité en début de session :
 3. **impeccable** prend la main sur tout travail de design frontend.
 
 `claude-mem` fonctionne uniquement par hooks et ne s'invoque pas manuellement.
+
+## Tio Clem
+
+La Content Factory TikTok de Tio Clem (@tioclem15) vit désormais dans son propre dépôt :
+`barriolatino/Tio-clem`. Ce dépôt ne contient plus que le site du restaurant.
