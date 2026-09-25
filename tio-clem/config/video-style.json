@@ -1,0 +1,108 @@
+{
+  "resolution": {
+    "width": 1080,
+    "height": 1920
+  },
+  "aspect_ratio": "9:16",
+  "fps": 30,
+  "codec": {
+    "video": "libx264",
+    "profile": "high",
+    "pixel_format": "yuv420p",
+    "crf": 20,
+    "audio": "aac",
+    "audio_bitrate": "128k",
+    "sample_rate": 44100,
+    "faststart": true
+  },
+  "duration": {
+    "min_s": 20,
+    "max_s": 45,
+    "hook_max_s": 3.6,
+    "scene_max_s": 8
+  },
+  "structure": [
+    "hook",
+    "promesse",
+    "information",
+    "exemple / surprise",
+    "conclusion",
+    "cta"
+  ],
+  "safe_zone_px": {
+    "left": 72,
+    "top": 200,
+    "right": 930,
+    "bottom": 1480,
+    "note": "barre du haut, colonne d'icônes à droite, légende et boutons en bas"
+  },
+  "fonts": {
+    "title": "Anton-Regular.ttf",
+    "body": "Montserrat-SemiBold.ttf",
+    "subtitle": "Montserrat-ExtraBold.ttf",
+    "emoji": "NotoColorEmoji (système) ou TIOCLEM_EMOJI_FONT"
+  },
+  "palettes": {
+    "rojo": {
+      "top": "#D91023",
+      "bottom": "#8E0B21",
+      "text": "#FFF6EA",
+      "accent": "#F5B700"
+    },
+    "crema": {
+      "top": "#FFF6EA",
+      "bottom": "#F4DFC2",
+      "text": "#1C1512",
+      "accent": "#D91023"
+    },
+    "ají": {
+      "top": "#FFC21A",
+      "bottom": "#F09A00",
+      "text": "#1C1512",
+      "accent": "#D91023"
+    },
+    "selva": {
+      "top": "#1F7A56",
+      "bottom": "#0F4431",
+      "text": "#FFF6EA",
+      "accent": "#F5B700"
+    },
+    "mar": {
+      "top": "#11587D",
+      "bottom": "#08304A",
+      "text": "#FFF6EA",
+      "accent": "#F5B700"
+    }
+  },
+  "palette_rules": [
+    "pas deux scènes consécutives de la même couleur",
+    "le rouge n'est qu'une palette parmi cinq"
+  ],
+  "subtitles": {
+    "font_size_px": 56,
+    "max_lines": 2,
+    "max_chars_per_line": 30,
+    "outline_px": 7,
+    "lead_s": 0.08,
+    "min_display_s": 0.6
+  },
+  "animations": {
+    "zoom": "zoom léger 0 → 6 %",
+    "pop": "titre qui pop (0,35 s)",
+    "transition": "coupe franche"
+  },
+  "voice": {
+    "words_per_second_estimate": 3.0,
+    "loudness_lufs": -14,
+    "true_peak_db": -1.5
+  },
+  "music": {
+    "mode": "none",
+    "allowed": [
+      "asset libre de droits fourni dans assets/music avec sa licence",
+      "aucune musique"
+    ],
+    "never": "musique commerciale TikTok ajoutée automatiquement"
+  },
+  "template": "templates/video/default.json"
+}

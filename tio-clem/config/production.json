@@ -1,0 +1,93 @@
+{
+  "statuses": [
+    "IDEA",
+    "RESEARCHED",
+    "SCRIPTED",
+    "RENDERED",
+    "NEEDS_REVIEW",
+    "READY_TO_PUBLISH",
+    "PUBLISHED"
+  ],
+  "auto_publish": false,
+  "pipeline": [
+    "research",
+    "verification",
+    "angle",
+    "script",
+    "storyboard",
+    "visuals",
+    "voice",
+    "subtitles",
+    "edit",
+    "cover",
+    "caption",
+    "hashtags",
+    "quality_control"
+  ],
+  "hooks": {
+    "count": 5,
+    "types": [
+      "question",
+      "surprise",
+      "contraste",
+      "erreur",
+      "curiosité",
+      "défi",
+      "opinion attribuée",
+      "mini-histoire"
+    ],
+    "no_misleading_hook": true
+  },
+  "hashtags": {
+    "min": 5,
+    "max": 8,
+    "always": [
+      "#TioClem"
+    ],
+    "must_include_one_of": [
+      "#Perou",
+      "#Peru"
+    ],
+    "no_accents": true
+  },
+  "caption": {
+    "max_chars": 2200,
+    "structure": [
+      "hook court",
+      "information principale",
+      "question / interaction",
+      "CTA"
+    ],
+    "max_keyword_repeats": 2
+  },
+  "cover": {
+    "words_min": 3,
+    "words_max": 7
+  },
+  "seo_fields": [
+    "primary_keyword",
+    "secondary_keywords",
+    "search_phrase"
+  ],
+  "providers": {
+    "tts": "env:TTS_PROVIDER",
+    "images": "env:IMAGE_PROVIDER",
+    "research": "Claude Code (WebSearch + Firecrawl MCP)",
+    "video": "ffmpeg local (imageio-ffmpeg)"
+  },
+  "mock_policy": "Un fournisseur MOCK sert uniquement aux tests : toute publication produite avec un asset MOCK reste NEEDS_REVIEW.",
+  "critical_checks": [
+    "exactitude",
+    "sources",
+    "format_video",
+    "resolution",
+    "audio",
+    "duree",
+    "sous_titres",
+    "mock_absent"
+  ],
+  "folders": {
+    "final_post": "posts/{id}-{slug}/",
+    "work_output": "output/"
+  }
+}

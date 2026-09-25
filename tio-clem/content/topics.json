@@ -1,0 +1,1069 @@
+{
+ "version": 2,
+ "description": "Registre des thèmes. Un thème regroupe les idées qui parlent de la même chose (ex. ceviche) : c'est la clé de l'anti-répétition.",
+ "topics": [
+  {
+   "id": "28-juillet",
+   "name": "28 juillet",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "085",
+    "111"
+   ]
+  },
+  {
+   "id": "accent",
+   "name": "Prononciation",
+   "pillar": "parler",
+   "idea_ids": [
+    "154",
+    "155"
+   ]
+  },
+  {
+   "id": "aji-de-gallina",
+   "name": "Ají de gallina",
+   "pillar": "manger",
+   "idea_ids": [
+    "009"
+   ]
+  },
+  {
+   "id": "alfajores",
+   "name": "Alfajores",
+   "pillar": "manger",
+   "idea_ids": [
+    "027"
+   ]
+  },
+  {
+   "id": "alimentation-inca",
+   "name": "Alimentation inca",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "078"
+   ]
+  },
+  {
+   "id": "aliments-surprenants",
+   "name": "Aliments surprenants",
+   "pillar": "insolite",
+   "idea_ids": [
+    "176"
+   ]
+  },
+  {
+   "id": "amazonie",
+   "name": "Amazonie",
+   "pillar": "explorer",
+   "idea_ids": [
+    "091",
+    "103",
+    "163"
+   ]
+  },
+  {
+   "id": "andes",
+   "name": "Andes péruviennes",
+   "pillar": "explorer",
+   "idea_ids": [
+    "090"
+   ]
+  },
+  {
+   "id": "animaux",
+   "name": "Animaux du Pérou",
+   "pillar": "insolite",
+   "idea_ids": [
+    "169"
+   ]
+  },
+  {
+   "id": "anticuchos",
+   "name": "Anticuchos",
+   "pillar": "manger",
+   "idea_ids": [
+    "012"
+   ]
+  },
+  {
+   "id": "architecture-inca",
+   "name": "Pierres incas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "062",
+    "063"
+   ]
+  },
+  {
+   "id": "arequipa",
+   "name": "Arequipa",
+   "pillar": "explorer",
+   "idea_ids": [
+    "096"
+   ]
+  },
+  {
+   "id": "argot",
+   "name": "Argot du quotidien",
+   "pillar": "parler",
+   "idea_ids": [
+    "145",
+    "146",
+    "147"
+   ]
+  },
+  {
+   "id": "arroz-chaufa",
+   "name": "Arroz chaufa",
+   "pillar": "manger",
+   "idea_ids": [
+    "014"
+   ]
+  },
+  {
+   "id": "arroz-con-leche",
+   "name": "Arroz con leche péruvien",
+   "pillar": "manger",
+   "idea_ids": [
+    "025"
+   ]
+  },
+  {
+   "id": "artisanat",
+   "name": "Artisanat péruvien",
+   "pillar": "vivre",
+   "idea_ids": [
+    "125"
+   ]
+  },
+  {
+   "id": "avant-les-incas",
+   "name": "Avant les Incas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "056"
+   ]
+  },
+  {
+   "id": "ballestas",
+   "name": "Îles Ballestas",
+   "pillar": "explorer",
+   "idea_ids": [
+    "101"
+   ]
+  },
+  {
+   "id": "boissons",
+   "name": "Boissons péruviennes",
+   "pillar": "manger",
+   "idea_ids": [
+    "054",
+    "055"
+   ]
+  },
+  {
+   "id": "boissons-de-rue",
+   "name": "Boissons de rue",
+   "pillar": "manger",
+   "idea_ids": [
+    "047"
+   ]
+  },
+  {
+   "id": "camelides",
+   "name": "Alpagas",
+   "pillar": "insolite",
+   "idea_ids": [
+    "172",
+    "173"
+   ]
+  },
+  {
+   "id": "candelaria",
+   "name": "Virgen de la Candelaria",
+   "pillar": "vivre",
+   "idea_ids": [
+    "120"
+   ]
+  },
+  {
+   "id": "caral",
+   "name": "Caral",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "073"
+   ]
+  },
+  {
+   "id": "carnavals",
+   "name": "Carnavals",
+   "pillar": "vivre",
+   "idea_ids": [
+    "118",
+    "119"
+   ]
+  },
+  {
+   "id": "causa",
+   "name": "Causa",
+   "pillar": "manger",
+   "idea_ids": [
+    "010"
+   ]
+  },
+  {
+   "id": "ceviche",
+   "name": "Ceviche",
+   "pillar": "manger",
+   "idea_ids": [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "192"
+   ]
+  },
+  {
+   "id": "chan-chan",
+   "name": "Chan Chan",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "076"
+   ]
+  },
+  {
+   "id": "chavin",
+   "name": "Chavín",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "074"
+   ]
+  },
+  {
+   "id": "chevere",
+   "name": "Chévere",
+   "pillar": "parler",
+   "idea_ids": [
+    "137"
+   ]
+  },
+  {
+   "id": "chicha-morada",
+   "name": "Chicha morada",
+   "pillar": "manger",
+   "idea_ids": [
+    "031",
+    "043",
+    "044",
+    "053",
+    "182"
+   ]
+  },
+  {
+   "id": "chilcano",
+   "name": "Chilcano",
+   "pillar": "manger",
+   "idea_ids": [
+    "035",
+    "050"
+   ]
+  },
+  {
+   "id": "chimu",
+   "name": "Les Chimú",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "075"
+   ]
+  },
+  {
+   "id": "climats",
+   "name": "Climats du Pérou",
+   "pillar": "explorer",
+   "idea_ids": [
+    "109"
+   ]
+  },
+  {
+   "id": "colca",
+   "name": "Canyon de Colca",
+   "pillar": "explorer",
+   "idea_ids": [
+    "098"
+   ]
+  },
+  {
+   "id": "communaute",
+   "name": "Ta prochaine vidéo",
+   "pillar": "participer",
+   "idea_ids": [
+    "200"
+   ]
+  },
+  {
+   "id": "condor",
+   "name": "Condor des Andes",
+   "pillar": "insolite",
+   "idea_ids": [
+    "170"
+   ]
+  },
+  {
+   "id": "conquete",
+   "name": "Conquête espagnole",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "083"
+   ]
+  },
+  {
+   "id": "couleurs",
+   "name": "Couleurs des fêtes",
+   "pillar": "vivre",
+   "idea_ids": [
+    "135"
+   ]
+  },
+  {
+   "id": "croyances-incas",
+   "name": "Croyances incas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "081"
+   ]
+  },
+  {
+   "id": "cuisine-peruvienne",
+   "name": "Cuisine péruvienne",
+   "pillar": "manger",
+   "idea_ids": [
+    "038",
+    "039"
+   ]
+  },
+  {
+   "id": "cusco",
+   "name": "Cusco",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "059",
+    "095"
+   ]
+  },
+  {
+   "id": "danses",
+   "name": "Danses traditionnelles",
+   "pillar": "vivre",
+   "idea_ids": [
+    "123"
+   ]
+  },
+  {
+   "id": "dauphins-roses",
+   "name": "Dauphins roses",
+   "pillar": "insolite",
+   "idea_ids": [
+    "174"
+   ]
+  },
+  {
+   "id": "desert-cotier",
+   "name": "Côte désertique",
+   "pillar": "explorer",
+   "idea_ids": [
+    "089",
+    "092"
+   ]
+  },
+  {
+   "id": "desserts",
+   "name": "Dessert péruvien",
+   "pillar": "manger",
+   "idea_ids": [
+    "028",
+    "184"
+   ]
+  },
+  {
+   "id": "destinations",
+   "name": "Destinations",
+   "pillar": "explorer",
+   "idea_ids": [
+    "110"
+   ]
+  },
+  {
+   "id": "devine",
+   "name": "Devine ce que je mange",
+   "pillar": "gouter",
+   "idea_ids": [
+    "187",
+    "188"
+   ]
+  },
+  {
+   "id": "emoliente",
+   "name": "Emoliente",
+   "pillar": "manger",
+   "idea_ids": [
+    "033",
+    "046"
+   ]
+  },
+  {
+   "id": "empanadas",
+   "name": "Empanadas péruviennes",
+   "pillar": "manger",
+   "idea_ids": [
+    "021"
+   ]
+  },
+  {
+   "id": "empire-inca",
+   "name": "Empire inca",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "058"
+   ]
+  },
+  {
+   "id": "espagnol-peruvien",
+   "name": "Mots selon les pays",
+   "pillar": "parler",
+   "idea_ids": [
+    "140",
+    "156"
+   ]
+  },
+  {
+   "id": "expression-du-jour",
+   "name": "Expression du jour",
+   "pillar": "parler",
+   "idea_ids": [
+    "152"
+   ]
+  },
+  {
+   "id": "expressions",
+   "name": "Expressions péruviennes",
+   "pillar": "parler",
+   "idea_ids": [
+    "136",
+    "138",
+    "149"
+   ]
+  },
+  {
+   "id": "faire-gouter",
+   "name": "Plat péruvien",
+   "pillar": "gouter",
+   "idea_ids": [
+    "185",
+    "186"
+   ]
+  },
+  {
+   "id": "faits-perou",
+   "name": "Le Pérou",
+   "pillar": "insolite",
+   "idea_ids": [
+    "161",
+    "162",
+    "179",
+    "180",
+    "198",
+    "199"
+   ]
+  },
+  {
+   "id": "faux-amis",
+   "name": "Faux amis",
+   "pillar": "parler",
+   "idea_ids": [
+    "142"
+   ]
+  },
+  {
+   "id": "fetes-familiales",
+   "name": "Journée de fête",
+   "pillar": "vivre",
+   "idea_ids": [
+    "127",
+    "134"
+   ]
+  },
+  {
+   "id": "fiestas-patrias",
+   "name": "Fiestas Patrias",
+   "pillar": "vivre",
+   "idea_ids": [
+    "112",
+    "113"
+   ]
+  },
+  {
+   "id": "francais-espagnol",
+   "name": "France VS Pérou",
+   "pillar": "parler",
+   "idea_ids": [
+    "141",
+    "157",
+    "160"
+   ]
+  },
+  {
+   "id": "fruits",
+   "name": "Fruits du Pérou",
+   "pillar": "insolite",
+   "idea_ids": [
+    "175"
+   ]
+  },
+  {
+   "id": "gamarra",
+   "name": "Gamarra",
+   "pillar": "vivre",
+   "idea_ids": [
+    "201"
+   ]
+  },
+  {
+   "id": "huacachina",
+   "name": "Oasis",
+   "pillar": "explorer",
+   "idea_ids": [
+    "099",
+    "166"
+   ]
+  },
+  {
+   "id": "inca-kola",
+   "name": "Inca Kola",
+   "pillar": "manger",
+   "idea_ids": [
+    "032",
+    "041",
+    "042",
+    "051",
+    "052",
+    "181",
+    "193"
+   ]
+  },
+  {
+   "id": "incas",
+   "name": "Les Incas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "057",
+    "077"
+   ]
+  },
+  {
+   "id": "independance",
+   "name": "Indépendance du Pérou",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "084"
+   ]
+  },
+  {
+   "id": "inti",
+   "name": "Le Soleil",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "082",
+    "115"
+   ]
+  },
+  {
+   "id": "inti-raymi",
+   "name": "Inti Raymi",
+   "pillar": "vivre",
+   "idea_ids": [
+    "114"
+   ]
+  },
+  {
+   "id": "intraduisibles",
+   "name": "Mots intraduisibles",
+   "pillar": "parler",
+   "idea_ids": [
+    "143",
+    "144"
+   ]
+  },
+  {
+   "id": "iquitos",
+   "name": "Iquitos",
+   "pillar": "explorer",
+   "idea_ids": [
+    "102"
+   ]
+  },
+  {
+   "id": "lima",
+   "name": "Lima",
+   "pillar": "explorer",
+   "idea_ids": [
+    "094"
+   ]
+  },
+  {
+   "id": "lima-cusco",
+   "name": "Lima et Cusco",
+   "pillar": "insolite",
+   "idea_ids": [
+    "177",
+    "197"
+   ]
+  },
+  {
+   "id": "lomo-saltado",
+   "name": "Lomo saltado",
+   "pillar": "manger",
+   "idea_ids": [
+    "006",
+    "007",
+    "008"
+   ]
+  },
+  {
+   "id": "machu-picchu",
+   "name": "Machu Picchu",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "066",
+    "067",
+    "104"
+   ]
+  },
+  {
+   "id": "mais-violet",
+   "name": "Maïs violet",
+   "pillar": "manger",
+   "idea_ids": [
+    "045"
+   ]
+  },
+  {
+   "id": "marches",
+   "name": "Marchés traditionnels",
+   "pillar": "vivre",
+   "idea_ids": [
+    "126"
+   ]
+  },
+  {
+   "id": "marcianos",
+   "name": "Marciano",
+   "pillar": "manger",
+   "idea_ids": [
+    "036",
+    "183"
+   ]
+  },
+  {
+   "id": "mazamorra-morada",
+   "name": "Mazamorra morada",
+   "pillar": "manger",
+   "idea_ids": [
+    "024"
+   ]
+  },
+  {
+   "id": "moche",
+   "name": "Les Moche",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "071"
+   ]
+  },
+  {
+   "id": "mot-du-jour",
+   "name": "Mot du jour",
+   "pillar": "parler",
+   "idea_ids": [
+    "151"
+   ]
+  },
+  {
+   "id": "mots-peruviens",
+   "name": "Mot péruvien",
+   "pillar": "parler",
+   "idea_ids": [
+    "139",
+    "150",
+    "153"
+   ]
+  },
+  {
+   "id": "musique",
+   "name": "Musique traditionnelle",
+   "pillar": "vivre",
+   "idea_ids": [
+    "122"
+   ]
+  },
+  {
+   "id": "nazca",
+   "name": "Les Nazca",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "068",
+    "069",
+    "070",
+    "167"
+   ]
+  },
+  {
+   "id": "noel",
+   "name": "Noël au Pérou",
+   "pillar": "vivre",
+   "idea_ids": [
+    "128"
+   ]
+  },
+  {
+   "id": "ollantaytambo",
+   "name": "Ollantaytambo",
+   "pillar": "explorer",
+   "idea_ids": [
+    "106"
+   ]
+  },
+  {
+   "id": "ours-a-lunettes",
+   "name": "Ours à lunettes",
+   "pillar": "insolite",
+   "idea_ids": [
+    "171"
+   ]
+  },
+  {
+   "id": "pachacutec",
+   "name": "Pachacútec",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "060"
+   ]
+  },
+  {
+   "id": "pachamama",
+   "name": "Pachamama",
+   "pillar": "vivre",
+   "idea_ids": [
+    "116",
+    "117"
+   ]
+  },
+  {
+   "id": "pachamanca",
+   "name": "Pachamanca",
+   "pillar": "manger",
+   "idea_ids": [
+    "018"
+   ]
+  },
+  {
+   "id": "pacifique",
+   "name": "Océan Pacifique",
+   "pillar": "explorer",
+   "idea_ids": [
+    "093"
+   ]
+  },
+  {
+   "id": "pan-con-chicharron",
+   "name": "Pan con chicharrón",
+   "pillar": "manger",
+   "idea_ids": [
+    "019"
+   ]
+  },
+  {
+   "id": "papa-a-la-huancaina",
+   "name": "Papa a la huancaína",
+   "pillar": "manger",
+   "idea_ids": [
+    "011"
+   ]
+  },
+  {
+   "id": "paques",
+   "name": "Pâques au Pérou",
+   "pillar": "vivre",
+   "idea_ids": [
+    "129"
+   ]
+  },
+  {
+   "id": "paracas",
+   "name": "Les Paracas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "072"
+   ]
+  },
+  {
+   "id": "paracas-reserve",
+   "name": "Paracas",
+   "pillar": "explorer",
+   "idea_ids": [
+    "100"
+   ]
+  },
+  {
+   "id": "paysages",
+   "name": "Paysages du Pérou",
+   "pillar": "explorer",
+   "idea_ids": [
+    "088",
+    "165"
+   ]
+  },
+  {
+   "id": "petit-dejeuner",
+   "name": "Petits-déjeuners péruviens",
+   "pillar": "manger",
+   "idea_ids": [
+    "029",
+    "030"
+   ]
+  },
+  {
+   "id": "picarones",
+   "name": "Picarones",
+   "pillar": "manger",
+   "idea_ids": [
+    "022",
+    "194"
+   ]
+  },
+  {
+   "id": "pisac",
+   "name": "Pisac",
+   "pillar": "explorer",
+   "idea_ids": [
+    "107"
+   ]
+  },
+  {
+   "id": "pisco",
+   "name": "Pisco",
+   "pillar": "manger",
+   "idea_ids": [
+    "034",
+    "048",
+    "049"
+   ]
+  },
+  {
+   "id": "plage-montagne",
+   "name": "Plage VS montagne",
+   "pillar": "participer",
+   "idea_ids": [
+    "196"
+   ]
+  },
+  {
+   "id": "pollo-a-la-brasa",
+   "name": "Pollo a la brasa",
+   "pillar": "manger",
+   "idea_ids": [
+    "013"
+   ]
+  },
+  {
+   "id": "pommes-de-terre",
+   "name": "Pommes de terre",
+   "pillar": "manger",
+   "idea_ids": [
+    "040",
+    "164"
+   ]
+  },
+  {
+   "id": "premier-voyage",
+   "name": "Premier voyage",
+   "pillar": "insolite",
+   "idea_ids": [
+    "178"
+   ]
+  },
+  {
+   "id": "produit-mystere",
+   "name": "Produit mystère",
+   "pillar": "gouter",
+   "idea_ids": [
+    "202"
+   ]
+  },
+  {
+   "id": "produits-peruviens",
+   "name": "Produits péruviens",
+   "pillar": "gouter",
+   "idea_ids": [
+    "189"
+   ]
+  },
+  {
+   "id": "qhapaq-nan",
+   "name": "Routes incas",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "061",
+    "079"
+   ]
+  },
+  {
+   "id": "quipus",
+   "name": "Quipus",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "064",
+    "080"
+   ]
+  },
+  {
+   "id": "regions",
+   "name": "Costa VS Sierra VS Selva",
+   "pillar": "explorer",
+   "idea_ids": [
+    "086",
+    "087",
+    "195"
+   ]
+  },
+  {
+   "id": "registre",
+   "name": "Registre formel",
+   "pillar": "parler",
+   "idea_ids": [
+    "148"
+   ]
+  },
+  {
+   "id": "sacsayhuaman",
+   "name": "Sacsayhuamán",
+   "pillar": "explorer",
+   "idea_ids": [
+    "108"
+   ]
+  },
+  {
+   "id": "salchipapa",
+   "name": "Salchipapa",
+   "pillar": "manger",
+   "idea_ids": [
+    "020"
+   ]
+  },
+  {
+   "id": "senor-de-los-milagros",
+   "name": "Señor de los Milagros",
+   "pillar": "vivre",
+   "idea_ids": [
+    "121"
+   ]
+  },
+  {
+   "id": "street-food",
+   "name": "Street-food péruvienne",
+   "pillar": "manger",
+   "idea_ids": [
+    "037",
+    "190"
+   ]
+  },
+  {
+   "id": "suspiro-a-la-limena",
+   "name": "Suspiro a la limeña",
+   "pillar": "manger",
+   "idea_ids": [
+    "023"
+   ]
+  },
+  {
+   "id": "tallarines",
+   "name": "Tallarines rojos",
+   "pillar": "manger",
+   "idea_ids": [
+    "015",
+    "016",
+    "017",
+    "191"
+   ]
+  },
+  {
+   "id": "terrasses",
+   "name": "Terrasses agricoles",
+   "pillar": "comprendre",
+   "idea_ids": [
+    "065"
+   ]
+  },
+  {
+   "id": "titicaca",
+   "name": "Lac Titicaca",
+   "pillar": "explorer",
+   "idea_ids": [
+    "097",
+    "168"
+   ]
+  },
+  {
+   "id": "traditions",
+   "name": "Tradition surprenante",
+   "pillar": "vivre",
+   "idea_ids": [
+    "130",
+    "131",
+    "132",
+    "133"
+   ]
+  },
+  {
+   "id": "turron-dona-pepa",
+   "name": "Turrón de Doña Pepa",
+   "pillar": "manger",
+   "idea_ids": [
+    "026"
+   ]
+  },
+  {
+   "id": "vallee-sacree",
+   "name": "Vallée Sacrée",
+   "pillar": "explorer",
+   "idea_ids": [
+    "105"
+   ]
+  },
+  {
+   "id": "vetements",
+   "name": "Vêtements traditionnels",
+   "pillar": "vivre",
+   "idea_ids": [
+    "124"
+   ]
+  },
+  {
+   "id": "vocabulaire-cuisine",
+   "name": "Vocabulaire de la cuisine",
+   "pillar": "parler",
+   "idea_ids": [
+    "158"
+   ]
+  },
+  {
+   "id": "vocabulaire-quotidien",
+   "name": "Vocabulaire du quotidien",
+   "pillar": "parler",
+   "idea_ids": [
+    "159"
+   ]
+  }
+ ]
+}

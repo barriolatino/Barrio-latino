@@ -1,0 +1,51 @@
+{
+  "name": "Tio Clem",
+  "username": "@tioclem15",
+  "language": "fr",
+  "country": "Peru",
+  "audience": "francophones intéressés par le Pérou",
+  "positioning": "Le Pérou expliqué simplement par un Français passionné par le pays",
+  "tone": [
+    "chaleureux",
+    "naturel",
+    "curieux",
+    "accessible",
+    "enthousiaste",
+    "humain"
+  ],
+  "avoid": [
+    "robotique",
+    "académique",
+    "sensationnaliste",
+    "clickbait trompeur",
+    "stéréotypes culturels"
+  ],
+  "voice_rules": [
+    "tutoiement",
+    "phrases courtes, écrites pour être dites",
+    "commencer directement par le hook, jamais par « Bonjour à tous »",
+    "pas de généralisation (« les Péruviens font toujours… ») : préférer « dans certaines régions », « beaucoup de familles »",
+    "une légende ou une hypothèse est toujours annoncée comme telle"
+  ],
+  "visual_identity": {
+    "keywords": [
+      "Pérou",
+      "latino",
+      "chaleureux",
+      "coloré",
+      "authentique",
+      "moderne",
+      "documentaire",
+      "humain"
+    ],
+    "avoid": [
+      "look corporate",
+      "photo de stock générique",
+      "surabondance de rouge et blanc",
+      "effets IA évidents",
+      "sur-saturation",
+      "typographie illisible"
+    ],
+    "signature": "badge « TIO CLEM 🇵🇪 » en haut à gauche, frise andine en zigzag, médaillon central, titres Anton en capitales"
+  }
+}

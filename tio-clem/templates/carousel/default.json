@@ -1,0 +1,18 @@
+{
+  "name": "default",
+  "description": "Slide Tio Clem : même charte que la vidéo, corps de texte Montserrat SemiBold.",
+  "layout": {
+    "title": {
+      "max_lines": 2,
+      "size_max": 128
+    },
+    "body": {
+      "size_max": 52,
+      "size_min": 30,
+      "line_gap": 1.3,
+      "max_lines": 8
+    }
+  },
+  "used_by": "tools/render.py (render_card)",
+  "status": "référence ; lu par le moteur à partir de la Phase 4"
+}

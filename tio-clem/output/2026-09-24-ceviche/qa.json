@@ -1,0 +1,77 @@
+{
+  "status": "READY_TO_PUBLISH",
+  "fails": [],
+  "warnings": [
+    "rythme"
+  ],
+  "checks": {
+    "exactitude": {
+      "level": "ok",
+      "detail": "chaque info renvoie à un fait sourcé"
+    },
+    "sources": {
+      "level": "ok",
+      "detail": "5 sources, 12 faits"
+    },
+    "orthographe": {
+      "level": "ok",
+      "detail": "aucun mot inconnu"
+    },
+    "grammaire": {
+      "level": "ok",
+      "detail": "ponctuation et majuscules correctes"
+    },
+    "hook": {
+      "level": "ok",
+      "detail": "Le ceviche, c'est pas juste du poisson cru au citron."
+    },
+    "rythme": {
+      "level": "warn",
+      "detail": "scènes hors rythme : scene04 (4.5 mots/s, 4.5 s)"
+    },
+    "duree": {
+      "level": "ok",
+      "detail": "33.4 s (cible 20–45 s)"
+    },
+    "format_1080x1920": {
+      "level": "ok",
+      "detail": "1080x1920, 30.0 fps, h264 / aac"
+    },
+    "coherence_visuelle": {
+      "level": "ok",
+      "detail": "charte Tio Clem, 5 palettes"
+    },
+    "cover": {
+      "level": "ok",
+      "detail": "1080x1920, 5 mots"
+    },
+    "sous_titres": {
+      "level": "ok",
+      "detail": "22 sous-titres, incrustés en zone sûre"
+    },
+    "cta": {
+      "level": "ok",
+      "detail": "Dis-moi en commentaire : team poisson ou team fruits de mer ?"
+    },
+    "description": {
+      "level": "ok",
+      "detail": "287 caractères, mot-clé « ceviche péruvien »"
+    },
+    "hashtags": {
+      "level": "ok",
+      "detail": "#Perou #TioClem #Ceviche #CevichePeruvien #CuisinePeruvienne #CulturePeruvienne #LecheDeTigre"
+    },
+    "absence_de_repetition": {
+      "level": "ok",
+      "detail": "aucune répétition détectée"
+    },
+    "rotation_et_banque": {
+      "level": "ok",
+      "detail": "idée 001 · cuisine · angle top"
+    }
+  },
+  "checked_at": "2026-09-25T02:38:21",
+  "autofix": [
+    "voix off day-01.m4a (33.4 s, 22 sous-titres) : scènes et sous-titres calés sur la voix"
+  ]
+}

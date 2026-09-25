@@ -8,5 +8,5 @@ node_modules/
 .DS_Store
 
 # Tio Clem : archives d'export régénérables
-tioclem/export/
+tio-clem/export/
 __pycache__/

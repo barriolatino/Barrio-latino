@@ -1,0 +1,52 @@
+{
+  "publications": [
+    {
+      "day": 1,
+      "date": "2026-09-24",
+      "subject": "5 choses à savoir sur le ceviche péruvien",
+      "category": "cuisine",
+      "bank_category": "cuisine",
+      "idea_id": "001",
+      "theme": "ceviche",
+      "type_angle": "top",
+      "format": "video",
+      "angle": "essentiels : nom, leche de tigre, variantes régionales, journée nationale, UNESCO",
+      "hook": "Le ceviche, c'est pas juste du poisson cru au citron.",
+      "keywords": [
+        "ceviche péruvien",
+        "leche de tigre",
+        "cebiche",
+        "cuisine péruvienne",
+        "UNESCO",
+        "Día del Cebiche"
+      ],
+      "status": "READY_TO_PUBLISH",
+      "output": "output/2026-09-24-ceviche",
+      "updated_at": "2026-09-25T02:38:21"
+    },
+    {
+      "day": 2,
+      "date": "2026-09-25",
+      "subject": "Les 3 grandes régions du Pérou : Costa, Sierra, Selva",
+      "category": "géographie",
+      "bank_category": "geographie",
+      "idea_id": "086",
+      "theme": "regions",
+      "type_angle": "explication",
+      "format": "carrousel",
+      "angle": "explication : les 3 régions, leur part du territoire et le paradoxe de la population",
+      "hook": "60 % du Pérou, c'est l'Amazonie.",
+      "keywords": [
+        "régions du Pérou",
+        "Costa Sierra Selva",
+        "Amazonie péruvienne",
+        "Andes",
+        "géographie du Pérou",
+        "Pulgar Vidal"
+      ],
+      "status": "READY_TO_PUBLISH",
+      "output": "output/2026-09-25-regions-costa-sierra-selva",
+      "updated_at": "2026-09-25T02:38:23"
+    }
+  ]
+}
