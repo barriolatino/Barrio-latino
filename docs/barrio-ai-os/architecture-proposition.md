@@ -573,3 +573,34 @@ variables Google et caisse arriveront avec leurs phases.
 8. **Stack** : Python/FastAPI + React PWA + PostgreSQL : validé ?
 
 Dès votre accord, je commence par la **Phase 0**, puis l'étape **1a (COMPTA)**.
+
+---
+
+## Réponses du gérant (25/09/2026)
+
+| # | Réponse | Conséquence |
+|---|---|---|
+| 1 | Dépôt privé séparé : **oui** | Le code ira dans `barriolatino/barrio-ai-os` (privé) |
+| 2 | **CIC**, relevés **PDF** | Un analyseur dédié aux relevés PDF du CIC en 1a. L'espace client CIC propose aussi l'export des opérations en CSV, plus fiable : à vérifier |
+| 3 | Modèle Excel : **envoyé plus tard** | Format de sortie par défaut (section 5 du cahier des charges) en attendant |
+| 4 | Accès API Pennylane : **probablement**, synchronisation bancaire **active** | À confirmer au moment de l'étape 1b ; le mock permet d'avancer sans |
+| 5 | Caisse : **Grenke** | Grenke finance le matériel (location) mais n'édite pas le logiciel. Il faut le nom du logiciel de caisse affiché à l'écran ou sur les tickets (phase 2) |
+| 6 | **Utilisateur unique** | Un seul compte GÉRANT ; les rôles restent dans le modèle de données sans interface de gestion |
+| 7 | Hébergement : **existe-t-il un moyen gratuit ?** | Voir ci-dessous |
+
+### Hébergement : version gratuite
+
+- **Phases 0 et 1a : 0 €.** L'application tourne sur votre ordinateur (Docker).
+  Seule l'API Claude est payante, à l'usage : quelques euros par mois au plus,
+  car la catégorisation passe d'abord par vos règles, et l'IA ne traite que
+  les opérations inconnues. Un plafond mensuel bloque toute dérive.
+- **Accès depuis le téléphone, ensuite** : deux options.
+  - *Gratuit* : base PostgreSQL gratuite en région UE (Neon ou Supabase) et
+    hébergement gratuit de l'application. Limites : mise en veille après
+    inactivité (premier chargement lent), sauvegardes réduites, conditions qui
+    changent souvent.
+  - *Recommandé : environ 5 € par mois.* Un petit serveur privé en France
+    (OVHcloud, Scaleway) ou en Allemagne (Hetzner) avec des sauvegardes
+    automatiques. Toujours disponible, et vos données restent sous votre contrôle.
+- Les **20 à 40 €** annoncés plus haut concernaient un hébergement entièrement
+  géré. Pour un utilisateur unique, ce n'est pas nécessaire.
