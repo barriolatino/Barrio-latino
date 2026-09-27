@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Barrio Latino — Restaurant latino-américain à Clermont-Ferrand</title>
+<link rel="icon" href="assets/01-barrio-latino.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -36,7 +37,8 @@
   }
   img{max-width:100%;display:block;}
   h1,h2,h3{font-family:'Baloo 2',sans-serif;margin:0 0 .4em 0;line-height:1.08;color:var(--navy);font-weight:700;}
-  p{margin:0 0 1em 0;}
+  /* Plafonne la mesure de lecture ; sans effet dans les conteneurs étroits. */
+  p{margin:0 0 1em 0;max-width:68ch;}
   a{color:inherit;}
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
 
@@ -191,7 +193,7 @@
   .map-pin{position:relative;z-index:2;color:#fff;}
   .map-pin .pin-icon{font-size:2.1rem;}
   .map-pin h3{color:#fff;margin-bottom:4px;}
-  .map-pin p{color:rgba(255,255,255,.96);margin-bottom:16px;}
+  .map-pin p{color:#fff;margin-bottom:16px;}
   .info-list{display:flex;flex-direction:column;gap:18px;}
   .info-item{display:flex;gap:16px;align-items:flex-start;}
   .info-item .ic{width:46px;height:46px;border-radius:14px;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0;}
