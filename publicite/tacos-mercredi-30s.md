@@ -40,16 +40,16 @@ vidéo ; génération d'images clés avec personnage fixé (référence visage) 
 toute animation. Les modèles produisent des clips de 5 à 10 s : chaque plan
 ci-dessous est pensé pour être généré seul puis coupé au montage.
 
-### Deux points à valider avec le restaurant
+### Points validés avec le restaurant
 
-- **Tacos à la main dans la rue** : cela suppose une vente à emporter. Si le
-  Barrio Latino ne vend pas à emporter, la scène marche quand même (elle sort
-  du resto, tacos en main) mais la promesse est « viens sur place ». Voir
-  l'alternative terrasse en §10.
-- **Fromage** : sur la photo, on voit de petits éclats jaune pâle (fromage
-  émietté ou maïs), pas de fromage fondu. Le brief reste fidèle à la photo :
-  **aucun fromage fondu, aucun filant**. Si le vrai tacos contient du fromage
-  visible, en faire une photo et l'ajouter à la référence.
+- **Vente à emporter : oui.** La scène du tacos à la main dans la rue est
+  donc fidèle à la réalité : Léa sort du Barrio Latino avec son tacos
+  emballé. Si le restaurant a un emballage à emporter à lui (papier, sachet,
+  barquette), le photographier et l'utiliser à la place du papier kraft
+  générique.
+- **Fromage : aucun.** Le tacos du Barrio Latino ne contient pas de fromage.
+  Aucun plan ne doit en montrer, ni râpé, ni fondu, ni émietté (voir fiche
+  produit et negative prompt).
 
 ---
 
@@ -65,12 +65,12 @@ PRODUCT LOCK — Barrio Latino taco (match reference photo exactly):
   fine stringy fibres, moist but not dripping. One variant: darker pulled beef.
 - Topping, in this order from top: one or two full RED ONION RINGS laid flat,
   thin julienned carrot strips, small dice of white onion, chopped fresh
-  coriander/green herb, a few pale-yellow crumbs.
+  coriander/green herb. NO CHEESE of any kind.
 - Served on a round light-wood board with handle, carved star pattern in the
   wood. Two small terracotta ramekins: smooth guacamole (pale green) and
   chunky fresh red salsa.
 - Natural, hand-made, slightly imperfect. Not fast-food, not a hard shell,
-  no lettuce, no melted cheese, no sour cream, no jalapeño slices.
+  no lettuce, no cheese, no sour cream, no jalapeño slices.
 ```
 
 Règles de continuité produit :
@@ -527,8 +527,8 @@ rien ajouter. Pas de voix de synthèse.
   paraître moins « pub ».
 - Zone de sécurité plus stricte : rien sous y = 1250, rien dans les 140 px de
   droite.
-- Légende : « Tortilla de tacos à 3,50 € tous les mercredis 🌮 On se retrouve
-  au 9 rue du Port ? #clermontferrand #tacos #barriolatino #clermont #foodclermont »
+- Légende : « Tortilla de tacos à 3,50 € tous les mercredis, sur place ou à
+  emporter 🌮 On se retrouve au 9 rue du Port ? #clermontferrand #tacos #barriolatino #clermont #foodclermont »
 - Épingler un commentaire avec l'adresse et les horaires du mercredi.
 - Variante test A/B : même spot, mais plan 5 (la bouchée) placé en ouverture
   à la place du plan 1. Garder celui qui retient le mieux à 3 s.
@@ -543,15 +543,10 @@ rien ajouter. Pas de voix de synthèse.
 - Stories : exporter la même vidéo en 2 parties de 15 s (0-15 et 15-30) avec
   sticker lien vers l'itinéraire, et un sticker « compte à rebours » le mardi
   soir pour le mercredi.
-- Légende : « Tous les mercredis : tortilla de tacos à 3,50 € 🌮
+- Légende : « Tous les mercredis : tortilla de tacos à 3,50 €, sur place ou à
+  emporter 🌮
   Barrio Latino — 9 rue du Port, Clermont-Ferrand. On se retrouve mercredi ? »
 - Publier le mardi 18 h-20 h et le mercredi 11 h-12 h (décision déjeuner/soir).
-
-### Alternative si pas de vente à emporter
-
-Remplacer plans 2-6 et 11 par une terrasse ou une table près de la vitrine :
-Léa est attablée, croque, regarde la caméra, puis dit la réplique en levant
-son tacos. Même personnage, même lumière, même montage.
 
 ---
 
@@ -569,8 +564,8 @@ melting, flickering, identity drift, hair colour change, hairstyle change,
 outfit change, jewellery change, extra fingers, missing fingers, fused
 fingers, six fingers, bent fingers, deformed hands, extra limbs, long neck,
 distorted body proportions, taco changing shape, ingredients appearing or
-disappearing, hard shell taco, fast-food taco, lettuce, melted cheese, cheese
-pull, sour cream, jalapeños, floating food, flying ingredients, spinning
+disappearing, hard shell taco, fast-food taco, lettuce, cheese, grated cheese, melted cheese,
+cheese crumbs, cheese pull, sour cream, jalapeños, floating food, flying ingredients, spinning
 ingredients, exploding food, sauce splash, fake steam, excessive steam,
 glossy plastic food, oversaturated colours, neon colours, HDR look, teal and
 orange grade, Instagram filter, heavy vignette, lens flare overload,
@@ -607,6 +602,7 @@ sign, looking at camera constantly, runway walk, slow motion overuse.
 - [ ] Tortilla de maïs souple, jaune, doublée — jamais une coque dure
 - [ ] Viande effilochée orangée, oignon rouge en rondelles, carotte, coriandre
 - [ ] Aucun ingrédient absent de la photo de référence
+- [ ] Aucune trace de fromage dans aucun plan
 - [ ] Tacos entamé du même côté dans tous les plans après la bouchée
 - [ ] Planche bois gravée + ramequins terre cuite identiques
 
