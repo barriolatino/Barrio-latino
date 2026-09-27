@@ -21,6 +21,9 @@ SUN = (242, 129, 29)
 CORAL_DEEP = (221, 55, 29)
 
 PHOTO = Image.open(HERE.parent / "reference-tacos.png").convert("RGB")
+# Suréchantillonnage Lanczos x2 : les plans macro agrandissent jusqu'à x4.
+UP = 2
+PHOTO_UP = PHOTO.resize((PHOTO.width * UP, PHOTO.height * UP), Image.LANCZOS)
 
 
 def font(name, size):
@@ -50,8 +53,9 @@ def photo_crop(cx, cy, cw):
     x0, y0 = cx - cw / 2, cy - ch / 2
     x0 = min(max(x0, 0), PHOTO.width - cw)
     y0 = min(max(y0, 0), PHOTO.height - ch)
-    return PHOTO.transform((W, H), Image.EXTENT, (x0, y0, x0 + cw, y0 + ch),
-                           Image.BICUBIC)
+    return PHOTO_UP.transform((W, H), Image.EXTENT,
+                              (x0 * UP, y0 * UP, (x0 + cw) * UP, (y0 + ch) * UP),
+                              Image.BICUBIC)
 
 
 def kb(a, b):
@@ -82,8 +86,8 @@ _blur_cache = {}
 
 def blurred_terrace(t):
     if "bg" not in _blur_cache:
-        bg = src_frame(260).filter(ImageFilter.GaussianBlur(38))
-        _blur_cache["bg"] = Image.blend(bg, Image.new("RGB", bg.size, (0, 0, 0)), 0.38)
+        bg = src_frame(38).filter(ImageFilter.GaussianBlur(34))
+        _blur_cache["bg"] = Image.blend(bg, Image.new("RGB", bg.size, (0, 0, 0)), 0.30)
     bg = _blur_cache["bg"]
     s = 1.0 + 0.04 * ease(t)
     w, h = W / s, H / s
@@ -106,8 +110,9 @@ def gradient(top_rgba, bottom_alpha, y0, y1):
     return Image.fromarray(layer, "RGBA")
 
 
-TOP_DARK = gradient((0, 0, 0, 120), 0, 0, 900)
+TOP_DARK = gradient((0, 0, 0, 150), 0, 0, 900)
 TOP_PAPER = gradient((255, 253, 248, 245), 0, 360, 1180)
+END_PAPER = gradient((255, 253, 248, 250), 0, 560, 1200)
 
 
 def text_layer(txt, fnt, color, tracking=0, shadow=False, emoji=None):
@@ -175,21 +180,21 @@ def add(n, fn, overlays=(), titles=()):
 
 
 # 1 · Hook (0-3 s)
-add(90, kb((855, 561, 631), (868, 655, 470)), [TOP_DARK], [
-    Title(text_layer("ENVIE D'UN TACOS ?", font(B_XB, 96), CREAM, 1, True, "🌮"),
-          470, 0.15)])
+add(90, kb((855, 561, 631), (868, 662, 400)), [TOP_DARK], [
+    Title(text_layer("ENVIE D'UN", font(B_XB, 124), CREAM, 2, True), 400, 0.1),
+    Title(text_layer("TACOS ?", font(B_XB, 124), CREAM, 2, True, "🌮"), 525, 0.25)])
 # 2-5 · Le lieu (le chevalet, la salle, le néon)
 add(*clip(205, 241, crop=(590, 1049, 1080, 1920)))
 add(*clip(16, 30))
 add(*clip(32, 45))
 add(*clip(165, 201))
 # 6-11 · Montage food (plans macro dans la photo)
-add(39, kb((862, 648, 455), (882, 668, 430)))
-add(36, kb((815, 505, 470), (852, 500, 470)))
-add(36, kb((612, 560, 440), (618, 552, 410)))
-add(36, kb((1080, 520, 430), (1088, 492, 430)))
-add(36, kb((800, 395, 470), (832, 390, 455)))
-add(60, kb((850, 610, 520), (855, 561, 631)))
+add(39, kb((862, 672, 330), (876, 684, 300)))
+add(36, kb((818, 505, 320), (856, 500, 320)))
+add(36, kb((614, 560, 300), (616, 552, 280)))
+add(36, kb((1084, 520, 300), (1088, 494, 300)))
+add(36, kb((806, 400, 330), (834, 394, 315)))
+add(60, kb((860, 640, 380), (855, 561, 631)))
 # 12-15 · La vie du restaurant
 add(*clip(46, 59))
 add(*clip(61, 71))
@@ -200,25 +205,24 @@ offer = [
     Title(text_layer("TOUS LES MERCREDIS", font(B_XB, 70), NAVY, 3, emoji="🌮"),
           360, 0.25),
     Title(text_layer("TORTILLA DE TACOS", font(B_SB, 62), NAVY, 2), 455, 0.55),
-    Title(text_layer("3,50 €", font(B_XB, 210), CORAL_DEEP), 640, 0.95,
+    Title(text_layer("3,50\u00a0€", font(B_XB, 210), CORAL_DEEP), 640, 0.95,
           scale_in=True),
 ]
 add(150, kb((866, 561, 631), (866, 600, 580)), [TOP_PAPER], offer)
 # 17 · Le lieu + l'adresse
 add(105, blurred_terrace, [], [
-    Title(text_layer("BARRIO LATINO", font(B_XB, 118), CREAM, 4, True), 640, 0.2),
-    Title(text_layer("9 rue du Port", font(WS_SB, 56), CREAM, 1, True), 790, 0.55),
-    Title(text_layer("63000 Clermont-Ferrand", font(WS_M, 46), CREAM, 1, True),
-          862, 0.7),
+    Title(text_layer("BARRIO LATINO", font(B_XB, 136), CREAM, 4, True), 640, 0.2),
+    Title(text_layer("9 rue du Port", font(WS_SB, 68), CREAM, 1, True), 800, 0.55),
+    Title(text_layer("63000 Clermont-Ferrand", font(WS_M, 54), CREAM, 1, True),
+          885, 0.7),
 ])
 # 18 · Fin : rappel de l'offre + question
-add(156, kb((855, 575, 600), (855, 561, 631)), [TOP_PAPER], [
-    Title(text_layer("On se retrouve mercredi ?", font(B_XB, 76), NAVY, 0,
-                     emoji="🌮"), 360, 0.2),
-    Title(text_layer("Tortilla de tacos 3,50 € · tous les mercredis",
-                     font(WS_SB, 38), CORAL_DEEP), 452, 0.6),
-    Title(text_layer("BARRIO LATINO · 9 rue du Port · Clermont-Ferrand",
-                     font(WS_M, 32), NAVY, 1), 1215, 1.0),
+add(156, kb((855, 590, 580), (855, 600, 631)), [END_PAPER], [
+    Title(text_layer("On se retrouve", font(B_XB, 96), NAVY), 330, 0.2),
+    Title(text_layer("mercredi ?", font(B_XB, 96), NAVY, 0, emoji="🌮"), 440, 0.35),
+    Title(text_layer("BARRIO LATINO", font(B_XB, 64), CORAL_DEEP, 4), 575, 0.8),
+    Title(text_layer("Tortilla de tacos 3,50\u00a0€ · tous les mercredis",
+                     font(WS_SB, 38), NAVY), 650, 1.1),
 ])
 
 total = sum(s[0] for s in shots)
@@ -226,25 +230,42 @@ assert total == 30 * FPS, total
 
 # ---------------------------------------------------------------- rendu
 
+def frames(keep=None):
+    k = -1
+    for n, fn, overlays, titles in shots:
+        for i in range(n):
+            k += 1
+            if keep is not None and k not in keep:
+                continue
+            frame = fn(i / n).convert("RGBA")
+            for ov in overlays:
+                frame.alpha_composite(ov)
+            for ti in titles:
+                ti.draw(frame, i / FPS)
+            yield frame.convert("RGB")
+
+
+if len(sys.argv) > 5:  # aperçu : images choisies, en planche contact
+    keep = [int(v) for v in sys.argv[5].split(",")]
+    got = [f.resize((270, 480)) for f in frames(set(keep))]
+    sheet = Image.new("RGB", (270 * 6, 480 * ((len(got) + 5) // 6)))
+    for k, im in enumerate(got):
+        sheet.paste(im, (270 * (k % 6), 480 * (k // 6)))
+    sheet.save(OUT)
+    sys.exit(0)
+
 enc = subprocess.Popen([
     str(FFMPEG), "-v", "error", "-y",
     "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS),
     "-i", "-",
     "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo",
-    "-vf", "unsharp=5:5:0.35,noise=c0s=5:c0f=t,format=yuv420p",
-    "-c:v", "libx264", "-preset", "slow", "-crf", "17", "-profile:v", "high",
+    "-vf", "unsharp=5:5:0.45,noise=c0s=4:c0f=t,format=yuv420p",
+    "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-maxrate", "16M",
+    "-bufsize", "32M", "-profile:v", "high",
     "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
     "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart",
     str(OUT)], stdin=subprocess.PIPE)
-
-for n, fn, overlays, titles in shots:
-    for i in range(n):
-        t = i / n
-        frame = fn(t).convert("RGBA")
-        for ov in overlays:
-            frame.alpha_composite(ov)
-        for ti in titles:
-            ti.draw(frame, i / FPS)
-        enc.stdin.write(frame.convert("RGB").tobytes())
+for frame in frames():
+    enc.stdin.write(frame.tobytes())
 enc.stdin.close()
 sys.exit(enc.wait())
