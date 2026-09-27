@@ -5,10 +5,11 @@
 // fenêtre, en fraction de la photo (0,0 = haut gauche, 1,1 = bas droite).
 // zoom = 1 : la photo remplit exactement la fenêtre (mode « cover »).
 //
-// Les cadrages ci-dessous correspondent à assets/04-tacos-mexicains-maison.jpg :
-//   bol de salsa rouge  ≈ (0.30, 0.20)     taco gauche + oignons ≈ (0.22, 0.58)
-//   taco central        ≈ (0.55, 0.45)     tortilla droite       ≈ (0.80, 0.30)
-//   guacamole           ≈ (0.75, 0.80)
+// Les cadrages ci-dessous correspondent à source/hero.jpg (planche, 1402 × 1122) :
+//   bouteille Valentina ≈ (0.23, 0.38)    guacamole      ≈ (0.44, 0.49)
+//   taco du haut        ≈ (0.58, 0.33)    taco du milieu ≈ (0.60, 0.44)
+//   taco du bas         ≈ (0.62, 0.60)    salsa          ≈ (0.78, 0.44)
+//   manche de la planche ≈ (0.28, 0.66)   composition entière ≈ (0.52, 0.47)
 // En changeant de photo héro, repérer ces éléments et mettre à jour CAMERA.
 
 window.TIMELINE = {
@@ -37,26 +38,26 @@ window.TIMELINE = {
 
   // Caméra : [temps, cx, cy, zoom, easing vers ce point]
   camera: [
-    [0.0,  0.50, 0.55, 1.00],
-    [4.0,  0.50, 0.55, 1.08, 'linear'],       // S1 slow push-in
-    [4.7,  0.27, 0.58, 1.45, 'inOutCubic'],   // S2 approche taco + oignons
-    [9.0,  0.40, 0.52, 1.55, 'inOutSine'],    //    glisse vers la garniture
-    [9.6,  0.52, 0.50, 1.15, 'inOutCubic'],   // S3 fenêtre prix
-    [15.0, 0.56, 0.50, 1.22, 'linear'],
-    [15.6, 0.22, 0.42, 1.30, 'inOutCubic'],   // S4 panoramique salsa → guacamole
-    [19.95, 0.74, 0.60, 1.30, 'inOutSine'],
-    [20.4, 0.74, 0.78, 1.60, 'outExpo'],      // S5 guacamole (coupes calées sur 2 temps)
-    [21.3, 0.74, 0.78, 1.66, 'linear'],
-    [21.6, 0.30, 0.22, 1.60, 'outExpo'],      //    salsa
-    [22.5, 0.31, 0.22, 1.66, 'linear'],
-    [22.8, 0.20, 0.60, 1.55, 'outExpo'],      //    oignons rouges
-    [23.7, 0.21, 0.60, 1.61, 'linear'],
-    [24.0, 0.56, 0.45, 1.55, 'outExpo'],      //    taco central
-    [24.9, 0.57, 0.45, 1.61, 'linear'],
-    [25.2, 0.80, 0.32, 1.50, 'outExpo'],      //    tortilla droite
-    [26.1, 0.81, 0.32, 1.55, 'linear'],
-    [26.7, 0.50, 0.50, 1.00, 'inOutCubic'],   // S6 composition complète
-    [30.0, 0.50, 0.50, 1.045, 'linear'],      //    dernier zoom très léger
+    [0.0,  0.52, 0.47, 1.06],
+    [4.0,  0.52, 0.47, 1.16, 'linear'],       // S1 slow push-in sur toute la composition
+    [4.7,  0.62, 0.58, 1.95, 'inOutCubic'],   // S2 taco du bas : oignons rouges, garniture
+    [9.0,  0.60, 0.47, 2.10, 'inOutSine'],    //    remonte vers le taco du milieu
+    [9.6,  0.61, 0.47, 1.40, 'inOutCubic'],   // S3 fenêtre prix : tacos + deux bols
+    [15.0, 0.61, 0.47, 1.48, 'linear'],
+    [15.6, 0.27, 0.40, 1.45, 'inOutCubic'],   // S4 panoramique Valentina → guacamole → tacos → salsa
+    [19.95, 0.76, 0.46, 1.45, 'inOutSine'],
+    [20.4, 0.44, 0.50, 2.40, 'outExpo'],      // S5 guacamole (coupes calées sur 2 temps)
+    [21.3, 0.44, 0.50, 2.50, 'linear'],
+    [21.6, 0.24, 0.40, 2.00, 'outExpo'],      //    sauce Valentina
+    [22.5, 0.24, 0.39, 2.08, 'linear'],
+    [22.8, 0.585, 0.43, 2.45, 'outExpo'],     //    oignons rouges, taco du milieu
+    [23.7, 0.585, 0.43, 2.55, 'linear'],
+    [24.0, 0.78, 0.44, 2.45, 'outExpo'],      //    salsa
+    [24.9, 0.78, 0.44, 2.55, 'linear'],
+    [25.2, 0.34, 0.68, 1.90, 'outExpo'],      //    planche en bois
+    [26.1, 0.35, 0.68, 1.96, 'linear'],
+    [26.7, 0.52, 0.47, 1.12, 'inOutCubic'],   // S6 composition complète
+    [30.0, 0.52, 0.47, 1.17, 'linear'],      //    dernier zoom très léger
   ],
 
   // Guirlande papel picado : [apparition, disparition]

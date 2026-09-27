@@ -7,27 +7,25 @@ Pas d'autre condition, pas d'horaire, pas de quantité.
 
 ## 1. Analyse de la photo héro
 
-Photo utilisée : `assets/04-tacos-mexicains-maison.jpg`, une vraie photo des tacos du
-Barrio (313 × 196 px, rognée à 298 × 188 pour retirer une bande sombre à droite et
-un objet coupé en haut).
+Photo utilisée : `video/source/hero.jpg` (1402 × 1122 px), vue plongeante : trois tacos
+sur une planche ronde en bois sculpté, un bol de guacamole, un bol de salsa et une
+bouteille de sauce Valentina sur un plan de travail clair.
 
 | Élément | Position (fraction de la photo) | Usage |
 |---|---|---|
-| Taco gauche : oignons rouges, viande effilochée, carotte, salade | (0,22 ; 0,58) | gros plan scène 2, coupe 3 de la scène 5 |
-| Taco central : fromage, maïs, haricots | (0,55 ; 0,45) | fond du prix, coupe 4 de la scène 5 |
-| Tortilla droite, viande | (0,80 ; 0,32) | coupe 5 de la scène 5 |
-| Bol de salsa rouge | (0,30 ; 0,20) | début du panoramique, coupe 2 de la scène 5 |
-| Bol de guacamole | (0,75 ; 0,80) | fin du panoramique, coupe 1 de la scène 5 |
+| Composition entière | (0,52 ; 0,47) | ouverture, écran final |
+| Taco du bas : oignon rouge, poulet effiloché, carotte, oignon blanc | (0,62 ; 0,60) | gros plan de la scène 2 |
+| Taco du milieu : oignon rouge, viande, carotte | (0,585 ; 0,43) | fin de la scène 2, coupe 3 de la scène 5 |
+| Bouteille de Valentina | (0,23 ; 0,38) | début du panoramique, coupe 2 de la scène 5 |
+| Guacamole | (0,44 ; 0,49) | coupe 1 de la scène 5 |
+| Salsa | (0,78 ; 0,44) | fin du panoramique, coupe 4 de la scène 5 |
+| Manche de la planche | (0,34 ; 0,68) | coupe 5 de la scène 5 |
 
-La photo est en paysage (1,6:1) et en basse définition. Elle ne peut donc pas remplir
-un écran 9:16 sans devenir floue. Elle est placée dans une **fenêtre** aux coins
-arrondis, sur un fond fait de la même photo, floutée et assombrie, qui bouge plus
-lentement que la fenêtre (effet de profondeur). À l'écran final, la fenêtre prend
-exactement le ratio de la photo, qui apparaît alors en entier, sans recadrage.
-
-> La photo de référence décrite dans le brief (planche en bois, bouteille de
-> Valentina, fond clair) n'était pas disponible dans le projet. Pour l'utiliser,
-> voir `docs/mercredi-tacos-3-euros-production.md` § « Changer la photo ».
+La photo n'est jamais déformée ni retouchée : seuls le cadrage et un très léger
+réglage de saturation et de contraste changent. Elle est placée dans une **fenêtre**
+aux coins arrondis, sur un fond fait de la même photo, floutée et assombrie, qui
+bouge plus lentement que la fenêtre (effet de profondeur). Le fond sombre fait
+ressortir le plan de travail clair et la nourriture.
 
 ## 2. Direction artistique
 
@@ -56,7 +54,7 @@ exactement le ratio de la photo, qui apparaît alors en entier, sans recadrage.
 Tempo musical : 100 BPM (1 temps = 0,6 s). Les temps forts sont calés sur la grille.
 
 ### Scène 1 — 0 → 4 s · Accroche
-- **Image** : fenêtre haute (984 × 930 px) sur les trois tacos, *slow push-in* ×1,00 → ×1,08.
+- **Image** : fenêtre haute (984 × 930 px) sur toute la composition, *slow push-in* ×1,06 → ×1,16.
 - **Graphisme** : la guirlande de papel picado tombe drapeau par drapeau (0,15 s),
   puis se balance doucement.
 - **Texte** : « 🌮 MERCREDI ? » (0,25 s, révélé par masque), puis « ON MANGE TACOS. » en jaune (1,35 s).
@@ -65,8 +63,8 @@ Tempo musical : 100 BPM (1 temps = 0,6 s). Les temps forts sont calés sur la gr
 - **Son** : groove immédiat (guitare nylon, shaker, grosse caisse légère), petits clics sur les textes.
 
 ### Scène 2 — 4 → 9 s · Gourmandise
-- **Image** : whoosh (3,95 s) et approche ×1,45 sur le taco gauche (oignons rouges,
-  garniture), puis glissement lent vers la garniture centrale. Le fond flou bouge à contre-rythme.
+- **Image** : whoosh (3,95 s) et approche ×1,95 sur le taco du bas (oignon rouge,
+  garniture, texture de la tortilla), puis remontée lente vers le taco du milieu. Le fond flou bouge à contre-rythme.
 - **Texte** : « UNE ENVIE DE TACOS ? » (4,35 s), puis « ON A CE QU’IL TE FAUT 🌮 » (6,3 s).
 - **Son** : entrée du dembow et des congas (4,8 s), montée de bruit filtré à partir de 7,2 s.
 
@@ -81,21 +79,21 @@ Tempo musical : 100 BPM (1 temps = 0,6 s). Les temps forts sont calés sur la gr
 
 ### Scène 4 — 15 → 20 s · Le lieu
 - **Image** : le panneau redescend, la fenêtre reprend sa taille. Panoramique lent de
-  la salsa rouge vers le guacamole, à travers les trois tacos.
+  la bouteille de Valentina vers la salsa, en passant par le guacamole et les trois tacos.
 - **Texte** : « CHEZ » / « BARRIO LATINO 🇲🇽🌎 » (15,55 s), puis « UNE PAUSE LATINO
   À CLERMONT-FERRAND » (17 s). Le drapeau reste un petit emoji à côté du globe, jamais un élément principal.
 
 ### Scène 5 — 20 → 26 s · Montée d'énergie
 - **Image** : cinq recadrages de la même photo, un toutes les 1,2 s (2 temps), chacun
   avec un mouvement rapide mais amorti (*ease-out expo*) et un whoosh : guacamole →
-  salsa → oignons rouges → taco central → tortilla.
+  sauce Valentina → oignons rouges → salsa → planche en bois.
 - **Texte** : « RENDEZ-VOUS MERCREDI 🌮 » (20,4 s), « 📍 9 RUE DU PORT » (21,9 s),
   « CLERMONT-FERRAND » (23,1 s).
 - **Son** : charleston en doubles croches, marimba, charleston ouvert.
 
 ### Scène 6 — 26 → 30 s · Écran final / appel à l'action
-- **Image** : la fenêtre prend le ratio de la photo (960 × 600), qui apparaît en
-  entier, avec un dernier zoom très léger (×1,00 → ×1,045). La guirlande revient.
+- **Image** : retour sur la composition complète (bouteille, planche, tacos, bols),
+  avec un dernier zoom très léger (×1,12 → ×1,17). La guirlande revient.
 - **Panneau crème** : « 🌮 MERCREDI TACOS 🌮 » (26,55 s) · « 3 € » + impact (26,7 s) ·
   « BARRIO LATINO » (27,3 s) · « 📍 9 RUE DU PORT / 63000 CLERMONT-FERRAND » (27,6 s) ·
   « Viens goûter 🌶️ » (28,2 s).

@@ -4,7 +4,7 @@
 
 | Fichier | Usage | Caractéristiques |
 |---|---|---|
-| `barrio-latino-mercredi-tacos-3-euros.mp4` | master, archive, montage | 1080 × 1920, 30 i/s, 30,000 s (900 images), H.264 High 4.2 CRF 15 (~12 Mb/s), AAC 256 kb/s |
+| `barrio-latino-mercredi-tacos-3-euros.mp4` | master, archive, montage | 1080 × 1920, 30 i/s, 30,000 s (900 images), H.264 High 4.2 CRF 15 (~15 Mb/s), AAC 256 kb/s |
 | `barrio-latino-mercredi-tacos-3-euros-instagram-tiktok.mp4` | **à publier** sur Reels, TikTok, Stories | H.264 High 4.1, débit plafonné à 8 Mb/s, une image clé par seconde, AAC 192 kb/s 48 kHz, -14 LUFS, *faststart*, BT.709 |
 | `barrio-latino-mercredi-tacos-cover.jpg` | miniature (couverture du Reel) | 1080 × 1920, écran final : 3 €, mercredi, Barrio Latino, adresse. Lisible dans les recadrages 4:5 et 3:4 de la grille du profil |
 | `qa/planche-contact.jpg` | relecture rapide | une image par seconde |
@@ -35,18 +35,16 @@ premier rendu (les images préparées sont dans `.cache/`), puis lancer
 `renderFrame(12)` dans la console. Ajouter `?safe` à l'adresse affiche les zones de
 sécurité.
 
-## Changer la photo héro (recommandé)
+## Changer la photo héro
 
-La photo actuelle ne fait que 313 × 196 px : elle reste douce à l'écran. Avec la
-photo HD de la planche (bouteille de Valentina, fond clair), le rendu sera net :
+La photo héro est `video/source/hero.jpg`. Sans ce fichier, le rendu se rabat sur
+`assets/04-tacos-mexicains-maison.jpg`. Pour une autre photo :
 
-1. Déposer la photo dans `video/source/hero.jpg`. Elle est prise automatiquement,
-   ou passée explicitement avec `npm run render -- --photo chemin/photo.jpg`.
+1. La déposer dans `video/source/hero.jpg`, ou la passer avec `npm run render -- --photo chemin/photo.jpg`.
 2. Si besoin, la rogner avec `--crop x,y,l,h` (fractions de l'image, par exemple `0,0,1,0.9`).
 3. Mettre à jour les points de cadrage dans `video/scene/timeline.js` (tableau
    `camera` et tableau d'aide en tête du fichier) : `(cx, cy)` est le point de la photo
-   placé au centre de la fenêtre, `zoom` le grossissement. Avec une photo HD, les
-   zooms de la scène 5 peuvent monter à 2 ou 2,5.
+   placé au centre de la fenêtre, `zoom` le grossissement.
 4. Vérifier avec `node scripts/stills.mjs 6 13 17 21 22.5 24 25.5 29.5`, puis lancer `npm run render`.
 
 ## Ajouter une voix off
@@ -108,7 +106,7 @@ Node et Playwright, déjà présents, et les polices du site.
 
 - [x] Durée exacte : 30,000 s, 900 images
 - [x] 1080 × 1920, ratio 9:16, 30 i/s
-- [x] Tacos visibles pendant toute la vidéo (vraie photo, sans déformation ni retouche de forme)
+- [x] Photo de référence (planche, Valentina) utilisée comme visuel héro, sans déformation ni retouche de forme
 - [x] « 3 € » révélé à 9,6 s, élément dominant, rouge sur crème ; visible en pastille dès 2,4 s
 - [x] « TOUS LES MERCREDIS », « TORTILLAS DE TACOS », « BARRIO LATINO » présents et lisibles
 - [x] Adresse exacte : 9 rue du Port, 63000 Clermont-Ferrand
@@ -116,4 +114,3 @@ Node et Playwright, déjà présents, et les polices du site.
 - [x] Loudness -14 LUFS, crête -1,5 dBTP
 - [x] Écran final complet affiché 1,8 s, informations clés visibles 3 s
 - [ ] Voix off : non produite (pas de moteur de synthèse vocale disponible) ; la vidéo fonctionne sans le son
-- [ ] Photo HD de référence : à déposer dans `video/source/hero.jpg` pour un rendu net
