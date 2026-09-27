@@ -9,3 +9,7 @@ node_modules/
 
 # Graphify — graphe local, ne pas publier
 graphify-out/
+
+# Vidéo — fichiers intermédiaires et calques de contrôle régénérables
+video/.cache/
+video/dist/qa/safe-*.png

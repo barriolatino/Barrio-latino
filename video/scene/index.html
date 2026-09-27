@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Barrio Latino — Mercredi tacos 3 €</title>
+<link rel="stylesheet" href="../node_modules/@fontsource/baloo-2/800.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/work-sans/600.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/work-sans/700.css">
+<style>
+  :root {
+    --chile: #C8321E;      /* rouge piment / sauce — réservé au prix */
+    --chile-deep: #A3240F;
+    --tortilla: #F2B33D;   /* jaune tortilla */
+    --guac: #3F6B21;       /* vert guacamole */
+    --guac-light: #8DB14A;
+    --wood: #7A4A2A;
+    --cream: #F6EDDC;      /* crème / blanc cassé */
+    --ink: #2A1A12;        /* brun très foncé pour le texte sur crème */
+    --display: 'Baloo 2', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+    --text: 'Work Sans', 'Noto Color Emoji', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  }
+  html, body { margin: 0; padding: 0; background: #1a0f09; }
+  #stage {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background: #1a0f09;
+  }
+  #stage * { box-sizing: border-box; }
+  .abs { position: absolute; left: 0; top: 0; }
+
+  /* Fond : même photo, floutée, en léger parallax */
+  #backdrop { width: 1080px; height: 1920px; overflow: hidden; }
+  #backdrop img { position: absolute; left: -90px; top: -160px; width: 1260px; height: 2240px; object-fit: cover; }
+  #backdrop::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(120% 70% at 50% 35%, rgba(26,13,6,.25) 0%, rgba(26,13,6,.62) 70%, rgba(20,10,5,.82) 100%),
+      linear-gradient(180deg, rgba(26,13,6,.35) 0%, rgba(26,13,6,.30) 45%, rgba(22,11,5,.78) 62%, rgba(18,9,4,.88) 100%);
+  }
+
+  /* Fenêtre photo */
+  #window {
+    overflow: hidden; border-radius: 34px;
+    box-shadow: 0 34px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(246,237,220,.10);
+    background: #2a1a12;
+  }
+  #photo { position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform;
+           filter: saturate(1.07) contrast(1.04); image-rendering: auto; }
+  #window::after { /* léger vignettage interne */
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(130% 110% at 50% 45%, rgba(0,0,0,0) 60%, rgba(0,0,0,.28) 100%);
+  }
+
+  #panel { width: 1080px; height: 1400px; }
+  #sun { width: 1080px; height: 1080px; transform-origin: 540px 540px; }
+
+  /* Textes */
+  .txt { position: absolute; left: 0; width: 1080px; text-align: center; }
+  .line { position: relative; height: auto; }
+  .mask { display: inline-block; overflow: hidden; padding: 0 .08em; vertical-align: top; }
+  .inner { display: inline-block; white-space: nowrap; will-change: transform; }
+  .noMask .mask { overflow: visible; }
+
+  .h1     { font: 800 104px/1.02 var(--display); color: var(--cream); letter-spacing: .005em;
+            text-shadow: 0 4px 24px rgba(0,0,0,.35); }
+  .h2     { font: 800 80px/1.05 var(--display); color: var(--tortilla);
+            text-shadow: 0 4px 24px rgba(0,0,0,.35); }
+  .kicker { font: 700 40px/1.2 var(--text); color: var(--tortilla); letter-spacing: .32em; }
+  .body   { font: 600 48px/1.25 var(--text); color: var(--cream); letter-spacing: .04em; }
+  .addr   { font: 700 58px/1.15 var(--text); color: var(--cream); letter-spacing: .02em; }
+  .city   { font: 600 42px/1.2 var(--text); color: var(--tortilla); letter-spacing: .22em; }
+
+  .price  { font: 800 470px/.82 var(--display); color: var(--chile); letter-spacing: -.02em;
+            text-shadow: 0 10px 0 rgba(163,36,15,.16); }
+  .l2     { font: 800 92px/1.02 var(--display); color: var(--ink); }
+  .l3     { font: 700 52px/1.2 var(--text); color: var(--guac); letter-spacing: .16em; }
+
+  .endKicker { font: 800 74px/1.05 var(--display); color: var(--ink); }
+  .endPrice  { font: 800 320px/.84 var(--display); color: var(--chile); letter-spacing: -.02em; }
+  .endBrand  { font: 800 100px/1.0 var(--display); color: var(--ink); letter-spacing: .01em; }
+  .endAddr   { font: 700 46px/1.25 var(--text); color: var(--ink); letter-spacing: .04em; }
+  .endAddr .line + .line .inner { font-weight: 600; font-size: 40px; letter-spacing: .08em; color: #5a4332; }
+  .endCta    { font: 600 46px/1.2 var(--text); color: var(--guac); }
+
+  .pin { display: inline-block; width: .62em; height: .8em; margin-right: .22em; vertical-align: -.06em; }
+
+  #teaser { width: 210px; height: 210px; transform-origin: 105px 105px; }
+  #teaser .disc {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #d9412a 0%, var(--chile) 55%, var(--chile-deep) 100%);
+    box-shadow: 0 14px 34px rgba(0,0,0,.45);
+  }
+  #teaser .ring { position: absolute; inset: 11px; border-radius: 50%; border: 3px dashed rgba(246,237,220,.7); }
+  #teaser .val {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font: 800 96px/1 var(--display); color: var(--cream); padding-top: 12px; letter-spacing: -.02em;
+  }
+  #ring { width: 1080px; height: 1080px; }
+  #grain { width: 1080px; height: 1920px; opacity: .07; mix-blend-mode: overlay; pointer-events: none; }
+
+  /* Calque de contrôle des zones de sécurité (QA uniquement) */
+  #safe { display: none; width: 1080px; height: 1920px; pointer-events: none; }
+  body.safe #safe { display: block; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="backdrop" class="abs"><img id="blur" alt=""></div>
+  <div id="window" class="abs"><img id="photo" alt="Tacos du Barrio Latino"></div>
+  <svg id="garland" class="abs" width="1080" height="320" viewBox="0 0 1080 320"></svg>
+  <svg id="panel" class="abs" viewBox="0 0 1080 1400"></svg>
+  <svg id="sun" class="abs" viewBox="0 0 1080 1080"></svg>
+  <svg id="ring" class="abs" viewBox="0 0 1080 1080"><circle cx="540" cy="540" r="200" fill="none" stroke="#C8321E" stroke-width="6"/></svg>
+  <div id="texts" class="abs"></div>
+  <div id="teaser" class="abs"><div class="disc"></div><div class="ring"></div><div class="val">3&nbsp;€</div></div>
+  <canvas id="grain" class="abs" width="540" height="960"></canvas>
+  <svg id="safe" class="abs" viewBox="0 0 1080 1920">
+    <rect x="0" y="0" width="1080" height="220" fill="rgba(255,0,0,.28)"/>
+    <rect x="0" y="1480" width="1080" height="440" fill="rgba(255,0,0,.28)"/>
+    <rect x="970" y="980" width="110" height="500" fill="rgba(255,0,0,.28)"/>
+    <rect x="0" y="220" width="60" height="1260" fill="rgba(255,120,0,.22)"/>
+    <rect x="1020" y="220" width="60" height="760" fill="rgba(255,120,0,.22)"/>
+    <text x="540" y="130" fill="#fff" font-size="40" text-anchor="middle" font-family="sans-serif">ZONE UI (haut)</text>
+    <text x="540" y="1720" fill="#fff" font-size="40" text-anchor="middle" font-family="sans-serif">ZONE UI (légende, boutons)</text>
+  </svg>
+</div>
+<script src="timeline.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>

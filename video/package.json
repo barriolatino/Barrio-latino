@@ -1,0 +1,19 @@
+{
+  "name": "barrio-latino-video",
+  "private": true,
+  "type": "module",
+  "description": "Publicité verticale 30 s « Mercredi tacos 3 € » — rendu reproductible (HTML + Playwright + FFmpeg)",
+  "scripts": {
+    "render": "node scripts/render.mjs",
+    "render:fast": "node scripts/render.mjs --preview",
+    "audio": "node scripts/audio.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "@fontsource/baloo-2": "^5.0.0",
+    "@fontsource/work-sans": "^5.0.0",
+    "ffmpeg-static": "^5.2.0",
+    "ffprobe-static": "^3.1.0",
+    "playwright": "1.56.1"
+  }
+}
