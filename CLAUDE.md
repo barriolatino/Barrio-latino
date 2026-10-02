@@ -26,3 +26,15 @@ Arbitrage entre outils qui réclament la priorité en début de session :
 3. **impeccable** prend la main sur tout travail de design frontend.
 
 `claude-mem` fonctionne uniquement par hooks et ne s'invoque pas manuellement.
+
+## Catalogue de l'épicerie (`catalogue/`)
+
+Application Next.js séparée du site vitrine (base PostgreSQL, administration).
+Elle ne passe pas par GitHub Pages : elle se déploie sur Vercel (Root Directory
+`catalogue`). Voir `catalogue/README.md` et `docs/catalogue/00-cadrage.md`.
+
+- Next.js 16 : lire `catalogue/node_modules/next/dist/docs/` avant d'utiliser une API
+  (proxy.ts au lieu de middleware, `revalidateTag(tag, profile)`, params asynchrones).
+- Toute écriture publique passe par `src/lib/products.ts` (historique des prix,
+  révisions, texte de recherche) puis `revalidateCatalogue()`.
+- Vérifier avant de pousser : `npm run typecheck && npm run lint && npm run test:e2e`.
