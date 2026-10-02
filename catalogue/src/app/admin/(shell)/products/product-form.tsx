@@ -51,6 +51,8 @@ export function ProductForm({
   const errors = (state && !state.ok && state.fields) || {};
   const [price, setPrice] = useState(v.price);
   const [promo, setPromo] = useState(v.promo);
+  const [cost, setCost] = useState(v.cost);
+  const costCents = parsePrice(cost);
   const priceCents = parsePrice(price);
   const promoCents = parsePrice(promo);
   const saving = priceCents !== null && promoCents !== null && promoCents < priceCents ? priceCents - promoCents : null;
@@ -185,6 +187,18 @@ export function ProductForm({
               <Field label="Fin de la promotion" name="promoEndsAt" help="Facultatif : la promotion s'arrête seule à cette date.">
                 <input id="promoEndsAt" name="promoEndsAt" type="date" defaultValue={v.promoEndsAt} className={field.input} />
               </Field>
+              <div className="border-t border-line pt-4">
+                <Field label="Prix d'achat (€)" name="costCents" error={errors.costCents} help="Privé : jamais affiché sur le site. Sert à suivre votre marge.">
+                  <input {...inputProps("costCents")} value={cost} onChange={(e) => setCost(e.target.value)} inputMode="decimal" className={`${field.input} tabular`} />
+                </Field>
+                {costCents !== null && priceCents !== null && priceCents > 0 && (
+                  <p className="tabular mt-2 text-sm text-ink-muted">
+                    Marge : <strong className={priceCents - costCents < 0 ? "text-danger" : "text-ink"}>{formatPrice(priceCents - costCents)}</strong> par article
+                    {" "}({Math.round(((priceCents - costCents) / priceCents) * 100)} % du prix de vente
+                    {promoCents !== null && promoCents < priceCents && <>, {formatPrice(promoCents - costCents)} en promotion</>})
+                  </p>
+                )}
+              </div>
               <div className="grid grid-cols-2 gap-3 border-t border-line pt-4">
                 <Field label="Carton de" name="caseQuantity" error={errors.caseQuantity} help="Nb d'articles">
                   <input {...inputProps("caseQuantity")} defaultValue={v.caseQuantity} inputMode="numeric" className={field.input} />

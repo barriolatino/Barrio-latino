@@ -56,6 +56,8 @@ test("scénario critique : créer, publier, changer le prix, promo, désactiver"
   await expect(page.locator('[role="alert"]:not(#__next-route-announcer__)')).toContainText("négatif");
   await expect(page.getByLabel("Nom *")).toHaveValue(NAME); // la saisie est conservée
   await page.getByLabel("Prix de vente (€) *").fill("5");
+  await page.getByLabel("Prix d'achat (€)").fill("3,17");
+  await expect(page.getByText("Marge : 1,83 €")).toBeVisible();
   await page.getByLabel("Poids net (g)").fill("500");
   await page.locator('input[type="file"]').first().setInputFiles({
     name: "produit-test.webp",
@@ -79,6 +81,9 @@ test("scénario critique : créer, publier, changer le prix, promo, désactiver"
   await expect(card).toContainText("6,00 €");
   await card.getByRole("link", { name: NAME }).click();
   await expect(page.getByText("6,00 €").first()).toBeVisible();
+  // Le prix d'achat ne doit jamais apparaître côté public, ni dans le HTML
+  expect(await page.content()).not.toContain("3,17");
+  expect(await page.content()).not.toContain("costCents");
 
   // 8-10. Promotion à 4,90 € : ancien prix barré et économie affichée
   await inlinePrice(page, "prix promo", "4,90");

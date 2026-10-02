@@ -16,7 +16,7 @@ export const categories: { name: string; description: string; children?: string[
   { name: "Charcuterie", description: "Chorizos, salamis et viandes fumées." },
   { name: "Fromages & crèmes", description: "Fromages frais latino-américains et nata." },
   { name: "Glaces", description: "Glaces aux fruits tropicaux." },
-  { name: "Épicerie sèche", description: "Farines, cafés, sauces, épices.", children: ["Farines", "Cafés", "Sauces & épices"] },
+  { name: "Épicerie sèche", description: "Farines, cafés, sauces, épices.", children: ["Farines & maïs", "Cafés & maté", "Sauces & épices", "Sucre & desserts"] },
 ];
 
 type Demo = {

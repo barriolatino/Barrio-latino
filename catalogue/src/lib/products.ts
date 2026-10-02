@@ -126,6 +126,7 @@ function productData(v: ProductInput) {
     priceCents: v.priceCents!,
     caseQuantity: v.caseQuantity,
     casePriceCents: v.casePriceCents,
+    costCents: v.costCents,
     available: v.available,
     visibility: v.published ? ("PUBLISHED" as const) : ("DRAFT" as const),
     featured: v.featured,
@@ -256,6 +257,7 @@ export async function duplicateProduct(id: string, actor: string) {
         priceCents: p.priceCents,
         caseQuantity: p.caseQuantity,
         casePriceCents: p.casePriceCents,
+        costCents: p.costCents,
         available: p.available,
         visibility: "DRAFT", // une copie n'est publiée qu'une fois vérifiée
         featured: false,
@@ -314,6 +316,7 @@ export async function restoreProductRevision(revisionId: string, actor: string) 
       priceCents: s.priceCents,
       caseQuantity: s.caseQuantity,
       casePriceCents: s.casePriceCents,
+      costCents: s.costCents ?? null,
       available: s.available,
       visibility: s.visibility,
       featured: s.featured,

@@ -65,6 +65,7 @@ export default async function EditProduct({ params, searchParams }: { params: Pr
           promoEndsAt: promo?.endsAt ? promo.endsAt.toISOString().slice(0, 10) : "",
           caseQuantity: str(p.caseQuantity),
           casePrice: centsToInput(p.casePriceCents),
+          cost: centsToInput(p.costCents),
           available: p.available,
           published: p.visibility === "PUBLISHED",
           isNew: p.isNew,

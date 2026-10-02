@@ -9,9 +9,9 @@ import { CasePrice, Price } from "@/components/price";
 import { ProductCard, ProductGrid } from "@/components/product-card";
 import { ShareButton } from "@/components/share-button";
 import { Breadcrumbs, SectionHeader, btn } from "@/components/ui";
-import { getProduct, getSettings } from "@/lib/catalogue";
+import { ALCOHOL_TAG, getProduct, getSettings } from "@/lib/catalogue";
 import { whatsappLink } from "@/lib/contact";
-import { STORAGE_LABELS, flagEmoji, formatLine, formatPrice, formatVolume, formatWeight } from "@/lib/format";
+import { STORAGE_LABELS, flagEmoji, formatLine, formatPrice, formatVolume, formatWeight, slugify } from "@/lib/format";
 import { mediaSrc } from "@/lib/media-url";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -149,6 +149,12 @@ export default async function ProductPage({ params }: Props) {
             )}
             <ShareButton title={p.name} text={`${p.name} chez ${s.shopName}`} path={`/produits/${p.slug}`} className={`${btn.base} ${btn.secondary} ${btn.lg}`} />
           </div>
+
+          {p.tags.some((t) => slugify(t) === ALCOHOL_TAG) && (
+            <p className="mt-4 rounded-md border border-line bg-cream/60 px-3 py-2 text-sm text-ink-muted">
+              L&apos;abus d&apos;alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs.
+            </p>
+          )}
 
           {p.description && (
             <div className="mt-8">

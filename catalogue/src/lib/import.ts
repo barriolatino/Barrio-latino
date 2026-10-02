@@ -97,6 +97,7 @@ async function resolveRow(row: SheetRow, columns: Set<ColumnKey>, l: Lookups): P
         promoCents: centsToInput(activePromotion(existing.promotions)?.promoCents),
         caseQuantity: existing.caseQuantity,
         casePriceCents: centsToInput(existing.casePriceCents),
+        costCents: centsToInput(existing.costCents),
         available: existing.available,
         published: existing.visibility === "PUBLISHED",
         featured: existing.featured,
@@ -117,6 +118,7 @@ async function resolveRow(row: SheetRow, columns: Set<ColumnKey>, l: Lookups): P
   if (has("price")) input.priceCents = row.price ?? "";
   if (has("caseQuantity")) input.caseQuantity = row.caseQuantity ?? "";
   if (has("casePrice")) input.casePriceCents = row.casePrice ?? "";
+  if (has("costPrice")) input.costCents = row.costPrice ?? "";
   if (has("tags")) input.tags = row.tags ?? "";
   if (has("storage") && row.storage) {
     const s = storageOf(row.storage);
@@ -324,6 +326,7 @@ export async function exportRows(): Promise<SheetRow[]> {
       promotionalPrice: centsToInput(promo?.promoCents),
       caseQuantity: p.caseQuantity?.toString() ?? "",
       casePrice: centsToInput(p.casePriceCents),
+      costPrice: centsToInput(p.costCents),
       available: yn(p.available),
       published: yn(p.visibility === "PUBLISHED"),
       featured: yn(p.featured),

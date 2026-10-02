@@ -57,7 +57,7 @@ export function SearchBox({ id, autoFocus = false }: { id: string; autoFocus?: b
         enterKeyHint="search"
         autoComplete="off"
         autoFocus={autoFocus}
-        placeholder="Arepa, maracuyá, Goya, réf…"
+        placeholder="Rechercher un produit, une marque…"
         value={value}
         onChange={(e) => {
           const q = e.target.value;

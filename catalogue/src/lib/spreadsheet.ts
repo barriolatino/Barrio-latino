@@ -21,6 +21,7 @@ export const COLUMNS = [
   { key: "promotionalPrice", label: "Prix promo", help: "Vide = pas de promotion." },
   { key: "caseQuantity", label: "Carton (quantité)", help: "Vente au carton : nombre d'articles." },
   { key: "casePrice", label: "Carton (prix)", help: "Prix du carton entier." },
+  { key: "costPrice", label: "Prix d'achat", help: "Privé : jamais affiché sur le site. Sert à suivre la marge." },
   { key: "available", label: "Disponible", help: "oui / non" },
   { key: "published", label: "Publié", help: "oui / non" },
   { key: "featured", label: "Mis en avant", help: "oui / non" },
@@ -45,7 +46,7 @@ Object.assign(ALIASES, {
   conditionnement: "packaging", prix: "price", "prix ttc": "price", "prix promotionnel": "promotionalPrice", promo: "promotionalPrice",
   disponible: "available", disponibilite: "available", publie: "published", vedette: "featured", nouveau: "isNew", nouveaute: "isNew",
   promotion: "isPromotion", photo: "image", "mots cles": "tags", tags: "tags", conservation: "storage", "prix carton": "casePrice",
-  "quantite carton": "caseQuantity", "vente": "saleUnit", "unite de vente": "saleUnit",
+  "quantite carton": "caseQuantity", "prix achat": "costPrice", "prix d achat ht": "costPrice", "cout": "costPrice", "vente": "saleUnit", "unite de vente": "saleUnit",
 } as Record<string, ColumnKey>);
 
 function cellText(v: ExcelJS.CellValue): string {

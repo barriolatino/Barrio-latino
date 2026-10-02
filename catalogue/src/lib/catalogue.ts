@@ -13,6 +13,9 @@ const cacheOpts = { tags: [CATALOGUE_TAG], revalidate: 3600 }; // 1 h : fin des 
 
 export const PAGE_SIZE = 48;
 
+/** Mot-clé qui déclenche la mention sanitaire obligatoire pour les boissons alcoolisées. */
+export const ALCOHOL_TAG = "alcool";
+
 const cardInclude = {
   brand: { select: { name: true, slug: true } },
   country: { select: { name: true, slug: true, isoCode: true } },
@@ -240,12 +243,13 @@ export const getCounts = unstable_cache(
   async () => {
     const now = new Date();
     const where = await publicWhere();
-    const [promotions, nouveautes, total] = await Promise.all([
+    const [promotions, nouveautes, total, alcohol] = await Promise.all([
       db.product.count({ where: { ...where, promotions: { some: activePromoWhere(now) } } }),
       db.product.count({ where: { ...where, isNew: true, OR: [{ newUntil: null }, { newUntil: { gt: now } }] } }),
       db.product.count({ where }),
+      db.product.count({ where: { ...where, tags: { some: { tag: { slug: ALCOHOL_TAG } } } } }),
     ]);
-    return { promotions, nouveautes, total };
+    return { promotions, nouveautes, total, alcohol };
   },
   ["counts"],
   cacheOpts,

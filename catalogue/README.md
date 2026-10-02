@@ -30,6 +30,7 @@ cp .env.example .env        # puis renseigner une base PostgreSQL locale
 npm install
 npx prisma migrate deploy
 npm run db:seed             # données de démonstration + compte admin (ADMIN_EMAIL/ADMIN_PASSWORD)
+npm run db:seed:epicerie    # vos produits réels (prisma/epicerie-data.ts) ; repasse la démo en brouillon
 npm run dev                 # http://localhost:3000 et http://localhost:3000/admin
 ```
 
@@ -51,6 +52,7 @@ Si Chromium est déjà installé ailleurs : `PW_CHROMIUM_PATH=/chemin/vers/chrom
 
 Les tests créent des produits « Produit Test … » puis les mettent à la corbeille :
 les lancer sur une base de développement, jamais sur la base de production.
+Les tests publics s'appuient sur les produits de démonstration (`npm run db:seed`), publiés.
 
 ## Mise en ligne (Supabase + Vercel)
 
@@ -59,8 +61,9 @@ les lancer sur une base de développement, jamais sur la base de production.
 2. **Vercel** : importer le dépôt GitHub, *Root Directory* = `catalogue`.
    Renseigner les variables de `.env.example` (jamais la clé service_role côté
    `NEXT_PUBLIC_`). Le build applique les migrations (`prisma migrate deploy`).
-3. Créer le compte administrateur, depuis un poste avec les variables de production :
-   `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run admin:create`
+3. Créer le compte administrateur puis charger les produits, depuis un poste avec les
+   variables de production : `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run admin:create`, puis
+   `npm run db:seed:epicerie` (pas `db:seed`, qui ajoute la démonstration).
 4. Domaine : ajouter `epicerie.barriolatino.fr` dans Vercel, puis l'enregistrement
    CNAME indiqué chez le registraire. Mettre à jour `NEXT_PUBLIC_SITE_URL`.
 

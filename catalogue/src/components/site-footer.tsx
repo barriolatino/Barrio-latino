@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { getCategories, getSettings } from "@/lib/catalogue";
+import { getCategories, getCounts, getSettings } from "@/lib/catalogue";
 import { socialLink, telLink, whatsappLink } from "@/lib/contact";
 import { mediaSrc } from "@/lib/media-url";
 import { ClockIcon, FacebookIcon, InstagramIcon, MailIcon, PhoneIcon, PinIcon, TikTokIcon, WhatsAppIcon } from "./icons";
 
 export async function SiteFooter() {
-  const [s, categories] = await Promise.all([getSettings(), getCategories()]);
+  const [s, categories, counts] = await Promise.all([getSettings(), getCategories(), getCounts()]);
   const socials = [
     { href: socialLink("instagram", s.instagram), label: "Instagram", Icon: InstagramIcon },
     { href: socialLink("facebook", s.facebook), label: "Facebook", Icon: FacebookIcon },
@@ -51,7 +51,7 @@ export async function SiteFooter() {
         <div>
           <h2 className={heading}>Catégories</h2>
           <ul className="space-y-2 text-sm">
-            {categories.slice(0, 8).map((c) => (
+            {categories.filter((c) => c.count > 0).slice(0, 8).map((c) => (
               <li key={c.id}><Link className={link} href={`/categories/${c.slug}`}>{c.name}</Link></li>
             ))}
           </ul>
@@ -79,7 +79,10 @@ export async function SiteFooter() {
       </div>
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-2 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
-          <p>{s.footerText || `© ${new Date().getFullYear()} ${s.shopName}`}</p>
+          <div>
+            <p>{s.footerText || `© ${new Date().getFullYear()} ${s.shopName}`}</p>
+            {counts.alcohol > 0 && <p className="mt-1">L&apos;abus d&apos;alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs.</p>}
+          </div>
           <p className="flex gap-4">
             <Link className={link} href="/mentions-legales">Mentions légales</Link>
             <Link className={link} href="/confidentialite">Confidentialité</Link>

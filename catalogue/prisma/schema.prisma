@@ -46,6 +46,8 @@ model Product {
   /// Vente au carton : nombre d'articles et prix du carton
   caseQuantity   Int?
   casePriceCents Int?
+  /// Prix d'achat en centimes : visible uniquement dans l'administration
+  costCents      Int?
   available      Boolean    @default(true)
   visibility     Visibility @default(PUBLISHED)
   featured       Boolean    @default(false)

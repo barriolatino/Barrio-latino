@@ -68,6 +68,7 @@ export const productInput = z
     promoEndsAt: optionalText,
     caseQuantity: optionalInt("Quantité par carton").optional().transform((v) => v ?? null),
     casePriceCents: priceField("Prix du carton", false).optional().transform((v) => v ?? null),
+    costCents: priceField("Prix d'achat", false).optional().transform((v) => v ?? null),
     // Case à cocher décochée = champ absent du formulaire = false.
     available: bool.optional().transform((v) => v ?? false),
     published: bool.optional().transform((v) => v ?? false),

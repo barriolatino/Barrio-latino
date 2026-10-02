@@ -19,6 +19,7 @@ export type ProductFormValues = {
   promoEndsAt: string;
   caseQuantity: string;
   casePrice: string;
+  cost: string;
   available: boolean;
   published: boolean;
   isNew: boolean;
@@ -33,7 +34,7 @@ export function emptyValues(): ProductFormValues {
   return {
     name: "", brandName: "", reference: "", description: "", categoryId: "", countryId: "", storage: "AMBIENT",
     netWeightG: "", volumeMl: "", unitCount: "", packaging: "", saleUnit: "UNIT", price: "", promo: "", promoEndsAt: "",
-    caseQuantity: "", casePrice: "", available: true, published: true, isNew: false, featured: false, tags: "",
+    caseQuantity: "", casePrice: "", cost: "", available: true, published: true, isNew: false, featured: false, tags: "",
     seoTitle: "", seoDescription: "", images: [],
   };
 }
