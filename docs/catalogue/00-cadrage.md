@@ -1,7 +1,7 @@
 # Catalogue digital de l'épicerie — Cadrage (étapes 1 à 7)
 
-Statut : **proposition à valider**. Aucun code n'est écrit tant que les décisions
-de la section 9 ne sont pas tranchées.
+Statut : **validé le 2 octobre 2026**, V1 développée dans `catalogue/`
+(voir la section 10 pour les décisions et les écarts par rapport à cette proposition).
 
 Source analysée : *Catálogo Refrigerados y Congelados 2025* (Impex Productos
 Latinos, Barcelone), 16 pages. Le second catalogue (*produits secs 2025*) n'a pas
@@ -506,3 +506,38 @@ LCP < 2 s, images en WebP chargées à la demande.
 | **D3** | Vendez-vous **à l'unité aux particuliers**, ou aussi **au carton** (restaurants, professionnels) ? | Change l'affichage du prix et du conditionnement : un client particulier n'a pas besoin du « carton de 24 » |
 | **D4** | Accord pour créer des comptes gratuits **Supabase** et **Vercel**, et pour un sous-domaine du type `epicerie.barriolatino.fr` ? | Hébergement de la base, des photos et de l'admin |
 | **D5** | Photos : les packshots Impex appartiennent à Impex et aux marques. Un simple e-mail à Impex demandant l'autorisation et, si possible, les fichiers haute définition règle la question juridique et le problème de netteté. Le ferez-vous ? | Droit d'usage + qualité d'image |
+
+---
+
+## 10. Décisions prises et écarts de mise en œuvre (V1)
+
+### Réponses aux questions
+
+| # | Décision |
+|---|---|
+| D1 | Le catalogue produits secs (81 pages) arrivera en captures d'écran. |
+| D2 | L'épicerie s'appelle **Barrio Latino** : même logo, mêmes couleurs, mêmes polices que le restaurant. |
+| D3 | Vente **à l'unité et au carton** selon le produit : champs `caseQuantity` et `casePriceCents`, affichés « Carton de 25 : 72,00 € (2,88 € l'unité) ». |
+| D4 | Supabase (base + photos) et Vercel acceptés, sur un sous-domaine. |
+| D5 | Demande d'autorisation et de fichiers HD envoyée à Impex par le propriétaire. |
+
+### Écarts par rapport à la proposition, et pourquoi
+
+| Proposé | Réalisé | Raison |
+|---|---|---|
+| Supabase Auth | Sessions maison : mot de passe haché (scrypt), jeton aléatoire en cookie `httpOnly`, empreinte en base, limitation des tentatives | Une dépendance de moins ; fonctionne à l'identique en local et en production |
+| shadcn/ui pour l'admin | Composants maison sur les tokens du design system | Moins de code embarqué, une seule cohérence visuelle |
+| `@react-pdf/renderer` | Page d'impression A4 générée depuis la base (« Enregistrer au format PDF ») | Aucune dépendance ; mêmes données, même mise à jour automatique |
+| Table `Subcategory` | Catégorie avec parent (2 niveaux) | Un seul écran, un seul glisser-déposer |
+| `isPromotion`, `promotionalPrice` sur le produit | Table `Promotion` datée ; l'interface et l'import gardent une colonne « Prix promo » | Promotions qui s'arrêtent seules ; historique conservé |
+
+### Mesures (V1, données de démonstration)
+
+- 17 tests Playwright verts en mode production : parcours public, 375/768/1024/1440 px
+  sans défilement horizontal, administration protégée, scénario critique du §59,
+  duplication, corbeille, export et import CSV.
+- Poids transféré sur mobile, hors photos : ~270 Ko (dont ~140 Ko de JavaScript du
+  framework et 82 Ko de polices). L'objectif de 150 Ko n'est pas atteint ; c'est
+  six fois plus léger que la page actuelle du restaurant (1,7 Mo).
+- Photos : WebP 400/800/1200 px, chargement différé, marges blanches retirées
+  automatiquement à l'envoi.

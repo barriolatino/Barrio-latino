@@ -1,0 +1,241 @@
+// Source de vérité du catalogue. Toute donnée affichée sur le site vient d'ici.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Storage {
+  AMBIENT // Épicerie
+  CHILLED // Frais
+  FROZEN // Surgelé
+}
+
+enum SaleUnit {
+  UNIT // prix à l'unité (le paquet, la bouteille…)
+  KG // prix au kilo
+}
+
+enum Visibility {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model Product {
+  id             String     @id @default(cuid())
+  slug           String     @unique
+  reference      String?    @unique
+  name           String
+  description    String?
+  brandId        String?
+  categoryId     String
+  countryId      String?
+  storage        Storage    @default(AMBIENT)
+  netWeightG     Int?
+  volumeMl       Int?
+  unitCount      Int?
+  packaging      String?
+  saleUnit       SaleUnit   @default(UNIT)
+  /// Prix de vente en centimes (490 = 4,90 €)
+  priceCents     Int
+  /// Vente au carton : nombre d'articles et prix du carton
+  caseQuantity   Int?
+  casePriceCents Int?
+  available      Boolean    @default(true)
+  visibility     Visibility @default(PUBLISHED)
+  featured       Boolean    @default(false)
+  isNew          Boolean    @default(false)
+  newUntil       DateTime?
+  isExample      Boolean    @default(false)
+  displayOrder   Int        @default(0)
+  seoTitle       String?
+  seoDescription String?
+  /// Texte normalisé (minuscules, sans accents) pour la recherche
+  searchText     String     @default("")
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  deletedAt      DateTime?
+
+  brand        Brand?         @relation(fields: [brandId], references: [id], onDelete: SetNull)
+  category     Category       @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  country      Country?       @relation(fields: [countryId], references: [id], onDelete: SetNull)
+  images       ProductImage[]
+  tags         ProductTag[]
+  promotions   Promotion[]
+  priceHistory PriceHistory[]
+
+  @@index([visibility, available, displayOrder])
+  @@index([categoryId])
+  @@index([countryId])
+  @@index([brandId])
+  @@index([searchText(ops: raw("gin_trgm_ops"))], type: Gin, map: "Product_searchText_trgm_idx")
+}
+
+model Category {
+  id           String     @id @default(cuid())
+  slug         String     @unique
+  name         String
+  description  String?
+  imageId      String?
+  parentId     String?
+  displayOrder Int        @default(0)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  image        Media?     @relation(fields: [imageId], references: [id], onDelete: SetNull)
+  parent       Category?  @relation("CategoryTree", fields: [parentId], references: [id], onDelete: Restrict)
+  children     Category[] @relation("CategoryTree")
+  products     Product[]
+}
+
+model Brand {
+  id        String    @id @default(cuid())
+  slug      String    @unique
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  products  Product[]
+}
+
+model Country {
+  id           String    @id @default(cuid())
+  slug         String    @unique
+  name         String
+  /// Code ISO 3166-1 alpha-2, sert à afficher le drapeau
+  isoCode      String    @unique
+  displayOrder Int       @default(0)
+  products     Product[]
+}
+
+model Tag {
+  id       String       @id @default(cuid())
+  slug     String       @unique
+  name     String       @unique
+  products ProductTag[]
+}
+
+model ProductTag {
+  productId String
+  tagId     String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tag       Tag     @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([productId, tagId])
+}
+
+model Media {
+  id         String         @id @default(cuid())
+  /// Préfixe de stockage : les fichiers sont {key}-400.webp, -800.webp, -1200.webp
+  key        String         @unique
+  name       String
+  alt        String?
+  width      Int
+  height     Int
+  blurData   String?
+  createdAt  DateTime       @default(now())
+  usages     ProductImage[]
+  categories Category[]
+}
+
+model ProductImage {
+  productId String
+  mediaId   String
+  /// 0 = image principale
+  position  Int     @default(0)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  media     Media   @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@id([productId, mediaId])
+}
+
+model Promotion {
+  id         String    @id @default(cuid())
+  productId  String
+  promoCents Int
+  startsAt   DateTime  @default(now())
+  endsAt     DateTime?
+  label      String?
+  createdAt  DateTime  @default(now())
+  product    Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, startsAt])
+}
+
+model PriceHistory {
+  id        String   @id @default(cuid())
+  productId String
+  /// "price" | "promo" | "case"
+  kind      String
+  oldCents  Int?
+  newCents  Int?
+  changedBy String
+  changedAt DateTime @default(now())
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([productId, changedAt])
+  @@index([changedAt])
+}
+
+model Revision {
+  id         String   @id @default(cuid())
+  entityType String
+  entityId   String
+  /// État complet AVANT la modification
+  snapshot   Json
+  action     String
+  summary    String?
+  createdBy  String
+  createdAt  DateTime @default(now())
+
+  @@index([entityType, entityId])
+  @@index([createdAt])
+}
+
+model SiteSettings {
+  id                  Int      @id @default(1)
+  shopName            String   @default("Barrio Latino")
+  shopKicker          String?  @default("Épicerie latino-américaine")
+  heroTitle           String   @default("Les saveurs d'Amérique latine à portée de main.")
+  heroText            String?
+  description         String?
+  phone               String?
+  whatsapp            String?
+  whatsappMessage     String?  @default("Bonjour, je souhaite commander :")
+  email               String?
+  address             String?
+  mapUrl              String?
+  openingHours        String?
+  instagram           String?
+  facebook            String?
+  tiktok              String?
+  currency            String   @default("EUR")
+  footerText          String?
+  legalNotice         String?
+  privacyPolicy       String?
+  /// "show" : badge « Indisponible » ; "hide" : produit masqué du catalogue public
+  unavailableBehavior String   @default("show")
+  showReferences      Boolean  @default(true)
+  logoMediaId         String?
+  updatedAt           DateTime @updatedAt
+}
+
+model AdminUser {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  name         String
+  passwordHash String
+  role         String         @default("owner")
+  createdAt    DateTime       @default(now())
+  sessions     AdminSession[]
+}
+
+model AdminSession {
+  id        String    @id
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
