@@ -49,6 +49,9 @@ npm run test:e2e            # Playwright : public, 375/768/1024/1440 px, admin, 
 
 Si Chromium est déjà installé ailleurs : `PW_CHROMIUM_PATH=/chemin/vers/chromium npm run test:e2e`.
 
+Les tests créent des produits « Produit Test … » puis les mettent à la corbeille :
+les lancer sur une base de développement, jamais sur la base de production.
+
 ## Mise en ligne (Supabase + Vercel)
 
 1. **Supabase** : créer un projet (région Europe). Dans *Storage*, créer un bucket

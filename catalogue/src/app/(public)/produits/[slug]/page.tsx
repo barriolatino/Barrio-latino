@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const [p, s] = await Promise.all([getProduct((await params).slug), getSettings()]);
   if (!p) return {};
-  const fmt = formatLine(p);
+  const fmt = formatLine({ ...p, unitCount: p.packaging ? null : p.unitCount });
   const description =
     p.seoDescription ??
     [`${p.name}${p.brand ? ` ${p.brand.name}` : ""}${fmt ? `, ${fmt}` : ""}`, `${formatPrice(p.price.current, s.currency)}`, p.description]
@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
   if (!p) notFound();
 
   const currency = s.currency;
-  const fmt = formatLine(p);
+  const fmt = formatLine({ ...p, unitCount: p.packaging ? null : p.unitCount });
   const orderText = `${s.whatsappMessage ?? "Bonjour, je souhaite commander :"}\n• ${p.name}${p.brand ? ` (${p.brand.name})` : ""}${fmt ? `, ${fmt}` : ""}${p.reference ? `, réf. ${p.reference}` : ""}\n${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/produits/${p.slug}`;
   const wa = whatsappLink(s.whatsapp, orderText);
 
