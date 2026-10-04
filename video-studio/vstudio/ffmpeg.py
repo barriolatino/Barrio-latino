@@ -238,6 +238,18 @@ def read_audio_mono(path: str | Path, rate: int = 16000, start: float | None = N
     return np.frombuffer(proc.stdout, dtype=np.float32).copy()
 
 
+def read_audio_channels(path: str | Path, rate: int = 48000):
+    """Décode l'audio sans mélange des canaux (tableau numpy n×canaux), pour mesurer les crêtes réelles."""
+    import numpy as np
+
+    info = probe(path)
+    ch = max(1, info.channels)
+    proc = subprocess.run([FFMPEG, "-hide_banner", "-nostdin", "-v", "error", "-i", str(path), "-vn",
+                           "-ar", str(rate), "-f", "f32le", "-"], capture_output=True)
+    a = np.frombuffer(proc.stdout, dtype=np.float32)
+    return a[: len(a) // ch * ch].reshape(-1, ch)
+
+
 def ffmpeg_escape_path(p: str | Path) -> str:
     """Échappe un chemin pour l'utiliser dans un graphe de filtres (subtitles=, ass=)."""
     s = str(p).replace("\\", "/")

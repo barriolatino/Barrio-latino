@@ -215,3 +215,14 @@ def test_reprise_projet(ws, media):
     assert "Analyse : déjà faite" in journal and "toujours valable (reprise)" in journal
     assert re.search(r"\d+/\d+ segment\(s\) réutilisé", journal)
     assert Path(outs[0]["render"]["path"]).exists() and Path(outs[0]["render"]["path"]).stat().st_mtime >= first
+
+
+# fondus enchaînés (profil cinématique) : rendu xfade réel, durée tenant compte des chevauchements
+def test_fondus_enchaines(ws, media):
+    proj, out = montage("fondus", [media["horizontal"], media["horizontal2"], media["no_audio"]],
+                        preset="test_horizontal", profile="cinematique", music=str(media["music"]))
+    tl = proj.load_timeline()
+    assert any(c["transition_in"] == "fondu" for c in tl["clips"])
+    assert abs(out["render"]["duration"] - tl["expected_duration"]) < 0.3
+    assert statut(out, "écrans noirs")["status"] == "ok"
+    assert_qc_pas_en_echec(out)

@@ -107,7 +107,8 @@ def inspect(project: Project, result: dict, timeline: dict) -> dict:
             if ld["TP"] > preset["true_peak"] + 0.6:
                 checks.append(_check("crêtes audio", FAIL, f"crête vraie {ld['TP']:.1f} dBTP > {preset['true_peak']} dBTP",
                                      fix="true_peak", value=ld["TP"]))
-        clip_ratio = float(np.mean(np.abs(samples) >= 0.999))
+        # par canal : un mélange mono additionnerait des canaux corrélés et inventerait des crêtes
+        clip_ratio = float(np.mean(np.abs(ffmpeg.read_audio_channels(path)) >= 0.999))
         checks.append(_check("saturation audio", FAIL if clip_ratio > 1e-4 else OK,
                              f"{clip_ratio * 100:.3f} % d'échantillons écrêtés"))
         if speech:

@@ -191,18 +191,24 @@ def assemble(project: Project, timeline: dict, segs: list[Path], out: Path) -> f
         ffmpeg.run(["-f", "concat", "-safe", "0", "-i", str(lst), "-c", "copy", str(tmp)], log=project.log)
     else:
         td = timeline["transition_duration"]
+        fps = timeline["fps"]
         args, graph = [], []
-        for p in segs:
+        for i, p in enumerate(segs):
             args += ["-i", str(p)]
-        vlast, alast, t = "0:v", "0:a", durs[0]
+            # même base de temps partout : xfade refuse des entrées hétérogènes
+            graph.append(f"[{i}:v]setpts=PTS-STARTPTS,fps={fps},settb=AVTB[sv{i}]")
+            graph.append(f"[{i}:a]asetpts=PTS-STARTPTS[sa{i}]")
+        vlast, alast, t = "sv0", "sa0", durs[0]
         for i in range(1, len(segs)):
             if fondus[i]:
                 dd = min(td, durs[i] / 3, durs[i - 1] / 3)
-                graph.append(f"[{vlast}][{i}:v]xfade=transition=fade:duration={dd:.3f}:offset={t - dd:.3f}[v{i}]")
-                graph.append(f"[{alast}][{i}:a]acrossfade=d={dd:.3f}:c1=tri:c2=tri[a{i}]")
+                graph.append(f"[{vlast}][sv{i}]xfade=transition=fade:duration={dd:.3f}:offset={t - dd:.3f},"
+                             f"settb=AVTB[v{i}]")
+                graph.append(f"[{alast}][sa{i}]acrossfade=d={dd:.3f}:c1=tri:c2=tri[a{i}]")
                 t += durs[i] - dd
             else:
-                graph.append(f"[{vlast}][{alast}][{i}:v][{i}:a]concat=n=2:v=1:a=1[v{i}][a{i}]")
+                graph.append(f"[{vlast}][{alast}][sv{i}][sa{i}]concat=n=2:v=1:a=1[vc{i}][a{i}]")
+                graph.append(f"[vc{i}]settb=AVTB[v{i}]")
                 t += durs[i]
             vlast, alast = f"v{i}", f"a{i}"
         ffmpeg.run([*args, "-filter_complex", ";".join(graph), "-map", f"[{vlast}]", "-map", f"[{alast}]",
@@ -277,7 +283,9 @@ def mix_audio(project: Project, timeline: dict, assembly: Path, total: float, pr
         ln = (f"loudnorm=I={target}:TP={tp}:LRA=11:measured_I={meas['input_i']}:measured_TP={meas['input_tp']}:"
               f"measured_LRA={meas['input_lra']}:measured_thresh={meas['input_thresh']}:offset={meas['target_offset']}:"
               f"linear=true:print_format=summary")
-        af = f"{ln},alimiter=limit={10 ** ((tp - 0.3) / 20):.4f}:attack=5:release=50:level=false,aresample=48000"
+        # loudnorm travaille en 192 kHz : on revient à 48 kHz AVANT le limiteur, sinon le
+        # rééchantillonnage recrée des crêtes au-delà de 0 dBFS
+        af = f"{ln},aresample=48000,alimiter=limit={10 ** ((tp - 0.3) / 20):.4f}:attack=5:release=50:level=false"
     else:
         af = "anull"  # piste silencieuse : rien à normaliser
     tmp = out_wav.with_name(out_wav.stem + ".part.wav")
