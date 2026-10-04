@@ -13,6 +13,7 @@ import { ALCOHOL_TAG, getProduct, getSettings } from "@/lib/catalogue";
 import { whatsappLink } from "@/lib/contact";
 import { STORAGE_LABELS, flagEmoji, formatLine, formatPrice, formatVolume, formatWeight, slugify } from "@/lib/format";
 import { mediaSrc } from "@/lib/media-url";
+import { SITE_URL } from "@/lib/site-url";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -48,7 +49,7 @@ export default async function ProductPage({ params }: Props) {
 
   const currency = s.currency;
   const fmt = formatLine({ ...p, unitCount: p.packaging ? null : p.unitCount });
-  const orderText = `${s.whatsappMessage ?? "Bonjour, je souhaite commander :"}\n• ${p.name}${p.brand ? ` (${p.brand.name})` : ""}${fmt ? `, ${fmt}` : ""}${p.reference ? `, réf. ${p.reference}` : ""}\n${process.env.NEXT_PUBLIC_SITE_URL ?? ""}/produits/${p.slug}`;
+  const orderText = `${s.whatsappMessage ?? "Bonjour, je souhaite commander :"}\n• ${p.name}${p.brand ? ` (${p.brand.name})` : ""}${fmt ? `, ${fmt}` : ""}${p.reference ? `, réf. ${p.reference}` : ""}\n${SITE_URL}/produits/${p.slug}`;
   const wa = whatsappLink(s.whatsapp, orderText);
 
   const specs: [string, React.ReactNode][] = [];

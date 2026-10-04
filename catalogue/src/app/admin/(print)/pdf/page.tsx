@@ -6,6 +6,7 @@ import { mediaSrc } from "@/lib/media-url";
 import { priceInfo } from "@/lib/pricing";
 import { getSettings } from "@/lib/catalogue";
 import { PrintButton } from "./print-button";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata: Metadata = { title: "Catalogue PDF", robots: { index: false } };
 
@@ -83,7 +84,7 @@ export default async function PrintCatalogue({ searchParams }: { searchParams: P
         );
       })}
       <footer className="mt-8 border-t border-line pt-3 text-center text-[10px] text-ink-muted">
-        Prix en vigueur au {date}, susceptibles d&apos;évoluer. Catalogue à jour : {process.env.NEXT_PUBLIC_SITE_URL ?? ""}/catalogue
+        Prix en vigueur au {date}, susceptibles d&apos;évoluer. Catalogue à jour : {SITE_URL}/catalogue
       </footer>
     </div>
   );

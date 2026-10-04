@@ -2,6 +2,7 @@ import QRCode from "qrcode";
 import { getAdmin } from "@/lib/auth";
 import { exportRows } from "@/lib/import";
 import { buildWorkbook, toCsv, type SheetRow } from "@/lib/spreadsheet";
+import { SITE_URL } from "@/lib/site-url";
 
 const EXAMPLE: SheetRow[] = [
   { reference: "ARE-001", name: "Arepas blanches", brand: "La Victoria", category: "Arepas & galettes", country: "Colombie", storage: "Surgelé", unitCount: "5", packaging: "Paquet de 5", saleUnit: "unité", price: "3,20", caseQuantity: "25", casePrice: "72,00", available: "oui", published: "oui", featured: "non", isNew: "non", tags: "arepa, maïs" },
@@ -36,7 +37,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ file
     });
   }
   if (file === "qr.svg" || file === "qr.png") {
-    const site = process.env.NEXT_PUBLIC_SITE_URL ?? url.origin;
+    const site = process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL ? SITE_URL : url.origin;
     const path = url.searchParams.get("path") ?? "/catalogue";
     const target = new URL(path.startsWith("/") ? path : "/catalogue", site).toString();
     const opts = { margin: 2, color: { dark: "#12173A", light: "#FFFFFF" }, errorCorrectionLevel: "M" as const };

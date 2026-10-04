@@ -4,13 +4,14 @@ import { headers } from "next/headers";
 import { AdminHeader, Panel } from "@/components/admin/ui";
 import { btn } from "@/components/ui";
 import { requireAdmin } from "@/lib/auth";
+import { SITE_URL } from "@/lib/site-url";
 
 export const metadata = { title: "Exporter" };
 
 export default async function ExportPage() {
   await requireAdmin();
   const h = await headers();
-  const site = process.env.NEXT_PUBLIC_SITE_URL ?? `${h.get("x-forwarded-proto") ?? "http"}://${h.get("host")}`;
+  const site = (process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL ? SITE_URL : undefined) ?? `${h.get("x-forwarded-proto") ?? "http"}://${h.get("host")}`;
   const target = `${site}/catalogue`;
   const svg = await QRCode.toString(target, { type: "svg", margin: 1, color: { dark: "#12173A", light: "#FFFFFF" } });
   return (
