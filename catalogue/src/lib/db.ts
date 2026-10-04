@@ -9,6 +9,9 @@ function createClient() {
   const adapter = new PrismaPg({
     connectionString: process.env.DATABASE_URL!,
     max: Number(process.env.DATABASE_POOL_MAX ?? 3),
+    // Rend vite les connexions inutilisées : sur Vercel, chaque instance garde
+    // sinon les siennes ouvertes et le pooler Supabase arrive à saturation.
+    idleTimeoutMillis: 5_000,
   });
   return new PrismaClient({ adapter });
 }
