@@ -57,6 +57,7 @@ export function AdminNav({ email, logout }: { email: string; logout: () => Promi
         Voir le site ↗
       </Link>
       <p className="truncate px-3 text-white/50">{email}</p>
+      {process.env.NEXT_PUBLIC_BUILD_ID && <p className="px-3 text-[0.6875rem] text-white/40">Version {process.env.NEXT_PUBLIC_BUILD_ID}</p>}
       <form action={logout}>
         <button className="px-3 text-white/75 underline underline-offset-4 hover:text-white">Se déconnecter</button>
       </form>

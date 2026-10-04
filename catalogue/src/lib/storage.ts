@@ -60,7 +60,17 @@ export function usesSupabaseStorage() {
   return choice === "supabase" || (!!envValue("SUPABASE_URL") && !!envValue("SUPABASE_SERVICE_ROLE_KEY"));
 }
 
-const driver = () => (usesSupabaseStorage() ? supabaseDriver() : localDriver);
+function driver(): Driver {
+  if (usesSupabaseStorage()) return supabaseDriver();
+  // Sur Vercel, le disque n'est pas modifiable : expliquer ce qui manque.
+  if (process.env.VERCEL) {
+    const missing = ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"].filter((n) => !envValue(n));
+    throw new Error(
+      `Stockage des photos non configuré : variable${missing.length > 1 ? "s" : ""} ${missing.join(" et ")} absente${missing.length > 1 ? "s" : ""} ou vide${missing.length > 1 ? "s" : ""} sur Vercel (vérifiez le nom exact et l'environnement Production, puis redéployez)`,
+    );
+  }
+  return localDriver;
+}
 
 export type ProcessedImage = { key: string; width: number; height: number; blurData: string };
 

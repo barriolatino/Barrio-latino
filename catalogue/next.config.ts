@@ -10,7 +10,11 @@ const mediaBase =
     : "/uploads");
 
 const nextConfig: NextConfig = {
-  env: { NEXT_PUBLIC_MEDIA_BASE_URL: mediaBase },
+  env: {
+    NEXT_PUBLIC_MEDIA_BASE_URL: mediaBase,
+    // Version affichée dans l'admin (aide au diagnostic)
+    NEXT_PUBLIC_BUILD_ID: (process.env.VERCEL_GIT_COMMIT_SHA ?? "").slice(0, 7),
+  },
   experimental: {
     // Les photos sont réduites dans le navigateur avant l'envoi (≈ 1 Mo) ;
     // la marge couvre les envois de plusieurs photos à la fois.
