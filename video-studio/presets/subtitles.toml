@@ -1,0 +1,101 @@
+# Styles de sous-titres (rendus avec libass).
+# size : hauteur de police en fraction de la hauteur d'image.
+# max_chars : caractères maximum par ligne ; max_lines : lignes par sous-titre.
+# position : "bas" ou "centre-bas" (au-dessus de la zone d'interface des plateformes).
+# Polices : DejaVu Sans (licence Bitstream Vera/libre) et Liberation Sans (SIL OFL),
+# installées sur le système. Toute autre police doit être déposée dans
+# assets/fonts/ avec sa licence.
+
+[sobre]
+label = "Sobre et professionnel"
+font = "DejaVu Sans"
+bold = false
+size = 0.042
+color = "FFFFFF"
+outline_color = "000000"
+outline = 0.0022
+shadow = 0.0
+box = false
+max_chars = 42
+max_lines = 2
+position = "bas"
+uppercase = false
+
+[dynamique]
+label = "Dynamique (réseaux sociaux)"
+font = "DejaVu Sans"
+bold = true
+size = 0.034
+color = "FFFFFF"
+outline_color = "000000"
+outline = 0.0028
+shadow = 0.0008
+box = false
+max_chars = 26
+max_lines = 2
+position = "centre-bas"
+uppercase = false
+
+[cinematique]
+label = "Cinématique"
+font = "Liberation Sans"
+bold = false
+size = 0.036
+color = "F2F2F2"
+outline_color = "000000"
+outline = 0.0012
+shadow = 0.0012
+box = false
+max_chars = 42
+max_lines = 2
+position = "bas"
+uppercase = false
+
+[interview]
+label = "Interview et podcast"
+font = "DejaVu Sans"
+bold = false
+size = 0.040
+color = "FFFFFF"
+outline_color = "000000"
+outline = 0.0
+shadow = 0.0
+box = true
+box_color = "000000"
+box_alpha = 0.45
+max_chars = 40
+max_lines = 2
+position = "bas"
+uppercase = false
+
+[educatif]
+label = "Éducatif"
+font = "DejaVu Sans"
+bold = false
+size = 0.040
+color = "FFFFFF"
+outline_color = "1A1A1A"
+outline = 0.0
+shadow = 0.0
+box = true
+box_color = "1A1A1A"
+box_alpha = 0.30
+max_chars = 42
+max_lines = 2
+position = "bas"
+uppercase = false
+
+[publicitaire]
+label = "Publicitaire"
+font = "DejaVu Sans"
+bold = true
+size = 0.036
+color = "FFFFFF"
+outline_color = "000000"
+outline = 0.0025
+shadow = 0.0
+box = false
+max_chars = 30
+max_lines = 2
+position = "centre-bas"
+uppercase = false

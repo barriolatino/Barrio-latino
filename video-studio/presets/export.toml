@@ -1,0 +1,167 @@
+# Presets d'export. Chaque section est un format de sortie.
+# fps = 0 : conserver la cadence source (arrondie à une cadence standard, 60 max).
+# safe_* : marges de sécurité (fraction de l'image) où aucun texte ne doit tomber,
+# pour ne pas être masqué par l'interface de la plateforme.
+# loudness : intensité intégrée visée en LUFS ; true_peak : crête vraie maximale en dBTP.
+
+[tiktok]
+label = "TikTok vertical"
+width = 1080
+height = 1920
+fps = 30
+crf = 20
+x264_preset = "medium"
+maxrate = "10M"
+audio_bitrate = "192k"
+loudness = -14.0
+true_peak = -1.5
+max_duration = 600
+safe_top = 0.10
+safe_bottom = 0.22
+safe_left = 0.06
+safe_right = 0.14
+subtitle_style = "dynamique"
+
+[reels]
+label = "Instagram Reels"
+width = 1080
+height = 1920
+fps = 30
+crf = 20
+x264_preset = "medium"
+maxrate = "10M"
+audio_bitrate = "192k"
+loudness = -14.0
+true_peak = -1.5
+max_duration = 180
+safe_top = 0.12
+safe_bottom = 0.22
+safe_left = 0.06
+safe_right = 0.12
+subtitle_style = "dynamique"
+
+[shorts]
+label = "YouTube Shorts"
+width = 1080
+height = 1920
+fps = 30
+crf = 20
+x264_preset = "medium"
+maxrate = "12M"
+audio_bitrate = "192k"
+loudness = -14.0
+true_peak = -1.5
+max_duration = 180
+safe_top = 0.08
+safe_bottom = 0.20
+safe_left = 0.06
+safe_right = 0.12
+subtitle_style = "dynamique"
+
+[youtube]
+label = "YouTube horizontal"
+width = 1920
+height = 1080
+fps = 0
+crf = 18
+x264_preset = "medium"
+maxrate = "16M"
+audio_bitrate = "256k"
+loudness = -14.0
+true_peak = -1.0
+max_duration = 0
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "sobre"
+
+[pub_verticale]
+label = "Publicité verticale"
+width = 1080
+height = 1920
+fps = 30
+crf = 18
+x264_preset = "slow"
+maxrate = "12M"
+audio_bitrate = "256k"
+loudness = -14.0
+true_peak = -1.0
+max_duration = 60
+safe_top = 0.12
+safe_bottom = 0.22
+safe_left = 0.06
+safe_right = 0.12
+subtitle_style = "publicitaire"
+
+[pub_horizontale]
+label = "Publicité horizontale"
+width = 1920
+height = 1080
+fps = 0
+crf = 18
+x264_preset = "slow"
+maxrate = "16M"
+audio_bitrate = "256k"
+loudness = -14.0
+true_peak = -1.0
+max_duration = 120
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "publicitaire"
+
+[formation]
+label = "Présentation et formation"
+width = 1920
+height = 1080
+fps = 0
+crf = 20
+x264_preset = "medium"
+maxrate = "8M"
+audio_bitrate = "192k"
+loudness = -16.0
+true_peak = -1.0
+max_duration = 0
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "educatif"
+
+[interview]
+label = "Interview"
+width = 1920
+height = 1080
+fps = 0
+crf = 18
+x264_preset = "medium"
+maxrate = "12M"
+audio_bitrate = "256k"
+loudness = -16.0
+true_peak = -1.0
+max_duration = 0
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "interview"
+
+[archive]
+label = "Archivage haute qualité"
+width = 0          # 0 = résolution du rush principal
+height = 0
+fps = 0
+crf = 12
+x264_preset = "slow"
+maxrate = ""
+audio_bitrate = "320k"
+loudness = -16.0
+true_peak = -1.0
+max_duration = 0
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "sobre"

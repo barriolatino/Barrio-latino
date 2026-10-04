@@ -1,0 +1,9 @@
+# Obligatoire (FFmpeg ≥ 6 doit être installé sur le système : libx264, libass)
+numpy>=1.26
+
+# Transcription (facultatif, au moins un conseillé)
+pocketsphinx>=5.0      # hors ligne, anglais uniquement (modèle inclus), licence BSD
+faster-whisper>=1.0    # multilingue ; nécessite un modèle local (voir docs/INSTALLATION.md), licence MIT
+
+# Tests
+pytest>=8

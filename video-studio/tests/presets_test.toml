@@ -1,0 +1,36 @@
+# Presets basse résolution pour accélérer les tests (mêmes règles que les vrais formats).
+[test_vertical]
+label = "Test vertical"
+width = 360
+height = 640
+fps = 30
+crf = 26
+x264_preset = "veryfast"
+maxrate = ""
+audio_bitrate = "128k"
+loudness = -14.0
+true_peak = -1.5
+max_duration = 600
+safe_top = 0.10
+safe_bottom = 0.22
+safe_left = 0.06
+safe_right = 0.14
+subtitle_style = "dynamique"
+
+[test_horizontal]
+label = "Test horizontal"
+width = 640
+height = 360
+fps = 0
+crf = 26
+x264_preset = "veryfast"
+maxrate = ""
+audio_bitrate = "128k"
+loudness = -16.0
+true_peak = -1.0
+max_duration = 0
+safe_top = 0.05
+safe_bottom = 0.08
+safe_left = 0.05
+safe_right = 0.05
+subtitle_style = "sobre"

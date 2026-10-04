@@ -1,0 +1,102 @@
+# Bibliothèque de principes éditoriaux.
+#
+# Ce sont des principes généraux, reformulés et originaux, issus d'observations
+# éditoriales courantes (pratique du montage, guides publics des plateformes,
+# analyse de vidéos fournies par l'utilisateur via « studio.py reference »).
+# Aucun montage précis n'est copié. Aucun principe ne garantit qu'une vidéo
+# deviendra virale : ils visent la clarté et la rétention.
+#
+# confiance : « élevée » = pratique de montage établie et consensuelle ;
+#             « moyenne » = observée souvent, dépend fortement du contenu ;
+#             « faible »  = tendance récente, à revérifier.
+# Mettre à jour verifie_le à chaque revue.
+
+[[principe]]
+nom = "Entrer dans le sujet dès la première seconde"
+contenus = "formats verticaux, tutoriels, culinaire, publicité"
+pourquoi = "Sur un fil défilant, la décision de rester se prend très vite ; un début sans enjeu visible fait partir le spectateur."
+limites = "Ne pas sacrifier le contexte d'une interview ou d'un documentaire ; une accroche trompeuse détruit la confiance."
+exemple = "Ouvrir sur le plat terminé (2 s) avant de montrer la préparation, en le signalant comme un aperçu."
+implementation = "profil hook = teaser / meilleur_plan (toujours signalé pour validation)"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Varier la durée des plans"
+contenus = "tous"
+pourquoi = "Un rythme régulier comme un métronome devient monotone ; la variation crée de la respiration et souligne les moments forts."
+limites = "La variation doit suivre le contenu (geste, phrase), pas un tirage aléatoire."
+exemple = "Trois plans de détails courts puis un plan large plus long qui laisse le temps de comprendre."
+implementation = "min_shot / max_shot, fenêtres choisies sur le mouvement réel, calage musical partiel"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Raccourcir les pauses sans les supprimer"
+contenus = "face caméra, interview, podcast, vlog"
+pourquoi = "Les longueurs font décrocher, mais une parole sans aucune respiration paraît artificielle et fatigante."
+limites = "Humour et émotion : la pause avant la chute ou après une phrase forte fait partie du sens."
+exemple = "Une pause de 2,4 s ramenée à 0,4 s ; une pause avant une chute comique conservée (profil humour)."
+implementation = "pause_max / pause_keep par profil"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Garder la dernière prise"
+contenus = "face caméra, tutoriel, publicité"
+pourquoi = "Quand une phrase est répétée au tournage, la reprise est généralement la version voulue par l'orateur."
+limites = "Pas toujours vrai : la première prise peut être plus spontanée. La décision est listée dans le plan."
+exemple = "« On coupe les légumes… » puis « On coupe les légumes en petits morceaux » : la seconde est gardée."
+implementation = "détection de similarité entre phrases proches (remove_retakes)"
+confiance = "moyenne"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Plans de coupe pendant la parole, visage au début et à la fin"
+contenus = "vlog, documentaire, culinaire, publicité"
+pourquoi = "Illustrer ce qui est dit maintient l'attention visuelle ; revoir le visage aux moments clés garde le lien avec l'orateur."
+limites = "Interview : trop de plans de coupe peuvent sembler masquer des coupes dans les propos."
+exemple = "Pendant « on fait revenir les oignons », montrer la poêle, puis revenir au visage pour la conclusion."
+implementation = "broll_cutaways, broll_max_cover ; 1,5 s de visage avant, 0,8 s après"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Sous-titres courts, stables et dans la zone sûre"
+contenus = "formats verticaux, contenus regardés sans le son"
+pourquoi = "Une grande part du visionnage mobile se fait sans le son ; un sous-titre lisible d'un coup d'œil évite de perdre le fil."
+limites = "Les animations mot à mot distraient si elles n'apportent rien ; ne jamais masquer un visage ou un produit."
+exemple = "Deux lignes de 26 caractères maximum, au-dessus de la zone des boutons de l'application."
+implementation = "styles de subtitles.toml, marges safe_* par format, contrôle sur rendu réel"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Musique au service de la voix"
+contenus = "tous les contenus parlés"
+pourquoi = "Une voix couverte par la musique fait décrocher plus sûrement qu'une musique trop discrète."
+limites = "Contenus sans parole : la musique peut porter le rythme, avec des coupes sur les temps."
+exemple = "Musique à -14 dB hors voix, -26 dB sous la voix, remontée progressive pendant les plans d'illustration."
+implementation = "ducking automatique sur les passages parlés, beat_sync limité aux plans sans parole"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Une fin qui se voit comme une fin"
+contenus = "tous"
+pourquoi = "Une fin abrupte paraît accidentelle ; une fin nette (dernière phrase, plan de conclusion, fondu) laisse une impression maîtrisée."
+limites = "Certains formats en boucle préfèrent une fin qui enchaîne sur le début : à décider humainement."
+exemple = "Dernière phrase, plan du plat servi 2 s, fondu au noir 0,5 s."
+implementation = "plan de fin d'illustration, fade_out, contrôle « fin de vidéo intentionnelle »"
+confiance = "élevée"
+verifie_le = "2026-10-04"
+
+[[principe]]
+nom = "Densité d'information adaptée à la durée"
+contenus = "tutoriel, pédagogie, publicité"
+pourquoi = "Trop d'idées en peu de temps perdent le spectateur ; trop peu donnent une impression de remplissage."
+limites = "Mesure indirecte : le système compte la parole et les coupes, il ne comprend pas les idées."
+exemple = "Une idée par 5 à 10 s en vertical ; un bénéfice principal clairement dit dans une publicité courte."
+implementation = "métriques de « reference » (mots/min, coupes/min) pour comparer à des vidéos de référence fournies"
+confiance = "moyenne"
+verifie_le = "2026-10-04"

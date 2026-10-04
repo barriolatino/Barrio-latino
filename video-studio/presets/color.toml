@@ -1,0 +1,101 @@
+# Profils colorimétriques. Ce sont des corrections automatiques simples
+# (filtres FFmpeg eq, colortemperature, colorbalance), pas un étalonnage
+# professionnel plan par plan. Les valeurs restent volontairement modérées.
+#
+# contrast/brightness/saturation/gamma : paramètres du filtre eq (1.0 / 0.0 = neutre)
+# temperature : température cible en kelvins (6500 = neutre), mix = intensité 0..1
+# shadows_* / highlights_* : colorbalance (-1..1), décalage des ombres / hautes lumières
+
+[naturel]
+label = "Naturel"
+contrast = 1.02
+saturation = 1.0
+brightness = 0.0
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0
+
+[commercial]
+label = "Commercial (net, propre)"
+contrast = 1.06
+saturation = 1.08
+brightness = 0.01
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0
+
+[cinematique]
+label = "Cinématique (contraste doux, ombres froides, peaux préservées)"
+contrast = 1.05
+saturation = 0.92
+brightness = -0.01
+gamma = 0.98
+temperature = 6500
+temperature_mix = 0.0
+shadows_b = 0.04
+shadows_r = -0.02
+highlights_r = 0.03
+highlights_b = -0.02
+
+[chaud]
+label = "Chaud et convivial"
+contrast = 1.03
+saturation = 1.04
+brightness = 0.0
+gamma = 1.0
+temperature = 5600
+temperature_mix = 0.35
+
+[froid]
+label = "Froid et dramatique"
+contrast = 1.08
+saturation = 0.88
+brightness = -0.02
+gamma = 0.97
+temperature = 7600
+temperature_mix = 0.35
+
+[documentaire]
+label = "Documentaire (fidèle)"
+contrast = 1.02
+saturation = 0.97
+brightness = 0.0
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0
+
+[reseaux_sociaux]
+label = "Réseaux sociaux (lumineux, sans excès)"
+contrast = 1.05
+saturation = 1.06
+brightness = 0.015
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0
+
+[culinaire]
+label = "Culinaire (couleurs fidèles et appétissantes)"
+contrast = 1.04
+saturation = 1.06
+brightness = 0.01
+gamma = 1.0
+temperature = 6000
+temperature_mix = 0.2
+
+[noir_et_blanc]
+label = "Noir et blanc"
+contrast = 1.10
+saturation = 0.0
+brightness = 0.0
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0
+
+[aucun]
+label = "Aucune correction"
+contrast = 1.0
+saturation = 1.0
+brightness = 0.0
+gamma = 1.0
+temperature = 6500
+temperature_mix = 0.0

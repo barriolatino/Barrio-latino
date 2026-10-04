@@ -1,0 +1,22 @@
+# Médias et données de travail : jamais versionnés (poids, droits, vie privée)
+input/*
+!input/.gitkeep
+projects/*
+!projects/.gitkeep
+exports/*
+!exports/.gitkeep
+logs/*
+!logs/.gitkeep
+references/*
+!references/.gitkeep
+assets/music/*
+!assets/music/.gitkeep
+assets/fonts/*
+!assets/fonts/.gitkeep
+assets/logos/*
+!assets/logos/.gitkeep
+assets/overlays/*
+!assets/overlays/.gitkeep
+__pycache__/
+.pytest_cache/
+*.part.*

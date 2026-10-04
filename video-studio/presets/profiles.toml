@@ -1,0 +1,219 @@
+# Profils éditoriaux. Chaque profil hérite de [defaut] puis surcharge ce qu'il veut.
+# Les profils personnalisés vont dans presets/profiles/<nom>.toml (même format,
+# une seule table [profil] avec éventuellement extends = "nom_du_profil_parent").
+#
+# Unités : secondes, décibels.
+#   order            "chronologique" (respecte l'ordre de tournage et le sens)
+#                    ou "score" (meilleurs passages d'abord, réservé au contenu sans parole liée)
+#   hook             "aucun" | "teaser" (répète en ouverture un moment fort court, signalé
+#                    pour validation) | "meilleur_plan" (ouvre sur le meilleur plan sans parole)
+#   pause_max        une pause plus longue que ça est raccourcie...
+#   pause_keep       ...à cette durée (on garde une respiration, jamais zéro)
+#   speech_pad       marge gardée avant/après la parole pour ne pas couper une syllabe
+#   min_shot/max_shot  durée des plans sans parole
+#   broll_cutaways   superposer des plans d'illustration sur les longues prises de parole
+#   transition       "cut" ou "fondu" (fondu enchaîné discret, seulement entre rushs différents)
+#   beat_sync        caler les coupes des plans SANS parole sur les temps de la musique
+#   duck_db          atténuation de la musique pendant la voix
+#   music_db         niveau de la musique hors voix (par rapport à la voix)
+#   denoise          réduction de bruit 0 (aucune) .. 1 (forte, déconseillé)
+#   reframe          "auto" | "flou" | "recadrage" | "cadre" (conversion d'orientation)
+
+[defaut]
+label = "Par défaut"
+description = "Montage sobre et naturel."
+color = "naturel"
+subtitle_style = ""
+default_preset = "youtube"
+target_duration = 0
+order = "chronologique"
+hook = "aucun"
+pause_max = 1.2
+pause_keep = 0.45
+speech_pad = 0.15
+min_shot = 1.5
+max_shot = 6.0
+broll_cutaways = false
+broll_max_cover = 0.35
+transition = "cut"
+transition_duration = 0.4
+fade_in = 0.3
+fade_out = 0.8
+beat_sync = false
+beat_tolerance = 0.25
+music_db = -14.0
+duck_db = -12.0
+denoise = 0.25
+compress = true
+remove_retakes = true
+reframe = "auto"
+captions = true
+
+[reseaux_sociaux]
+label = "Réseaux sociaux dynamique"
+description = "TikTok, Reels, Shorts : accroche, rythme soutenu mais variable, sous-titres mobiles."
+color = "reseaux_sociaux"
+default_preset = "tiktok"
+hook = "teaser"
+pause_max = 0.6
+pause_keep = 0.25
+speech_pad = 0.10
+min_shot = 0.9
+max_shot = 3.0
+broll_cutaways = true
+beat_sync = true
+fade_in = 0.0
+fade_out = 0.5
+
+[cinematique]
+label = "Cinématique"
+description = "Plans longs, transitions discrètes, étalonnage cohérent, ambiances préservées."
+color = "cinematique"
+default_preset = "youtube"
+pause_max = 2.0
+pause_keep = 0.9
+min_shot = 3.0
+max_shot = 9.0
+transition = "fondu"
+transition_duration = 0.6
+fade_in = 1.0
+fade_out = 1.5
+beat_sync = true
+beat_tolerance = 0.35
+music_db = -10.0
+denoise = 0.15
+captions = false
+
+[publicite]
+label = "Publicité professionnelle"
+description = "Produit montré vite, détails, bénéfice clair, conclusion intentionnelle."
+color = "commercial"
+default_preset = "pub_verticale"
+hook = "meilleur_plan"
+pause_max = 0.6
+pause_keep = 0.3
+min_shot = 1.0
+max_shot = 3.5
+broll_cutaways = true
+broll_max_cover = 0.5
+beat_sync = true
+fade_out = 0.6
+
+[interview]
+label = "Interview"
+description = "Respect strict des phrases et du sens, respirations conservées."
+color = "naturel"
+default_preset = "interview"
+pause_max = 1.5
+pause_keep = 0.6
+speech_pad = 0.2
+music_db = -24.0
+duck_db = -18.0
+denoise = 0.3
+
+[podcast]
+label = "Podcast vidéo"
+description = "Comme l'interview, avec un rythme un peu plus resserré."
+extends = "interview"
+pause_max = 1.0
+pause_keep = 0.45
+
+[vlog]
+label = "Vlog"
+description = "Construction narrative, alternance plans larges / détails, ambiance du lieu."
+color = "chaud"
+default_preset = "youtube"
+pause_max = 0.9
+pause_keep = 0.35
+min_shot = 1.5
+max_shot = 5.0
+broll_cutaways = true
+beat_sync = true
+
+[voyage]
+label = "Voyage"
+description = "Ambiance, plans d'établissement, transitions géographiques cohérentes."
+extends = "vlog"
+color = "naturel"
+min_shot = 2.0
+max_shot = 6.0
+transition = "fondu"
+transition_duration = 0.5
+
+[documentaire]
+label = "Documentaire et pédagogie"
+description = "Exactitude, progression logique, contexte conservé."
+color = "documentaire"
+default_preset = "youtube"
+pause_max = 1.4
+pause_keep = 0.6
+min_shot = 2.5
+max_shot = 8.0
+broll_cutaways = true
+broll_max_cover = 0.3
+music_db = -20.0
+
+[tutoriel]
+label = "Tutoriel"
+description = "Étapes claires, gestes visibles, pas de coupe dans une explication."
+extends = "documentaire"
+default_preset = "formation"
+broll_cutaways = false
+pause_max = 1.0
+pause_keep = 0.4
+
+[culinaire]
+label = "Vidéo culinaire"
+description = "Gestes, textures, sons de cuisson, couleurs appétissantes sans excès."
+color = "culinaire"
+default_preset = "reels"
+pause_max = 0.8
+pause_keep = 0.3
+min_shot = 1.2
+max_shot = 4.0
+broll_cutaways = true
+broll_max_cover = 0.45
+beat_sync = true
+music_db = -16.0
+denoise = 0.1
+
+[evenement]
+label = "Événementiel"
+description = "Temps forts, réactions du public, ambiance."
+color = "chaud"
+default_preset = "reels"
+order = "chronologique"
+min_shot = 1.0
+max_shot = 4.0
+beat_sync = true
+denoise = 0.1
+
+[sport]
+label = "Sport"
+description = "Actions complètes (on ne coupe pas un geste), ralentis rares et justifiés."
+color = "commercial"
+default_preset = "shorts"
+min_shot = 1.0
+max_shot = 4.0
+beat_sync = true
+denoise = 0.0
+
+[gaming]
+label = "Gaming"
+description = "Moments de jeu complets, réactions conservées."
+color = "aucun"
+default_preset = "youtube"
+pause_max = 0.8
+pause_keep = 0.3
+denoise = 0.15
+
+[humour]
+label = "Humour"
+description = "Timing : les silences avant la chute sont conservés."
+color = "naturel"
+default_preset = "tiktok"
+pause_max = 1.6
+pause_keep = 0.8
+speech_pad = 0.2
+hook = "aucun"
+beat_sync = false

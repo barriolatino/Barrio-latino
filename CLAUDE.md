@@ -38,3 +38,13 @@ Elle ne passe pas par GitHub Pages : elle se déploie sur Vercel (Root Directory
 - Toute écriture publique passe par `src/lib/products.ts` (historique des prix,
   révisions, texte de recherche) puis `revalidateCatalogue()`.
 - Vérifier avant de pousser : `npm run typecheck && npm run lint && npm run test:e2e`.
+
+## Studio de montage vidéo (`video-studio/`)
+
+Chaîne de montage automatisée (FFmpeg + Python), indépendante du site et du catalogue.
+Point d'entrée : `python3 video-studio/studio.py help` ; commandes Claude Code `/video-*`
+(`.claude/commands/`) et skills associées (`.claude/skills/`). Voir `video-studio/README.md`.
+
+- Ne jamais modifier ni supprimer les rushs ; aucune publication automatique (validation via `approve`).
+- Médias et projets (`input/`, `projects/`, `exports/`) ne sont pas versionnés.
+- Vérifier avant de pousser : `cd video-studio && python3 -m pytest -q` (rend et relit de vraies vidéos).
