@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
     serverActions: { bodySizeLimit: "8mb" },
   },
   images: { unoptimized: true },
+  // Photos de la liste de produits, lues par le bouton « Charger mes produits ».
+  outputFileTracingIncludes: { "/admin": ["./prisma/images-epicerie/**/*"] },
   poweredByHeader: false,
 };
 

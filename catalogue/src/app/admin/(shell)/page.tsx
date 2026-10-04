@@ -4,8 +4,12 @@ import { btn } from "@/components/ui";
 import { requireAdmin } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { formatDateTime, formatPrice } from "@/lib/format";
+import { EPICERIE_PRODUCT_COUNT, EPICERIE_REFS } from "@/lib/epicerie-seed";
+import { LoadProductsPanel } from "./load-products-panel";
 
 export const metadata = { title: "Tableau de bord" };
+// Le chargement de la liste de produits envoie aussi les photos : jusqu'à 60 s.
+export const maxDuration = 60;
 
 const ACTIONS: Record<string, string> = { update: "Modifié", delete: "Mis à la corbeille", import: "Import", create: "Créé" };
 
@@ -26,6 +30,8 @@ export default async function Dashboard() {
     db.priceHistory.findMany({ orderBy: { changedAt: "desc" }, take: 8, include: { product: { select: { id: true, name: true } } } }),
   ]);
   const examples = await db.product.count({ where: { ...live, isExample: true } });
+  // Produits de la liste encore jamais chargés (un produit supprimé reste compté : il est dans la corbeille).
+  const listed = await db.product.count({ where: { reference: { in: EPICERIE_REFS } } });
 
   return (
     <>
@@ -38,6 +44,7 @@ export default async function Dashboard() {
           </>
         }
       />
+      {listed < EPICERIE_PRODUCT_COUNT && <LoadProductsPanel count={EPICERIE_PRODUCT_COUNT - listed} />}
       {examples > 0 && (
         <p className="mb-6 rounded-[var(--radius-card)] border border-yellow bg-[#fff8e1] p-4 text-sm">
           <strong>{examples} produits de démonstration</strong> (prix fictifs) sont en ligne. Remplacez-les par vos produits via{" "}

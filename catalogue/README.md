@@ -61,9 +61,10 @@ Les tests publics s'appuient sur les produits de démonstration (`npm run db:see
 2. **Vercel** : importer le dépôt GitHub, *Root Directory* = `catalogue`.
    Renseigner les variables de `.env.example` (jamais la clé service_role côté
    `NEXT_PUBLIC_`). Le build applique les migrations (`prisma migrate deploy`).
-3. Créer le compte administrateur puis charger les produits, depuis un poste avec les
-   variables de production : `ADMIN_EMAIL=… ADMIN_PASSWORD=… npm run admin:create`, puis
-   `npm run db:seed:epicerie` (pas `db:seed`, qui ajoute la démonstration).
+3. Ajouter dans Vercel la variable `ADMIN_SETUP_CODE` (un code de votre choix), redéployer,
+   puis ouvrir `/admin` : la page d'installation crée le compte administrateur (une seule fois).
+   Le tableau de bord propose ensuite « Charger ces 11 produits » (liste `prisma/epicerie-data.ts`,
+   photos comprises). En ligne de commande, c'est `npm run admin:create` puis `npm run db:seed:epicerie`.
 4. Domaine : ajouter `epicerie.barriolatino.fr` dans Vercel, puis l'enregistrement
    CNAME indiqué chez le registraire. Mettre à jour `NEXT_PUBLIC_SITE_URL`.
 
