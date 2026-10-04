@@ -5,6 +5,7 @@ import { randomBytes } from "node:crypto";
 import sharp from "sharp";
 
 import { IMAGE_WIDTHS } from "./media-url";
+import { db } from "./db";
 
 // Chaque image est stockée une fois, en WebP, dans trois largeurs.
 
@@ -22,6 +23,20 @@ const localDriver: Driver = {
   },
   async remove(file) {
     await unlink(path.join(localDir, file)).catch(() => {});
+  },
+};
+
+// Images dans la base de données : aucun réglage nécessaire, servies par /media/….
+const databaseDriver: Driver = {
+  async put(file, data, contentType) {
+    await db.storedFile.upsert({
+      where: { key: file },
+      update: { data: new Uint8Array(data), contentType },
+      create: { key: file, data: new Uint8Array(data), contentType },
+    });
+  },
+  async remove(file) {
+    await db.storedFile.deleteMany({ where: { key: file } });
   },
 };
 
@@ -62,14 +77,18 @@ export function usesSupabaseStorage() {
 
 function driver(): Driver {
   if (usesSupabaseStorage()) return supabaseDriver();
-  // Sur Vercel, le disque n'est pas modifiable : expliquer ce qui manque.
-  if (process.env.VERCEL) {
-    const missing = ["SUPABASE_URL", "SUPABASE_SERVICE_ROLE_KEY"].filter((n) => !envValue(n));
-    throw new Error(
-      `Stockage des photos non configuré : variable${missing.length > 1 ? "s" : ""} ${missing.join(" et ")} absente${missing.length > 1 ? "s" : ""} ou vide${missing.length > 1 ? "s" : ""} sur Vercel (vérifiez le nom exact et l'environnement Production, puis redéployez)`,
-    );
-  }
+  const choice = envValue("STORAGE_DRIVER").toLowerCase();
+  if (choice === "local" && !process.env.VERCEL) return localDriver;
+  // Sur Vercel (disque non modifiable) ou sur demande : la base de données.
+  if (process.env.VERCEL || choice === "database") return databaseDriver;
   return localDriver;
+}
+
+/** Adresse publique d'un fichier stocké chez Supabase (pour la redirection de /media). */
+export function supabasePublicUrl(file: string) {
+  if (!usesSupabaseStorage()) return null;
+  const url = envValue("SUPABASE_URL").replace(/\/+$/, "");
+  return `${url}/storage/v1/object/public/${envValue("SUPABASE_BUCKET") || "media"}/${file}`;
 }
 
 export type ProcessedImage = { key: string; width: number; height: number; blurData: string };

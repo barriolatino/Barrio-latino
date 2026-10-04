@@ -241,3 +241,11 @@ model AdminSession {
   createdAt DateTime  @default(now())
   user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+/// Fichiers d'images stockés dans la base, quand aucun stockage externe n'est configuré
+model StoredFile {
+  key         String   @id
+  contentType String
+  data        Bytes
+  createdAt   DateTime @default(now())
+}
