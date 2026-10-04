@@ -26,10 +26,13 @@ const localDriver: Driver = {
 };
 
 // Supabase Storage via son API REST : pas de SDK, la clé service reste côté serveur.
+/** Valeur de variable nettoyée (espaces, guillemets copiés par erreur). */
+const envValue = (name: string) => (process.env[name] ?? "").trim().replace(/^["']|["']$/g, "").trim();
+
 function supabaseDriver(): Driver {
-  const url = process.env.SUPABASE_URL!;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-  const bucket = process.env.SUPABASE_BUCKET ?? "media";
+  const url = envValue("SUPABASE_URL").replace(/\/+$/, "");
+  const key = envValue("SUPABASE_SERVICE_ROLE_KEY");
+  const bucket = envValue("SUPABASE_BUCKET") || "media";
   const headers = { Authorization: `Bearer ${key}`, apikey: key };
   return {
     async put(file, data, contentType) {
@@ -38,7 +41,10 @@ function supabaseDriver(): Driver {
         headers: { ...headers, "Content-Type": contentType, "x-upsert": "true", "Cache-Control": "31536000" },
         body: new Uint8Array(data),
       });
-      if (!res.ok) throw new Error(`Envoi de l'image impossible (${res.status})`);
+      if (!res.ok) {
+        const detail = (await res.text().catch(() => "")).slice(0, 200);
+        throw new Error(`Envoi de la photo vers Supabase refusé (${res.status}) ${detail}`.trim());
+      }
     },
     async remove(file) {
       await fetch(`${url}/storage/v1/object/${bucket}/${file}`, { method: "DELETE", headers });
@@ -46,7 +52,15 @@ function supabaseDriver(): Driver {
   };
 }
 
-const driver = () => (process.env.STORAGE_DRIVER === "supabase" ? supabaseDriver() : localDriver);
+// Supabase dès que ses identifiants sont présents (sauf STORAGE_DRIVER=local) ;
+// le disque local ne sert qu'en développement.
+export function usesSupabaseStorage() {
+  const choice = envValue("STORAGE_DRIVER").toLowerCase();
+  if (choice === "local") return false;
+  return choice === "supabase" || (!!envValue("SUPABASE_URL") && !!envValue("SUPABASE_SERVICE_ROLE_KEY"));
+}
+
+const driver = () => (usesSupabaseStorage() ? supabaseDriver() : localDriver);
 
 export type ProcessedImage = { key: string; width: number; height: number; blurData: string };
 
