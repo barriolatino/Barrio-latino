@@ -17,12 +17,6 @@ import { SITE_URL } from "@/lib/site-url";
 
 type Props = { params: Promise<{ slug: string }> };
 
-// Fiches générées à la première visite puis servies depuis le cache,
-// invalidées à chaque modification dans l'administration.
-export const revalidate = 3600;
-export async function generateStaticParams() {
-  return [];
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const [p, s] = await Promise.all([getProduct((await params).slug), getSettings()]);
