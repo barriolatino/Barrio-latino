@@ -4,7 +4,12 @@ import { PrismaClient } from "@/generated/prisma/client";
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 function createClient() {
-  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! });
+  // Peu de connexions par processus : le pooler Supabase limite le nombre de
+  // clients, et le build Next.js lance plusieurs processus en parallèle.
+  const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL!,
+    max: Number(process.env.DATABASE_POOL_MAX ?? 3),
+  });
   return new PrismaClient({ adapter });
 }
 

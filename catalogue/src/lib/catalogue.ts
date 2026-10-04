@@ -63,7 +63,10 @@ export type CardProduct = ReturnType<typeof toCard>;
 
 export const getSettings = unstable_cache(
   async () => {
-    const s = await db.siteSettings.upsert({ where: { id: 1 }, update: {}, create: { id: 1 } });
+    // Lecture seule : la ligne est créée par la migration (pas d'écriture pendant le rendu).
+    const s =
+      (await db.siteSettings.findUnique({ where: { id: 1 } })) ??
+      (await db.siteSettings.upsert({ where: { id: 1 }, update: {}, create: { id: 1 } }));
     const logo = s.logoMediaId ? await db.media.findUnique({ where: { id: s.logoMediaId } }) : null;
     return { ...s, updatedAt: s.updatedAt.toISOString(), logoKey: logo?.key ?? null };
   },
