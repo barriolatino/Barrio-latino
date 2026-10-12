@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { LoginForm } from "./login-form";
@@ -18,6 +19,9 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
         <h1 className="mt-4 text-2xl font-bold">Administration du catalogue</h1>
         <p className="mt-1 text-sm text-ink-muted">Connectez-vous pour modifier les produits et les prix.</p>
         <LoginForm next={next ?? "/admin"} />
+        <p className="mt-4 text-center text-sm">
+          <Link href="/admin/mot-de-passe" className="text-navy underline underline-offset-4">Mot de passe oublié ?</Link>
+        </p>
       </div>
     </div>
   );
