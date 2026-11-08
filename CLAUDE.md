@@ -45,7 +45,8 @@ dépôt est exactement ce qui est servi.
   deux `data-note`, deux `data-nb-avis`, meta description, og:description,
   JSON-LD `aggregateRating`). Ne jamais les modifier à la main :
   `python3 outils/maj-avis-google.py --note 4.8 --nombre 299`. Une tâche
-  planifiée Claude relève la fiche Google chaque jour et lance ce script.
+  planifiée Claude relève la fiche Google chaque jour, lance ce script et
+  pousse sur `main` (seule branche publiée depuis le 8 novembre 2026).
 - **Les horaires sont écrits à trois endroits** qu'il faut modifier ensemble :
   le tableau `<dl class="hours">`, le JSON-LD `openingHoursSpecification` et
   la constante `SERVICES` de `main.js` (minutes depuis minuit).
