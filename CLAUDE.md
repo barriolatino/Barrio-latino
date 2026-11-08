@@ -41,6 +41,11 @@ dépôt est exactement ce qui est servi.
 - **`[hidden]` est déclaré `!important`** dans `style.css` : plusieurs
   composants portent `display:flex` ou `display:grid`, qui l'emporterait
   sinon et laisserait visible un élément masqué par le JS.
+- **La note et le nombre d'avis Google sont écrits à six endroits** (`avis.json`,
+  deux `data-note`, deux `data-nb-avis`, meta description, og:description,
+  JSON-LD `aggregateRating`). Ne jamais les modifier à la main :
+  `python3 outils/maj-avis-google.py --note 4.8 --nombre 299`. Une tâche
+  planifiée Claude relève la fiche Google chaque jour et lance ce script.
 - **Les horaires sont écrits à trois endroits** qu'il faut modifier ensemble :
   le tableau `<dl class="hours">`, le JSON-LD `openingHoursSpecification` et
   la constante `SERVICES` de `main.js` (minutes depuis minuit).
