@@ -50,6 +50,13 @@ dépôt est exactement ce qui est servi.
 - **Les horaires sont écrits à trois endroits** qu'il faut modifier ensemble :
   le tableau `<dl class="hours">`, le JSON-LD `openingHoursSpecification` et
   la constante `SERVICES` de `main.js` (minutes depuis minuit).
+- **Fermetures exceptionnelles** : constante `FERMETURES` de `main.js` (dates
+  ISO), lue par le statut « Ouvert / Fermé » et le calendrier de réservation.
+  L'encadré « Horaires des fêtes » (`[data-fetes]` dans `index.html`) se
+  masque seul après sa date `data-jusqua` ; le retirer ensuite avec ses
+  règles `.fetes` de `style.css`. Si le samedi 26 décembre 2026 devient
+  fermé : ajouter `'2026-12-26'` à `FERMETURES` et mettre « Fermé » dans
+  l'encadré.
 
 ## Reste à compléter par le propriétaire
 

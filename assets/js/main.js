@@ -130,6 +130,18 @@
   /* Minutes depuis minuit. 12h30 = 750, 15h00 = 900, 19h00 = 1140, 22h00 = 1320 */
   var SERVICES = { 3: [[750, 900], [1140, 1320]], 4: [[750, 900], [1140, 1320]],
                    5: [[750, 900], [1140, 1320]], 6: [[750, 900], [1140, 1320]] };
+  /* Fermetures exceptionnelles (dates de Paris) : statut et calendrier de reservation.
+     L'encadre [data-fetes] se masque apres sa date data-jusqua. */
+  var FERMETURES = ['2026-12-25', '2026-12-31', '2027-01-01'];
+
+  function addDays(isoStr, n) {
+    var d = new Date(isoStr + 'T12:00:00Z');
+    d.setUTCDate(d.getUTCDate() + n);
+    return d.toISOString().slice(0, 10);
+  }
+  function servicesLe(isoStr, dow) {
+    return FERMETURES.indexOf(isoStr) > -1 ? [] : (SERVICES[dow] || []);
+  }
 
   function parisNow() {
     try {
@@ -162,9 +174,10 @@
     $$('.hours [data-dow]').forEach(function (row) {
       if (parseInt(row.getAttribute('data-dow'), 10) === now.dow) row.classList.add('is-today');
     });
+    $$('[data-fetes]').forEach(function (n) { n.hidden = now.iso > n.getAttribute('data-jusqua'); });
     if (!box) return;
 
-    var today = SERVICES[now.dow] || [];
+    var today = servicesLe(now.iso, now.dow);
     var open = today.some(function (s) { return now.min >= s[0] && now.min < s[1]; });
     var label;
 
@@ -175,7 +188,7 @@
       var next = null;
       for (var i = 0; i <= 7 && !next; i++) {
         var d = (now.dow + i) % 7;
-        var svc = SERVICES[d] || [];
+        var svc = servicesLe(addDays(now.iso, i), d);
         for (var j = 0; j < svc.length; j++) {
           if (i > 0 || svc[j][0] > now.min) { next = { d: d, m: svc[j][0], i: i }; break; }
         }
@@ -589,7 +602,7 @@
       for (var d = 1; d <= days; d++) {
         var date = new Date(view.getFullYear(), view.getMonth(), d);
         var is = iso(date);
-        var ok = OUVERTS.indexOf(date.getDay()) > -1 && is >= todayIso;
+        var ok = OUVERTS.indexOf(date.getDay()) > -1 && is >= todayIso && FERMETURES.indexOf(is) < 0;
         var btn = el('button', {
           type: 'button', class: 'cal-day', text: String(d),
           'data-iso': is,
