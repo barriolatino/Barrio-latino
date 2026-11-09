@@ -8,6 +8,8 @@
 
   var WHATSAPP = '33763920998';
   var EMAIL = 'barriolatino.contact@gmail.com';
+  /* Copie des réservations vers Gmail (Formspree), lue par Claude pour l'agenda. Vide = désactivé. */
+  var FORMSPREE = '';
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -709,6 +711,7 @@
         nom: name,
         personnes: people,
         date: labelFr(chosen),
+        iso: chosen,
         creneau: slot.getAttribute('data-label'),
         tel: phone,
         note: $('#resNote').value.trim()
@@ -727,11 +730,26 @@
       return t;
     }
 
+    /* Envoi silencieux, après l'ouverture de WhatsApp : un échec ne bloque jamais le client. */
+    function copie(r) {
+      if (!FORMSPREE || !window.fetch) return;
+      fetch('https://formspree.io/f/' + FORMSPREE, {
+        method: 'POST', keepalive: true,
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Réservation site — ' + r.nom + ' — ' + r.date,
+          nom: r.nom, personnes: r.personnes, date: r.iso, service: r.creneau,
+          telephone: r.tel, precisions: r.note
+        })
+      }).catch(function () {});
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var r = validate();
       if (!r) return;
       window.open('https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(message(r)), '_blank', 'noopener');
+      copie(r);
       var ok = $('#resDone');
       if (ok) { ok.hidden = false; ok.focus(); }
     });
