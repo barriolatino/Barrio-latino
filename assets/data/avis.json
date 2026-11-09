@@ -5,33 +5,33 @@
   "lien_tous_les_avis": "https://maps.app.goo.gl/Qasq3LsifsPPeCmY7",
   "avis": [
     {
-      "auteur": "Dodie M.",
+      "auteur": "Sofia M.",
       "etoiles": 5,
-      "texte": "Vraiment délicieux du début à la fin. Un vrai voyage gustatif !",
+      "texte": "Le chicharrón de porc était juste parfait : croustillant à l’extérieur, tendre à l’intérieur, un vrai régal.",
       "local_guide": false
     },
     {
-      "auteur": "Fella S.",
+      "auteur": "Alexis B.",
       "etoiles": 5,
-      "texte": "Les meilleurs tacos et quesadillas de notre vie.",
-      "local_guide": true
+      "texte": "Une véritable escapade gourmande aux saveurs latines !",
+      "local_guide": false
     },
     {
-      "auteur": "Stef R.",
+      "auteur": "Fleur T.",
       "etoiles": 5,
-      "texte": "Le meilleur Pisco Sour que j’ai goûté, un ceviche absolument délicieux.",
-      "local_guide": true
+      "texte": "La cuisine copieuse et très bonne. Vous en avez pour votre argent. Le cocktail pisco sour est un délice",
+      "local_guide": false
     },
     {
-      "auteur": "Meera P.",
+      "auteur": "Marie D.",
       "etoiles": 5,
-      "texte": "L’accueil est irréprochable, les plats sont excellents et les cocktails sont à tomber !",
-      "local_guide": true
+      "texte": "Les plats sont incroyablement bons ! Les boissons aussi. L’accueil tout autant.",
+      "local_guide": false
     },
     {
-      "auteur": "Joshua & Stephanie",
+      "auteur": "Dodie M.",
       "etoiles": 5,
-      "texte": "Le meilleur repas latino que nous ayons mangé en France.",
+      "texte": "C’était vraiment délicieux du début à la fin. Un vrai voyage gustatif !",
       "local_guide": false
     }
   ]

@@ -68,6 +68,16 @@ tâche planifiée Claude crée alors l'événement dans Google Agenda et range
 l'e-mail sous le libellé « Agenda ». La page des mentions légales décrit ce
 transfert : la mettre à jour si le mécanisme change.
 
+## Carrousel d'avis (rotation hebdomadaire)
+
+`outils/avis-reserve.json` garde des extraits d'avis Google 5 étoiles, copiés
+mot pour mot (auteur en prénom + initiale). `python3 -I outils/rotation-avis.py`
+en affiche 5 différents chaque semaine ISO dans `assets/data/avis.json`, sans
+toucher à la note ni au nombre d'avis. Une tâche planifiée Claude ajoute chaque
+lundi les nouveaux avis 5 étoiles, lance la rotation et pousse sur `main`.
+Ne jamais reformuler un extrait ; seule une faute de frappe évidente peut être
+corrigée.
+
 ## Allergènes
 
 `assets/docs/tableau-allergenes.pdf` (plat par plat) et `assets/docs/affiche-allergenes.pdf`
