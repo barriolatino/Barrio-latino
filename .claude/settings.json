@@ -7,16 +7,31 @@
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
-      "source": { "source": "github", "repo": "obra/superpowers-marketplace" }
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
     },
     "impeccable": {
-      "source": { "source": "github", "repo": "pbakaus/impeccable" }
+      "source": {
+        "source": "github",
+        "repo": "pbakaus/impeccable"
+      }
     },
     "one-skill-to-rule-them-all": {
-      "source": { "source": "github", "repo": "rebelytics/one-skill-to-rule-them-all" }
+      "source": {
+        "source": "github",
+        "repo": "rebelytics/one-skill-to-rule-them-all"
+      }
     },
     "thedotmack": {
-      "source": { "source": "github", "repo": "thedotmack/claude-mem" }
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
     }
+  },
+  "env": {
+    "DO_NOT_TRACK": "1"
   }
 }
