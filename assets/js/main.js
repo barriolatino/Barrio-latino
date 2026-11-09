@@ -9,7 +9,7 @@
   var WHATSAPP = '33763920998';
   var EMAIL = 'barriolatino.contact@gmail.com';
   /* Copie des réservations vers Gmail (Formspree), lue par Claude pour l'agenda. Vide = désactivé. */
-  var FORMSPREE = '';
+  var FORMSPREE = 'xkjjljal';
   var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   var $ = function (s, r) { return (r || document).querySelector(s); };

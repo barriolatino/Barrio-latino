@@ -58,6 +58,16 @@ dépôt est exactement ce qui est servi.
   fermé : ajouter `'2026-12-26'` à `FERMETURES` et mettre « Fermé » dans
   l'encadré.
 
+## Réservations → agenda
+
+Le formulaire ouvre WhatsApp et envoie en parallèle une copie à
+barriolatino.contact@gmail.com via Formspree (constante `FORMSPREE` de
+`main.js`, formulaire `xkjjljal`, 50 envois/mois en gratuit ; vide = désactivé).
+Clément met une étoile à l'e-mail quand la réservation est confirmée ; une
+tâche planifiée Claude crée alors l'événement dans Google Agenda et range
+l'e-mail sous le libellé « Agenda ». La page des mentions légales décrit ce
+transfert : la mettre à jour si le mécanisme change.
+
 ## Reste à compléter par le propriétaire
 
 - **Médiateur de la consommation** : le restaurant n'a adhéré à aucun
