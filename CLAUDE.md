@@ -68,6 +68,14 @@ tâche planifiée Claude crée alors l'événement dans Google Agenda et range
 l'e-mail sous le libellé « Agenda ». La page des mentions légales décrit ce
 transfert : la mettre à jour si le mécanisme change.
 
+## Allergènes
+
+`assets/docs/tableau-allergenes.pdf` (plat par plat) et `assets/docs/affiche-allergenes.pdf`
+(les 14 allergènes) sont liés sous la carte et dans le pied de page. Ils sont
+générés depuis le dépôt claude-studio (`templates/affiches/allergenes/`) :
+toute modification de recette ou de carte impose de régénérer et de recopier
+les deux PDF.
+
 ## Reste à compléter par le propriétaire
 
 - **Médiateur de la consommation** : le restaurant n'a adhéré à aucun

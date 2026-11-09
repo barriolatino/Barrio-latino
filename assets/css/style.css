@@ -488,6 +488,7 @@ strong{font-weight:700}
   display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
 }
 .menu-foot p{margin:0;font-size:.87rem;color:var(--muted);max-width:44ch}
+.menu-foot p + p{margin-top:6px}
 
 /* =========================  GALERIE  =================================== */
 
