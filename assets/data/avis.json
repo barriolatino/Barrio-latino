@@ -1,7 +1,7 @@
 {
   "_mode_emploi": "Pour modifier les avis : editez ce fichier. \"note\" et \"nombre\" alimentent le bloc de note globale et les donnees structurees SEO. Chaque avis : \"auteur\" (prenom + initiale), \"texte\", \"etoiles\" (1 a 5) et \"local_guide\": true pour afficher le badge.",
   "note": 4.8,
-  "nombre": 299,
+  "nombre": 300,
   "lien_tous_les_avis": "https://maps.app.goo.gl/Qasq3LsifsPPeCmY7",
   "avis": [
     {
