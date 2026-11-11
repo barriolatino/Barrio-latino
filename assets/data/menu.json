@@ -129,7 +129,7 @@
         {
           "nom": "Pisco Sour",
           "prix": "9 €",
-          "description": "Le classique péruvien : pisco, citron vert et blanc d’œuf."
+          "description": "Le classique péruvien : pisco, citron vert, sirop de sucre et blanc d’œuf."
         },
         {
           "nom": "Margarita",
@@ -139,7 +139,7 @@
         {
           "nom": "Piña Colada",
           "prix": "9 €",
-          "description": "Rhum, ananas et lait de coco."
+          "description": "Rhum, ananas et crème de coco."
         },
         {
           "nom": "Mojito",
