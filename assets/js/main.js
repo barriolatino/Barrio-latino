@@ -129,9 +129,9 @@
      3. Horaires : jour en cours + « ouvert / ferme » a l'heure de Paris
      ====================================================================== */
   var JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
-  /* Minutes depuis minuit. 12h30 = 750, 15h00 = 900, 19h00 = 1140, 22h00 = 1320 */
-  var SERVICES = { 3: [[750, 900], [1140, 1320]], 4: [[750, 900], [1140, 1320]],
-                   5: [[750, 900], [1140, 1320]], 6: [[750, 900], [1140, 1320]] };
+  /* Minutes depuis minuit. 12h30 = 750, 14h30 = 870, 19h00 = 1140, 22h00 = 1320 */
+  var SERVICES = { 3: [[750, 870], [1140, 1320]], 4: [[750, 870], [1140, 1320]],
+                   5: [[750, 870], [1140, 1320]], 6: [[750, 870], [1140, 1320]] };
   /* Fermetures exceptionnelles (dates de Paris) : statut et calendrier de reservation.
      L'encadre [data-fetes] se masque apres sa date data-jusqua. */
   var FERMETURES = ['2026-12-25', '2026-12-31', '2027-01-01'];

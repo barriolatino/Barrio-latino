@@ -79,7 +79,7 @@ Les horaires apparaissent à **trois endroits** qu'il faut changer ensemble :
    `openingHoursSpecification` tout en bas du fichier.
 3. `assets/js/main.js`, constante `SERVICES` (~ligne 150). C'est elle qui calcule
    l'indicateur « Ouvert maintenant / Fermé » à l'heure de Paris. Les horaires
-   y sont en **minutes depuis minuit** : `12h30 = 750`, `15h00 = 900`,
+   y sont en **minutes depuis minuit** : `12h30 = 750`, `14h30 = 870`,
    `19h00 = 1140`, `22h00 = 1320`.
 
 Les jours ouverts du **calendrier de réservation** se règlent dans le même
