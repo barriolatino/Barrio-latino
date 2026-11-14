@@ -464,16 +464,52 @@
         </div>
 
         <div class="field">
-          <span class="field-label" id="slotLabel">Service <span class="req" aria-hidden="true">*</span></span>
-          <div class="slots" role="group" aria-labelledby="slotLabel">
-            <label class="slot">
-              <input type="radio" name="creneau" value="dejeuner" data-label="Déjeuner (12h30 – 14h00)">
-              <span>Déjeuner <small>12h30 – 14h00</small></span>
-            </label>
-            <label class="slot">
-              <input type="radio" name="creneau" value="diner" data-label="Dîner (19h00 – 21h30)">
-              <span>Dîner <small>19h00 – 21h30</small></span>
-            </label>
+          <span class="field-label" id="slotLabel">Heure d’arrivée <span class="req" aria-hidden="true">*</span></span>
+          <div class="slots-service" role="group" aria-labelledby="slotLabel slotMidi">
+            <span class="slots-titre" id="slotMidi">Déjeuner</span>
+            <div class="slots slots--heures" style="--n:4">
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="12:30" data-label="Déjeuner, 12h30">
+                <span>12h30</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="13:00" data-label="Déjeuner, 13h00">
+                <span>13h00</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="13:30" data-label="Déjeuner, 13h30">
+                <span>13h30</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="14:00" data-label="Déjeuner, 14h00">
+                <span>14h00</span>
+              </label>
+            </div>
+          </div>
+          <div class="slots-service" role="group" aria-labelledby="slotLabel slotSoir">
+            <span class="slots-titre" id="slotSoir">Dîner</span>
+            <div class="slots slots--heures" style="--n:5">
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="19:00" data-label="Dîner, 19h00">
+                <span>19h00</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="19:30" data-label="Dîner, 19h30">
+                <span>19h30</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="20:00" data-label="Dîner, 20h00">
+                <span>20h00</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="20:30" data-label="Dîner, 20h30">
+                <span>20h30</span>
+              </label>
+              <label class="slot slot--heure">
+                <input type="radio" name="creneau" value="21:00" data-label="Dîner, 21h00">
+                <span>21h00</span>
+              </label>
+            </div>
           </div>
           <p class="err" id="err-creneau" role="alert"></p>
         </div>

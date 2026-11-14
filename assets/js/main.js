@@ -692,7 +692,7 @@
       if (!chosen) { showError('resDate', 'Choisissez une date dans le calendrier (mercredi à samedi).'); bad.push('resDate'); }
       else clearError('resDate');
 
-      if (!slot) { showError('creneau', 'Choisissez le déjeuner ou le dîner.'); bad.push('creneau'); }
+      if (!slot) { showError('creneau', 'Choisissez une heure d’arrivée.'); bad.push('creneau'); }
       else clearError('creneau');
 
       if (!/^[0-9+\s().-]{8,}$/.test(phone)) {
