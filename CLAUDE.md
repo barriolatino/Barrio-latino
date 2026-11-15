@@ -58,6 +58,17 @@ dépôt est exactement ce qui est servi.
   fermé : ajouter `'2026-12-26'` à `FERMETURES` et mettre « Fermé » dans
   l'encadré.
 
+## Animations (mises en ligne le 15 novembre 2026)
+
+Toutes coupées en mouvement réduit (`prefers-reduced-motion`) ; aucune ne décale la mise en page.
+
+- **Logo** : `@keyframes logo-leve` / `nom-glisse` sur `.brand` (masque + opacité, jamais de déformation).
+- **Guirlande** : `<animateTransform type="skewX">` dans chaque fanion du motif `#pk-flags` ; `main.js` fige le SVG (`pauseAnimations`) en mouvement réduit.
+- **Apparitions** : `.reveal` avec courbe `cubic-bezier(.22,1,.36,1)` et décalage `--d` posé par `main.js` (80 ms, 4 au plus).
+- **Boutons, onglets, vignettes** : enfoncement au toucher (`:active`), survol réservé à `(hover:hover)`.
+- **Note « 4,8 » en points** : canvas décoratif posé sur `.rating-big` à l'arrivée dans la section, puis retiré ; le texte `[data-note]` reste dans la page. Il suit donc automatiquement `maj-avis-google.py`.
+- **Vidéo du traiteur** : `assets/video/traiteur-ambiance.mp4` (557 ko, 960×540, sans son, fondus bleu nuit pour boucler), créée à partir de 3 photos de plats sans personne. Chargée par `main.js` seulement à l'écran, jamais en économie de données ni en mouvement réduit ; sinon l'image `traiteur-ambiance.webp` reste. Gianella ne doit jamais apparaître dans une vidéo.
+
 ## Réservations → agenda
 
 Le formulaire ouvre WhatsApp et envoie en parallèle une copie à
