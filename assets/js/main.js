@@ -123,6 +123,89 @@
       }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
       revealables.forEach(function (n) { io.observe(n); });
     }
+    /* Décalage : les éléments voisins apparaissent l'un après l'autre (80 ms, 4 au plus) */
+    revealables.forEach(function (n) {
+      var freres = $$(':scope > .reveal', n.parentNode), i = freres.indexOf(n);
+      if (i > 0) n.style.setProperty('--d', Math.min(i, 4) * 80 + 'ms');
+    });
+  }
+
+  /* ======================================================================
+     2 bis. Animations (15 nov. 2026) : guirlande, note Google en points,
+     vidéo d'ambiance du traiteur. Rien ne bouge en mouvement réduit.
+     ====================================================================== */
+  /* Guirlande : les fanions ondulent par animation SVG ; on les fige si demandé */
+  $$('svg.picado').forEach(function (svg) {
+    function regle() { if (REDUCED.matches) { svg.pauseAnimations(); svg.setCurrentTime(0); } else svg.unpauseAnimations(); }
+    if (svg.pauseAnimations) { regle(); if (REDUCED.addEventListener) REDUCED.addEventListener('change', regle); }
+  });
+
+  /* « 4,8 » : des points se rassemblent pour dessiner la note, puis le vrai texte revient.
+     Le texte reste dans la page (lecteurs d'écran, Google) ; le canvas est décoratif. */
+  var note = $('.rating-big');
+  if (note && !REDUCED.matches && 'IntersectionObserver' in window && window.requestAnimationFrame) {
+    var obsNote = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      obsNote.disconnect();
+      setTimeout(function () { dessineNote(note); }, 250);
+    }, { threshold: 0.6 });
+    obsNote.observe(note);
+  }
+  function dessineNote(box) {
+    var span = box.querySelector('[data-note]');
+    if (!span) return;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var c = document.createElement('canvas'), W = box.offsetWidth + 120, H = box.offsetHeight + 100;
+    c.width = W * dpr; c.height = H * dpr; c.setAttribute('aria-hidden', 'true');
+    var g = c.getContext('2d'); g.scale(dpr, dpr);
+    /* Forme : le texte « 4,8 » dessiné avec la police réelle, à sa position exacte */
+    var cs = getComputedStyle(box), r0 = box.getBoundingClientRect(), r1 = span.getBoundingClientRect();
+    var off = document.createElement('canvas'); off.width = W; off.height = H;
+    var o = off.getContext('2d');
+    o.font = cs.fontWeight + ' ' + cs.fontSize + ' ' + cs.fontFamily; o.textBaseline = 'alphabetic'; o.fillStyle = '#000';
+    var x0 = r1.left - r0.left + 60, base = r1.top - r0.top + 50 + r1.height * 0.8;
+    o.fillText(span.textContent, x0, base);
+    var d = o.getImageData(0, 0, W, H).data, pts = [], pas = 2;
+    for (var y = 0; y < H; y += pas) for (var x = 0; x < W; x += pas) if (d[(y * W + x) * 4 + 3] > 120) pts.push([x, y]);
+    if (!pts.length) return;
+    var graine = 7, alea = function () { graine = (graine * 16807) % 2147483647; return graine / 2147483647; };
+    var P = pts.map(function (p) {
+      var a = alea() * Math.PI * 2, rayon = 25 + alea() * 55;
+      return { x: p[0], y: p[1], sx: p[0] + Math.cos(a) * rayon, sy: p[1] + Math.sin(a) * rayon, d: alea() * 0.35, o: alea() < 0.12 };
+    });
+    box.appendChild(c); box.classList.add('points-actifs');
+    var t0 = null, DUREE = 1400;
+    var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+    (function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var t = (ts - t0) / DUREE; g.clearRect(0, 0, W, H);
+      P.forEach(function (p) {
+        var e = ease(Math.max(0, Math.min(1, (t - p.d) / 0.65)));
+        g.globalAlpha = 0.35 + 0.65 * e;
+        g.fillStyle = p.o ? '#F2811D' : '#12173A';
+        g.fillRect(p.sx + (p.x - p.sx) * e - 0.9, p.sy + (p.y - p.sy) * e - 0.9, 1.8, 1.8);
+      });
+      if (t < 1) requestAnimationFrame(frame);
+      else { box.classList.remove('points-actifs'); setTimeout(function () { box.removeChild(c); }, 500); }
+    })(performance.now());
+  }
+
+  /* Vidéo du traiteur : chargée seulement à l'écran, jamais en mode économie de données
+     ni en mouvement réduit ; l'image fixe reste sinon. */
+  var film = $('[data-film]');
+  var econome = navigator.connection && (navigator.connection.saveData || /(^|-)2g/.test(navigator.connection.effectiveType || ''));
+  if (film && !REDUCED.matches && !econome && 'IntersectionObserver' in window) {
+    var obsFilm = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting) return;
+      obsFilm.disconnect();
+      var v = el('video', { muted: '', loop: '', playsinline: '', preload: 'auto', 'aria-hidden': 'true', tabindex: '-1' });
+      v.muted = true;
+      v.src = film.getAttribute('data-film');
+      v.addEventListener('playing', function () { v.classList.add('joue'); });
+      film.appendChild(v);
+      var p = v.play(); if (p && p.catch) p.catch(function () {});
+    }, { rootMargin: '200px 0px' });
+    obsFilm.observe(film);
   }
 
   /* ======================================================================
