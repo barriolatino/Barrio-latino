@@ -386,6 +386,7 @@ strong{font-weight:700}
   box-shadow:var(--shadow-lg);position:relative;width:100%;max-width:320px;
 }
 .polaroid img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px}
+.polaroid--paysage img{aspect-ratio:4/3}
 .polaroid figcaption{
   position:absolute;left:14px;right:14px;bottom:13px;
   font-family:Fraunces,serif;font-size:.84rem;color:var(--muted);

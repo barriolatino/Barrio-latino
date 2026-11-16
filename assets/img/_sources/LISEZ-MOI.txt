@@ -10,6 +10,7 @@ uniquement à régénérer les WebP et JPG si un recadrage doit changer.
   la-montagne-15-novembre-2025-original.jpg     1140 x  950
   lomo-saltado-original.jpg                     1200 x 1600  (photo de Clément, 16 nov. 2026 ;
                                                 assiette détourée pour plats/lomo-saltado)
+  salle-mur-rose-original.png                   1448 x 1086  (photo de Clément, 16 nov. 2026)
   lomo-saltado-ancienne-photo.jpg               1100 x  880  (photo Uber Eats remplacée)
 
 Pour régénérer une image optimisée, voir outils/optimiser-image.sh

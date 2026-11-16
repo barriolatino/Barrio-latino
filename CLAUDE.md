@@ -107,8 +107,8 @@ les deux PDF.
   commentaire `À COMPLÉTER` dans `mentions-legales.html` tient le bloc prêt.
   Ne pas remettre de `<span class="todo">` visible sur une page publique.
   Tout le reste des informations légales est renseigné.
-- **Photos manquantes** : la salle sans personne et la devanture restent en
-  basse résolution ; les desserts, les tequeños et la bandeja n'ont pas de
+- **Photos manquantes** : la devanture reste en basse résolution (retirée de
+  « Notre histoire » le 16 nov. 2026, remplacée par `salle-mur-rose`, la salle sans personne) ; les desserts, les tequeños et la bandeja n'ont pas de
   photo de carte. Dix plats sur trente-six sont illustrés.
 
 Déjà réglés : lien Uber Eats, stationnement, accessibilité (dérogation),
