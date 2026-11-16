@@ -5,33 +5,33 @@
   "lien_tous_les_avis": "https://maps.app.goo.gl/Qasq3LsifsPPeCmY7",
   "avis": [
     {
-      "auteur": "Sofia M.",
+      "auteur": "Maxime T.",
       "etoiles": 5,
-      "texte": "Le chicharrón de porc était juste parfait : croustillant à l’extérieur, tendre à l’intérieur, un vrai régal.",
+      "texte": "Les Nachotes c’était une tuerie, je pense je reviendrais ici juste pour manger ça honnêtement.",
       "local_guide": false
     },
     {
-      "auteur": "Alexis B.",
+      "auteur": "Katia E.",
       "etoiles": 5,
-      "texte": "Une véritable escapade gourmande aux saveurs latines !",
+      "texte": "Absolument parfait, ceviche comme au Pérou, l’ambiance au top et le service parfait",
       "local_guide": false
     },
     {
-      "auteur": "Fleur T.",
+      "auteur": "Alex M.",
       "etoiles": 5,
-      "texte": "La cuisine copieuse et très bonne. Vous en avez pour votre argent. Le cocktail pisco sour est un délice",
+      "texte": "Une nourriture excellente, une ambiance typique et un patron généreux.",
       "local_guide": false
     },
     {
-      "auteur": "Marie D.",
+      "auteur": "Michael J.",
       "etoiles": 5,
-      "texte": "Les plats sont incroyablement bons ! Les boissons aussi. L’accueil tout autant.",
+      "texte": "Expérience au top, personnel motivé, agréable et à l’écoute",
       "local_guide": false
     },
     {
-      "auteur": "Dodie M.",
+      "auteur": "Christophe M.",
       "etoiles": 5,
-      "texte": "C’était vraiment délicieux du début à la fin. Un vrai voyage gustatif !",
+      "texte": "Une très belle invitation à un voyage culinaire en Amérique du Sud.",
       "local_guide": false
     }
   ]
