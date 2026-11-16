@@ -4,6 +4,10 @@ Restaurant latino-américain à Clermont-Ferrand. Site statique publié par
 GitHub Pages sur la branche `main`, dossier racine, à l'adresse
 `https://barriolatino.github.io/Barrio-latino/`.
 
+## Mémoire et reprise
+
+Commencer par `memory/HANDOFF.md` (état, décisions, tâches, automatisations du site). Mémoire globale commune : `~/.claude/global-memory/` (source `claude-studio/global-memory/`). Commandes : `/resume`, `/handoff`, `/memory-update`, `/automation-status`, `/automation-resume`. Dépôt public : rien de personnel ni de secret dans `memory/`.
+
 ## Architecture
 
 Site multi-fichiers sans framework ni étape de compilation : ce qui est dans le

@@ -33,5 +33,19 @@
   },
   "env": {
     "DO_NOT_TRACK": "1"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "d=\"${CLAUDE_PROJECT_DIR:-.}\"; g=\"$HOME/.claude/global-memory\"; [ -e \"$g\" ] || for s in \"$d/global-memory\" \"$d/../claude-studio/global-memory\" /home/user/claude-studio/global-memory; do [ -f \"$s/installer.sh\" ] && bash \"$s/installer.sh\" >/dev/null 2>&1 && break; done; [ -f \"$d/memory/HANDOFF.md\" ] && { echo \"=== Mémoire du projet (memory/HANDOFF.md) ===\"; sed -n 1,60p \"$d/memory/HANDOFF.md\"; echo \"Mémoire globale : $g · détail et vérifications : /resume\"; }; exit 0",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
   }
 }
