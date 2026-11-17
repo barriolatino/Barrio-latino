@@ -1,7 +1,6 @@
-# État — 2026-11-16 22 h 15 UTC
+# État — 2026-11-17 22 h 30 UTC
 
-- Avis Google → site : active (trig_019cmmGZJxcixKoXF66qcoKp) ; dernière exécution 16/11, aucun changement (4,8/5, 302 avis) ; prochaine 17/11.
-- Rotation avis : active (trig_01WowBLXMiwdEhWEsnP8PkdC) ; semaine 47 publiée le 16/11 ; prochaine le 23/11.
-- Les deux sont rattachées à la conversation du 16/11 au soir (`/automation-resume`) ; les anciennes copies sont désactivées.
-- GitHub Pages : dernier déploiement vérifié le 16/11 (photo de la salle servie).
-État complet et procédure de reprise : `claude-studio/memory/AUTOMATION_STATE.md`.
+- Avis Google → site : routine trig_01FbdRbWHLEdHybGCLeQCxwk, chaque jour à 9 h ; dernière mise à jour du site le 17/11 (302 → 303 avis, 4,8/5).
+- Rotation avis : routine trig_01N7kfD1nrTfEBxxiDU4zkZr, le lundi à 9 h ; prochaine le 23/11.
+- Routines claude.ai (conversation neuve, Sonnet) : rien à rattacher à une conversation.
+État complet : `claude-studio/memory/AUTOMATION_STATE.md`.
