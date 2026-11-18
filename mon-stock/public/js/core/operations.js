@@ -256,23 +256,25 @@ export function creerOperations(store, { maintenant = () => new Date() } = {}) {
       try {
         const problemes = [];
         let produitsVerifies = 0;
+        // Lecture groupée quand le magasin le permet (Notion : une dizaine de requêtes au lieu
+        // de deux par produit, sinon le serveur dépasse son temps limite).
+        const sommes = store.stocksTous ? await store.stocksTous() : null;
         for (const activite of Object.keys(ACTIVITES)) {
-          for (const p of await store.produits(activite)) {
+          const liste = store.produitsAvecStock ? await store.produitsAvecStock(activite) : await store.produits(activite);
+          for (const p of liste) {
             produitsVerifies++;
-            const somme = arrondi(await store.stock(activite, p.id));
+            const somme = sommes ? arrondi(sommes.get(`${activite}:${p.id}`) || 0) : arrondi(await store.stock(activite, p.id));
             if (somme < 0) {
               problemes.push({ gravite: "erreur", activite, produitId: p.id, message: `${p.nom} : stock négatif (${avecUnite(somme, p.unite)}).` });
             }
-            if (store.stockAffiche) {
-              const affiche = await store.stockAffiche(activite, p.id);
-              if (affiche !== null && arrondi(affiche) !== somme) {
-                problemes.push({
-                  gravite: "erreur",
-                  activite,
-                  produitId: p.id,
-                  message: `${p.nom} : Notion affiche ${avecUnite(affiche, p.unite)}, les mouvements validés donnent ${avecUnite(somme, p.unite)}.`,
-                });
-              }
+            const affiche = p.quantite !== undefined ? p.quantite : store.stockAffiche ? await store.stockAffiche(activite, p.id) : null;
+            if (affiche !== null && affiche !== undefined && arrondi(affiche) !== somme) {
+              problemes.push({
+                gravite: "erreur",
+                activite,
+                produitId: p.id,
+                message: `${p.nom} : Notion affiche ${avecUnite(affiche, p.unite)}, les mouvements validés donnent ${avecUnite(somme, p.unite)}.`,
+              });
             }
           }
         }

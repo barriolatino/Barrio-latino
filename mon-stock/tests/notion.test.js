@@ -175,3 +175,16 @@ test("le connecteur vise les trois bases de GESTION DES STOCKS", () => {
   assert.equal(BASES.epicerie, "41c46841-205f-819c-ac61-000b9e067240");
   assert.equal(BASES.historique, "41c46841-205f-8125-ae4c-000be3de819e");
 });
+
+test("contrôle : nombre de requêtes Notion limité même avec beaucoup de produits", async () => {
+  const { notion, ops } = monter();
+  for (let i = 0; i < 60; i++) {
+    const id = notion.ajouterProduit(i % 2 ? "restaurant" : "epicerie", { nom: `Produit ${i}` });
+    notion.ajouterMouvement(i % 2 ? "restaurant" : "epicerie", id, { quantite: 3, apres: 3 });
+  }
+  const avant = notion.journal.length;
+  const c = await ops.controle();
+  assert.equal(c.corps.ok, true, JSON.stringify(c.corps.problemes));
+  assert.equal(c.corps.produitsVerifies, 63);
+  assert.ok(notion.journal.length - avant <= 12, `${notion.journal.length - avant} requêtes`);
+});

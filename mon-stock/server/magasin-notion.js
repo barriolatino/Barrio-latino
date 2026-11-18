@@ -209,6 +209,21 @@ export function creerMagasinNotion({ jeton, fetch: f = globalThis.fetch, bases =
       return arrondi(total);
     },
 
+    /** Somme des mouvements validés de tous les produits, en une seule lecture paginée. */
+    async stocksTous() {
+      const pages = await interroger(bases.historique, { filtre: { property: P.mouvement.statut, select: { equals: "Validé" } } });
+      const carte = new Map();
+      const sommes = new Map();
+      for (const page of pages) {
+        const m = await versMouvement(page, carte);
+        if (!m.activite || !m.produitId) continue;
+        const cle = `${m.activite}:${sansTirets(m.produitId)}`;
+        sommes.set(cle, arrondi((sommes.get(cle) || 0) + effetMouvement(m)));
+      }
+      // Les identifiants de produits peuvent arriver avec ou sans tirets.
+      return { get: (cle) => sommes.get(cle.replace(/:(.*)$/, (_, id) => `:${sansTirets(id)}`)) };
+    },
+
     async stockAffiche(activite, produitId) {
       try {
         return await rollupExact(await appel("GET", `/pages/${encodeURIComponent(produitId)}`));
