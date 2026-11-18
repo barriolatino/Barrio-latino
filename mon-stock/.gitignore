@@ -1,0 +1,6 @@
+# Secrets : jamais dans le dépôt
+.env
+.env.*
+!.env.exemple
+node_modules/
+.vercel/
