@@ -184,3 +184,21 @@ Elle ne passe pas par GitHub Pages : elle se déploie sur Vercel (Root Directory
 - Toute écriture publique passe par `src/lib/products.ts` (historique des prix,
   révisions, texte de recherche) puis `revalidateCatalogue()`.
 - Vérifier avant de pousser : `npm run typecheck && npm run lint && npm run test:e2e`.
+
+## MON STOCK (`mon-stock/`)
+
+Application mobile (PWA) de gestion des stocks du restaurant et de l'épicerie,
+séparée du site vitrine. **Notion est la base** (page privée GESTION DES STOCKS :
+STOCK RESTAURANT, STOCK ÉPICERIE, HISTORIQUE DES MOUVEMENTS). La quantité est un
+cumul Notion des mouvements validés : ne jamais l'écrire directement.
+
+- En ligne : `https://mon-stock-barrio.netlify.app` (Netlify, compte séparé de
+  Boutique Delirio, déploiement automatique depuis la branche
+  `claude/stock-management-notion-mobile-hmheuf`, Base directory `mon-stock`).
+- Secrets uniquement dans Netlify : `NOTION_TOKEN` (connexion Notion « Mon stock »,
+  limitée à GESTION DES STOCKS), `MON_STOCK_CODE`, `MON_STOCK_SECRET`.
+- Vérifier avant de pousser : `cd mon-stock && npm test` (règles, interface sur
+  iPhone simulé, connecteur contre une imitation de l'API Notion).
+- Règle de Clément : **validation explicite avant toute écriture** (Notion, dépôt,
+  déploiement) et chaque mouvement de stock est confirmé par lui dans l'application.
+- Mode d'emploi : `mon-stock/MODE-EMPLOI.md` (et sous-page Notion).

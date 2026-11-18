@@ -6,4 +6,5 @@
 **Décisions** : refonte en pause ; changements visibles = aperçu puis OK de Clément (`memory/USER_PREFERENCES.md`).
 **Automatisations** : 2 routines claude.ai écrivent ici (avis Google chaque jour 9 h, rotation le lundi 9 h) — `memory/AUTOMATIONS.md`. Aucune à rattacher.
 **À faire si matériel fourni** : photo du néon, photos de desserts, tequeños, bandeja.
+**MON STOCK (18/11)** : application de stocks en ligne (`mon-stock/`, Netlify, Notion). Phases 1 à 9 faites ; produits TEST archivés ; stocks réels à 0 en attente de l'inventaire de Clément. Voir `CLAUDE.md` section MON STOCK.
 **Prochaine action exacte** : aucune ; attendre une demande. Avant tout changement : `git pull`, vérifier le budget mobile (16 requêtes, CLS 0).
