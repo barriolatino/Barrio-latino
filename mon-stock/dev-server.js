@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { creerMagasinMemoire } from "./public/js/core/magasin-memoire.js";
 import { creerOperations } from "./public/js/core/operations.js";
 import { configAcces } from "./server/acces.js";
-import { creerGestionnaireApi } from "./server/http.js";
+import { creerGestionnaireApi, versNode } from "./server/http.js";
 
 const RACINE = fileURLToPath(new URL("./public/", import.meta.url));
 const TYPES = {
@@ -27,7 +27,7 @@ export function demarrer({ port = Number(process.env.PORT) || 8787 } = {}) {
     MON_STOCK_SECRET: process.env.MON_STOCK_SECRET || "essai-local-uniquement-0123456789abcdef",
   });
   let magasin = creerMagasinMemoire();
-  let api = creerGestionnaireApi({ ops: creerOperations(magasin), config, securise: false });
+  let api = versNode(creerGestionnaireApi({ ops: creerOperations(magasin), config, securise: false }));
 
   const serveur = createServer(async (req, res) => {
     const url = new URL(req.url, "http://local");
@@ -37,7 +37,7 @@ export function demarrer({ port = Number(process.env.PORT) || 8787 } = {}) {
       const action = url.pathname.slice(9);
       if (action === "reinitialiser") {
         magasin = creerMagasinMemoire();
-        api = creerGestionnaireApi({ ops: creerOperations(magasin), config, securise: false });
+        api = versNode(creerGestionnaireApi({ ops: creerOperations(magasin), config, securise: false }));
       } else if (action.startsWith("panne/")) {
         magasin.pannes[action.slice(6)] = true;
       } else if (action === "lenteur") {

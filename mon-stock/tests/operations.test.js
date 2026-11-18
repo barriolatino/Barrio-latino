@@ -116,11 +116,19 @@ test("panne à la validation : mouvement marqué Échec, stock inchangé, aucune
   assert.equal(magasin._mouvements.at(-1).statut, "Échec");
 });
 
-test("panne à la relecture : pas de confirmation", async () => {
+test("relecture lente une fois : la confirmation arrive quand même", async () => {
   const { ops, magasin } = nouveau();
-  magasin.pannes.relire = true;
+  magasin.pannes.relire = 1;
+  const r = await ops.enregistrer({ cle: cle(), activite: "restaurant", produitId: "r-pisco", type: "sortie", quantite: 1 });
+  assert.equal(r.statut, 201);
+});
+
+test("relecture impossible : pas de confirmation", async () => {
+  const { ops, magasin } = nouveau();
+  magasin.pannes.relire = 3;
   const r = await ops.enregistrer({ cle: cle(), activite: "restaurant", produitId: "r-pisco", type: "sortie", quantite: 1 });
   assert.equal(r.statut, 502);
+  assert.equal(r.corps.erreur.code, "VERIFICATION_ECHOUEE");
 });
 
 test("alertes et contrôle", async () => {
@@ -135,4 +143,13 @@ test("alertes et contrôle", async () => {
   const c2 = await ops.controle();
   assert.equal(c2.corps.ok, false);
   assert.match(c2.corps.problemes[0].message, /En cours/);
+});
+
+test("contrôle : une opération validée deux fois est signalée", async () => {
+  const { ops, magasin } = nouveau();
+  const copie = { ...magasin._mouvements[0], id: "dup", numero: 500 };
+  magasin._mouvements.push(copie);
+  const c = await ops.controle();
+  assert.equal(c.corps.ok, false);
+  assert.ok(c.corps.problemes.some((p) => /deux fois/.test(p.message)));
 });

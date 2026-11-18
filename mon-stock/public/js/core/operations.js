@@ -84,10 +84,14 @@ export function creerOperations(store, { maintenant = () => new Date() } = {}) {
     async produits({ activite }) {
       try {
         verifierActivite(activite);
-        const liste = await store.produits(activite);
-        const avecStock = await Promise.all(
-          liste.filter((p) => !p.archive).map((p) => produitAvecStock(store, activite, p)),
-        );
+        // Notion : les quantités arrivent avec la liste (une seule requête) ; sinon produit par produit.
+        const avecStock = store.produitsAvecStock
+          ? (await store.produitsAvecStock(activite))
+              .filter((p) => !p.archive)
+              .map((p) => ({ ...p, activite, quantite: arrondi(p.quantite), statut: statutStock(arrondi(p.quantite), p.stockMinimum) }))
+          : await Promise.all(
+              (await store.produits(activite)).filter((p) => !p.archive).map((p) => produitAvecStock(store, activite, p)),
+            );
         avecStock.sort((a, b) => a.nom.localeCompare(b.nom, "fr"));
         return reponse(200, { activite, produits: avecStock });
       } catch (e) {
@@ -216,8 +220,19 @@ export function creerOperations(store, { maintenant = () => new Date() } = {}) {
         }
 
         // Relecture : on ne confirme que ce que Notion renvoie réellement.
-        const relu = await store.mouvement(cree.id);
-        const stockRelu = arrondi(await store.stock(activite, produitId));
+        // Notion peut mettre un instant à refléter l'écriture : jusqu'à 3 relectures.
+        let relu = null;
+        let stockRelu = null;
+        for (let essai = 0; essai < 3; essai++) {
+          if (essai) await new Promise((r) => setTimeout(r, store.delaiRelectureMs ?? 600));
+          try {
+            relu = await store.mouvement(cree.id);
+            stockRelu = arrondi(await store.stock(activite, produitId));
+          } catch {
+            relu = null;
+          }
+          if (relu?.statut === "Validé" && stockRelu === calcul.apres) break;
+        }
         if (!relu || relu.statut !== "Validé" || stockRelu !== calcul.apres) {
           return reponse(502, {
             erreur: {
@@ -268,6 +283,14 @@ export function creerOperations(store, { maintenant = () => new Date() } = {}) {
           } else if (new Date(m.date).getTime() < limite) {
             problemes.push({ gravite: "alerte", activite: m.activite, mouvementId: m.id, message: `${m.titre} : resté « En cours », sans effet sur le stock.` });
           }
+        }
+        // Filet de sécurité : une même opération validée deux fois.
+        const parCle = new Map();
+        for (const m of await store.mouvements({ limite: 200, statuts: ["Validé"] })) {
+          if (!m.cle) continue;
+          if (parCle.has(m.cle)) {
+            problemes.push({ gravite: "erreur", activite: m.activite, mouvementId: m.id, message: `${m.titre} : enregistré deux fois (MVT-${parCle.get(m.cle).numero} et MVT-${m.numero}). Annulez-en un par une correction.` });
+          } else parCle.set(m.cle, m);
         }
         if (store.incoherences) {
           for (const m of await store.incoherences()) {

@@ -1,0 +1,25 @@
+# MON STOCK sur Netlify. Dans Netlify : « Base directory » = mon-stock.
+# Variables à saisir dans Netlify (jamais ici) : NOTION_TOKEN, MON_STOCK_CODE, MON_STOCK_SECRET.
+
+[build]
+  publish = "public"
+  command = "echo 'Pas de compilation'"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

@@ -28,7 +28,7 @@ export function creerMagasinMemoire({ produits = PRODUITS_DEMO, debut = new Date
   const mouvements = [];
   let numero = 0;
   let id = 0;
-  /** Pannes simulées pour les essais : { creer, valider, lire } → true = la prochaine opération échoue. */
+  /** Pannes simulées : { creer, valider, lire, relire } → true = la prochaine échoue, un nombre n = les n prochaines. */
   const pannes = {};
 
   for (const [activite, liste] of Object.entries(produits)) {
@@ -61,13 +61,14 @@ export function creerMagasinMemoire({ produits = PRODUITS_DEMO, debut = new Date
   const copie = (o) => (o ? structuredClone(o) : o);
   const panne = (nom) => {
     if (pannes[nom]) {
-      pannes[nom] = false;
+      pannes[nom] = typeof pannes[nom] === "number" ? pannes[nom] - 1 : false;
       throw new Error(`panne simulée : ${nom}`);
     }
   };
 
   return {
     pannes,
+    delaiRelectureMs: 0,
     _mouvements: mouvements,
 
     async produits(activite) {

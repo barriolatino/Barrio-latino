@@ -35,8 +35,13 @@ npm run dev     # http://localhost:8787, code 2468, données fictives
 npm test        # règles + interface (Playwright déjà installé)
 ```
 
-## Variables d'environnement (production, phase 7)
+## Production (Netlify)
 
-`MON_STOCK_CODE` (code d'accès), `MON_STOCK_SECRET` (32 caractères aléatoires
-ou plus), puis la clé de l'intégration Notion. Elles se saisissent dans Vercel,
-jamais dans un fichier du dépôt.
+- `netlify.toml` : site statique `public/` + fonction `netlify/functions/api.mjs`
+  pour toutes les adresses `/api/*`. Dans Netlify, « Base directory » = `mon-stock`.
+- `server/magasin-notion.js` : connecteur Notion (API officielle, version 2025-09-03).
+  Identifiants des bases dans `server/config-notion.js` (pas secrets).
+- Variables saisies dans Netlify, jamais dans le dépôt : `NOTION_TOKEN` (clé de
+  l'intégration « MON STOCK »), `MON_STOCK_CODE` (code d'accès), `MON_STOCK_SECRET`
+  (32 caractères ou plus, au hasard).
+- `tests/faux-notion.js` imite l'API Notion : les essais ne touchent jamais au vrai Notion.
