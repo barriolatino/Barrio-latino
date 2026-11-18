@@ -337,7 +337,7 @@ async function produit(act, id, actif) {
         ${p.prixVente ? `<div><dt>Prix de vente</dt><dd>${formaterNombre(p.prixVente)}&nbsp;€</dd></div>` : ""}
       </dl>
     </article>
-    <div class="espace-actions" style="padding:12px 0;grid-template-columns:1fr 1fr 1fr">
+    <div class="espace-actions trois">
       <a class="action principale" href="${lien("sortie")}">${I.sortie}<span>Sortie</span></a>
       <a class="action secondaire" href="${lien("entree")}">${I.entree}<span>Entrée</span></a>
       <a class="action" href="${lien("correction")}">${I.crayon}<span>Corriger</span></a>
@@ -748,7 +748,7 @@ async function alertes(filtre, actif) {
     const rien = !ruptures.length && !faibles.length;
     return `<section class="t-${act}"><h2 class="groupe-titre">${NOMS[act].court}</h2>
       ${rien ? `<p class="avis succes">${I.coche}<span>Aucune alerte.</span></p>` : ""}
-      ${ruptures.length ? `<h3 class="titre-section" style="margin-top:8px">Ruptures (${ruptures.length})</h3><ul class="liste">${ruptures.map((p) => ligneProduit(p, act)).join("")}</ul>` : ""}
+      ${ruptures.length ? `<h3 class="titre-section serre">Ruptures (${ruptures.length})</h3><ul class="liste">${ruptures.map((p) => ligneProduit(p, act)).join("")}</ul>` : ""}
       ${faibles.length ? `<h3 class="titre-section">Stocks faibles (${faibles.length})</h3><ul class="liste">${faibles.map((p) => ligneProduit(p, act)).join("")}</ul>` : ""}
     </section>`;
   });
@@ -759,7 +759,7 @@ async function alertes(filtre, actif) {
 
 async function controle(actif) {
   $app.innerHTML = `${barre("Contrôle des stocks", "#/")}
-    <p class="aide" style="margin-bottom:12px">Compare, pour chaque produit, la quantité affichée par Notion avec la somme des mouvements validés, et liste les opérations bloquées ou en échec.</p>
+    <p class="aide avant">Compare, pour chaque produit, la quantité affichée par Notion avec la somme des mouvements validés, et liste les opérations bloquées ou en échec.</p>
     <div data-contenu><p class="chargement">Contrôle en cours…</p></div>`;
   const c = await obtenir("/api/controle");
   if (!actif()) return;
@@ -768,8 +768,8 @@ async function controle(actif) {
     ${c.ok
       ? `<div class="avis succes" role="status">${I.coche}<span>Tout concorde&nbsp;: ${c.produitsVerifies} produits vérifiés, aucun mouvement bloqué.</span></div>`
       : `<div class="avis erreur" role="alert">${I.alertes}<span>${c.problemes.filter((p) => p.gravite !== "info").length} point(s) à vérifier.</span></div>`}
-    ${c.problemes.length ? `<ul class="liste" style="margin-top:12px">${c.problemes.map((p) => `<li class="t-${p.activite}"><div class="ligne"><span class="nom">${esc(p.message)}</span><span class="etiquette">${libelleGravite[p.gravite]}</span><span class="detail">${NOMS[p.activite]?.court || ""}</span></div></li>`).join("")}</ul>` : ""}
-    <p class="aide" style="margin-top:12px">Contrôle effectué le ${dateHeure(c.date)}.</p>
+    ${c.problemes.length ? `<ul class="liste apres">${c.problemes.map((p) => `<li class="t-${p.activite}"><div class="ligne"><span class="nom">${esc(p.message)}</span><span class="etiquette">${libelleGravite[p.gravite]}</span><span class="detail">${NOMS[p.activite]?.court || ""}</span></div></li>`).join("")}</ul>` : ""}
+    <p class="aide apres">Contrôle effectué le ${dateHeure(c.date)}.</p>
     <div class="barre-action"><button class="bouton neutre" data-relancer>Relancer le contrôle</button></div>`;
   $app.querySelector("[data-relancer]").addEventListener("click", afficher);
 }

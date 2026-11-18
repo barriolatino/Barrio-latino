@@ -1,6 +1,6 @@
 // Cache de l'interface seulement. Les données (/api) ne sont JAMAIS mises en cache :
 // un stock affiché hors ligne serait trompeur, et aucune opération n'est mise en attente.
-const VERSION = "mon-stock-v1";
+const VERSION = "mon-stock-v2";
 const COQUILLE = [
   "./", "index.html", "app.css", "manifest.webmanifest",
   "js/app.js", "js/api.js", "js/core/regles.js", "js/core/routes.js",

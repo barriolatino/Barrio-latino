@@ -183,6 +183,11 @@ a { color: inherit; }
 }
 .badge.faible { background: var(--faible); }
 
+.espace-actions.trois { padding: 12px 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.titre-section.serre { margin-top: 8px; }
+.avant { margin-bottom: 12px; }
+.apres { margin-top: 12px; }
+
 .raccourcis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
 .raccourci {
   display: flex; align-items: center; gap: 10px;
