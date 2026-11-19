@@ -25,8 +25,8 @@ export const categories: { name: string; description: string; order: number; chi
 
 export const products: EpicerieProduct[] = [
   {
-    ref: "01276", name: "Pisco Acholado", brand: "Ocucaje", category: ["Boissons", "Alcools"], country: "PE",
-    volume: 700, packaging: "Bouteille", price: "22", cost: "13,85", tags: "alcool, pisco sour, eau-de-vie",
+    ref: "01276", name: "Pisco", brand: "Ocucaje", category: ["Boissons", "Alcools"], country: "PE",
+    volume: 700, packaging: "Bouteille", price: "25", cost: "13,85", tags: "alcool, pisco sour, eau-de-vie",
     description: "Pisco péruvien, eau-de-vie de raisin. La base du pisco sour.",
   },
   {
@@ -65,18 +65,18 @@ export const products: EpicerieProduct[] = [
     description: "Purée de piment jaune péruvien. La base de l'ají de gallina, de la causa et de nombreuses sauces.",
   },
   {
-    ref: "00721", name: "Gelée à la fraise", brand: "Universal", category: ["Épicerie sèche", "Sucre & desserts"], country: "PE",
+    ref: "00721", name: "Gélatine goût fraise", brand: "Universal", category: ["Épicerie sèche", "Sucre & desserts"], country: "PE",
     weight: 250, packaging: "Sachet", price: "5", cost: "2,56", tags: "gelatina, dessert",
     description: "Préparation pour gelée parfum fraise.",
   },
   {
-    ref: "02801", name: "Yerba maté Mañanita", brand: "Mañanita", category: ["Épicerie sèche", "Cafés & maté"], country: "AR",
+    ref: "02801", name: "Maté Playadito", brand: "Playadito", category: ["Épicerie sèche", "Cafés & maté"], country: "AR",
     weight: 500, packaging: "Paquet", price: "10", cost: "3", tags: "mate, yerba, infusion",
     description: "Yerba maté argentine, à infuser dans la calebasse avec la bombilla.",
   },
   {
-    ref: "02085", name: "Café moulu Cumbre", brand: "Juan Valdez", category: ["Épicerie sèche", "Cafés & maté"], country: "CO",
-    weight: 250, packaging: "Paquet", price: "15", cost: "7", tags: "café colombien, café moulu",
+    ref: "02085", name: "Café Aguila Roja", brand: "Aguila Roja", category: ["Épicerie sèche", "Cafés & maté"], country: "CO",
+    weight: 500, packaging: "Paquet", price: "15", cost: "7", tags: "café colombien, café moulu",
     description: "Café 100 % colombien, moulu.",
   },
 ];
