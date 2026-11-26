@@ -2,7 +2,7 @@
 
 ## À faire (si Clément fournit le matériel)
 - Photo nette du néon pour « Notre histoire ».
-- Photos de carte manquantes : desserts, tequeños, bandeja.
+- Photos de carte manquantes : desserts, bandeja (tequeños faits le 26/11/2026).
 - Médiateur de la consommation : à compléter seulement après adhésion (voir `CLAUDE.md`).
 - Horaires des fêtes : samedi 26/12 et heure de fin du midi à confirmer `[À VÉRIFIER]`.
 

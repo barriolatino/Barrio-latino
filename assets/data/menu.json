@@ -29,7 +29,8 @@
         {
           "nom": "Tequeños",
           "prix": "7 €",
-          "description": "Bâtonnets de fromage accompagnés de guacamole."
+          "description": "Bâtonnets de fromage accompagnés de guacamole.",
+          "photo": "tequenos"
         },
         {
           "nom": "Patacones Reina",

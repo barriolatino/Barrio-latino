@@ -112,8 +112,8 @@ les deux PDF.
   Ne pas remettre de `<span class="todo">` visible sur une page publique.
   Tout le reste des informations légales est renseigné.
 - **Photos manquantes** : la devanture reste en basse résolution (retirée de
-  « Notre histoire » le 16 nov. 2026, remplacée par `salle-mur-rose`, la salle sans personne) ; les desserts, les tequeños et la bandeja n'ont pas de
-  photo de carte. Dix plats sur trente-six sont illustrés.
+  « Notre histoire » le 16 nov. 2026, remplacée par `salle-mur-rose`, la salle sans personne) ; les desserts et la bandeja n'ont pas de
+  photo de carte. Onze plats sur trente-six sont illustrés (tequeños ajoutés le 26 nov. 2026).
 
 Déjà réglés : lien Uber Eats, stationnement, accessibilité (dérogation),
 identité légale (PELISSIER ARANIBAR, SARL, SIREN 989 353 354, cogérance).
